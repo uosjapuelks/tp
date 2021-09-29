@@ -1,4 +1,4 @@
-# John Doe - Project Portfolio Page
+# Chai Zong Lun - Project Portfolio Page
 
 ## Overview
 
