@@ -1,4 +1,4 @@
-# John Doe - Project Portfolio Page
+# Bryan Elmer - Project Portfolio Page
 
 ## Overview
 
