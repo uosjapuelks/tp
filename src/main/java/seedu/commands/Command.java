@@ -1,10 +1,10 @@
-package seedu.duke.Commands;
+package seedu.commands;
 
-import seedu.duke.Data.Exception.FridgetException;
+import seedu.data.exception.FridgetException;
 
 public abstract class Command {
     /**
-     * Constructor for Command
+     * Constructor for Command.
      */
     public Command() {
     }

@@ -1,4 +1,4 @@
-package seedu.duke.Data.Ingredient;
+package seedu.data.ingredient;
 
 import java.util.Date;
 

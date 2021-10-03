@@ -1,6 +1,6 @@
-package seedu.duke.IngredientList;
+package seedu.storage;
 
-import seedu.duke.Data.Ingredient.Ingredient;
+import seedu.data.ingredient.Ingredient;
 import java.util.ArrayList;
 
 public class IngredientList {

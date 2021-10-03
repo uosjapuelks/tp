@@ -1,4 +1,4 @@
-package seedu.duke.Data.Exception;
+package seedu.data.exception;
 
 public class FridgetException extends Exception {
     /**

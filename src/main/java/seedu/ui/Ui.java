@@ -1,9 +1,10 @@
-package seedu.duke.Ui;
+package seedu.ui;
 
 import java.util.Scanner;
 
 public class Ui {
     private final Scanner in;
+
     /**
      * A constructor to initialise ui.
      */
