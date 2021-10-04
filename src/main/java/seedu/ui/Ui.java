@@ -46,7 +46,7 @@ public class Ui {
     }
 
     /**
-     * Prints a reaction to user successfully adding an ingredient
+     * Prints a reaction to user successfully adding an ingredient.
      * @param ingredient The ingredient the user has added.
      */
     public void printReactionToAddingIngredient(Ingredient ingredient) {

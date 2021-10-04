@@ -31,7 +31,7 @@ public class Parser {
     }
 
     /**
-     * Returns a Ingredient based on user input
+     * Returns a Ingredient based on user input.
      * @param userInput The input from the user in this manner - "add burger /2021-09-23"
      * @return An ingredient
      */

@@ -6,7 +6,7 @@ import seedu.parser.Parser;
 import seedu.storage.IngredientList;
 import seedu.ui.Ui;
 
-public class AddCommand extends Command{
+public class AddCommand extends Command {
     /**
      * Constructor for AddCommand.
      */
