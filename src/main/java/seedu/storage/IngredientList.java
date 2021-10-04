@@ -7,6 +7,6 @@ public class IngredientList {
     protected ArrayList<Ingredient> ingredientList;
 
     public IngredientList(ArrayList<Ingredient> ingredientList) {
-        ingredientList = new ArrayList<>(100);
+        ingredientList = new ArrayList<>();
     }
 }
