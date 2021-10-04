@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Ui {
     private final Scanner in;
-    private final String SEPARATOR_LINE = "_____________________________________";
+    private static final String SEPARATOR_LINE = "_____________________________________";
 
     private String currentUserInput;
 
