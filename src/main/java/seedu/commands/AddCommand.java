@@ -23,7 +23,4 @@ public class AddCommand extends Command {
         ingredientList.addIngredient(newIngredient);
         ui.printReactionToAddingIngredient(newIngredient);
     }
-
-
-
 }
