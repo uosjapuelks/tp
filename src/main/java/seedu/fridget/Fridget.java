@@ -27,7 +27,7 @@ public class Fridget {
             String userInput = ui.readUserInput();
             ui.printSeparatorLine();
             Command c = parser.parseCommand(userInput);
-            c.execute(ui,parser,ingredientList);
+            c.execute(ui, parser, ingredientList);
         } catch (FridgetException e) {
             e.printStackTrace();
         }

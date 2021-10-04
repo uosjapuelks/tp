@@ -38,7 +38,7 @@ public class Parser {
     public Ingredient parseIngredientForAdding(String userInput) {
         String[] splitUserInput = userInput.trim().split(" ");
         String ingredientName = splitUserInput[1];
-        LocalDate expiryDate = LocalDate.parse(splitUserInput[2].replace("/",""));
+        LocalDate expiryDate = LocalDate.parse(splitUserInput[2].replace("/", ""));
         return new Ingredient(ingredientName, expiryDate);
     }
 }
