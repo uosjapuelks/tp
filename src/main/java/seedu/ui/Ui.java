@@ -45,6 +45,10 @@ public class Ui {
         System.out.println(SEPARATOR_LINE);
     }
 
+    /**
+     * Prints a reaction to user successfully adding an ingredient
+     * @param ingredient The ingredient the user has added.
+     */
     public void printReactionToAddingIngredient(Ingredient ingredient) {
         System.out.println("You have successfully added:");
         System.out.println("    " + ingredient);
@@ -59,6 +63,10 @@ public class Ui {
         return currentUserInput;
     }
 
+    /**
+     * Gets stored user input.
+     * @return Stored user input.
+     */
     public String getCurrentUserInput() {
         return currentUserInput;
     }
