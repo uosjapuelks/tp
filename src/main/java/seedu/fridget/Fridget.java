@@ -19,7 +19,7 @@ public class Fridget {
     }
 
     /**
-     * Main entry-point for the java.duke.Fridget application.
+     * Main entry-point for the java.fridget.Fridget application.
      */
     public static void main(String[] args) {
         new Fridget().run();
