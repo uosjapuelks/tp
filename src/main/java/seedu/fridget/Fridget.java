@@ -1,14 +1,14 @@
-package seedu.duke;
+package seedu.fridget;
 
 import seedu.ui.Ui;
 
-public class Duke {
+public class Fridget {
     private final Ui ui;
 
     /**
      * Constructor for Fridget.
      */
-    public Duke() {
+    public Fridget() {
         ui = new Ui();
     }
 
@@ -19,9 +19,9 @@ public class Duke {
     }
 
     /**
-     * Main entry-point for the java.duke.Duke application.
+     * Main entry-point for the java.duke.Fridget application.
      */
     public static void main(String[] args) {
-        new Duke().run();
+        new Fridget().run();
     }
 }
