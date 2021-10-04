@@ -1,21 +1,27 @@
 package seedu.duke;
 
-import java.util.Scanner;
+import seedu.ui.Ui;
 
 public class Duke {
+    private final Ui ui;
+
+    /**
+     * Constructor for Fridget.
+     */
+    public Duke() {
+        ui = new Ui();
+    }
+
+    public void run() {
+        ui.printIntroduction();
+        String userInput = ui.readUserInput();
+        System.out.println("Hello " + userInput);
+    }
+
     /**
      * Main entry-point for the java.duke.Duke application.
      */
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
-        System.out.println("What is your name?");
-
-        Scanner in = new Scanner(System.in);
-        System.out.println("Hello " + in.nextLine());
+        new Duke().run();
     }
 }
