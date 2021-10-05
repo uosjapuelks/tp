@@ -40,6 +40,6 @@ public class Fridget {
      * Main entry-point for the java.fridget.Fridget application.
      */
     public static void main(String[] args) {
-        new Fridget("config/savedList", "config/savedLog").run();
+        new Fridget("config/savedList.txt", "config/savedLog.txt").run();
     }
 }
