@@ -1,9 +1,15 @@
 package seedu.ui;
 
+import seedu.data.ingredient.Ingredient;
+
 import java.util.Scanner;
 
 public class Ui {
     private final Scanner in;
+    private static final String SEPARATOR_LINE = "_____________________________________";
+    private static final String FOUR_SPACE_INDENTATION = "    ";
+
+    private String currentUserInput;
 
     /**
      * A constructor to initialise ui.
@@ -29,7 +35,24 @@ public class Ui {
                 + "                                        \"Y8bbdP\"                        ";
         System.out.println(logo);
         System.out.println("Hello!");
-        System.out.println("What is your name?");
+        System.out.println("What would you like to do?");
+        System.out.println(SEPARATOR_LINE);
+    }
+
+    /**
+     * Prints a line to separate between input and output.
+     */
+    public void printSeparatorLine() {
+        System.out.println(SEPARATOR_LINE);
+    }
+
+    /**
+     * Prints a reaction to user successfully adding an ingredient.
+     * @param ingredient The ingredient the user has added.
+     */
+    public void printReactionToAddingIngredient(Ingredient ingredient) {
+        System.out.println("You have successfully added:");
+        System.out.println(FOUR_SPACE_INDENTATION + ingredient);
     }
 
     /**
@@ -37,6 +60,15 @@ public class Ui {
      * @return A String containing user input.
      */
     public String readUserInput() {
-        return in.nextLine();
+        currentUserInput = in.nextLine();
+        return currentUserInput;
+    }
+
+    /**
+     * Gets stored user input.
+     * @return Stored user input.
+     */
+    public String getCurrentUserInput() {
+        return currentUserInput;
     }
 }
