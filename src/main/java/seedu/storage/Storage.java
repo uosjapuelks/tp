@@ -4,7 +4,10 @@ import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Storage {
@@ -37,6 +40,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Initialises text files if not present.
+     * Loads all the data from the ingredient list text file.
+     * @throws IOException The error thrown from file IO operations.
+     */
     private void loadFile() throws IOException {
         File dataDirectory = new File(fileDirectory);
         File listFile = new File(listFilePath);
@@ -57,9 +65,39 @@ public class Storage {
         }
     }
 
+    /**
+     * Adds saved ingredient into the ingredient list.
+     * @param listDataComponents The details of the ingredient.
+     */
     private void addSavedIngredient(String[] listDataComponents) {
         String addFormat = "dummy " + listDataComponents[0] + " /" + listDataComponents[1];
         Ingredient savedIngredient = parser.parseIngredientForAdding(addFormat);
         ingredientList.addIngredient(savedIngredient);
+    }
+
+    /**
+     * Updates the ingredients list text file.
+     * @param ingredients The current list of ingredients.
+     * @throws IOException The error thrown from file IO operations.
+     */
+    public void updateListFile(ArrayList<Ingredient> ingredients) throws IOException {
+        FileWriter fileWriter = new FileWriter(listFilePath);
+        for (Ingredient ingredient : ingredients) {
+            fileWriter.write(ingredient.toString());
+            fileWriter.write(System.lineSeparator());
+        }
+        fileWriter.close();
+    }
+
+    /**
+     * Updates all the text files.
+     * @param ingredients The current list of ingredients.
+     */
+    public void updateFiles(ArrayList<Ingredient> ingredients) {
+        try {
+            updateListFile(ingredients);
+        } catch (IOException e) {
+            System.out.println("Error while trying to update ingredient list file.");
+        }
     }
 }
