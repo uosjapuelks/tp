@@ -8,6 +8,10 @@ import seedu.storage.Storage;
 import seedu.ui.Ui;
 
 public class Fridget {
+
+    private static final String FILE_PATH_LIST = "config/savedList.txt";
+    private static final String FILE_PATH_LOGS = "config/savedLog.txt";
+
     private final Ui ui;
     private final Parser parser;
     private final IngredientList ingredientList;
@@ -40,6 +44,6 @@ public class Fridget {
      * Main entry-point for the java.fridget.Fridget application.
      */
     public static void main(String[] args) {
-        new Fridget("config/savedList.txt", "config/savedLog.txt").run();
+        new Fridget(FILE_PATH_LIST, FILE_PATH_LOGS).run();
     }
 }
