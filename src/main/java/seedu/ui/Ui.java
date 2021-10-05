@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Ui {
     private final Scanner in;
-    private static final String SEPARATOR_LINE = "_____________________________________";
+    private static final String SEPARATOR_LINE = "__________________________________________\n";
     private static final String FOUR_SPACE_INDENTATION = "    ";
 
     private String currentUserInput;
@@ -36,14 +36,14 @@ public class Ui {
         System.out.println(logo);
         System.out.println("Hello!");
         System.out.println("What would you like to do?");
-        System.out.println(SEPARATOR_LINE);
+        System.out.print(SEPARATOR_LINE);
     }
 
     /**
      * Prints a line to separate between input and output.
      */
-    public void printSeparatorLine() {
-        System.out.println(SEPARATOR_LINE);
+    public void printWithSeparatorLine(String textToPrint) {
+        System.out.println(SEPARATOR_LINE + textToPrint + SEPARATOR_LINE);
     }
 
     /**
@@ -51,8 +51,7 @@ public class Ui {
      * @param ingredient The ingredient the user has added.
      */
     public void printReactionToAddingIngredient(Ingredient ingredient) {
-        System.out.println("You have successfully added:");
-        System.out.println(FOUR_SPACE_INDENTATION + ingredient);
+        printWithSeparatorLine("You have successfully added:\n" + FOUR_SPACE_INDENTATION + ingredient + "\n");
     }
 
     /**

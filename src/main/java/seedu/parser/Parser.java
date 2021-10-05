@@ -2,6 +2,7 @@ package seedu.parser;
 
 import seedu.commands.AddCommand;
 import seedu.commands.Command;
+import seedu.commands.HelpCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -21,10 +22,12 @@ public class Parser {
      */
     public Command parseCommand(String userInput) throws FridgetException {
         String userCommand = userInput.trim().split(" ", 2)[0];
-
-        switch (userCommand) {
+      
+        switch (userCommand.toLowerCase()) {
         case "add":
             return new AddCommand();
+        case "help":
+            return new HelpCommand();
         default:
             throw new FridgetException("No command found!");
         }
