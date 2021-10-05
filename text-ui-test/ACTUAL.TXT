@@ -10,5 +10,10 @@ MM88MMM  8b,dPPYba,  88   ,adPPYb,88   ,adPPYb,d8   ,adPPYba,  MM88MMM
                                        aa,    ,88                       
                                         "Y8bbdP"                        
 Hello!
-What is your name?
-Hello James Gosling
+What would you like to do?
+__________________________________________
+__________________________________________
+You have successfully added:
+    burger | 2021-09-23
+__________________________________________
+
