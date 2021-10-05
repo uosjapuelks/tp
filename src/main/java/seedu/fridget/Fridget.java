@@ -30,10 +30,10 @@ public class Fridget {
             String userInput = ui.readUserInput();
             Command c = parser.parseCommand(userInput);
             c.execute(ui, parser, ingredientList);
+            storage.updateFiles(ingredientList.getIngredientList());
         } catch (FridgetException e) {
             e.printStackTrace();
         }
-
     }
 
     /**
