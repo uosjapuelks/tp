@@ -17,4 +17,12 @@ public class IngredientList {
     public void addIngredient(Ingredient ingredient) {
         ingredientList.add(ingredient);
     }
+
+    /**
+     * Returns the current list of ingredients.
+     * @return List of ingredients.
+     */
+    public ArrayList<Ingredient> getIngredientList() {
+        return ingredientList;
+    }
 }
