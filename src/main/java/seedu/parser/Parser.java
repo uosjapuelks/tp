@@ -22,7 +22,7 @@ public class Parser {
      */
     public Command parseCommand(String userInput) throws FridgetException {
         String userCommand = userInput.trim().split(" ", 2)[0];
-
+      
         switch (userCommand.toLowerCase()) {
         case "add":
             return new AddCommand();
