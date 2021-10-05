@@ -1,18 +1,23 @@
 package seedu.data.ingredient;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-public abstract class Ingredient {
+public class Ingredient {
     protected String ingredientName;
-    protected Date expiryDate;
+    protected LocalDate expiryDate;
 
     /**
      * Constructor for Ingredient.
      * @param ingredientName name of the ingredient.
      * @param expiryDate date of expiry for ingredient.
      */
-    public Ingredient(String ingredientName, Date expiryDate) {
+    public Ingredient(String ingredientName, LocalDate expiryDate) {
         this.ingredientName = ingredientName;
         this.expiryDate = expiryDate;
+    }
+
+    @Override
+    public String toString() {
+        return ingredientName + " | " + expiryDate;
     }
 }
