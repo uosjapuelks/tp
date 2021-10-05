@@ -69,7 +69,7 @@ public class Storage {
      * @param listDataComponents The details of the ingredient.
      */
     private void addSavedIngredient(String[] listDataComponents) {
-        String addFormat = "dummy " + listDataComponents[0] + " /" + listDataComponents[1];
+        String addFormat = "add " + listDataComponents[0] + " /" + listDataComponents[1];
         Ingredient savedIngredient = parser.parseIngredientForAdding(addFormat);
         ingredientList.addIngredient(savedIngredient);
     }
