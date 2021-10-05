@@ -6,7 +6,6 @@ import seedu.parser.Parser;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,9 +28,9 @@ public class Storage {
         String[] fileComponents = listFilePath.split("/");
         this.ingredientList = ingredientList;
         this.parser = parser;
+        this.fileDirectory = fileComponents[0];
         this.listFilePath = listFilePath;
         this.logFilePath = logFilePath;
-        this.fileDirectory = fileComponents[0];
 
         try {
             loadFile();
