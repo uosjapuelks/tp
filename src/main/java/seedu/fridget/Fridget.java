@@ -22,18 +22,18 @@ public class Fridget {
 
     public void run() {
         ui.printIntroduction();
-        Command c = new Command();
+        Command command = new Command();
 
         do {
             try {
                 String userInput = ui.readUserInput();
                 ui.printSeparatorLine();
-                c = parser.parseCommand(userInput);
-                c.execute(ui, parser, ingredientList);
+                command = parser.parseCommand(userInput);
+                command.execute(ui, parser, ingredientList);
             } catch (FridgetException e) {
                 e.printStackTrace();
             }
-        } while (c.status());
+        } while (command.exitNotRequired());
 
     }
 
