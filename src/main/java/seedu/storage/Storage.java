@@ -48,5 +48,18 @@ public class Storage {
             logFile.createNewFile();
             return;
         }
+
+        Scanner listScanner = new Scanner(listFile);
+        while (listScanner.hasNext()) {
+            String line = listScanner.nextLine();
+            String[] listDataComponents = line.split(REGEX_DATA_SEPARATOR);
+            addSavedIngredient(listDataComponents);
+        }
+    }
+
+    private void addSavedIngredient(String[] listDataComponents) {
+        String addFormat = "dummy " + listDataComponents[0] + " /" + listDataComponents[1];
+        Ingredient savedIngredient = parser.parseIngredientForAdding(addFormat);
+        ingredientList.addIngredient(savedIngredient);
     }
 }
