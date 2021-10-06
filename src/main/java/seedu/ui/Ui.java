@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Ui {
     private final Scanner in;
-    private static final String SEPARATOR_LINE = "_____________________________________\n";
+    private static final String SEPARATOR_LINE = "\n__________________________________________\n";
     private static final String FOUR_SPACE_INDENTATION = "    ";
 
     private String currentUserInput;
@@ -32,23 +32,23 @@ public class Ui {
                 + "  88     88          88  \"8a,   ,d88  \"8a,   ,d88  \"8b,   ,aa    88,    \n"
                 + "  88     88          88   `\"8bbdP\"Y8   `\"YbbdP\"Y8   `\"Ybbd8\"'    \"Y888  \n"
                 + "                                       aa,    ,88                       \n"
-                + "                                        \"Y8bbdP\"                        \n";
+                + "                                        \"Y8bbdP\"                        ";
         String greeting = "Hello!\n"
-                + "What would you like to do?\n";
+                + "What would you like to do?";
 
-        String toPrint = SEPARATOR_LINE
+        String introMessage = SEPARATOR_LINE
                 + logo
                 + greeting
                 + SEPARATOR_LINE;
 
-        System.out.println(toPrint);
+        System.out.println(introMessage);
     }
 
     /**
      * Prints a line to separate between input and output.
      */
-    public void printSeparatorLine() {
-        System.out.println(SEPARATOR_LINE);
+    public void printWithSeparatorLine(String textToPrint) {
+        System.out.println(SEPARATOR_LINE + textToPrint + SEPARATOR_LINE);
     }
 
     /**
@@ -58,12 +58,10 @@ public class Ui {
     public void printReactionToAddingIngredient(Ingredient ingredient) {
         String acknowledgeAdd = "You have successfully added:\n";
 
-        String toPrint = SEPARATOR_LINE
-                + acknowledgeAdd
-                + FOUR_SPACE_INDENTATION + ingredient
-                + SEPARATOR_LINE;
+        String addReaction = acknowledgeAdd
+                + FOUR_SPACE_INDENTATION + ingredient;
 
-        System.out.println(toPrint);
+        printWithSeparatorLine(addReaction);
     }
 
     /**
@@ -87,13 +85,13 @@ public class Ui {
      * Prints the exit message.
      */
     public void printExitMessage() {
-        String exitMessage = "We'll help you remember everything you tell us :)\n"
-                + "See you again!~~\n";
+        String reassureUser = "We'll help you remember everything you told us :)\n"
+                + "See you again!~~";
 
-        String toPrint = SEPARATOR_LINE
+        String exitMessage = SEPARATOR_LINE
                 + exitMessage
                 + SEPARATOR_LINE;
 
-        System.out.println(toPrint);
+        System.out.println(exitMessage);
     }
 }

@@ -18,6 +18,6 @@ public class Ingredient {
 
     @Override
     public String toString() {
-        return ingredientName + " | " + expiryDate + "\n";
+        return ingredientName + " | " + expiryDate;
     }
 }

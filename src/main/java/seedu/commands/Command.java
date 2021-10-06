@@ -18,7 +18,7 @@ public class Command {
      * Check status of program, if it should end.
      * @return true if program should keep running and false when exit is called.
      */
-    public boolean status() {
+    public boolean exitNotRequired() {
         return !isExit;
     }
 
