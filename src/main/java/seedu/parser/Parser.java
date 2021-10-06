@@ -1,6 +1,10 @@
 package seedu.parser;
 
-import seedu.commands.*;
+import seedu.commands.AddCommand;
+import seedu.commands.Command;
+import seedu.commands.ExitCommand;
+import seedu.commands.FindCommand;
+import seedu.commands.HelpCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
