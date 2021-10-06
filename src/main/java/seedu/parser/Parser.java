@@ -17,6 +17,7 @@ public class Parser {
      * Returns a Command class based on user input.
      * @param userInput The input from the user.
      * @return Command class that user input is referencing.
+     * @throws FridgetException thrown when invalid command is input.
      */
     public Command parseCommand(String userInput) throws FridgetException {
         String userCommand = userInput.trim().split(" ", 2)[0];
@@ -31,7 +32,8 @@ public class Parser {
         case "find":
             return new FindCommand();
         default:
-            throw new FridgetException("No command found!");
+            throw new FridgetException("No command found!\n"
+                    + "Enter help if you need the list of available commands.\n");
         }
     }
 
