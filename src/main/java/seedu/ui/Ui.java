@@ -22,26 +22,24 @@ public class Ui {
      * Prints introductory message when Fridget runs.
      */
     public void printIntroduction() {
-        String logo = "                                                                        \n"
-                + "   ad88              88           88                                    \n"
-                + "  d8\"                \"\"           88                             ,d     \n"
-                + "  88                              88                             88     \n"
-                + "MM88MMM  8b,dPPYba,  88   ,adPPYb,88   ,adPPYb,d8   ,adPPYba,  MM88MMM  \n"
-                + "  88     88P'   \"Y8  88  a8\"    `Y88  a8\"    `Y88  a8P_____88    88     \n"
-                + "  88     88          88  8b       88  8b       88  8PP\"\"\"\"\"\"\"    88     \n"
-                + "  88     88          88  \"8a,   ,d88  \"8a,   ,d88  \"8b,   ,aa    88,    \n"
-                + "  88     88          88   `\"8bbdP\"Y8   `\"YbbdP\"Y8   `\"Ybbd8\"'    \"Y888  \n"
-                + "                                       aa,    ,88                       \n"
-                + "                                        \"Y8bbdP\"                        ";
+        String logo = "\n"
+                + "   ad88              88           88\n"
+                + "  d8\"                \"\"           88                             ,d\n"
+                + "  88                              88                             88\n"
+                + "MM88MMM  8b,dPPYba,  88   ,adPPYb,88   ,adPPYb,d8   ,adPPYba,  MM88MMM\n"
+                + "  88     88P'   \"Y8  88  a8\"    `Y88  a8\"    `Y88  a8P_____88    88\n"
+                + "  88     88          88  8b       88  8b       88  8PP\"\"\"\"\"\"\"    88\n"
+                + "  88     88          88  \"8a,   ,d88  \"8a,   ,d88  \"8b,   ,aa    88,\n"
+                + "  88     88          88   `\"8bbdP\"Y8   `\"YbbdP\"Y8   `\"Ybbd8\"'    \"Y888\n"
+                + "                                       aa,    ,88\n"
+                + "                                        \"Y8bbdP\"\n";
         String greeting = "Hello!\n"
                 + "What would you like to do?";
 
-        String introMessage = SEPARATOR_LINE
-                + logo
-                + greeting
-                + SEPARATOR_LINE;
+        String introMessage = logo
+                + greeting;
 
-        System.out.println(introMessage);
+        printWithSeparatorLine(introMessage);
     }
 
     /**
@@ -88,10 +86,6 @@ public class Ui {
         String reassureUser = "We'll help you remember everything you told us :)\n"
                 + "See you again!~~";
 
-        String exitMessage = SEPARATOR_LINE
-                + exitMessage
-                + SEPARATOR_LINE;
-
-        System.out.println(exitMessage);
+        printWithSeparatorLine(reassureUser);
     }
 }

@@ -1,19 +1,29 @@
-                                                                        
-   ad88              88           88                                    
-  d8"                ""           88                             ,d     
-  88                              88                             88     
-MM88MMM  8b,dPPYba,  88   ,adPPYb,88   ,adPPYb,d8   ,adPPYba,  MM88MMM  
-  88     88P'   "Y8  88  a8"    `Y88  a8"    `Y88  a8P_____88    88     
-  88     88          88  8b       88  8b       88  8PP"""""""    88     
-  88     88          88  "8a,   ,d88  "8a,   ,d88  "8b,   ,aa    88,    
-  88     88          88   `"8bbdP"Y8   `"YbbdP"Y8   `"Ybbd8"'    "Y888  
-                                       aa,    ,88                       
-                                        "Y8bbdP"                        
+
+__________________________________________
+
+   ad88              88           88
+  d8"                ""           88                             ,d
+  88                              88                             88
+MM88MMM  8b,dPPYba,  88   ,adPPYb,88   ,adPPYb,d8   ,adPPYba,  MM88MMM
+  88     88P'   "Y8  88  a8"    `Y88  a8"    `Y88  a8P_____88    88
+  88     88          88  8b       88  8b       88  8PP"""""""    88
+  88     88          88  "8a,   ,d88  "8a,   ,d88  "8b,   ,aa    88,
+  88     88          88   `"8bbdP"Y8   `"YbbdP"Y8   `"Ybbd8"'    "Y888
+                                       aa,    ,88
+                                        "Y8bbdP"
 Hello!
 What would you like to do?
 __________________________________________
+
+
 __________________________________________
 You have successfully added:
     burger | 2021-09-23
+__________________________________________
+
+
+__________________________________________
+We'll help you remember everything you told us :)
+See you again!~~
 __________________________________________
 
