@@ -86,7 +86,7 @@ public class Ui {
      */
     public void printExitMessage() {
         String reassureUser = "We'll help you remember everything you told us :)\n"
-                + "See you again!~~\n";
+                + "See you again!~~";
         printLine(reassureUser);
     }
 

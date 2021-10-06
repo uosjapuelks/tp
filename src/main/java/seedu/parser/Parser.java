@@ -37,7 +37,7 @@ public class Parser {
             return new FindCommand();
         default:
             throw new FridgetException("No command found!\n"
-                    + "Enter help if you need the list of available commands.\n");
+                    + "Enter help if you need the list of available commands.");
         }
     }
 
