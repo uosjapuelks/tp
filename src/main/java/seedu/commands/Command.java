@@ -5,7 +5,8 @@ import seedu.parser.Parser;
 import seedu.storage.IngredientList;
 import seedu.ui.Ui;
 
-public abstract class Command {
+public class Command {
+    protected boolean isExit = false;
 
     /**
      * Constructor for Command.
@@ -14,7 +15,17 @@ public abstract class Command {
     }
 
     /**
+     * Check status of program, if it should end.
+     * @return true if program should keep running and false when exit is called.
+     */
+    public boolean exitNotRequired() {
+        return !isExit;
+    }
+
+    /**
      * Executes the command.
      */
-    public abstract void execute(Ui ui, Parser parser, IngredientList ingredientList);
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList){
+    }
+
 }
