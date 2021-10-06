@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Ui {
     private final Scanner in;
-    private static final String SEPARATOR_LINE = "__________________________________________\n";
+    private static final String SEPARATOR_LINE = "\n__________________________________________\n";
     private static final String FOUR_SPACE_INDENTATION = "    ";
 
     private String currentUserInput;
@@ -33,10 +33,15 @@ public class Ui {
                 + "  88     88          88   `\"8bbdP\"Y8   `\"YbbdP\"Y8   `\"Ybbd8\"'    \"Y888  \n"
                 + "                                       aa,    ,88                       \n"
                 + "                                        \"Y8bbdP\"                        ";
-        System.out.println(logo);
-        System.out.println("Hello!");
-        System.out.println("What would you like to do?");
-        System.out.print(SEPARATOR_LINE);
+        String greeting = "Hello!\n"
+                + "What would you like to do?";
+
+        String introMessage = SEPARATOR_LINE
+                + logo
+                + greeting
+                + SEPARATOR_LINE;
+
+        System.out.println(introMessage);
     }
 
     /**
@@ -51,7 +56,12 @@ public class Ui {
      * @param ingredient The ingredient the user has added.
      */
     public void printReactionToAddingIngredient(Ingredient ingredient) {
-        printWithSeparatorLine("You have successfully added:\n" + FOUR_SPACE_INDENTATION + ingredient + "\n");
+        String acknowledgeAdd = "You have successfully added:\n";
+
+        String addReaction = acknowledgeAdd
+                + FOUR_SPACE_INDENTATION + ingredient;
+
+        printWithSeparatorLine(addReaction);
     }
 
     /**
@@ -69,5 +79,19 @@ public class Ui {
      */
     public String getCurrentUserInput() {
         return currentUserInput;
+    }
+
+    /**
+     * Prints the exit message.
+     */
+    public void printExitMessage() {
+        String reassureUser = "We'll help you remember everything you told us :)\n"
+                + "See you again!~~";
+
+        String exitMessage = SEPARATOR_LINE
+                + exitMessage
+                + SEPARATOR_LINE;
+
+        System.out.println(exitMessage);
     }
 }

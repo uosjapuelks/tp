@@ -1,6 +1,7 @@
 package seedu.parser;
 
 import seedu.commands.AddCommand;
+import seedu.commands.ExitCommand;
 import seedu.commands.Command;
 import seedu.commands.HelpCommand;
 import seedu.data.exception.FridgetException;
@@ -26,6 +27,8 @@ public class Parser {
         switch (userCommand.toLowerCase()) {
         case "add":
             return new AddCommand();
+        case "exit":
+            return new ExitCommand();
         case "help":
             return new HelpCommand();
         default:

@@ -7,7 +7,7 @@ public class IngredientList {
     protected ArrayList<Ingredient> ingredientList;
 
     public IngredientList() {
-        ingredientList = new ArrayList<>();
+        ingredientList = new ArrayList<Ingredient>();
     }
 
     /**
