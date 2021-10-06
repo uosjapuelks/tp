@@ -2,11 +2,12 @@ package seedu.ui;
 
 import seedu.data.ingredient.Ingredient;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
     private final Scanner in;
-    private static final String SEPARATOR_LINE = "\n__________________________________________\n";
+    private static final String SEPARATOR_LINE = "__________________________________________";
     private static final String FOUR_SPACE_INDENTATION = "    ";
 
     private String currentUserInput;
@@ -46,7 +47,9 @@ public class Ui {
      * Prints a line to separate between input and output.
      */
     public void printWithSeparatorLine(String textToPrint) {
-        System.out.println(SEPARATOR_LINE + textToPrint + SEPARATOR_LINE);
+        System.out.println(SEPARATOR_LINE);
+        System.out.println(textToPrint);
+        System.out.println(SEPARATOR_LINE);
     }
 
     /**
@@ -87,5 +90,30 @@ public class Ui {
                 + "See you again!~~";
 
         printWithSeparatorLine(reassureUser);
+    }
+
+    public void printListOfIngredients(ArrayList<Ingredient> listOfIngredients) {
+        int listSize = listOfIngredients.size();
+        for (Ingredient ingredient : listOfIngredients) {
+            System.out.println(FOUR_SPACE_INDENTATION + ingredient);
+        }
+    }
+
+    /**
+     * Prints a list of matching ingredient for the find command.
+     * @param listOfIngredients The list of matching ingredients to print.
+     */
+    public void printListOfMatchingIngredients(ArrayList<Ingredient> listOfIngredients) {
+        boolean isListEmpty = listOfIngredients.isEmpty();
+
+        if (isListEmpty) {
+            String noMatchingTasks = "No matching tasks found!";
+            printWithSeparatorLine(noMatchingTasks);
+        } else {
+            String resultsHeader = "These are the matching ingredients:\n";
+            System.out.println(resultsHeader);
+            printListOfIngredients(listOfIngredients);
+            printWithSeparatorLine("");
+        }
     }
 }
