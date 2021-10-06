@@ -91,13 +91,15 @@ public class Ui {
     }
 
     /**
-     * Prints a list of ingredients, indented by four spaces.
+     * Prints a list of ingredients, indented by four spaces and preceded by an index.
      * @param listOfIngredients The list of ingredients to be printed.
      */
-    public void printListOfIngredients(ArrayList<Ingredient> listOfIngredients) {
-        int listSize = listOfIngredients.size();
+    public void printListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
+        int index = 1;
         for (Ingredient ingredient : listOfIngredients) {
-            printLine(FOUR_SPACE_INDENTATION + ingredient);
+            String beforeIngredient = FOUR_SPACE_INDENTATION + (hasIndex ? index + ". " : "");
+            printLine(beforeIngredient + ingredient);
+            index++;
         }
     }
 
@@ -106,15 +108,13 @@ public class Ui {
      * @param listOfIngredients The list of matching ingredients to print.
      */
     public void printListOfMatchingIngredients(ArrayList<Ingredient> listOfIngredients) {
-        boolean isListEmpty = listOfIngredients.isEmpty();
-
-        if (isListEmpty) {
+        if (listOfIngredients.isEmpty()) {
             String noMatchingTasks = "No matching tasks found!";
             printLine(noMatchingTasks);
         } else {
             String resultsHeader = "These are the matching ingredients:";
             printLine(resultsHeader);
-            printListOfIngredients(listOfIngredients);
+            printListOfIngredients(listOfIngredients, true);
         }
     }
 }
