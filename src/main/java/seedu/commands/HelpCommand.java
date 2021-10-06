@@ -17,7 +17,7 @@ public class HelpCommand extends Command {
             + "reset\n"
             + "-> Deletes all the previous ingredient entries from the reader.\n\n"
             + "exit\n"
-            + "-> Exits the program.\n";
+            + "-> Exits the program.";
 
     /**
      * Constructor for HelpCommand.
@@ -30,6 +30,6 @@ public class HelpCommand extends Command {
      */
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
-        ui.printWithSeparatorLine(COMMAND_LIST);
+        ui.printLine(COMMAND_LIST);
     }
 }

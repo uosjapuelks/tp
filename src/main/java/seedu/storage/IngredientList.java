@@ -25,4 +25,18 @@ public class IngredientList {
     public ArrayList<Ingredient> getIngredientList() {
         return ingredientList;
     }
+
+    /**
+     * Returns an Array List of Ingredients with names containing the search term.
+     * @param searchTerm The search term used to find matching Ingredients.
+     */
+    public ArrayList<Ingredient> findAllMatchingIngredients(String searchTerm) {
+        ArrayList<Ingredient> matchingIngredients = new ArrayList<>();
+        for (Ingredient ingredient : ingredientList) {
+            if (ingredient.getIngredientName().contains(searchTerm)) {
+                matchingIngredients.add(ingredient);
+            }
+        }
+        return matchingIngredients;
+    }
 }

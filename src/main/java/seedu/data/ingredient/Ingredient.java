@@ -20,4 +20,12 @@ public class Ingredient {
     public String toString() {
         return ingredientName + " | " + expiryDate;
     }
+
+    /**
+     * Gets the Ingredient's name.
+     * @return Ingredient's name.
+     */
+    public String getIngredientName() {
+        return ingredientName;
+    }
 }

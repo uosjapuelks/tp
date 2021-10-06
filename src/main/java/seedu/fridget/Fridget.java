@@ -32,10 +32,13 @@ public class Fridget {
         do {
             try {
                 String userInput = ui.readUserInput();
+                ui.printSeparatorLine();
                 command = parser.parseCommand(userInput);
                 command.execute(ui, parser, ingredientList);
             } catch (FridgetException e) {
-                ui.printWithSeparatorLine(e.getMessage());
+                ui.printLine(e.getMessage());
+            } finally {
+                ui.printSeparatorLine();
             }
         } while (command.exitNotRequired());
     }
