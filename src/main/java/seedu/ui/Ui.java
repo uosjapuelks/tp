@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Ui {
     private final Scanner in;
-    private static final String SEPARATOR_LINE = "\n__________________________________________\n";
+    private static final String SEPARATOR_LINE = "__________________________________________\n";
     private static final String FOUR_SPACE_INDENTATION = "    ";
 
     private String currentUserInput;
@@ -34,11 +34,9 @@ public class Ui {
                 + "                                       aa,    ,88\n"
                 + "                                        \"Y8bbdP\"\n";
         String greeting = "Hello!\n"
-                + "What would you like to do?";
-
+                + "What would you like to do?\n";
         String introMessage = logo
                 + greeting;
-
         printWithSeparatorLine(introMessage);
     }
 
@@ -46,7 +44,7 @@ public class Ui {
      * Prints a line to separate between input and output.
      */
     public void printWithSeparatorLine(String textToPrint) {
-        System.out.println(SEPARATOR_LINE + textToPrint + SEPARATOR_LINE);
+        System.out.print(SEPARATOR_LINE + textToPrint + SEPARATOR_LINE);
     }
 
     /**
@@ -55,10 +53,8 @@ public class Ui {
      */
     public void printReactionToAddingIngredient(Ingredient ingredient) {
         String acknowledgeAdd = "You have successfully added:\n";
-
         String addReaction = acknowledgeAdd
-                + FOUR_SPACE_INDENTATION + ingredient;
-
+                + FOUR_SPACE_INDENTATION + ingredient + "\n";
         printWithSeparatorLine(addReaction);
     }
 
@@ -84,8 +80,7 @@ public class Ui {
      */
     public void printExitMessage() {
         String reassureUser = "We'll help you remember everything you told us :)\n"
-                + "See you again!~~";
-
+                + "See you again!~~\n";
         printWithSeparatorLine(reassureUser);
     }
 }
