@@ -33,7 +33,8 @@ public class Parser {
         case "help":
             return new HelpCommand();
         default:
-            throw new FridgetException("No command found! Enter help if you need the list of available command.\n");
+            throw new FridgetException("No command found!\n"
+                    + "Enter help if you need the list of available commands.\n");
         }
     }
 

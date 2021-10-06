@@ -14,7 +14,8 @@ Hello!
 What would you like to do?
 __________________________________________
 __________________________________________
-No command found! Enter help if you need the list of available command.
+No command found!
+Enter help if you need the list of available commands.
 __________________________________________
 __________________________________________
 Generating command list...
@@ -45,7 +46,8 @@ You have successfully added:
     chicken | 2021-10-10
 __________________________________________
 __________________________________________
-No command found! Enter help if you need the list of available command.
+No command found!
+Enter help if you need the list of available commands.
 __________________________________________
 __________________________________________
 We'll help you remember everything you told us :)
