@@ -2,41 +2,55 @@
 
 ## Introduction
 
-{Give a product intro}
+Fridget is a <strong> desktop app for managing items in the fridge, built to be used via Command Line Interface </strong> (CLI). If you consistently update the app, housekeeping of items in the fridge will be more efficient.
+
 
 ## Quick Start
 
-{Give steps to get started quickly}
-
-1. Ensure that you have Java 11 or above installed.
-1. Down the latest version of `Duke` from [here](http://link.to/duke).
+1. Ensure that you have Java 11 or above installed on your computer.
+2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp).
+3. Copy the file into the folder you want store Fridget's data.
+4. Double-click the file to launch the app. An interface that looks something like the following image will appear
+<IMAGE.jpg>
+5. Type your command in the command box and press Enter to execute it.
+   * Some example commands you can try:
+       - help: lists all commands and input format in a separate window. 
+       - reset: prompts the user to confirm clearing all data. 
+       - exit: close the app.
+6. Congratulations! You should be good to go!
 
 ## Features 
 
-{Give detailed description of each feature}
+Feature | Command | Command Format |
+-----------|----------|-----------------
+Add an item into Fridget |`add` | add <item_name> /<expiry_date>
+Remove an item from Fridget | `remove` | remove /<item_name>
+Get help | `help` | help
+Reset all items | `reset` | reset
+List with expiry dates |`list` | list
+List without expiry dates |`list` | list e/off
+See notifications | `notifs` | notifs
+Exit Fridget | `exit` | exit
 
-### Adding a todo: `todo`
-Adds a new item to the list of todo items.
+### Add an item into Fridget: `add`
+Add an item into Fridget's ledger.
 
-Format: `todo n/TODO_NAME d/DEADLINE`
+Format: add <ITEM_NAME> /<EXPIRY_DATE>
 
-* The `DEADLINE` can be in a natural language format.
-* The `TODO_NAME` cannot contain punctuation.  
+* The `ITEM_NAME` can be in a natural language format.
+* The `EXPIRY_DATE` must be in the `YYYY-MM-DD` format.  
 
-Example of usage: 
+Example of usage:
 
-`todo n/Write the rest of the User Guide d/next week`
-
-`todo n/Refactor the User Guide to remove passive voice d/13/04/2020`
-
+```markdown
+userInput: add burger /2021-09-23
+____________________________________________________
+You have successfully added:
+burger | 2021-09-23
+____________________________________________________
+```
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
 
 **A**: {your answer here}
-
-## Command Summary
-
-{Give a 'cheat sheet' of commands here}
-
-* Add todo `todo n/TODO_NAME d/DEADLINE`
