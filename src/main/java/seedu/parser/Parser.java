@@ -1,8 +1,9 @@
 package seedu.parser;
 
 import seedu.commands.AddCommand;
-import seedu.commands.ExitCommand;
 import seedu.commands.Command;
+import seedu.commands.ExitCommand;
+import seedu.commands.FindCommand;
 import seedu.commands.HelpCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
@@ -20,6 +21,7 @@ public class Parser {
      * Returns a Command class based on user input.
      * @param userInput The input from the user.
      * @return Command class that user input is referencing.
+     * @throws FridgetException thrown when invalid command is input.
      */
     public Command parseCommand(String userInput) throws FridgetException {
         String userCommand = userInput.trim().split(" ", 2)[0];
@@ -31,8 +33,11 @@ public class Parser {
             return new ExitCommand();
         case "help":
             return new HelpCommand();
+        case "find":
+            return new FindCommand();
         default:
-            throw new FridgetException("No command found!");
+            throw new FridgetException("No command found!\n"
+                    + "Enter help if you need the list of available commands.");
         }
     }
 
@@ -46,5 +51,16 @@ public class Parser {
         String ingredientName = splitUserInput[1];
         LocalDate expiryDate = LocalDate.parse(splitUserInput[2].replace("/", ""));
         return new Ingredient(ingredientName, expiryDate);
+    }
+
+    /**
+     * Returns a search term provided by the "find" command.
+     * @param userInput The input from the user in this manner - "find burger".
+     * @return The search term.
+     */
+    public String parseSearchTermFromFinding(String userInput) {
+        String[] splitUserInput = userInput.trim().split(" ", 2);
+        String searchTerm = splitUserInput[1];
+        return searchTerm;
     }
 }

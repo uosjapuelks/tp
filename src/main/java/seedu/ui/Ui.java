@@ -2,11 +2,12 @@ package seedu.ui;
 
 import seedu.data.ingredient.Ingredient;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
     private final Scanner in;
-    private static final String SEPARATOR_LINE = "\n__________________________________________\n";
+    private static final String SEPARATOR_LINE = "__________________________________________";
     private static final String FOUR_SPACE_INDENTATION = "    ";
 
     private String currentUserInput;
@@ -35,18 +36,21 @@ public class Ui {
                 + "                                        \"Y8bbdP\"\n";
         String greeting = "Hello!\n"
                 + "What would you like to do?";
-
         String introMessage = logo
                 + greeting;
-
-        printWithSeparatorLine(introMessage);
+        printLine(introMessage);
+        printSeparatorLine();
     }
 
     /**
      * Prints a line to separate between input and output.
      */
-    public void printWithSeparatorLine(String textToPrint) {
-        System.out.println(SEPARATOR_LINE + textToPrint + SEPARATOR_LINE);
+    public void printSeparatorLine() {
+        System.out.println(SEPARATOR_LINE);
+    }
+
+    public void printLine(String content) {
+        System.out.println(content);
     }
 
     /**
@@ -55,11 +59,9 @@ public class Ui {
      */
     public void printReactionToAddingIngredient(Ingredient ingredient) {
         String acknowledgeAdd = "You have successfully added:\n";
-
         String addReaction = acknowledgeAdd
                 + FOUR_SPACE_INDENTATION + ingredient;
-
-        printWithSeparatorLine(addReaction);
+        printLine(addReaction);
     }
 
     /**
@@ -85,7 +87,34 @@ public class Ui {
     public void printExitMessage() {
         String reassureUser = "We'll help you remember everything you told us :)\n"
                 + "See you again!~~";
+        printLine(reassureUser);
+    }
 
-        printWithSeparatorLine(reassureUser);
+    /**
+     * Prints a list of ingredients, indented by four spaces and preceded by an index.
+     * @param listOfIngredients The list of ingredients to be printed.
+     */
+    public void printListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
+        int index = 1;
+        for (Ingredient ingredient : listOfIngredients) {
+            String beforeIngredient = FOUR_SPACE_INDENTATION + (hasIndex ? index + ". " : "");
+            printLine(beforeIngredient + ingredient);
+            index++;
+        }
+    }
+
+    /**
+     * Prints a list of matching ingredient for the find command.
+     * @param listOfIngredients The list of matching ingredients to print.
+     */
+    public void printListOfMatchingIngredients(ArrayList<Ingredient> listOfIngredients) {
+        if (listOfIngredients.isEmpty()) {
+            String noMatchingTasks = "No matching tasks found!";
+            printLine(noMatchingTasks);
+        } else {
+            String resultsHeader = "These are the matching ingredients:";
+            printLine(resultsHeader);
+            printListOfIngredients(listOfIngredients, true);
+        }
     }
 }

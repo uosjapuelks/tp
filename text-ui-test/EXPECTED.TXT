@@ -1,6 +1,4 @@
 
-__________________________________________
-
    ad88              88           88
   d8"                ""           88                             ,d
   88                              88                             88
@@ -14,16 +12,56 @@ MM88MMM  8b,dPPYba,  88   ,adPPYb,88   ,adPPYb,d8   ,adPPYba,  MM88MMM
 Hello!
 What would you like to do?
 __________________________________________
+__________________________________________
+No command found!
+Enter help if you need the list of available commands.
+__________________________________________
+__________________________________________
+Generating command list...
+__________________________________________
+List of commands available:
 
+add <name of ingredient> </expiryDate(format: yyyy-mm-dd)> [eg. add bacon /2022-11-11]
+-> Adds an ingredient and its expiry date to the ingredient list.
 
+remove <name of ingredient> [eg. delete bacon]
+-> Removes the ingredient from the ingredient list.
+
+list
+-> List out all the ingredients in the ingredient list.
+
+reset
+-> Deletes all the previous ingredient entries from the reader.
+
+exit
+-> Exits the program.
+__________________________________________
 __________________________________________
 You have successfully added:
     burger | 2021-09-23
 __________________________________________
-
-
+__________________________________________
+You have successfully added:
+    chicken | 2021-10-10
+__________________________________________
+__________________________________________
+No command found!
+Enter help if you need the list of available commands.
+__________________________________________
+__________________________________________
+These are the matching ingredients:
+    1. burger | 2021-09-23
+__________________________________________
+__________________________________________
+These are the matching ingredients:
+    1. burger | 2021-09-23
+    2. chicken | 2021-10-10
+__________________________________________
+__________________________________________
+These are the matching ingredients:
+    1. chicken | 2021-10-10
+__________________________________________
 __________________________________________
 We'll help you remember everything you told us :)
 See you again!~~
 __________________________________________
-
