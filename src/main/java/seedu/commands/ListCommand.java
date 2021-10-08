@@ -19,7 +19,7 @@ public class ListCommand extends Command {
      */
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
-        ArrayList listOfIngredients = ingredientList.getIngredientList();
+        ArrayList<Ingredient> listOfIngredients = ingredientList.getIngredientList();
         ui.printListMessage(listOfIngredients);
     }
 }

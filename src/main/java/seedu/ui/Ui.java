@@ -108,7 +108,7 @@ public class Ui {
      * @param listOfIngredients The list of ingredients of all items in fridget.
      */
     public void printListMessage(ArrayList<Ingredient> listOfIngredients) {
-        String printingList = "Here are thee list of items in your fridge:";
+        String printingList = "Here are the list of items in your fridge:";
         printLine(printingList);
         printListOfIngredients(listOfIngredients, true);
     }
@@ -126,5 +126,28 @@ public class Ui {
             printLine(resultsHeader);
             printListOfIngredients(listOfIngredients, true);
         }
+    }
+
+    /**
+     * Prints a reconfirm message and gets the reconfirm result.
+     * @return Boolean representing reconfirm status (y: confirm, n: abort)
+     */
+    public boolean getResetReconfirm() {
+        printLine("Are you sure you want to reset everything in the ingredient list? (Y/N)");
+        printSeparatorLine();
+        String confirm = readUserInput();
+        if (!confirm.equalsIgnoreCase("y")) {
+            printSeparatorLine();
+            printLine("Abort reset command.");
+        }
+        return confirm.equalsIgnoreCase("y");
+    }
+
+    /**
+     * Prints the reset message.
+     */
+    public void printResetMessage() {
+        printSeparatorLine();
+        printLine("Ingredient list has been reset successfully.");
     }
 }
