@@ -6,6 +6,7 @@ import seedu.commands.Command;
 import seedu.commands.ExitCommand;
 import seedu.commands.FindCommand;
 import seedu.commands.HelpCommand;
+import seedu.commands.ResetCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -38,6 +39,8 @@ public class Parser {
             return new HelpCommand();
         case "find":
             return new FindCommand();
+        case "reset":
+            return new ResetCommand();
         default:
             throw new FridgetException("No command found!\n"
                     + "Enter help if you need the list of available commands.");
