@@ -62,6 +62,26 @@ These are the matching ingredients:
     1. chicken | 2021-10-10
 __________________________________________
 __________________________________________
+Are you sure you want to reset everything in the ingredient list? (Y/N)
+__________________________________________
+__________________________________________
+Abort reset command.
+__________________________________________
+__________________________________________
+These are the matching ingredients:
+    1. burger | 2021-09-23
+    2. chicken | 2021-10-10
+__________________________________________
+__________________________________________
+Are you sure you want to reset everything in the ingredient list? (Y/N)
+__________________________________________
+__________________________________________
+Ingredient list has been reset successfully.
+__________________________________________
+__________________________________________
+No matching tasks found!
+__________________________________________
+__________________________________________
 We'll help you remember everything you told us :)
 See you again!~~
 __________________________________________

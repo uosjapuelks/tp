@@ -6,4 +6,10 @@ list
 find burger
 find e
 find n
+reset
+n
+find e
+reset
+y
+find e
 exit
