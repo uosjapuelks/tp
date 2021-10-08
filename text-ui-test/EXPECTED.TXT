@@ -45,7 +45,7 @@ You have successfully added:
     chicken | 2021-10-10
 __________________________________________
 __________________________________________
-Here are thee list of items in your fridge:
+Here are the list of items in your fridge:
     1. burger | 2021-09-23
     2. chicken | 2021-10-10
 __________________________________________
