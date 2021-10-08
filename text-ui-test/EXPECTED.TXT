@@ -46,6 +46,7 @@ You have successfully added:
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
+< Listing in item [Name] Alphabetical order >
     1. burger | 2021-09-23
     2. chicken | 2021-10-10
 __________________________________________
@@ -84,27 +85,36 @@ No matching tasks found!
 __________________________________________
 __________________________________________
 You have successfully added:
-    fish | 2021-11-15
+    yoghurt cake | 2021-11-15
 __________________________________________
 __________________________________________
 You have successfully added:
-    JimBeam | 2025-12-12
+    fish Cake | 2020-12-12
 __________________________________________
 __________________________________________
 You have successfully added:
-    yoghurt | 2021-10-03
+    JimBeam | 2025-10-03
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
-    1. fish | 2021-11-15
-    2. JimBeam | 2025-12-12
-    3. yoghurt | 2021-10-03
+< Listing earliest [Expiry Date] first >
+    1. fish Cake | 2020-12-12
+    2. yoghurt cake | 2021-11-15
+    3. JimBeam | 2025-10-03
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
-    1. fish | 2021-11-15
-    2. JimBeam | 2025-12-12
-    3. yoghurt | 2021-10-03
+< Listing Most Recently Added items first >
+    1. yoghurt cake | 2021-11-15
+    2. fish Cake | 2020-12-12
+    3. JimBeam | 2025-10-03
+__________________________________________
+__________________________________________
+Here are the list of items in your fridge:
+< Listing in item [Name] Alphabetical order >
+    1. fish Cake | 2020-12-12
+    2. JimBeam | 2025-10-03
+    3. yoghurt cake | 2021-11-15
 __________________________________________
 __________________________________________
 We'll help you remember everything you told us :)

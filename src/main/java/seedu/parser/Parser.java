@@ -56,7 +56,7 @@ public class Parser {
      * @return String[] from splitting input.
      */
     private String[] splitUserInput(String userInput) {
-        String[] splitInput = userInput.trim().split(" ",2);
+        String[] splitInput = userInput.trim().split(" ", 2);
         return splitInput;
     }
 
@@ -97,18 +97,16 @@ public class Parser {
         for (String str : processedInput) {
             expiry = (str.contains("/")) ? str.substring(str.indexOf("/") + 1).trim() : expiry;
         }
-//        if (expiry.isEmpty()) {
-//            throw new FridgetException("Missing date input");
-//        }
         return expiry;
     }
 
     /**
      * Extracts name or item description from processed input.
+     *
      * @param processedInput userInput after processInput().
      * @return name or item description.
      */
-    private String extractItemDesc (String[] processedInput) {
+    private String extractItemDesc(String[] processedInput) {
         return processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
     }
 
@@ -128,9 +126,19 @@ public class Parser {
         return new Ingredient(ingredientName, expiryDate);
     }
 
+    /**
+     * Extracts the sortType from the list command.
+     *
+     * @param userInput Input from user.
+     * @return Either "default", "e", or "r".
+     */
     public String parseSortTypeForList(String userInput) {
         String[] processedInput = processInput(userInput);
-        return "";
+        if (processedInput.length == 1) {
+            return "default";
+        }
+        String sortType = processedInput[1].substring(processedInput[1].indexOf("-") + 1).trim();
+        return sortType;
     }
 
     /**
