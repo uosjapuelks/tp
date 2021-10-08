@@ -123,12 +123,12 @@ public class Ui {
      * @return Boolean representing reconfirm status (y: confirm, n: abort)
      */
     public boolean getResetReconfirm() {
-        System.out.println("Are you sure you want to reset everything in the ingredient list? (Y/N)");
-        System.out.println(SEPARATOR_LINE);
+        printLine("Are you sure you want to reset everything in the ingredient list? (Y/N)");
+        printSeparatorLine();
         String confirm = readUserInput();
         if (!confirm.equalsIgnoreCase("y")) {
-            System.out.println(SEPARATOR_LINE);
-            System.out.println("Abort reset command.");
+            printSeparatorLine();
+            printLine("Abort reset command.");
         }
         return confirm.equalsIgnoreCase("y");
     }
@@ -137,7 +137,7 @@ public class Ui {
      * Prints the reset message.
      */
     public void printResetMessage() {
-        System.out.println(SEPARATOR_LINE);
-        System.out.println("Ingredient list has been reset successfully.");
+        printSeparatorLine();
+        printLine("Ingredient list has been reset successfully.");
     }
 }
