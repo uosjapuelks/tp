@@ -2,6 +2,7 @@ package seedu.storage;
 
 import seedu.data.ingredient.Ingredient;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class IngredientList {
     protected ArrayList<Ingredient> ingredientList;
@@ -16,6 +17,17 @@ public class IngredientList {
      */
     public void addIngredient(Ingredient ingredient) {
         ingredientList.add(ingredient);
+    }
+
+    /**
+     * Sorts the ingredients in ingredientList by date if byDate is true and by description if false.
+     * @param byDate toggle to sort by name or expiry.
+     * @return sorted ingredient ArrayList.
+     */
+    public ArrayList<Ingredient> sortIngredient(boolean byDate) {
+        ArrayList<Ingredient> sortedList = ingredientList;
+        Collections.sort(sortedList, (byDate ? Ingredient.IngExpiryComparator : Ingredient.IngNameComparator));
+        return sortedList;
     }
 
     /**
