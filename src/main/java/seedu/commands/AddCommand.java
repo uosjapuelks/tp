@@ -1,6 +1,5 @@
 package seedu.commands;
 
-import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;

@@ -2,9 +2,7 @@ package seedu.ui;
 
 import seedu.data.ingredient.Ingredient;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Ui {
