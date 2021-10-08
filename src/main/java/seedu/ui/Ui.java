@@ -55,6 +55,7 @@ public class Ui {
 
     /**
      * Prints a reaction to user successfully adding an ingredient.
+     *
      * @param ingredient The ingredient the user has added.
      */
     public void printReactionToAddingIngredient(Ingredient ingredient) {
@@ -66,6 +67,7 @@ public class Ui {
 
     /**
      * Get input from user.
+     *
      * @return A String containing user input.
      */
     public String readUserInput() {
@@ -75,6 +77,7 @@ public class Ui {
 
     /**
      * Gets stored user input.
+     *
      * @return Stored user input.
      */
     public String getCurrentUserInput() {
@@ -92,6 +95,7 @@ public class Ui {
 
     /**
      * Prints a list of ingredients, indented by four spaces and preceded by an index.
+     *
      * @param listOfIngredients The list of ingredients to be printed.
      */
     public void printListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
@@ -105,16 +109,36 @@ public class Ui {
 
     /**
      * Prints a message informing user on list being printed.
+     *
      * @param listOfIngredients The list of ingredients of all items in fridget.
      */
-    public void printListMessage(ArrayList<Ingredient> listOfIngredients) {
-        String printingList = "Here are the list of items in your fridge:";
-        printLine(printingList);
+    public void printListMessage(ArrayList<Ingredient> listOfIngredients, String sortType) {
+        String listMessage = "Here are the list of items in your fridge:\n";
+        listMessage += sortTypeMessage(sortType);
+        printLine(listMessage);
         printListOfIngredients(listOfIngredients, true);
     }
 
     /**
+     * Determine sortType message.
+     *
+     * @param sortType "e", "r", or "default".
+     * @return sortTypeMessage.
+     */
+    public String sortTypeMessage(String sortType) {
+        switch (sortType) {
+        case "e":
+            return ("< Listing earliest [Expiry Date] first >");
+        case "r":
+            return ("< Listing Most Recently Added items first >");
+        default:
+            return ("< Listing in item [Name] Alphabetical order >");
+        }
+    }
+
+    /**
      * Prints a list of matching ingredient for the find command.
+     *
      * @param listOfIngredients The list of matching ingredients to print.
      */
     public void printListOfMatchingIngredients(ArrayList<Ingredient> listOfIngredients) {
@@ -130,6 +154,7 @@ public class Ui {
 
     /**
      * Prints a reconfirm message and gets the reconfirm result.
+     *
      * @return Boolean representing reconfirm status (y: confirm, n: abort)
      */
     public boolean getResetReconfirm() {

@@ -19,7 +19,8 @@ public class ListCommand extends Command {
      */
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
-        ArrayList<Ingredient> listOfIngredients = ingredientList.getIngredientList();
-        ui.printListMessage(listOfIngredients);
+        String sortType = parser.parseSortTypeForList(ui.getCurrentUserInput());
+        ArrayList<Ingredient> listOfIngredients = ingredientList.getIngredientList(sortType);
+        ui.printListMessage(listOfIngredients, sortType);
     }
 }
