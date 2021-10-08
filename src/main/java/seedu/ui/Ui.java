@@ -2,7 +2,9 @@ package seedu.ui;
 
 import seedu.data.ingredient.Ingredient;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Ui {
@@ -116,5 +118,28 @@ public class Ui {
             printLine(resultsHeader);
             printListOfIngredients(listOfIngredients, true);
         }
+    }
+
+    /**
+     * Prints a reconfirm message and gets the reconfirm result.
+     * @return Boolean representing reconfirm status (y: confirm, n: abort)
+     */
+    public boolean getResetReconfirm() {
+        System.out.println("Are you sure you want to reset everything in the ingredient list? (Y/N)");
+        System.out.println(SEPARATOR_LINE);
+        String confirm = readUserInput();
+        if (!confirm.equalsIgnoreCase("y")) {
+            System.out.println(SEPARATOR_LINE);
+            System.out.println("Abort reset command.");
+        }
+        return confirm.equalsIgnoreCase("y");
+    }
+
+    /**
+     * Prints the reset message.
+     */
+    public void printResetMessage() {
+        System.out.println(SEPARATOR_LINE);
+        System.out.println("Ingredient list has been reset successfully.");
     }
 }
