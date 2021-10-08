@@ -108,7 +108,7 @@ public class Ui {
      * @param listOfIngredients The list of ingredients of all items in fridget.
      */
     public void printListMessage(ArrayList<Ingredient> listOfIngredients) {
-        String printingList = "Here are thee list of items in your fridge:";
+        String printingList = "Here are the list of items in your fridge:";
         printLine(printingList);
         printListOfIngredients(listOfIngredients, true);
     }
