@@ -104,6 +104,16 @@ public class Ui {
     }
 
     /**
+     * Prints a message informing user on list being printed.
+     * @param listOfIngredients The list of ingredients of all items in fridget.
+     */
+    public void printListMessage(ArrayList<Ingredient> listOfIngredients) {
+        String printingList = "Here are thee list of items in your fridge:";
+        printLine(printingList);
+        printListOfIngredients(listOfIngredients, true);
+    }
+
+    /**
      * Prints a list of matching ingredient for the find command.
      * @param listOfIngredients The list of matching ingredients to print.
      */
