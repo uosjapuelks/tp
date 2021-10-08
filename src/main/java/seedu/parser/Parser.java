@@ -1,6 +1,7 @@
 package seedu.parser;
 
 import seedu.commands.AddCommand;
+import seedu.commands.ListCommand;
 import seedu.commands.Command;
 import seedu.commands.ExitCommand;
 import seedu.commands.FindCommand;
@@ -29,6 +30,8 @@ public class Parser {
         switch (userCommand.toLowerCase()) {
         case "add":
             return new AddCommand();
+        case "list":
+            return new ListCommand();
         case "exit":
             return new ExitCommand();
         case "help":
