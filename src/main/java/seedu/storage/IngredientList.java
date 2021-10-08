@@ -39,4 +39,11 @@ public class IngredientList {
         }
         return matchingIngredients;
     }
+
+    /**
+     * Resets the Array List of ingredients.
+     */
+    public void resetList() {
+        ingredientList.removeAll(ingredientList);
+    }
 }
