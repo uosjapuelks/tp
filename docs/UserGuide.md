@@ -49,6 +49,37 @@ You have successfully added:
 burger | 2021-09-23
 ____________________________________________________
 ```
+
+### Get help: `help`
+Prints all available commands in Fridget.
+
+Format: help
+
+Example of usage:
+```
+userInput: help
+__________________________________________
+Generating command list...
+__________________________________________
+List of commands available:
+
+add <name of ingredient> </expiryDate(format: yyyy-mm-dd)> [eg. add bacon /2022-11-11]
+-> Adds an ingredient and its expiry date to the ingredient list.
+
+remove <name of ingredient> [eg. delete bacon]
+-> Removes the ingredient from the ingredient list.
+
+list
+-> List out all the ingredients in the ingredient list.
+
+reset
+-> Deletes all the previous ingredient entries from the reader.
+
+exit
+-> Exits the program.
+__________________________________________
+```
+
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
