@@ -44,6 +44,6 @@ public class IngredientList {
      * Resets the Array List of ingredients.
      */
     public void resetList() {
-        ingredientList.removeAll(ingredientList);
+        ingredientList = new ArrayList<Ingredient>();
     }
 }
