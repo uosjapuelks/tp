@@ -12,7 +12,7 @@ class ParserTest {
     Parser parser = new Parser();
 
     @Test
-    void parseCommand_correctAddCommandFormat_success() throws FridgetException {
+    void parseCommand_correctAddCommandFormat_success() {
         try {
             String inputString = "add burger /2021-12-12";
             assertTrue(parser.parseCommand(inputString) instanceof AddCommand);
@@ -23,21 +23,8 @@ class ParserTest {
 
     @Test
     void parseCommand_noCommandWordInInput_exceptionThrown() {
-            assertThrows(FridgetException.class, () -> {
-                parser.parseCommand("complete nonsense");
-            });
+        assertThrows(FridgetException.class, () -> {
+            parser.parseCommand("complete nonsense");
+        });
     }
-
-
-//    @Test
-//    void parseIngredientForAdding() {
-//    }
-//
-//    @Test
-//    void parseSortTypeForList() {
-//    }
-//
-//    @Test
-//    void parseSearchTermFromFinding() {
-//    }
 }
