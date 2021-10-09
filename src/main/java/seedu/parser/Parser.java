@@ -1,11 +1,12 @@
 package seedu.parser;
 
 import seedu.commands.AddCommand;
-import seedu.commands.ListCommand;
 import seedu.commands.Command;
 import seedu.commands.ExitCommand;
 import seedu.commands.FindCommand;
 import seedu.commands.HelpCommand;
+import seedu.commands.ListCommand;
+import seedu.commands.RemoveCommand;
 import seedu.commands.ResetCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
@@ -33,6 +34,8 @@ public class Parser {
         switch (userCommand.toLowerCase()) {
         case "add":
             return new AddCommand();
+        case "remove":
+            return new RemoveCommand();
         case "list":
             return new ListCommand();
         case "exit":
@@ -147,7 +150,7 @@ public class Parser {
      * @param userInput The input from the user in this manner - "find burger".
      * @return The search term.
      */
-    public String parseSearchTermFromFinding(String userInput) {
+    public String parseSearchTerm(String userInput) {
         String[] processedInput = processInput(userInput);
         String searchTerm = processedInput[1];
         return searchTerm;

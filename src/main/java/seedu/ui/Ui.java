@@ -65,6 +65,26 @@ public class Ui {
         printLine(addReaction);
     }
 
+    public void printReactionToRemovingIngredient(Ingredient ingredient) {
+        String acknowledgeRemove = "You have successfully removed:\n";
+        String addReaction = acknowledgeRemove
+                + FOUR_SPACE_INDENTATION + ingredient;
+        printLine(addReaction);
+    }
+
+    public int getIndexOfItemToBeRemoved(ArrayList<Ingredient> matchingItems) {
+        printLine("Which item would you like to be removed?");
+        printListOfIngredients(matchingItems,true);
+        printSeparatorLine();
+
+        // TODO: Needs to catch incorrect index and inputs
+        int index = Integer.parseInt(readUserInput());
+        printSeparatorLine();
+
+        return index;
+
+    }
+
     /**
      * Get input from user.
      *
