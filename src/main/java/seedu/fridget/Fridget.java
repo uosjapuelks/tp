@@ -28,6 +28,7 @@ public class Fridget {
 
     public void run() {
         ui.printIntroduction();
+        ui.printNotificationMessage();
         Command command = new Command();
         do {
             try {
@@ -41,6 +42,7 @@ public class Fridget {
                 ui.printSeparatorLine();
             }
         } while (command.exitNotRequired());
+        ui.printNotificationMessage();
     }
 
     /**

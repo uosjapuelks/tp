@@ -12,6 +12,22 @@ MM88MMM  8b,dPPYba,  88   ,adPPYb,88   ,adPPYb,d8   ,adPPYba,  MM88MMM
 Hello!
 What would you like to do?
 __________________________________________
+ ___________________________________________________
+|                                                |X||
+|      ___            _         __        ______    |
+|     / _ \___ __ _  (_)__  ___/ /__ ____/ / / /    |
+|    / , _/ -_)  ' \/ / _ \/ _  / -_) __/_/_/_/     |
+|   /_/|_|\__/_/_/_/_/_//_/\_,_/\__/_/ (_|_|_)      |
+|   =============================================   |
+|                                                   |
+|    "If you don't take time to take care of your   |
+|    health now, you're gonna have to make time     |
+|    for feeling sick and tired later."             |
+|                                                   |
+|            Always remember to eat more            |
+|              Fruits and Vegetables!               |
+|___________________________________________________|
+__________________________________________
 __________________________________________
 No command found!
 Enter help if you need the list of available commands.
@@ -119,4 +135,20 @@ __________________________________________
 __________________________________________
 We'll help you remember everything you told us :)
 See you again!~~
+__________________________________________
+ ___________________________________________________
+|                                                |X||
+|      ___            _         __        ______    |
+|     / _ \___ __ _  (_)__  ___/ /__ ____/ / / /    |
+|    / , _/ -_)  ' \/ / _ \/ _  / -_) __/_/_/_/     |
+|   /_/|_|\__/_/_/_/_/_//_/\_,_/\__/_/ (_|_|_)      |
+|   =============================================   |
+|                                                   |
+|    "If you don't take time to take care of your   |
+|    health now, you're gonna have to make time     |
+|    for feeling sick and tired later."             |
+|                                                   |
+|            Always remember to eat more            |
+|              Fruits and Vegetables!               |
+|___________________________________________________|
 __________________________________________
