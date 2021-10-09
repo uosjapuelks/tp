@@ -111,7 +111,7 @@ Here are the list of items in your fridge:
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
-< Listing in item [Name] Alphabetical order >
+< Listing in Alphabetical order >
     1. fish Cake | 2020-12-12
     2. JimBeam | 2025-10-03
     3. yoghurt cake | 2021-11-15
