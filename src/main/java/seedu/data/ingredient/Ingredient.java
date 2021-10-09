@@ -41,11 +41,11 @@ public class Ingredient {
         @Override
         public int compare(Ingredient i1, Ingredient i2) {
 
-            String ingredint1 = i1.getIngredientName().toLowerCase();
-            String ingredint2 = i2.getIngredientName().toLowerCase();
+            String ingredient1 = i1.getIngredientName().toLowerCase();
+            String ingredient2 = i2.getIngredientName().toLowerCase();
 
             //ascending order
-            return ingredint1.compareTo(ingredint2);
+            return ingredient1.compareTo(ingredient2);
         }
     };
 
@@ -56,11 +56,11 @@ public class Ingredient {
         @Override
         public int compare(Ingredient i1, Ingredient i2) {
 
-            LocalDate ingExpiry1 = i1.getExpiryDate();
-            LocalDate ingExpiry2 = i2.getExpiryDate();
+            LocalDate ingredientExpiry1 = i1.getExpiryDate();
+            LocalDate ingredientExpiry2 = i2.getExpiryDate();
 
             //Ascending order
-            return ingExpiry1.compareTo(ingExpiry2);
+            return ingredientExpiry1.compareTo(ingredientExpiry2);
         }
     };
 }
