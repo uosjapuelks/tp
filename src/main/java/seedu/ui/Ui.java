@@ -132,7 +132,7 @@ public class Ui {
         case "r":
             return ("< Listing Most Recently Added items first >");
         default:
-            return ("< Listing in item [Name] Alphabetical order >");
+            return ("< Listing in Alphabetical order >");
         }
     }
 
