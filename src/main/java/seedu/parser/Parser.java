@@ -92,7 +92,7 @@ public class Parser {
      * @param processedInput userInput after processInput().
      * @return expiry as String in format ("yyyy-mm-dd")
      */
-    private String extractExpFromInput(String[] processedInput) {
+    private String extractExpiry(String[] processedInput) {
         String expiry = "";
         for (String str : processedInput) {
             expiry = (str.contains("/")) ? str.substring(str.indexOf("/") + 1).trim() : expiry;
@@ -106,7 +106,7 @@ public class Parser {
      * @param processedInput userInput after processInput().
      * @return name or item description.
      */
-    private String extractItemDesc(String[] processedInput) {
+    private String extractDescription(String[] processedInput) {
         return processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
     }
 
@@ -118,9 +118,9 @@ public class Parser {
      */
     public Ingredient parseIngredientForAdding(String userInput) {
         String[] processedInput = processInput(userInput);
-        String ingredientName = extractItemDesc(processedInput);
+        String ingredientName = extractDescription(processedInput);
 
-        String expiryString = extractExpFromInput(processedInput);
+        String expiryString = extractExpiry(processedInput);
         LocalDate expiryDate = LocalDate.parse(expiryString);
 
         return new Ingredient(ingredientName, expiryDate);
