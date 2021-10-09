@@ -1,5 +1,6 @@
 package seedu.ui;
 
+import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
 import java.util.ArrayList;
@@ -72,17 +73,25 @@ public class Ui {
         printLine(addReaction);
     }
 
-    public int getIndexOfItemToBeRemoved(ArrayList<Ingredient> matchingItems) {
+    public int getIndexOfItemToBeRemoved(ArrayList<Ingredient> matchingItems) throws FridgetException {
         printLine("Which item would you like to be removed?");
         printListOfIngredients(matchingItems,true);
         printSeparatorLine();
 
-        // TODO: Needs to catch incorrect index and inputs
-        int index = Integer.parseInt(readUserInput());
+        String userInput = readUserInput();
         printSeparatorLine();
 
-        return index;
+        if (!(userInput.matches("\\d"))) {
+            throw new FridgetException("No number was stated. The remove command has been shutdown.");
+        }
 
+        int index = Integer.parseInt(readUserInput());
+
+        if (index < 0 | index > matchingItems.size()) {
+            throw new FridgetException("This index is not valid. The remove command has been shutdown.");
+        }
+
+        return index;
     }
 
     /**
