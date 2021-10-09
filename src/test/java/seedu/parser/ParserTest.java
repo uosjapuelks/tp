@@ -12,8 +12,28 @@ import seedu.commands.FindCommand;
 import seedu.data.exception.FridgetException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ParserTest {
+    Parser parser = new Parser();
+
+    @Test
+    void parseCommand_correctAddCommandFormat_success() {
+        try {
+            String inputString = "add burger /2021-12-12";
+            assertTrue(parser.parseCommand(inputString) instanceof AddCommand);
+        } catch (Exception e) {
+            fail();
+        }
+    }
+
+    @Test
+    void parseCommand_noCommandWordInInput_exceptionThrown() {
+        assertThrows(FridgetException.class, () -> {
+            parser.parseCommand("complete nonsense");
+        });
+    }
 
     @Test
     void parseCommand_addCommandInput_expectReturnAddCommand() throws FridgetException {
