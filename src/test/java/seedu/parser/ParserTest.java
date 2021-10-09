@@ -64,12 +64,4 @@ class ParserTest {
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(ResetCommand.class));
     }
-
-    @Test
-    void parseCommand_invalidCommandInput_expectException() {
-        String inputString = "blabla";
-        Parser parser = new Parser();
-        assertThrows(FridgetException.class,
-                () -> parser.parseCommand(inputString));
-    }
 }
