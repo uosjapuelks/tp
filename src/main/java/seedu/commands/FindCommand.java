@@ -19,7 +19,7 @@ public class FindCommand extends Command {
      */
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
-        String searchTerm = parser.parseSearchTermFromFinding(ui.getCurrentUserInput());
+        String searchTerm = parser.parseSearchTerm(ui.getCurrentUserInput());
         ArrayList<Ingredient> matchingIngredients = ingredientList.findAllMatchingIngredients(searchTerm);
         ui.printListOfMatchingIngredients(matchingIngredients);
     }

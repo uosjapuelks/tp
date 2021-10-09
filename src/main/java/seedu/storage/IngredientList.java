@@ -20,6 +20,10 @@ public class IngredientList {
         this.ingredientList.add(ingredient);
     }
 
+    public void removeIngredient(Ingredient ingredient) {
+        ingredientList.remove(ingredient);
+    }
+
     /**
      * Sorts the ingredients in ingredientList by date if byDate is true and by description if false.
      *
