@@ -56,7 +56,6 @@ public class Ui {
 
     /**
      * Prints a reaction to user successfully adding an ingredient.
-     *
      * @param ingredient The ingredient the user has added.
      */
     public void printReactionToAddingIngredient(Ingredient ingredient) {
@@ -66,6 +65,10 @@ public class Ui {
         printLine(addReaction);
     }
 
+    /**
+     * Prints a reaction to user successfully removing an ingredient.
+     * @param ingredient The ingredient the user has added.
+     */
     public void printReactionToRemovingIngredient(Ingredient ingredient) {
         String acknowledgeRemove = "You have successfully removed:\n";
         String addReaction = acknowledgeRemove
@@ -73,8 +76,14 @@ public class Ui {
         printLine(addReaction);
     }
 
-    public int getIndexOfItemToBeRemoved(ArrayList<Ingredient> matchingItems) throws FridgetException {
-        printLine("Which item would you like to be removed?");
+    /**
+     * Returns the item the user wants to remove from Fridget.
+     * @param matchingItems The list of items which match the user's search term.
+     * @return The item that the user wants to remove.
+     * @throws FridgetException if the user types a wrong value (non-integer or outside of index of matchingItems)
+     */
+    public Ingredient getItemToBeRemoved(ArrayList<Ingredient> matchingItems) throws FridgetException {
+        printLine("Which item would you like to be removed? Type the index of the item below.");
         printListOfIngredients(matchingItems,true);
         printSeparatorLine();
 
@@ -82,16 +91,16 @@ public class Ui {
         printSeparatorLine();
 
         if (!(userInput.matches("\\d"))) {
-            throw new FridgetException("No number was stated. The remove command has been shutdown.");
+            throw new FridgetException("No valid number was stated. The remove command has been shutdown.");
         }
 
-        int index = Integer.parseInt(readUserInput());
+        int index = Integer.parseInt(userInput);
 
         if (index < 0 | index > matchingItems.size()) {
             throw new FridgetException("This index is not valid. The remove command has been shutdown.");
         }
 
-        return index;
+        return matchingItems.get(index - 1);
     }
 
     /**
