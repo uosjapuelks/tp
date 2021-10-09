@@ -19,7 +19,8 @@ public class RemoveCommand extends Command {
         handleRemovalOfItem(ui, ingredientList, nameOfItemToBeRemoved, matchingItems);
     }
 
-    private void handleRemovalOfItem(Ui ui, IngredientList ingredientList, String nameOfItemToBeRemoved, ArrayList<Ingredient> matchingItems) throws FridgetException {
+    private void handleRemovalOfItem(Ui ui, IngredientList ingredientList, String nameOfItemToBeRemoved,
+                                     ArrayList<Ingredient> matchingItems) throws FridgetException {
         if (matchingItems.size() == 0) {
             ui.printLine("No such item exists.");
             return;
