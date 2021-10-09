@@ -1,11 +1,17 @@
 package seedu.parser;
 
 import org.junit.jupiter.api.Test;
-import seedu.commands.*;
+import seedu.commands.Command;
+import seedu.commands.AddCommand;
+import seedu.commands.ListCommand;
+import seedu.commands.ResetCommand;
+import seedu.commands.RemoveCommand;
+import seedu.commands.HelpCommand;
+import seedu.commands.ExitCommand;
+import seedu.commands.FindCommand;
 import seedu.data.exception.FridgetException;
-import seedu.data.ingredient.Ingredient;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ParserTest {
 
