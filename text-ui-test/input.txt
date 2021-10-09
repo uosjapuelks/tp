@@ -12,4 +12,10 @@ find e
 reset
 y
 find e
+add yoghurt cake /2021-11-15
+add fish Cake /2020-12-12
+add JimBeam /2025-10-03
+list -e
+list -r
+list
 exit
