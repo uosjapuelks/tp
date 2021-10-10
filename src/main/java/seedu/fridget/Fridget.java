@@ -28,7 +28,7 @@ public class Fridget {
         ui = new Ui();
         parser = new Parser();
         ingredientList = new IngredientList();
-        notification = new Notification(LocalDateTime.now().minusHours(6), true);
+        notification = new Notification();
         storage = new Storage(ingredientList, notification, listFilePath, logFilePath);
     }
 

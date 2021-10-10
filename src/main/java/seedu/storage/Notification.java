@@ -19,18 +19,13 @@ public class Notification {
             + "|            Always remember to eat more            |\n"
             + "|              Fruits and Vegetables!               |\n"
             + "|___________________________________________________|";
-    private LocalDateTime dateAndTime;
-    private boolean isNotificationOn;
+    private LocalDateTime dateAndTime = LocalDateTime.now().minusHours(6);
+    private boolean isNotificationOn = true;
 
     /**
      * Constructor for notification.
-     *
-     * @param dateAndTime the date and time the notification is printed.
-     * @param isNotificationOn status of whether notification is on or off.
      */
-    public Notification(LocalDateTime dateAndTime, boolean isNotificationOn) {
-        this.dateAndTime = dateAndTime;
-        this.isNotificationOn = isNotificationOn;
+    public Notification() {
     }
 
     /**
