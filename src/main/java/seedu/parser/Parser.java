@@ -112,7 +112,10 @@ public class Parser {
      * @param processedInput userInput after processInput().
      * @return name or item description.
      */
-    private String extractDescription(String[] processedInput) {
+    private String extractDescription(String[] processedInput) throws FridgetException{
+        if (!processedInput[1].contains("/")) {
+            throw new FridgetException("Missing Expiry Date. Try: [add] <ITEM_NAME> /<YYYY-MM-DD>");
+        }
         return processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
     }
 
@@ -122,7 +125,7 @@ public class Parser {
      * @param userInput The input from the user in this manner - "add burger /2021-09-23".
      * @return An ingredient.
      */
-    public Ingredient parseIngredientForAdding(String userInput) {
+    public Ingredient parseIngredientForAdding(String userInput) throws FridgetException {
         String[] processedInput = processInput(userInput);
         String ingredientName = extractDescription(processedInput);
 
