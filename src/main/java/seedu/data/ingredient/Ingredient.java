@@ -8,6 +8,7 @@ import java.util.Comparator;
 public class Ingredient {
     protected String ingredientName;
     protected LocalDate expiryDate;
+    protected int quantity;
 
     /**
      * Constructor for Ingredient.
@@ -18,19 +19,45 @@ public class Ingredient {
     public Ingredient(String ingredientName, LocalDate expiryDate) {
         this.ingredientName = ingredientName;
         this.expiryDate = expiryDate;
+        this.quantity = 1;
     }
 
     /**
-     * String is represented as name + Expiry date that is colored depending on expiry status.
+     * Adds a specified integer value to quantity of item.
+     *
+     * @param qty Amount of items to be added.
+     */
+    public void addQuantity(int qty) {
+        quantity += qty;
+    }
+
+    /**
+     * Subtracts a specified integer value to quantity of item.
+     *
+     * @param qty Amount of items to be subtracted.
+     */
+    public void removeQuantity(int qty) {
+        quantity -= qty;
+    }
+
+    /**
+     * Gets the Ingredient's quantity.
+     *
+     * @return Ingredient's quantity.
+     */
+    public int getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * String is represented as name + quantity + Expiry date that is colored depending on expiry status.
      *
      * @return Ingredient Name and Expiry that is colored.
      */
     @Override
     public String toString() {
-        String expiry = expiryDate.format((DateTimeFormatter.ofPattern("dd MMM yyyy")));
-        String decidedColor = decideColor();
-        String coloredExpiry = String.format(decidedColor, expiry);
-        return ingredientName + " | " + coloredExpiry;
+        String coloredExpiry = getColoredExpiryDate();
+        return ingredientName + " | Qty: " + quantity + " | " + coloredExpiry;
     }
 
     /**
@@ -71,6 +98,17 @@ public class Ingredient {
      */
     public LocalDate getExpiryDate() {
         return expiryDate;
+    }
+
+    /**
+     * Gets the coloured expiry date.
+     *
+     * @return String containing coloured expiry date.
+     */
+    public String getColoredExpiryDate() {
+        String expiry = expiryDate.format((DateTimeFormatter.ofPattern("dd MMM yyyy")));
+        String decidedColor = decideColor();
+        return String.format(decidedColor, expiry);
     }
 
     /**

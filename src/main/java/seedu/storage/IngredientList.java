@@ -17,11 +17,27 @@ public class IngredientList {
      * @param ingredient The Ingredient to be added.
      */
     public void addIngredient(Ingredient ingredient) {
+        for (Ingredient ingredient1 : ingredientList) {
+            if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())
+                    && ingredient1.getExpiryDate().equals(ingredient.getExpiryDate())) {
+                ingredient1.addQuantity(1);
+                return;
+            }
+        }
+
         this.ingredientList.add(ingredient);
     }
 
-    public void removeIngredient(Ingredient ingredient) {
-        ingredientList.remove(ingredient);
+    /**
+     * Removes an ingredient from the ingredient list.
+     * @param ingredient Ingredient to be removed.
+     */
+    public void removeIngredient(Ingredient ingredient, int qty) {
+        if (ingredient.getQuantity() == qty) {
+            ingredientList.remove(ingredient);
+            return;
+        }
+        ingredient.removeQuantity(qty);
     }
 
     /**
