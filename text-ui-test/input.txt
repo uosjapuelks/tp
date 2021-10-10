@@ -1,4 +1,6 @@
 blabla
+notifs
+notifs
 help
 add burger /2021-09-23
 add chicken /2021-10-10
