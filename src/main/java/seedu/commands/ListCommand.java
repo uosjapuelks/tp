@@ -20,7 +20,8 @@ public class ListCommand extends Command {
      * Executes the command.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification) throws FridgetException {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification)
+            throws FridgetException {
         String sortType = parser.parseSortTypeForList(ui.getCurrentUserInput());
         ArrayList<Ingredient> listOfIngredients = ingredientList.getIngredientList(sortType);
         ui.printListMessage(listOfIngredients, sortType);

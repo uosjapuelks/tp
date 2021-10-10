@@ -18,7 +18,8 @@ public class AddCommand extends Command {
      * Executes the "add" command.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification) throws FridgetException {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification)
+            throws FridgetException {
         Ingredient newIngredient = parser.parseIngredientForAdding(ui.getCurrentUserInput());
         ingredientList.addIngredient(newIngredient);
         ui.printReactionToAddingIngredient(newIngredient);

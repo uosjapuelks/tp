@@ -45,8 +45,8 @@ public class Storage {
 
     /**
      * Initialises text files if not present.
-     *
      * Loads all the data from the ingredient list text file.
+     *
      * @throws IOException The error thrown from file IO operations.
      */
     private void loadFile() throws IOException {

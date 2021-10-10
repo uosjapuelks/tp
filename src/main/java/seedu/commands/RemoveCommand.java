@@ -21,7 +21,8 @@ public class RemoveCommand extends Command {
      * @throws FridgetException if user types an incorrect value when prompted.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification) throws FridgetException {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification)
+            throws FridgetException {
         String nameOfItemToBeRemoved = parser.parseSearchTerm(ui.getCurrentUserInput());
         ArrayList<Ingredient> matchingItems = ingredientList.findAllMatchingIngredients(nameOfItemToBeRemoved);
         handleRemovalOfItem(ui, ingredientList, nameOfItemToBeRemoved, matchingItems);
