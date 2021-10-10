@@ -14,8 +14,7 @@ public class ExpiringCommand extends Command {
     }
 
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification)
-            throws FridgetException {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
         String sortByExpiry = "e";
         ArrayList<Ingredient> listOfIngredients = ingredientList.getIngredientList(sortByExpiry);
         ui.printExpiringMessage(listOfIngredients);

@@ -19,7 +19,7 @@ public class ExitCommand extends Command {
      *
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification) {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
         ui.printExitMessage();
     }
 }

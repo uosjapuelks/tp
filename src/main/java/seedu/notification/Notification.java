@@ -20,7 +20,7 @@ public class Notification {
             + "|              Fruits and Vegetables!               |\n"
             + "|___________________________________________________|";
     private LocalDateTime dateAndTime = LocalDateTime.now().minusHours(6);
-    private boolean isNotificationOn = true;
+    private static boolean isNotificationOn = true;
 
     /**
      * Constructor for notification.
@@ -53,7 +53,7 @@ public class Notification {
      *
      * @return Return true if notification is on.
      */
-    public boolean isNotificationOn() {
+    public static boolean isNotificationOn() {
         return isNotificationOn;
     }
 
@@ -71,8 +71,8 @@ public class Notification {
      *
      * @param notificationOn A boolean value passed to turn on or off notification.
      */
-    public void setNotificationStatus(boolean notificationOn) {
-        this.isNotificationOn = notificationOn;
+    public static void setNotificationStatus(boolean notificationOn) {
+        isNotificationOn = notificationOn;
     }
 
     /**

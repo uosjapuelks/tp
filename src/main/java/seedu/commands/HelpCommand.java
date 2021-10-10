@@ -40,7 +40,7 @@ public class HelpCommand extends Command {
      * Executes the "help" command.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification) {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
         ui.printLine(COMMAND_LIST);
     }
 }

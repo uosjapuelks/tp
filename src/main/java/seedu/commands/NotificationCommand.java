@@ -16,13 +16,13 @@ public class NotificationCommand extends Command {
      * Executes notification command.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification) {
-        if (notification.isNotificationOn()) {
-            notification.setNotificationStatus(false);
-            ui.printLine("Notification off!");
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
+        if (Notification.isNotificationOn()) {
+            Notification.setNotificationStatus(false);
+            ui.printLine("Turning notification off!");
         } else {
-            notification.setNotificationStatus(true);
-            ui.printLine("Notification on!");
+            Notification.setNotificationStatus(true);
+            ui.printLine("Turning notification on!");
         }
     }
 }

@@ -33,10 +33,10 @@ No command found!
 Enter help if you need the list of available commands.
 __________________________________________
 __________________________________________
-Notification off!
+Turning notification off!
 __________________________________________
 __________________________________________
-Notification on!
+Turning notification on!
 __________________________________________
 __________________________________________
 Generating command list...

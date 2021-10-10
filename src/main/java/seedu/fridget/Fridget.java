@@ -40,7 +40,7 @@ public class Fridget {
                 String userInput = ui.readUserInput();
                 ui.printSeparatorLine();
                 command = parser.parseCommand(userInput);
-                command.execute(ui, parser, ingredientList, notification);
+                command.execute(ui, parser, ingredientList);
                 storage.updateFiles(ingredientList.getIngredientList("r"), notification);
             } catch (FridgetException e) {
                 ui.printLine(e.getMessage());

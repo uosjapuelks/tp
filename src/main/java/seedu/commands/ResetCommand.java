@@ -16,7 +16,7 @@ public class ResetCommand extends Command {
      * Executes the "reset" command.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification) {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
         if (ui.getResetReconfirm()) {
             ingredientList.resetList();
             ui.printResetMessage();
