@@ -1,17 +1,18 @@
 package seedu.storage;
 
 import seedu.data.ingredient.Ingredient;
-import seedu.parser.Parser;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static java.lang.Integer.parseInt;
+
 public class Storage {
     private final IngredientList ingredientList;
-    private final Parser parser;
 
     private final String fileDirectory;
     private final String listFilePath;
@@ -24,10 +25,9 @@ public class Storage {
      * @param listFilePath pathway of ingredient list file storage.
      * @param logFilePath pathway of user log file storage.
      */
-    public Storage(IngredientList ingredientList, Parser parser, String listFilePath, String logFilePath) {
+    public Storage(IngredientList ingredientList, String listFilePath, String logFilePath) {
         String[] fileComponents = listFilePath.split("/");
         this.ingredientList = ingredientList;
-        this.parser = parser;
         this.fileDirectory = fileComponents[0];
         this.listFilePath = listFilePath;
         this.logFilePath = logFilePath;
@@ -69,8 +69,9 @@ public class Storage {
      * @param listDataComponents The details of the ingredient.
      */
     private void addSavedIngredient(String[] listDataComponents) {
-        String addFormat = "add " + listDataComponents[0] + " /" + listDataComponents[1];
-        Ingredient savedIngredient = parser.parseIngredientForAdding(addFormat);
+        int quantity = parseInt(listDataComponents[1].substring(4).trim());
+        LocalDate expiry = LocalDate.parse(listDataComponents[2].trim());
+        Ingredient savedIngredient = new Ingredient(listDataComponents[0], expiry, quantity);
         ingredientList.addIngredient(savedIngredient);
     }
 
@@ -82,7 +83,7 @@ public class Storage {
     public void updateListFile(ArrayList<Ingredient> ingredients) throws IOException {
         FileWriter fileWriter = new FileWriter(listFilePath);
         for (Ingredient ingredient : ingredients) {
-            fileWriter.write(ingredient.toString());
+            fileWriter.write(ingredient.saveFormat());
             fileWriter.write(System.lineSeparator());
         }
         fileWriter.close();
