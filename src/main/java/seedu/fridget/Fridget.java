@@ -23,7 +23,7 @@ public class Fridget {
         ui = new Ui();
         parser = new Parser();
         ingredientList = new IngredientList();
-        storage = new Storage(ingredientList, parser, listFilePath, logFilePath);
+        storage = new Storage(ingredientList, listFilePath, logFilePath);
     }
 
     public void run() {
