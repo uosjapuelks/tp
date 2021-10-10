@@ -10,14 +10,14 @@ Fridget is a <strong> desktop app for managing items in the fridge, built to be 
 1. Ensure that you have Java 11 or above installed on your computer.
 2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp).
 3. Copy the file into the folder you want store Fridget's data.
-4. Double-click the file to launch the app. An interface that looks something like the following image will appear
-<IMAGE.jpg>
+4. Double-click the file to launch the app. An interface that looks something like the following image will appear.
 5. Type your command in the command box and press Enter to execute it.
-   * Some example commands you can try:
-       - help: lists all commands and input format in a separate window. 
-       - reset: prompts the user to confirm clearing all data. 
-       - exit: close the app.
+    * Some example commands you can try:
+        - help: lists all commands and input format in a separate window.
+        - reset: prompts the user to confirm clearing all data.
+        - exit: close the app.
 6. Congratulations! You should be good to go!
+
 
 ## Features 
 
@@ -31,6 +31,7 @@ List with expiry dates |`list` | list
 List without expiry dates |`list` | list e/off
 See notifications | `notifs` | notifs
 Exit Fridget | `exit` | exit
+
 
 ### Add an item into Fridget: `add`
 Add an item into Fridget's ledger.
@@ -49,6 +50,7 @@ You have successfully added:
 burger | 2021-09-23
 ____________________________________________________
 ```
+
 
 ### Get help: `help`
 Prints all available commands in Fridget.
@@ -79,6 +81,7 @@ exit
 -> Exits the program.
 __________________________________________
 ```
+
 
 ## FAQ
 
