@@ -18,8 +18,8 @@ public class IngredientList {
      */
     public void addIngredient(Ingredient ingredient) {
         for (Ingredient ingredient1 : ingredientList) {
-            if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName()) &&
-                    ingredient1.getExpiryDate().equals(ingredient.getExpiryDate())) {
+            if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())
+                    && ingredient1.getExpiryDate().equals(ingredient.getExpiryDate())) {
                 ingredient1.addQuantity(1);
                 return;
             }
