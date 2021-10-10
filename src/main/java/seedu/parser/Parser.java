@@ -145,10 +145,16 @@ public class Parser {
 
         if (processedInput.length < 2) {
             throw new FridgetException("Missing Item name." + correctFormat);
-        } else if (!processedInput[1].contains("/")) {
+        } else if (!processedInput[1].contains("/") && commandType == CommandType.ADD) {
             throw new FridgetException("Missing Expiry Date." + correctFormat);
         }
-        return processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
+
+        if (commandType == CommandType.ADD) {
+            return processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
+        } else {
+            return processedInput[1].trim();
+        }
+
     }
 
     /**
