@@ -6,6 +6,8 @@ import seedu.parser.Parser;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -62,6 +64,21 @@ public class Storage {
             String[] listDataComponents = line.split(REGEX_DATA_SEPARATOR);
             addSavedIngredient(listDataComponents);
         }
+
+        Scanner logScanner = new Scanner(logFile);
+        addSavedNotification(logScanner.nextLine());
+    }
+
+    /**
+     * Adds the log date and time, and notification on/off status.
+     * @param savedDateTimeAndStatus String containing date, time and status.
+     */
+    private void addSavedNotification(String savedDateTimeAndStatus) {
+        Notification notification = new Notification(LocalDateTime.now().minusHours(5), true);
+        String[] splitString = savedDateTimeAndStatus.split(REGEX_DATA_SEPARATOR);
+        notification.setDateAndTime(LocalDateTime.parse(splitString[0],
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        notification.setNotificationStatus(!splitString[1].equals("no"));
     }
 
     /**
@@ -89,12 +106,24 @@ public class Storage {
     }
 
     /**
+     * Updates the log text file.
+     * @param notification Notification object.
+     * @throws IOException The error thrown from file IO operations.
+     */
+    public void updateLogFile(Notification notification) throws IOException {
+        FileWriter fileWriter = new FileWriter(logFilePath);
+        fileWriter.write(notification.toString());
+        fileWriter.close();
+    }
+
+    /**
      * Updates all the text files.
      * @param ingredients The current list of ingredients.
      */
-    public void updateFiles(ArrayList<Ingredient> ingredients) {
+    public void updateFiles(ArrayList<Ingredient> ingredients, Notification notification) {
         try {
             updateListFile(ingredients);
+            updateLogFile(notification);
         } catch (IOException e) {
             System.out.println("Error while trying to update ingredient list file.");
         }
