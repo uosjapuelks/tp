@@ -19,4 +19,20 @@ list -e
 list -r
 expiring
 list
+add fish Cake /2020-12-12
+add fish Cake /2020-12-12
+add JimBeam /2025-10-03
+remove i
+0
+list
+remove i
+2
+2
+list
+remove fish Cake
+2
+list
+remove yoghurt cake
+remove fish Cake
+list
 exit
