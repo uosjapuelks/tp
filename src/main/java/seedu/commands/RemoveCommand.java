@@ -52,6 +52,7 @@ public class RemoveCommand extends Command {
         }
 
         Ingredient itemToBeRemoved = ui.getItemToBeRemoved(matchingItems);
+        assert ingredientList.containsIngredient(itemToBeRemoved);
         handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
     }
 

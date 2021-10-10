@@ -41,6 +41,10 @@ public class IngredientList {
         ingredient.removeQuantity(qty);
     }
 
+    public boolean containsIngredient(Ingredient ingredient) {
+        return ingredientList.contains(ingredient);
+    }
+
     /**
      * Sorts the ingredients in ingredientList by date if byDate is true and by description if false.
      *
