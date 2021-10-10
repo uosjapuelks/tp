@@ -134,14 +134,29 @@ Generating command list...
 __________________________________________
 List of commands available:
 
-add <name of ingredient> </expiryDate(format: yyyy-mm-dd)> [eg. add bacon /2022-11-11]
+add <INGREDIENT_NAME> </EXPIRY_DATE(format: yyyy-mm-dd)> [eg. add bacon /2022-11-11]
 -> Adds an ingredient and its expiry date to the ingredient list.
 
-remove <name of ingredient> [eg. delete bacon]
+find <KEYWORD> [eg. find bacon]
+-> Find and print all ingredient associated with keyword.
+
+remove <INGREDIENT_NAME> [eg. delete bacon]
 -> Removes the ingredient from the ingredient list.
 
+list -e
+-> List out all the ingredients starting with earliest expiry date.
+
+list -r
+-> List out all the ingredients based on the order added.
+
 list
--> List out all the ingredients in the ingredient list.
+-> List out all the ingredients in alphabetical order.
+
+expiring
+-> Prints out ingredients expiring within a week
+
+notifs
+-> Toggle the notification on or off depending on previous state. Default mode is on.
 
 reset
 -> Deletes all the previous ingredient entries from the reader.
@@ -179,6 +194,40 @@ Ingredient list has been reset successfully.
 __________________________________________
 ```
 
+
+### See notifications: `notifs`
+Display notification reminder scheduled at 6 hours interval. Can be toggled on or off. 
+
+Format: notifs
+
+Example of usage:
+````
+userInput: notifs
+__________________________________________
+Notification off!
+__________________________________________
+userInput: notifs
+__________________________________________
+Notification on!
+__________________________________________
+````
+````
+ ___________________________________________________
+|                                                |X||
+|      ___            _         __        ______    |
+|     / _ \___ __ _  (_)__  ___/ /__ ____/ / / /    |
+|    / , _/ -_)  ' \/ / _ \/ _  / -_) __/_/_/_/     |
+|   /_/|_|\__/_/_/_/_/_//_/\_,_/\__/_/ (_|_|_)      |
+|   =============================================   |
+|                                                   |
+|    "If you don't take time to take care of your   |
+|    health now, you're gonna have to make time     |
+|    for feeling sick and tired later."             |
+|                                                   |
+|            Always remember to eat more            |
+|              Fruits and Vegetables!               |
+|___________________________________________________|
+````
 
 ## FAQ
 
