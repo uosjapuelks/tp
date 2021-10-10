@@ -7,6 +7,8 @@ import seedu.storage.IngredientList;
 import seedu.storage.Storage;
 import seedu.ui.Ui;
 
+import java.time.format.DateTimeParseException;
+
 public class Fridget {
     private static final String FILE_PATH_LIST = "config/savedList.txt";
     private static final String FILE_PATH_LOGS = "config/savedLogs.txt";
@@ -23,7 +25,7 @@ public class Fridget {
         ui = new Ui();
         parser = new Parser();
         ingredientList = new IngredientList();
-        storage = new Storage(ingredientList, parser, listFilePath, logFilePath);
+        storage = new Storage(ingredientList, listFilePath, logFilePath);
     }
 
     public void run() {
@@ -38,6 +40,8 @@ public class Fridget {
                 command.execute(ui, parser, ingredientList);
             } catch (FridgetException e) {
                 ui.printLine(e.getMessage());
+            } catch (DateTimeParseException e) {
+                ui.printDateTimeFormat();
             } finally {
                 ui.printSeparatorLine();
             }

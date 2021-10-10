@@ -23,6 +23,19 @@ public class Ingredient {
     }
 
     /**
+     * Overloads constructor to start quantity from more than 1.
+     *
+     * @param ingredientName name of the ingredient.
+     * @param expiryDate date of expiry for ingredient.
+     * @param qty quantity to start from.
+     */
+    public Ingredient(String ingredientName, LocalDate expiryDate, int qty) {
+        this.ingredientName = ingredientName;
+        this.expiryDate = expiryDate;
+        this.quantity = qty;
+    }
+
+    /**
      * Adds a specified integer value to quantity of item.
      *
      * @param qty Amount of items to be added.
@@ -130,6 +143,10 @@ public class Ingredient {
     public boolean isPastExpiry() {
         LocalDate today = LocalDate.now();
         return today.isAfter(expiryDate);
+    }
+
+    public String saveFormat() {
+        return ingredientName + " | Qty: " + quantity + " | " + expiryDate;
     }
 
     /**
