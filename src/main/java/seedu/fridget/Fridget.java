@@ -4,6 +4,7 @@ import seedu.commands.Command;
 import seedu.data.exception.FridgetException;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
+import seedu.notification.Notification;
 import seedu.storage.Storage;
 import seedu.ui.Ui;
 
@@ -16,6 +17,7 @@ public class Fridget {
     private final Ui ui;
     private final Parser parser;
     private final IngredientList ingredientList;
+    private final Notification notification;
     private final Storage storage;
 
     /**
@@ -25,19 +27,21 @@ public class Fridget {
         ui = new Ui();
         parser = new Parser();
         ingredientList = new IngredientList();
-        storage = new Storage(ingredientList, listFilePath, logFilePath);
+        notification = new Notification();
+        storage = new Storage(ingredientList, notification, listFilePath, logFilePath);
     }
 
     public void run() {
         ui.printIntroduction();
-        ui.printNotificationMessage();
         Command command = new Command();
         do {
             try {
+                notification.printNotification();
                 String userInput = ui.readUserInput();
                 ui.printSeparatorLine();
                 command = parser.parseCommand(userInput);
                 command.execute(ui, parser, ingredientList);
+                storage.updateFiles(ingredientList.getIngredientList("r"), notification);
             } catch (FridgetException e) {
                 ui.printLine(e.getMessage());
             } catch (DateTimeParseException e) {
@@ -46,7 +50,6 @@ public class Fridget {
                 ui.printSeparatorLine();
             }
         } while (command.exitNotRequired());
-        ui.printNotificationMessage();
     }
 
     /**
