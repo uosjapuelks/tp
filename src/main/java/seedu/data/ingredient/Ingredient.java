@@ -8,6 +8,7 @@ import java.util.Comparator;
 public class Ingredient {
     protected String ingredientName;
     protected LocalDate expiryDate;
+    protected int quantity;
 
     /**
      * Constructor for Ingredient.
@@ -18,10 +19,11 @@ public class Ingredient {
     public Ingredient(String ingredientName, LocalDate expiryDate) {
         this.ingredientName = ingredientName;
         this.expiryDate = expiryDate;
+        this.quantity = 1;
     }
 
     /**
-     * String is represented as name + Expiry date that is colored depending on expiry status.
+     * String is represented as name + quantity + Expiry date that is colored depending on expiry status.
      *
      * @return Ingredient Name and Expiry that is colored.
      */
@@ -30,7 +32,7 @@ public class Ingredient {
         String expiry = expiryDate.format((DateTimeFormatter.ofPattern("dd MMM yyyy")));
         String decidedColor = decideColor();
         String coloredExpiry = String.format(decidedColor, expiry);
-        return ingredientName + " | " + coloredExpiry;
+        return ingredientName + " | Qty: " + quantity + " | " + coloredExpiry;
     }
 
     /**
