@@ -1,14 +1,16 @@
 package seedu.parser;
 
 import org.junit.jupiter.api.Test;
-import seedu.commands.Command;
 import seedu.commands.AddCommand;
-import seedu.commands.ListCommand;
-import seedu.commands.ResetCommand;
-import seedu.commands.RemoveCommand;
-import seedu.commands.HelpCommand;
+import seedu.commands.Command;
 import seedu.commands.ExitCommand;
+import seedu.commands.ExpiringCommand;
 import seedu.commands.FindCommand;
+import seedu.commands.HelpCommand;
+import seedu.commands.ListCommand;
+import seedu.commands.NotificationCommand;
+import seedu.commands.RemoveCommand;
+import seedu.commands.ResetCommand;
 import seedu.data.exception.FridgetException;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -38,7 +40,6 @@ class ParserTest {
     @Test
     void parseCommand_addCommandInput_expectReturnAddCommand() throws FridgetException {
         String inputString = "add";
-        Parser parser = new Parser();
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(AddCommand.class));
     }
@@ -46,7 +47,6 @@ class ParserTest {
     @Test
     void parseCommand_listCommandInput_expectReturnListCommand() throws FridgetException {
         String inputString = "list";
-        Parser parser = new Parser();
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(ListCommand.class));
     }
@@ -54,7 +54,6 @@ class ParserTest {
     @Test
     void parseCommand_exitCommandInput_expectReturnExitCommand() throws FridgetException {
         String inputString = "exit";
-        Parser parser = new Parser();
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(ExitCommand.class));
     }
@@ -62,7 +61,6 @@ class ParserTest {
     @Test
     void parseCommand_helpCommandInput_expectReturnHelpCommand() throws FridgetException {
         String inputString = "help";
-        Parser parser = new Parser();
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(HelpCommand.class));
     }
@@ -70,7 +68,6 @@ class ParserTest {
     @Test
     void parseCommand_findCommandInput_expectReturnFindCommand() throws FridgetException {
         String inputString = "find";
-        Parser parser = new Parser();
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(FindCommand.class));
     }
@@ -78,7 +75,6 @@ class ParserTest {
     @Test
     void parseCommand_removeCommandInput_expectReturnRemoveCommand() throws FridgetException {
         String inputString = "remove";
-        Parser parser = new Parser();
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(RemoveCommand.class));
     }
@@ -86,8 +82,21 @@ class ParserTest {
     @Test
     void parseCommand_resetCommandInput_expectReturnResetCommand() throws FridgetException {
         String inputString = "reset";
-        Parser parser = new Parser();
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(ResetCommand.class));
+    }
+
+    @Test
+    void parseCommand_expiringCommandInput_expectReturnExpiringCommand() throws FridgetException {
+        String inputString = "expiring";
+        Command parsedResult = parser.parseCommand(inputString);
+        assertTrue(parsedResult.getClass().isAssignableFrom(ExpiringCommand.class));
+    }
+
+    @Test
+    void parseCommand_notificationCommandInput_expectReturnNotificationCommand() throws FridgetException {
+        String inputString = "notifs";
+        Command parsedResult = parser.parseCommand(inputString);
+        assertTrue(parsedResult.getClass().isAssignableFrom(NotificationCommand.class));
     }
 }
