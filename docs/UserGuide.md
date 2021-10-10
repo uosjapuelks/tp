@@ -24,7 +24,7 @@ Fridget is a <strong> desktop app for managing items in the fridge, built to be 
 Feature | Command | Command Format |
 -----------|----------|-----------------
 Add an item into Fridget |`add` | add <item_name> /<expiry_date>
-Remove an item from Fridget | `remove` | remove /<item_name>
+Remove an item from Fridget | `remove` | remove <item_name>
 Get help | `help` | help
 Reset all items | `reset` | reset
 List with expiry dates |`list` | list
@@ -79,6 +79,34 @@ reset
 
 exit
 -> Exits the program.
+__________________________________________
+```
+
+
+### Reset all items: `reset`
+Resets all your items in the ingredient list.
+
+Format: reset
+
+Example of usage:
+```
+userInput: reset
+__________________________________________
+Are you sure you want to reset everything in the ingredient list? (Y/N)
+__________________________________________
+userInput: N
+__________________________________________
+Abort reset command.
+__________________________________________
+```
+```
+userInput: reset
+__________________________________________
+Are you sure you want to reset everything in the ingredient list? (Y/N)
+__________________________________________
+userInput: Y
+__________________________________________
+Ingredient list has been reset successfully.
 __________________________________________
 ```
 
