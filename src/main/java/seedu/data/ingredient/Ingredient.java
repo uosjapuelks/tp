@@ -23,6 +23,14 @@ public class Ingredient {
     }
 
     /**
+     * Adds a specified integer value to quantity of item.
+     * @param qty Amount of items to be added.
+     */
+    public void addQuantity(int qty) {
+        quantity += qty;
+    }
+
+    /**
      * String is represented as name + quantity + Expiry date that is colored depending on expiry status.
      *
      * @return Ingredient Name and Expiry that is colored.
