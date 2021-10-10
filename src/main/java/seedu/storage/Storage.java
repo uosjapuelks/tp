@@ -1,5 +1,6 @@
 package seedu.storage;
 
+import seedu.notification.Notification;
 import seedu.data.ingredient.Ingredient;
 
 import java.io.File;

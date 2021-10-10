@@ -80,6 +80,7 @@ public class Ui {
 
     /**
      * Prints a reaction to user successfully removing an ingredient.
+     *
      * @param ingredient The ingredient the user has added.
      */
     public void printReactionToRemovingIngredient(Ingredient ingredient, int qty) {
@@ -92,6 +93,7 @@ public class Ui {
 
     /**
      * Returns the item the user wants to remove from Fridget.
+     *
      * @param matchingItems The list of items which match the user's search term.
      * @return The item that the user wants to remove.
      * @throws FridgetException if the user types a wrong value (non-integer or outside of index of matchingItems)

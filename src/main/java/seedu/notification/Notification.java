@@ -1,4 +1,4 @@
-package seedu.storage;
+package seedu.notification;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

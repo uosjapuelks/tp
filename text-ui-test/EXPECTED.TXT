@@ -33,18 +33,39 @@ No command found!
 Enter help if you need the list of available commands.
 __________________________________________
 __________________________________________
+Notification off!
+__________________________________________
+__________________________________________
+Notification on!
+__________________________________________
+__________________________________________
 Generating command list...
 __________________________________________
 List of commands available:
 
-add <name of ingredient> </expiryDate(format: yyyy-mm-dd)> [eg. add bacon /2022-11-11]
+add <INGREDIENT_NAME> </EXPIRY_DATE(format: yyyy-mm-dd)> [eg. add bacon /2022-11-11]
 -> Adds an ingredient and its expiry date to the ingredient list.
 
-remove <name of ingredient> [eg. delete bacon]
+find <KEYWORD> [eg. find bacon]
+-> Find and print all ingredient associated with keyword.
+
+remove <INGREDIENT_NAME> [eg. delete bacon]
 -> Removes the ingredient from the ingredient list.
 
+list -e
+-> List out all the ingredients starting with earliest expiry date.
+
+list -r
+-> List out all the ingredients based on the order added.
+
 list
--> List out all the ingredients in the ingredient list.
+-> List out all the ingredients in alphabetical order.
+
+expiring
+-> Prints out ingredients expiring within a week
+
+notifs
+-> Toggle the notification on or off depending on previous state. Default mode is on.
 
 reset
 -> Deletes all the previous ingredient entries from the reader.
