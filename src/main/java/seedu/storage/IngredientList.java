@@ -1,5 +1,6 @@
 package seedu.storage;
 
+import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
 import java.util.ArrayList;
@@ -41,15 +42,16 @@ public class IngredientList {
      *
      * @return List of ingredients.
      */
-    public ArrayList<Ingredient> getIngredientList(String sortType) {
+    public ArrayList<Ingredient> getIngredientList(String sortType) throws FridgetException {
         switch (sortType.toLowerCase()) {
         case "e":
             return sortIngredient(true);
         case "default":
             return sortIngredient(false);
-        default:
+        case "r":
             return ingredientList;
-        /*TODO default throw exception*/
+        default:
+            throw new FridgetException("Unrecognisable list command. Try: <list -e>");
         }
     }
 
