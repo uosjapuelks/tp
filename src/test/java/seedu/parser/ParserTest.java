@@ -10,6 +10,7 @@ import seedu.commands.HelpCommand;
 import seedu.commands.ExitCommand;
 import seedu.commands.FindCommand;
 import seedu.data.exception.FridgetException;
+import seedu.data.ingredient.Ingredient;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -89,5 +90,12 @@ class ParserTest {
         Parser parser = new Parser();
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(ResetCommand.class));
+    }
+
+    @Test
+    void parseIngredientForAdding_addingIngredientInput_expectReturnIngredient() throws FridgetException {
+        String inputString = "add chicken /2021-10-15";
+        Ingredient parsedResult = parser.parseIngredientForAdding(inputString);
+        assertTrue(parsedResult.getClass().isAssignableFrom(Ingredient.class));
     }
 }
