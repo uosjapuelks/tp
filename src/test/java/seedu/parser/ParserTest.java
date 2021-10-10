@@ -98,4 +98,12 @@ class ParserTest {
         Ingredient parsedResult = parser.parseIngredientForAdding(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(Ingredient.class));
     }
+
+    @Test
+    void parseIngredientForAdding_addingIngredientInput_exceptionThrown() {
+        String inputString = "add chicken";
+        assertThrows(FridgetException.class, () -> {
+            parser.parseIngredientForAdding(inputString);
+        });
+    }
 }
