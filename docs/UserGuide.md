@@ -49,7 +49,7 @@ Example of usage:
 userInput: add burger /2021-09-23
 ____________________________________________________
 You have successfully added:
-burger | 2021-09-23
+burger | 23 Sep 2021
 ____________________________________________________
 ```
 
