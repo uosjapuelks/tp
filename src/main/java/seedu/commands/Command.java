@@ -3,6 +3,7 @@ package seedu.commands;
 import seedu.data.exception.FridgetException;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
+import seedu.storage.Notification;
 import seedu.ui.Ui;
 
 public class Command {
@@ -16,6 +17,7 @@ public class Command {
 
     /**
      * Check status of program, if it should end.
+     *
      * @return true if program should keep running and false when exit is called.
      */
     public boolean exitNotRequired() {
@@ -28,4 +30,6 @@ public class Command {
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
     }
 
+    public void execute(Notification notification) throws FridgetException {
+    }
 }
