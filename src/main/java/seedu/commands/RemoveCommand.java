@@ -65,7 +65,7 @@ public class RemoveCommand extends Command {
     private void handleRemovalOfMultipleQuantity(Ui ui, IngredientList ingredientList, Ingredient itemToBeRemoved)
             throws FridgetException {
         int qty;
-        qty = ui.getRemoveQuantity(itemToBeRemoved);
+        qty = ui.getQuantityToBeRemoved(itemToBeRemoved);
         ingredientList.removeIngredient(itemToBeRemoved, qty);
         ui.printReactionToRemovingIngredient(itemToBeRemoved, qty);
     }

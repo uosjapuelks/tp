@@ -239,7 +239,7 @@ public class Ui {
      * @return Amount of items to be removed.
      * @throws FridgetException if the user types a wrong value (non-integer or 0 or outside limit of quantity)
      */
-    public int getRemoveQuantity(Ingredient ingredient) throws FridgetException {
+    public int getQuantityToBeRemoved(Ingredient ingredient) throws FridgetException {
         int limit = ingredient.getQuantity();
         if (limit == 1) {
             return 1;
