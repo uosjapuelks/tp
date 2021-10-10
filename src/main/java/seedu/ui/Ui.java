@@ -84,10 +84,11 @@ public class Ui {
      * Prints a reaction to user successfully removing an ingredient.
      * @param ingredient The ingredient the user has added.
      */
-    public void printReactionToRemovingIngredient(Ingredient ingredient) {
+    public void printReactionToRemovingIngredient(Ingredient ingredient, int qty) {
         String acknowledgeRemove = "You have successfully removed:\n";
         String addReaction = acknowledgeRemove
-                + FOUR_SPACE_INDENTATION + ingredient;
+                + FOUR_SPACE_INDENTATION + ingredient.getIngredientName() + " | Qty: " + qty
+                + " | " + ingredient.getColoredExpiryDate();
         printLine(addReaction);
     }
 
@@ -229,6 +230,41 @@ public class Ui {
         String expiringMessage = "Items/ingredients expiring within a week";
         printLine(expiringMessage);
         printExpiringIngredients(listOfIngredients);
+    }
+
+    /**
+     * Gets the quantity of items to be removed from the user.
+     *
+     * @param ingredient Ingredient to be removed.
+     * @return Amount of items to be removed.
+     * @throws FridgetException if the user types a wrong value (non-integer or 0 or outside limit of quantity)
+     */
+    public int getRemoveQuantity(Ingredient ingredient) throws FridgetException {
+        int limit = ingredient.getQuantity();
+        if (limit == 1) {
+            return 1;
+        }
+
+        printLine("There are " + limit + " items, how many would like to remove?");
+        printSeparatorLine();
+        String userInput = readUserInput();
+        printSeparatorLine();
+
+        if (!(userInput.matches("\\d"))) {
+            throw new FridgetException("No valid number was stated. The remove command has been shutdown.");
+        }
+
+        int qty = Integer.parseInt(userInput);
+
+        if (qty == 0) {
+            throw new FridgetException("No items have been removed.");
+        }
+
+        if (qty < 0 | qty > limit) {
+            throw new FridgetException("This quantity is not valid. The remove command has been shutdown.");
+        }
+
+        return qty;
     }
 
     /**
