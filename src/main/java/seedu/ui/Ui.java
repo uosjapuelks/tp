@@ -183,7 +183,7 @@ public class Ui {
         case "e":
             return ("< Listing earliest [Expiry Date] first >");
         case "r":
-            return ("< Listing Most Recently Added items first >");
+            return ("< Listing Most Recently Added items last >");
         default:
             return ("< Listing items in Alphabetical order >");
         }
