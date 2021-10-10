@@ -22,6 +22,7 @@ public class Parser {
         REMOVE,
         FIND
     }
+
     /**
      * Constructor for parser.
      */
