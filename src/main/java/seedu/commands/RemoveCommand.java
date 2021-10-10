@@ -45,14 +45,28 @@ public class RemoveCommand extends Command {
         if (matchingItems.size() == 1) {
             Ingredient itemToBeRemoved = matchingItems.get(0);
             if (itemToBeRemoved.getIngredientName().equals(nameOfItemToBeRemoved)) {
-                ingredientList.removeIngredient(itemToBeRemoved);
-                ui.printReactionToRemovingIngredient(itemToBeRemoved);
+                handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
                 return;
             }
         }
 
         Ingredient itemToBeRemoved = ui.getItemToBeRemoved(matchingItems);
-        ingredientList.removeIngredient(itemToBeRemoved);
-        ui.printReactionToRemovingIngredient(itemToBeRemoved);
+        handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
+    }
+
+    /**
+     * Handles the quantity to remove when user wants to remove an item.
+     *
+     * @param ui The Ui which will send output and collect input from the user.
+     * @param ingredientList The ingredientList where items are stored.
+     * @param itemToBeRemoved The item to be removed.
+     * @throws FridgetException if the user types an invalid quantity to remove from ingredientsList.
+     */
+    private void handleRemovalOfMultipleQuantity(Ui ui, IngredientList ingredientList, Ingredient itemToBeRemoved)
+            throws FridgetException {
+        int qty;
+        qty = ui.getRemoveQuantity(itemToBeRemoved);
+        ingredientList.removeIngredient(itemToBeRemoved, qty);
+        ui.printReactionToRemovingIngredient(itemToBeRemoved, qty);
     }
 }
