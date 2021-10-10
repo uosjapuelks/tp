@@ -1,5 +1,6 @@
 package seedu.commands;
 
+import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
@@ -16,7 +17,7 @@ public class AddCommand extends Command {
      * Executes the "add" command.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
         Ingredient newIngredient = parser.parseIngredientForAdding(ui.getCurrentUserInput());
         ingredientList.addIngredient(newIngredient);
         ui.printReactionToAddingIngredient(newIngredient);

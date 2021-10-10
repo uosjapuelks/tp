@@ -66,6 +66,19 @@ public class Ui {
     }
 
     /**
+     * Prints custom error message when DateTimeParseException detected.
+     */
+    public void printDateTimeFormat() {
+        String errorInfo = "Wrong Date entry format used. Please try the format for date\n\n";
+        String correctFormat = "/<YYYY-MM-DD>\n";
+        String exampleInput = "Example: \"... /2022-08-03\"";
+        String dateErrorMessage = errorInfo
+                + FOUR_SPACE_INDENTATION + correctFormat
+                + FOUR_SPACE_INDENTATION + exampleInput;
+        printLine(dateErrorMessage);
+    }
+
+    /**
      * Prints a reaction to user successfully removing an ingredient.
      * @param ingredient The ingredient the user has added.
      */

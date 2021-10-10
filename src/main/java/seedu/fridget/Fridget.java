@@ -9,6 +9,7 @@ import seedu.storage.Storage;
 import seedu.ui.Ui;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 
 public class Fridget {
     private static final String FILE_PATH_LIST = "config/savedList.txt";
@@ -28,7 +29,7 @@ public class Fridget {
         parser = new Parser();
         ingredientList = new IngredientList();
         notification = new Notification(LocalDateTime.now().minusHours(6), true);
-        storage = new Storage(ingredientList, parser, listFilePath, logFilePath);
+        storage = new Storage(ingredientList, listFilePath, logFilePath);
     }
 
     public void run() {
@@ -44,6 +45,8 @@ public class Fridget {
                 storage.updateFiles(ingredientList.getIngredientList(""), notification);
             } catch (FridgetException e) {
                 ui.printLine(e.getMessage());
+            } catch (DateTimeParseException e) {
+                ui.printDateTimeFormat();
             } finally {
                 ui.printSeparatorLine();
             }
