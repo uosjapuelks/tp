@@ -42,13 +42,13 @@ You have successfully added:
 __________________________________________
 __________________________________________
 You have successfully added:
-    chicken | [31m10 Oct 2021[0m
+    chicken | [33m10 Oct 2021[0m
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
 < Listing items in Alphabetical order >
     1. burger | [31m23 Sep 2021[0m
-    2. chicken | [31m10 Oct 2021[0m
+    2. chicken | [33m10 Oct 2021[0m
 __________________________________________
 __________________________________________
 These are the matching ingredients:
@@ -57,11 +57,11 @@ __________________________________________
 __________________________________________
 These are the matching ingredients:
     1. burger | [31m23 Sep 2021[0m
-    2. chicken | [31m10 Oct 2021[0m
+    2. chicken | [33m10 Oct 2021[0m
 __________________________________________
 __________________________________________
 These are the matching ingredients:
-    1. chicken | [31m10 Oct 2021[0m
+    1. chicken | [33m10 Oct 2021[0m
 __________________________________________
 __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
@@ -72,7 +72,7 @@ __________________________________________
 __________________________________________
 These are the matching ingredients:
     1. burger | [31m23 Sep 2021[0m
-    2. chicken | [31m10 Oct 2021[0m
+    2. chicken | [33m10 Oct 2021[0m
 __________________________________________
 __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
@@ -85,7 +85,7 @@ No matching tasks found!
 __________________________________________
 __________________________________________
 You have successfully added:
-    yoghurt cake | [31m15 Oct 2021[0m
+    yoghurt cake | [33m15 Oct 2021[0m
 __________________________________________
 __________________________________________
 You have successfully added:
@@ -99,27 +99,27 @@ __________________________________________
 Here are the list of items in your fridge:
 < Listing earliest [Expiry Date] first >
     1. fish Cake | [31m12 Dec 2020[0m
-    2. yoghurt cake | [31m15 Oct 2021[0m
+    2. yoghurt cake | [33m15 Oct 2021[0m
     3. JimBeam | [32m03 Oct 2025[0m
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
 < Listing Most Recently Added items last >
-    1. yoghurt cake | [31m15 Oct 2021[0m
+    1. yoghurt cake | [33m15 Oct 2021[0m
     2. fish Cake | [31m12 Dec 2020[0m
     3. JimBeam | [32m03 Oct 2025[0m
 __________________________________________
 __________________________________________
 Items/ingredients expiring within a week
     1. fish Cake | [31m12 Dec 2020[0m
-    2. yoghurt cake | [31m15 Oct 2021[0m
+    2. yoghurt cake | [33m15 Oct 2021[0m
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
 < Listing items in Alphabetical order >
     1. fish Cake | [31m12 Dec 2020[0m
     2. JimBeam | [32m03 Oct 2025[0m
-    3. yoghurt cake | [31m15 Oct 2021[0m
+    3. yoghurt cake | [33m15 Oct 2021[0m
 __________________________________________
 __________________________________________
 We'll help you remember everything you told us :)
