@@ -40,7 +40,7 @@ public class Notification {
     }
 
     /**
-     * Return true is notification is printed more than 6hours ago.
+     * Return true if notification is printed more than 6hours ago.
      *
      * @return Return true if time difference is more than 6hours.
      */
@@ -58,7 +58,7 @@ public class Notification {
     }
 
     /**
-     * Sets the date and time the notification is printed.
+     * Sets the date and time when the notification is printed.
      *
      * @param dateAndTime date and time since notification is printed.
      */
