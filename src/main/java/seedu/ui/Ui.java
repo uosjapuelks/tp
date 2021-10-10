@@ -112,7 +112,7 @@ public class Ui {
 
         int index = Integer.parseInt(userInput);
 
-        if (index < 0 | index > matchingItems.size()) {
+        if (index <= 0 | index > matchingItems.size()) {
             throw new FridgetException("This index is not valid. The remove command has been shutdown.");
         }
 
