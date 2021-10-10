@@ -4,6 +4,7 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
+import seedu.storage.Notification;
 import seedu.ui.Ui;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class RemoveCommand extends Command {
      * @throws FridgetException if user types an incorrect value when prompted.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification) throws FridgetException {
         String nameOfItemToBeRemoved = parser.parseSearchTerm(ui.getCurrentUserInput());
         ArrayList<Ingredient> matchingItems = ingredientList.findAllMatchingIngredients(nameOfItemToBeRemoved);
         handleRemovalOfItem(ui, ingredientList, nameOfItemToBeRemoved, matchingItems);

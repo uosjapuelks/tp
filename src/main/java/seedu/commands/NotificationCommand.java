@@ -1,6 +1,9 @@
 package seedu.commands;
 
+import seedu.parser.Parser;
+import seedu.storage.IngredientList;
 import seedu.storage.Notification;
+import seedu.ui.Ui;
 
 public class NotificationCommand extends Command {
     /**
@@ -13,7 +16,13 @@ public class NotificationCommand extends Command {
      * Executes notification command.
      */
     @Override
-    public void execute(Notification notification) {
-        notification.setNotificationStatus(!notification.isNotificationOn());
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification) {
+        if (notification.isNotificationOn()) {
+            notification.setNotificationStatus(false);
+            ui.printLine("Notification off!");
+        } else {
+            notification.setNotificationStatus(true);
+            ui.printLine("Notification on!");
+        }
     }
 }

@@ -5,12 +5,9 @@ import seedu.data.ingredient.Ingredient;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-<<<<<<< HEAD
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-=======
 import java.time.LocalDate;
->>>>>>> master
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,7 +15,7 @@ import static java.lang.Integer.parseInt;
 
 public class Storage {
     private final IngredientList ingredientList;
-
+    private final Notification notification;
     private final String fileDirectory;
     private final String listFilePath;
     private final String logFilePath;
@@ -27,12 +24,14 @@ public class Storage {
 
     /**
      * A constructor to save data into text file.
+     *
      * @param listFilePath pathway of ingredient list file storage.
      * @param logFilePath pathway of user log file storage.
      */
-    public Storage(IngredientList ingredientList, String listFilePath, String logFilePath) {
+    public Storage(IngredientList ingredientList, Notification notification, String listFilePath, String logFilePath) {
         String[] fileComponents = listFilePath.split("/");
         this.ingredientList = ingredientList;
+        this.notification = notification;
         this.fileDirectory = fileComponents[0];
         this.listFilePath = listFilePath;
         this.logFilePath = logFilePath;
@@ -46,6 +45,7 @@ public class Storage {
 
     /**
      * Initialises text files if not present.
+     *
      * Loads all the data from the ingredient list text file.
      * @throws IOException The error thrown from file IO operations.
      */
@@ -61,23 +61,23 @@ public class Storage {
             return;
         }
 
+        Scanner logScanner = new Scanner(logFile);
+        addSavedNotification(logScanner.nextLine());
+
         Scanner listScanner = new Scanner(listFile);
         while (listScanner.hasNext()) {
             String line = listScanner.nextLine();
             String[] listDataComponents = line.split(REGEX_DATA_SEPARATOR);
             addSavedIngredient(listDataComponents);
         }
-
-        Scanner logScanner = new Scanner(logFile);
-        addSavedNotification(logScanner.nextLine());
     }
 
     /**
      * Adds the log date and time, and notification on/off status.
+     *
      * @param savedDateTimeAndStatus String containing date, time and status.
      */
     private void addSavedNotification(String savedDateTimeAndStatus) {
-        Notification notification = new Notification(LocalDateTime.now().minusHours(5), true);
         String[] splitString = savedDateTimeAndStatus.split(REGEX_DATA_SEPARATOR);
         notification.setDateAndTime(LocalDateTime.parse(splitString[0],
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
@@ -86,6 +86,7 @@ public class Storage {
 
     /**
      * Adds saved ingredient into the ingredient list.
+     *
      * @param listDataComponents The details of the ingredient.
      */
     private void addSavedIngredient(String[] listDataComponents) {
@@ -97,6 +98,7 @@ public class Storage {
 
     /**
      * Updates the ingredients list text file.
+     *
      * @param ingredients The current list of ingredients.
      * @throws IOException The error thrown from file IO operations.
      */
@@ -111,6 +113,7 @@ public class Storage {
 
     /**
      * Updates the log text file.
+     *
      * @param notification Notification object.
      * @throws IOException The error thrown from file IO operations.
      */
@@ -122,6 +125,7 @@ public class Storage {
 
     /**
      * Updates all the text files.
+     *
      * @param ingredients The current list of ingredients.
      */
     public void updateFiles(ArrayList<Ingredient> ingredients, Notification notification) {

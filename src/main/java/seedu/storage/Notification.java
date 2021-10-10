@@ -77,7 +77,7 @@ public class Notification {
      * @param notificationOn A boolean value passed to turn on or off notification.
      */
     public void setNotificationStatus(boolean notificationOn) {
-        isNotificationOn = notificationOn;
+        this.isNotificationOn = notificationOn;
     }
 
     /**
@@ -87,6 +87,6 @@ public class Notification {
      */
     public String toString() {
         return dateAndTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
-                + "|" + (isNotificationOn ? "yes" : "no");
+                + " | " + (isNotificationOn ? "yes" : "no");
     }
 }

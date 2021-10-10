@@ -29,7 +29,7 @@ public class Fridget {
         parser = new Parser();
         ingredientList = new IngredientList();
         notification = new Notification(LocalDateTime.now().minusHours(6), true);
-        storage = new Storage(ingredientList, listFilePath, logFilePath);
+        storage = new Storage(ingredientList, notification, listFilePath, logFilePath);
     }
 
     public void run() {
@@ -41,8 +41,8 @@ public class Fridget {
                 String userInput = ui.readUserInput();
                 ui.printSeparatorLine();
                 command = parser.parseCommand(userInput);
-                command.execute(ui, parser, ingredientList);
-                storage.updateFiles(ingredientList.getIngredientList(""), notification);
+                command.execute(ui, parser, ingredientList, notification);
+                storage.updateFiles(ingredientList.getIngredientList("r"), notification);
             } catch (FridgetException e) {
                 ui.printLine(e.getMessage());
             } catch (DateTimeParseException e) {

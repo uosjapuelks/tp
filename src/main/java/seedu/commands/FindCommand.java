@@ -3,6 +3,7 @@ package seedu.commands;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
+import seedu.storage.Notification;
 import seedu.ui.Ui;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class FindCommand extends Command {
      * Executes the Find command.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, Notification notification) {
         String searchTerm = parser.parseSearchTerm(ui.getCurrentUserInput());
         ArrayList<Ingredient> matchingIngredients = ingredientList.findAllMatchingIngredients(searchTerm);
         ui.printListOfMatchingIngredients(matchingIngredients);
