@@ -104,7 +104,7 @@ Here are the list of items in your fridge:
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
-< Listing Most Recently Added items first >
+< Listing Most Recently Added items last >
     1. yoghurt cake | [31m15 Oct 2021[0m
     2. fish Cake | [31m12 Dec 2020[0m
     3. JimBeam | [32m03 Oct 2025[0m
