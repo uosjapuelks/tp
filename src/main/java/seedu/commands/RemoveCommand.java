@@ -22,7 +22,7 @@ public class RemoveCommand extends Command {
      */
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
-        String nameOfItemToBeRemoved = parser.parseSearchTerm(ui.getCurrentUserInput());
+        String nameOfItemToBeRemoved = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.REMOVE);
         ArrayList<Ingredient> matchingItems = ingredientList.findAllMatchingIngredients(nameOfItemToBeRemoved);
         handleRemovalOfItem(ui, ingredientList, nameOfItemToBeRemoved, matchingItems);
     }

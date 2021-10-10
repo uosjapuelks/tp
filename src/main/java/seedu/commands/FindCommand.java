@@ -1,5 +1,6 @@
 package seedu.commands;
 
+import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
@@ -19,8 +20,8 @@ public class FindCommand extends Command {
      * Executes the Find command.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
-        String searchTerm = parser.parseSearchTerm(ui.getCurrentUserInput());
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
+        String searchTerm = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.FIND);
         ArrayList<Ingredient> matchingIngredients = ingredientList.findAllMatchingIngredients(searchTerm);
         ui.printListOfMatchingIngredients(matchingIngredients);
     }
