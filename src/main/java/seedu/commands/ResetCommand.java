@@ -2,6 +2,7 @@ package seedu.commands;
 
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
+import seedu.notification.Notification;
 import seedu.ui.Ui;
 
 public class ResetCommand extends Command {

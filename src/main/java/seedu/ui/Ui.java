@@ -7,21 +7,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
-    public static final String NOTIFICATION = " ___________________________________________________\n"
-            + "|                                                |X||\n"
-            + "|      ___            _         __        ______    |\n"
-            + "|     / _ \\___ __ _  (_)__  ___/ /__ ____/ / / /    |\n"
-            + "|    / , _/ -_)  ' \\/ / _ \\/ _  / -_) __/_/_/_/     |\n"
-            + "|   /_/|_|\\__/_/_/_/_/_//_/\\_,_/\\__/_/ (_|_|_)      |\n"
-            + "|   =============================================   |\n"
-            + "|                                                   |\n"
-            + "|    \"If you don't take time to take care of your   |\n"
-            + "|    health now, you're gonna have to make time     |\n"
-            + "|    for feeling sick and tired later.\"             |\n"
-            + "|                                                   |\n"
-            + "|            Always remember to eat more            |\n"
-            + "|              Fruits and Vegetables!               |\n"
-            + "|___________________________________________________|";
     private final Scanner in;
     private static final String SEPARATOR_LINE = "__________________________________________";
     private static final String FOUR_SPACE_INDENTATION = "    ";
@@ -95,6 +80,7 @@ public class Ui {
 
     /**
      * Prints a reaction to user successfully removing an ingredient.
+     *
      * @param ingredient The ingredient the user has added.
      */
     public void printReactionToRemovingIngredient(Ingredient ingredient, int qty) {
@@ -107,6 +93,7 @@ public class Ui {
 
     /**
      * Returns the item the user wants to remove from Fridget.
+     *
      * @param matchingItems The list of items which match the user's search term.
      * @return The item that the user wants to remove.
      * @throws FridgetException if the user types a wrong value (non-integer or outside of index of matchingItems)
@@ -303,10 +290,4 @@ public class Ui {
         printSeparatorLine();
         printLine("Ingredient list has been reset successfully.");
     }
-
-    public void printNotificationMessage() {
-        printLine(NOTIFICATION);
-        printSeparatorLine();
-    }
-
 }
