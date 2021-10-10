@@ -28,8 +28,16 @@ public class IngredientList {
         this.ingredientList.add(ingredient);
     }
 
-    public void removeIngredient(Ingredient ingredient) {
-        ingredientList.remove(ingredient);
+    /**
+     * Removes an ingredient from the ingredient list.
+     * @param ingredient Ingredient to be removed.
+     */
+    public void removeIngredient(Ingredient ingredient, int qty) {
+        if (ingredient.getQuantity() == qty) {
+            ingredientList.remove(ingredient);
+            return;
+        }
+        ingredient.removeQuantity(qty);
     }
 
     /**
