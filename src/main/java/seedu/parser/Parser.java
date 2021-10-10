@@ -2,12 +2,13 @@ package seedu.parser;
 
 import seedu.commands.AddCommand;
 import seedu.commands.Command;
-import seedu.commands.ExitCommand;
-import seedu.commands.FindCommand;
-import seedu.commands.HelpCommand;
 import seedu.commands.ListCommand;
 import seedu.commands.RemoveCommand;
 import seedu.commands.ResetCommand;
+import seedu.commands.ExpiringCommand;
+import seedu.commands.HelpCommand;
+import seedu.commands.ExitCommand;
+import seedu.commands.FindCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -38,6 +39,8 @@ public class Parser {
             return new RemoveCommand();
         case "list":
             return new ListCommand();
+        case "expiring":
+            return new ExpiringCommand();
         case "exit":
             return new ExitCommand();
         case "help":
