@@ -27,7 +27,7 @@ public class IngredientList {
             }
         }
 
-        this.ingredientList.add(ingredient);
+        ingredientList.add(ingredient);
         return 1;
     }
 
