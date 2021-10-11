@@ -183,8 +183,7 @@ public class Ui {
      * @param listOfIngredients The list of ingredients of all items in fridget.
      */
     public void printListMessage(ArrayList<Ingredient> listOfIngredients, String sortType) {
-        String listMessage = "Here are the list of items in your fridge:\n";
-        listMessage += sortTypeMessage(sortType);
+        String listMessage = sortTypeMessage(sortType);
         printLine(listMessage);
         printListOfIngredients(listOfIngredients, true);
     }
@@ -198,11 +197,11 @@ public class Ui {
     public String sortTypeMessage(String sortType) {
         switch (sortType) {
         case "e":
-            return ("< Listing earliest [Expiry Date] first >");
+            return ("List sorted by expiry date:");
         case "r":
-            return ("< Listing Most Recently Added items last >");
+            return ("List sorted by how old add is:");
         default:
-            return ("< Listing items in Alphabetical order >");
+            return ("List sorted by item name:");
         }
     }
 
