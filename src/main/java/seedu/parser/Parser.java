@@ -60,6 +60,15 @@ public class Parser {
         case "reset":
             return new ResetCommand();
         default:
+            assert !userCommand.equalsIgnoreCase("add");
+            assert !userCommand.equalsIgnoreCase("remove");
+            assert !userCommand.equalsIgnoreCase("list");
+            assert !userCommand.equalsIgnoreCase("expiring");
+            assert !userCommand.equalsIgnoreCase("exit");
+            assert !userCommand.equalsIgnoreCase("help");
+            assert !userCommand.equalsIgnoreCase("find");
+            assert !userCommand.equalsIgnoreCase("notifs");
+            assert !userCommand.equalsIgnoreCase("reset");
             throw new FridgetException("No command found!\n"
                     + "Enter help if you need the list of available commands.");
         }
@@ -73,6 +82,7 @@ public class Parser {
      */
     private String[] splitUserInput(String userInput) {
         String[] splitInput = userInput.trim().split(" ", 2);
+        assert splitInput.length >= 1;
         return splitInput;
     }
 
@@ -165,8 +175,10 @@ public class Parser {
     public Ingredient parseIngredientForAdding(String userInput) throws FridgetException {
         String[] processedInput = processInput(userInput);
         String ingredientName = extractDescription(processedInput, CommandType.ADD);
+        assert !ingredientName.isEmpty();
 
         String expiryString = extractExpiry(processedInput);
+        assert !expiryString.isEmpty();
         LocalDate expiryDate = LocalDate.parse(expiryString);
 
         return new Ingredient(ingredientName, expiryDate);
@@ -184,6 +196,7 @@ public class Parser {
             return "default";
         }
         String sortType = processedInput[1].substring(processedInput[1].indexOf("-") + 1).trim();
+        assert !sortType.isEmpty();
         return sortType;
     }
 
@@ -196,6 +209,7 @@ public class Parser {
     public String parseSearchTerm(String userInput, CommandType commandType) throws FridgetException {
         String[] processedInput = processInput(userInput);
         String searchTerm = extractDescription(processedInput, CommandType.REMOVE);
+        assert !searchTerm.isEmpty();
         return searchTerm;
     }
 }
