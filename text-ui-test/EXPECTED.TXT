@@ -144,7 +144,7 @@ List sorted by how old add is:
     3. JimBeam | Qty: 1 | [32m03 Oct 2030[0m
 __________________________________________
 __________________________________________
-Items/ingredients expiring within a week
+Expiring/Expired Items:
     1. fish Cake | Qty: 1 | [31m12 Dec 2010[0m
 __________________________________________
 __________________________________________
