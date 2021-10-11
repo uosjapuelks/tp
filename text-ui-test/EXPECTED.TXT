@@ -79,13 +79,22 @@ You have successfully added:
 __________________________________________
 __________________________________________
 You have successfully added:
+<<<<<<< HEAD
     chicken | Qty: 1 | [31m10 Oct 2000[0m
+=======
+    chicken | Qty: 1 | [31m10 Oct 2021[0m
+>>>>>>> 06260c1f00e54e55b421eecc2e4b30d90d248ea4
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
 < Listing items in Alphabetical order >
+<<<<<<< HEAD
     1. burger | Qty: 1 | [32m23 Sep 2030[0m
     2. chicken | Qty: 1 | [31m10 Oct 2000[0m
+=======
+    1. burger | Qty: 1 | [31m23 Sep 2021[0m
+    2. chicken | Qty: 1 | [31m10 Oct 2021[0m
+>>>>>>> 06260c1f00e54e55b421eecc2e4b30d90d248ea4
 __________________________________________
 __________________________________________
 These are the matching ingredients:
@@ -93,12 +102,21 @@ These are the matching ingredients:
 __________________________________________
 __________________________________________
 These are the matching ingredients:
+<<<<<<< HEAD
     1. burger | Qty: 1 | [32m23 Sep 2030[0m
     2. chicken | Qty: 1 | [31m10 Oct 2000[0m
 __________________________________________
 __________________________________________
 These are the matching ingredients:
     1. chicken | Qty: 1 | [31m10 Oct 2000[0m
+=======
+    1. burger | Qty: 1 | [31m23 Sep 2021[0m
+    2. chicken | Qty: 1 | [31m10 Oct 2021[0m
+__________________________________________
+__________________________________________
+These are the matching ingredients:
+    1. chicken | Qty: 1 | [31m10 Oct 2021[0m
+>>>>>>> 06260c1f00e54e55b421eecc2e4b30d90d248ea4
 __________________________________________
 __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
@@ -108,8 +126,13 @@ Abort reset command.
 __________________________________________
 __________________________________________
 These are the matching ingredients:
+<<<<<<< HEAD
     1. burger | Qty: 1 | [32m23 Sep 2030[0m
     2. chicken | Qty: 1 | [31m10 Oct 2000[0m
+=======
+    1. burger | Qty: 1 | [31m23 Sep 2021[0m
+    2. chicken | Qty: 1 | [31m10 Oct 2021[0m
+>>>>>>> 06260c1f00e54e55b421eecc2e4b30d90d248ea4
 __________________________________________
 __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
@@ -122,7 +145,11 @@ No matching tasks found!
 __________________________________________
 __________________________________________
 You have successfully added:
+<<<<<<< HEAD
     yoghurt cake | Qty: 1 | [32m15 Oct 2030[0m
+=======
+    yoghurt cake | Qty: 1 | [32m15 Oct 2025[0m
+>>>>>>> 06260c1f00e54e55b421eecc2e4b30d90d248ea4
 __________________________________________
 __________________________________________
 You have successfully added:
@@ -135,13 +162,20 @@ __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
 < Listing earliest [Expiry Date] first >
+<<<<<<< HEAD
     1. fish Cake | Qty: 1 | [31m12 Dec 2010[0m
     2. JimBeam | Qty: 1 | [32m03 Oct 2030[0m
     3. yoghurt cake | Qty: 1 | [32m15 Oct 2030[0m
+=======
+    1. fish Cake | Qty: 1 | [31m12 Dec 2020[0m
+    2. JimBeam | Qty: 1 | [32m03 Oct 2025[0m
+    3. yoghurt cake | Qty: 1 | [32m15 Oct 2025[0m
+>>>>>>> 06260c1f00e54e55b421eecc2e4b30d90d248ea4
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
 < Listing Most Recently Added items last >
+<<<<<<< HEAD
     1. yoghurt cake | Qty: 1 | [32m15 Oct 2030[0m
     2. fish Cake | Qty: 1 | [31m12 Dec 2010[0m
     3. JimBeam | Qty: 1 | [32m03 Oct 2030[0m
@@ -149,13 +183,28 @@ __________________________________________
 __________________________________________
 Items/ingredients expiring within a week
     1. fish Cake | Qty: 1 | [31m12 Dec 2010[0m
+=======
+    1. yoghurt cake | Qty: 1 | [32m15 Oct 2025[0m
+    2. fish Cake | Qty: 1 | [31m12 Dec 2020[0m
+    3. JimBeam | Qty: 1 | [32m03 Oct 2025[0m
+__________________________________________
+__________________________________________
+Items/ingredients expiring within a week
+    1. fish Cake | Qty: 1 | [31m12 Dec 2020[0m
+>>>>>>> 06260c1f00e54e55b421eecc2e4b30d90d248ea4
 __________________________________________
 __________________________________________
 Here are the list of items in your fridge:
 < Listing items in Alphabetical order >
+<<<<<<< HEAD
     1. fish Cake | Qty: 1 | [31m12 Dec 2010[0m
     2. JimBeam | Qty: 1 | [32m03 Oct 2030[0m
     3. yoghurt cake | Qty: 1 | [32m15 Oct 2030[0m
+=======
+    1. fish Cake | Qty: 1 | [31m12 Dec 2020[0m
+    2. JimBeam | Qty: 1 | [32m03 Oct 2025[0m
+    3. yoghurt cake | Qty: 1 | [32m15 Oct 2025[0m
+>>>>>>> 06260c1f00e54e55b421eecc2e4b30d90d248ea4
 __________________________________________
 __________________________________________
 You have successfully added:
