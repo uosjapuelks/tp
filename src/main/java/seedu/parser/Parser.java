@@ -16,6 +16,13 @@ import seedu.data.ingredient.Ingredient;
 import java.time.LocalDate;
 
 public class Parser {
+
+    public enum CommandType {
+        ADD,
+        REMOVE,
+        FIND
+    }
+
     /**
      * Constructor for parser.
      */
@@ -119,25 +126,45 @@ public class Parser {
      * @param processedInput userInput after processInput().
      * @return name or item description.
      */
-    private String extractDescription(String[] processedInput) throws FridgetException {
-        String addFormat = " Try: [add] <ITEM_NAME /<YYY-MM-DD>";
-        if (processedInput.length < 2) {
-            throw new FridgetException("Missing Item name." + addFormat);
-        } else if (!processedInput[1].contains("/")) {
-            throw new FridgetException("Missing Expiry Date." + addFormat);
+    private String extractDescription(String[] processedInput, CommandType commandType) throws FridgetException {
+        String correctFormat;
+        switch (commandType) {
+        case ADD:
+            correctFormat = " Try: [add] <ITEM_NAME> /<YYYY-MM-DD>";
+            break;
+        case REMOVE:
+            correctFormat = " Try: [remove] <ITEM_NAME>";
+            break;
+        case FIND:
+            correctFormat = " Try: [find] <ITEM_NAME>";
+            break;
+        default:
+            correctFormat = "";
+            break;
         }
-        return processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
+
+        if (processedInput.length < 2) {
+            throw new FridgetException("Missing Item name." + correctFormat);
+        } else if (!processedInput[1].contains("/") && commandType == CommandType.ADD) {
+            throw new FridgetException("Missing Expiry Date." + correctFormat);
+        }
+
+        if (commandType == CommandType.ADD) {
+            return processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
+        } else {
+            return processedInput[1].trim();
+        }
+
     }
 
     /**
      * Returns an Ingredient based on user input.
-     *
      * @param userInput The input from the user in this manner - "add burger /2021-09-23".
      * @return An ingredient.
      */
     public Ingredient parseIngredientForAdding(String userInput) throws FridgetException {
         String[] processedInput = processInput(userInput);
-        String ingredientName = extractDescription(processedInput);
+        String ingredientName = extractDescription(processedInput, CommandType.ADD);
 
         String expiryString = extractExpiry(processedInput);
         LocalDate expiryDate = LocalDate.parse(expiryString);
@@ -166,9 +193,9 @@ public class Parser {
      * @param userInput The input from the user in this manner - "find burger".
      * @return The search term.
      */
-    public String parseSearchTerm(String userInput) {
+    public String parseSearchTerm(String userInput, CommandType commandType) throws FridgetException {
         String[] processedInput = processInput(userInput);
-        String searchTerm = processedInput[1];
+        String searchTerm = extractDescription(processedInput, CommandType.REMOVE);
         return searchTerm;
     }
 }
