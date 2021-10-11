@@ -44,7 +44,6 @@ public class Storage {
             loadFile();
         } catch (IOException e) {
             logger.log(Level.WARNING, "in storage, unable to load existing file");
-            System.out.println("Error while trying to load existing file.");
         }
     }
 
