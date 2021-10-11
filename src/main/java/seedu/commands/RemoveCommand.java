@@ -23,6 +23,9 @@ public class RemoveCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
         String nameOfItemToBeRemoved = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.REMOVE);
+        if (nameOfItemToBeRemoved.contains(" | ") | nameOfItemToBeRemoved.contains("/")) {
+            throw new FridgetException("You are not able to use '/' and '|' in ingredient names.");
+        }
         ArrayList<Ingredient> matchingItems = ingredientList.findAllMatchingIngredients(nameOfItemToBeRemoved);
         handleRemovalOfItem(ui, ingredientList, nameOfItemToBeRemoved, matchingItems);
     }
