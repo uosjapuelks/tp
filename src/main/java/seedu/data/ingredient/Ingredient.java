@@ -65,12 +65,23 @@ public class Ingredient {
     /**
      * String is represented as name + quantity + Expiry date that is colored depending on expiry status.
      *
-     * @return Ingredient Name and Expiry that is colored.
+     * @return Ingredient Name, quantity and Expiry that is colored.
      */
     @Override
     public String toString() {
         String coloredExpiry = getColoredExpiryDate();
         return ingredientName + " | Qty: " + quantity + " | " + coloredExpiry;
+    }
+
+    /**
+     * String used when adding items already existing in the list.
+     *
+     * @param qty Total quantity of item in the list.
+     * @return Ingredient Name, change in quantity and Expiry that is colored.
+     */
+    public String addExistingToString(int qty) {
+        assert qty > 1 : "Unable to perform this operation as quantity is less than or equal to 1";
+        return ingredientName + " | Qty: " + (qty - 1) + "->" + qty + " | " + getColoredExpiryDate();
     }
 
     /**

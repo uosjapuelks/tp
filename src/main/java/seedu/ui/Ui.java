@@ -55,7 +55,7 @@ public class Ui {
     }
 
     /**
-     * Prints a reaction to user successfully adding an ingredient.
+     * Prints a reaction to user after successfully adding an ingredient.
      *
      * @param ingredient The ingredient the user has added.
      */
@@ -63,6 +63,18 @@ public class Ui {
         String acknowledgeAdd = "You have successfully added:\n";
         String addReaction = acknowledgeAdd
                 + FOUR_SPACE_INDENTATION + ingredient;
+        printLine(addReaction);
+    }
+
+    /**
+     * Prints a reaction to user after successfully adding an ingredient that has existed in the list.
+     *
+     * @param ingredient The ingredient the user had added.
+     */
+    public void printReactionToAddingExistingIngredient(Ingredient ingredient, int qty) {
+        String acknowledgeAdd = "You have successfully increased the quantity of:\n";
+        String ingredientString = ingredient.addExistingToString(qty);
+        String addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + ingredientString;
         printLine(addReaction);
     }
 
@@ -183,8 +195,7 @@ public class Ui {
      * @param listOfIngredients The list of ingredients of all items in fridget.
      */
     public void printListMessage(ArrayList<Ingredient> listOfIngredients, String sortType) {
-        String listMessage = "Here are the list of items in your fridge:\n";
-        listMessage += sortTypeMessage(sortType);
+        String listMessage = sortTypeMessage(sortType);
         printLine(listMessage);
         printListOfIngredients(listOfIngredients, true);
     }
@@ -198,11 +209,11 @@ public class Ui {
     public String sortTypeMessage(String sortType) {
         switch (sortType) {
         case "e":
-            return ("< Listing earliest [Expiry Date] first >");
+            return ("List sorted by expiry date:");
         case "r":
-            return ("< Listing Most Recently Added items last >");
+            return ("List sorted by earliest added:");
         default:
-            return ("< Listing items in Alphabetical order >");
+            return ("List sorted by item name:");
         }
     }
 
@@ -228,7 +239,7 @@ public class Ui {
      * @param listOfIngredients list of Ingredients nearing expiry only.
      */
     public void printExpiringMessage(ArrayList<Ingredient> listOfIngredients) {
-        String expiringMessage = "Items/ingredients expiring within a week";
+        String expiringMessage = "Expiring/Expired Items:";
         printLine(expiringMessage);
         printExpiringIngredients(listOfIngredients);
     }
