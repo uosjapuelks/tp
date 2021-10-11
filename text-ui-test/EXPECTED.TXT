@@ -138,7 +138,7 @@ List sorted by expiry date:
     3. yoghurt cake | Qty: 1 | [32m15 Oct 2030[0m
 __________________________________________
 __________________________________________
-List sorted by how old add is:
+List sorted by earliest added:
     1. yoghurt cake | Qty: 1 | [32m15 Oct 2030[0m
     2. fish Cake | Qty: 1 | [31m12 Dec 2010[0m
     3. JimBeam | Qty: 1 | [32m03 Oct 2030[0m

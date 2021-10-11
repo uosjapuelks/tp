@@ -199,7 +199,7 @@ public class Ui {
         case "e":
             return ("List sorted by expiry date:");
         case "r":
-            return ("List sorted by how old add is:");
+            return ("List sorted by earliest added:");
         default:
             return ("List sorted by item name:");
         }
