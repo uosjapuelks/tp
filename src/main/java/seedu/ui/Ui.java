@@ -227,7 +227,7 @@ public class Ui {
      * @param listOfIngredients list of Ingredients nearing expiry only.
      */
     public void printExpiringMessage(ArrayList<Ingredient> listOfIngredients) {
-        String expiringMessage = "Items/ingredients expiring within a week";
+        String expiringMessage = "Expiring/Expired Items:";
         printLine(expiringMessage);
         printExpiringIngredients(listOfIngredients);
     }
