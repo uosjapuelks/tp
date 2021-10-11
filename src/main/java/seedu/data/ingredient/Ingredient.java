@@ -75,6 +75,7 @@ public class Ingredient {
 
     /**
      * String used when adding items already existing in the list.
+     *
      * @param qty Total quantity of item in the list.
      * @return Ingredient Name, change in quantity and Expiry that is colored.
      */
