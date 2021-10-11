@@ -115,7 +115,7 @@ public class Parser {
         }
         if (expiry.equals("")) {
             String addFormat = " Try: [add] <ITEM_NAME> /<YYYY-MM-DD>";
-            throw new FridgetException("Missing Expiry Date." + addFormat);
+            throw new FridgetException("Missing expiry date." + addFormat);
         }
         return expiry;
     }
@@ -144,17 +144,20 @@ public class Parser {
         }
 
         if (processedInput.length < 2) {
-            throw new FridgetException("Missing Item name." + correctFormat);
+            throw new FridgetException("Missing item name." + correctFormat);
         } else if (!processedInput[1].contains("/") && commandType == CommandType.ADD) {
-            throw new FridgetException("Missing Expiry Date." + correctFormat);
+            throw new FridgetException("Missing expiry date." + correctFormat);
         }
 
         if (commandType == CommandType.ADD) {
-            return processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
+            String description = processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
+            if (!description.equals("")) {
+                return description;
+            }
+            throw new FridgetException("Missing item name." + correctFormat);
         } else {
             return processedInput[1].trim();
         }
-
     }
 
     /**

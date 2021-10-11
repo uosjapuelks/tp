@@ -16,22 +16,25 @@ public class IngredientList {
      * Adds an ingredient to ingredientList.
      *
      * @param ingredient The Ingredient to be added.
+     * @return Updated quantity of the ingredient added in the list.
      */
-    public void addIngredient(Ingredient ingredient) {
+    public int addIngredient(Ingredient ingredient) {
         assert ingredient != null : "Ingredient must not be null!";
         for (Ingredient ingredient1 : ingredientList) {
             if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())
                     && ingredient1.getExpiryDate().equals(ingredient.getExpiryDate())) {
                 ingredient1.addQuantity(1);
-                return;
+                return ingredient1.getQuantity();
             }
         }
 
-        this.ingredientList.add(ingredient);
+        ingredientList.add(ingredient);
+        return 1;
     }
 
     /**
      * Removes an ingredient from the ingredient list.
+     *
      * @param ingredient Ingredient to be removed.
      */
     public void removeIngredient(Ingredient ingredient, int qty) {
@@ -55,7 +58,12 @@ public class IngredientList {
      * @param byDate toggle to sort by name or expiry.
      * @return sorted ingredient ArrayList.
      */
-    public ArrayList<Ingredient> sortIngredient(boolean byDate) {
+    public ArrayList<Ingredient> sortIngredient(boolean byDate) throws FridgetException {
+        if (ingredientList.isEmpty()) {
+            String emptyListMessage = "You currently have nothing in your fridge.\n"
+                    + "Input \"help\" to get started!";
+            throw new FridgetException(emptyListMessage);
+        }
         ArrayList<Ingredient> sortedList = new ArrayList<Ingredient>(ingredientList);
         sortedList.sort((byDate ? Ingredient.IngExpiryComparator : Ingredient.IngNameComparator));
         return sortedList;
