@@ -130,7 +130,7 @@ public class Parser {
         String correctFormat;
         switch (commandType) {
         case ADD:
-            correctFormat = " Try: [add] <ITEM_NAME> /<YYY-MM-DD>";
+            correctFormat = " Try: [add] <ITEM_NAME> /<YYYY-MM-DD>";
             break;
         case REMOVE:
             correctFormat = " Try: [remove] <ITEM_NAME>";
