@@ -6,7 +6,9 @@ import seedu.data.ingredient.Ingredient;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IngredientTest {
 
@@ -42,7 +44,8 @@ class IngredientTest {
     @Test
     void getColoredExpiryDate_ExpiringIngredient_expectOrangeFormattedExpiry() {
         Ingredient expiringDummy = new Ingredient(DUMMY_NAME, TOMORROW);
-        String expected = String.format("\u001B[33m%s\u001B[0m", TOMORROW.format(DateTimeFormatter.ofPattern("dd MMM yyyy")));
+        String date = TOMORROW.format(DateTimeFormatter.ofPattern("dd MMM yyyy"));
+        String expected = String.format("\u001B[33m%s\u001B[0m", date);
         assertEquals(expected, expiringDummy.getColoredExpiryDate());
     }
 
@@ -61,7 +64,7 @@ class IngredientTest {
     }
 
     @Test
-    void IngNameComparator_ingredientAB_expectAscendingTrue() {
+    void ingNameComparator_ingredientAB_expectAscendingTrue() {
         Ingredient a = new Ingredient("A", TOMORROW);
         Ingredient b = new Ingredient("B", YESTERDAY);
         int expected = "A".compareTo("B");
@@ -70,7 +73,7 @@ class IngredientTest {
     }
 
     @Test
-    void IngExpiryComparator_compareFromAtoB_expectDescendingTrue() {
+    void ingExpiryComparator_compareFromAToB_expectDescendingTrue() {
         Ingredient a = new Ingredient("A", TOMORROW);
         Ingredient b = new Ingredient("B", YESTERDAY);
         int expected = TOMORROW.compareTo(YESTERDAY);
