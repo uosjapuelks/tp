@@ -51,7 +51,12 @@ public class IngredientList {
      * @param byDate toggle to sort by name or expiry.
      * @return sorted ingredient ArrayList.
      */
-    public ArrayList<Ingredient> sortIngredient(boolean byDate) {
+    public ArrayList<Ingredient> sortIngredient(boolean byDate) throws FridgetException{
+        if (ingredientList.isEmpty()) {
+            String emptyListMessage = "You currently have nothing in your fridge.\n"
+                    + "Input \"help\" to get started!";
+            throw new FridgetException(emptyListMessage);
+        }
         ArrayList<Ingredient> sortedList = new ArrayList<Ingredient>(ingredientList);
         sortedList.sort((byDate ? Ingredient.IngExpiryComparator : Ingredient.IngNameComparator));
         return sortedList;
