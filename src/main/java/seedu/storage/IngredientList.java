@@ -42,6 +42,7 @@ public class IngredientList {
     }
 
     public boolean containsIngredient(Ingredient ingredient) {
+        assert ingredient != null : "Ingredient must not be null!";
         return ingredientList.contains(ingredient);
     }
 
@@ -63,6 +64,7 @@ public class IngredientList {
      * @return List of ingredients.
      */
     public ArrayList<Ingredient> getIngredientList(String sortType) throws FridgetException {
+        assert sortType != null : "Sort type must not be null!";
         switch (sortType.toLowerCase()) {
         case "e":
             return sortIngredient(true);
@@ -81,6 +83,7 @@ public class IngredientList {
      * @param searchTerm The search term used to find matching Ingredients.
      */
     public ArrayList<Ingredient> findAllMatchingIngredients(String searchTerm) {
+        assert searchTerm != null : "Search term must not be null!";
         ArrayList<Ingredient> matchingIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredientList) {
             if (ingredient.getIngredientName().contains(searchTerm)) {
