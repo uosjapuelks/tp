@@ -11,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static java.lang.Integer.parseInt;
 
@@ -21,6 +23,7 @@ public class Storage {
     private final String listFilePath;
     private final String logFilePath;
 
+    private static final Logger logger = Logger.getLogger("logger");
     private static final String REGEX_DATA_SEPARATOR = " \\| ";
 
     /**
@@ -40,7 +43,7 @@ public class Storage {
         try {
             loadFile();
         } catch (IOException e) {
-            System.out.println("Error while trying to load existing file.");
+            logger.log(Level.WARNING, "in storage, unable to load existing file");
         }
     }
 
@@ -50,7 +53,7 @@ public class Storage {
      *
      * @throws IOException The error thrown from file IO operations.
      */
-    private void loadFile() throws IOException {
+    protected void loadFile() throws IOException {
         File dataDirectory = new File(fileDirectory);
         File listFile = new File(listFilePath);
         File logFile = new File(logFilePath);
@@ -78,11 +81,11 @@ public class Storage {
      *
      * @param savedDateTimeAndStatus String containing date, time and status.
      */
-    private void addSavedNotification(String savedDateTimeAndStatus) {
+    protected void addSavedNotification(String savedDateTimeAndStatus) {
         String[] splitString = savedDateTimeAndStatus.split(REGEX_DATA_SEPARATOR);
         notification.setDateAndTime(LocalDateTime.parse(splitString[0],
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-        notification.setNotificationStatus(!splitString[1].equals("no"));
+        Notification.setNotificationStatus(!splitString[1].equals("no"));
     }
 
     /**
@@ -90,7 +93,7 @@ public class Storage {
      *
      * @param listDataComponents The details of the ingredient.
      */
-    private void addSavedIngredient(String[] listDataComponents) {
+    protected void addSavedIngredient(String[] listDataComponents) {
         int quantity = parseInt(listDataComponents[1].substring(4).trim());
         LocalDate expiry = LocalDate.parse(listDataComponents[2].trim());
         Ingredient savedIngredient = new Ingredient(listDataComponents[0], expiry, quantity);
@@ -106,6 +109,7 @@ public class Storage {
     public void updateListFile(ArrayList<Ingredient> ingredients) throws IOException {
         FileWriter fileWriter = new FileWriter(listFilePath);
         for (Ingredient ingredient : ingredients) {
+            assert ingredient != null : "Ingredient must not be null!";
             fileWriter.write(ingredient.saveFormat());
             fileWriter.write(System.lineSeparator());
         }
@@ -120,6 +124,7 @@ public class Storage {
      */
     public void updateLogFile(Notification notification) throws IOException {
         FileWriter fileWriter = new FileWriter(logFilePath);
+        assert notification != null : "Notification must not be null!";
         fileWriter.write(notification.toString());
         fileWriter.close();
     }
