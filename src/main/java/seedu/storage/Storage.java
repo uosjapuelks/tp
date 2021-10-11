@@ -11,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static java.lang.Integer.parseInt;
 
@@ -21,6 +23,7 @@ public class Storage {
     private final String listFilePath;
     private final String logFilePath;
 
+    private static final Logger logger = Logger.getLogger("logger");
     private static final String REGEX_DATA_SEPARATOR = " \\| ";
 
     /**
@@ -40,6 +43,7 @@ public class Storage {
         try {
             loadFile();
         } catch (IOException e) {
+            logger.log(Level.WARNING, "STORAGE: unable to load existing file");
             System.out.println("Error while trying to load existing file.");
         }
     }

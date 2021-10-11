@@ -34,3 +34,4 @@ public class StorageTest {
 
     }
 }
+        assert notification != null : "notification must not be null";
