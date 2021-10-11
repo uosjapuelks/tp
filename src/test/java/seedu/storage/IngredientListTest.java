@@ -46,7 +46,7 @@ class IngredientListTest {
     }
 
     @Test
-    void sortIngredient_sortByDate_expectCToBToA() {
+    void sortIngredient_sortByDate_expectCToBToA() throws FridgetException {
         fillExpectedList(itemCExpireYesterday, itemBExpireToday, itemAExpireTomorrow);
         try {
             assertEquals(expectedList, filledTestList().sortIngredient(true));
@@ -56,7 +56,7 @@ class IngredientListTest {
     }
 
     @Test
-    void sortIngredient_sortByName_expectAToBToC() {
+    void sortIngredient_sortByName_expectAToBToC() throws FridgetException {
         fillExpectedList(itemAExpireTomorrow, itemBExpireToday, itemCExpireYesterday);
         try {
             assertEquals(expectedList, filledTestList().sortIngredient(false));
