@@ -53,8 +53,46 @@ burger | 23 Sep 2021
 ____________________________________________________
 ```
 
+### Remove an item from Fridget: `remove`
+Remove an item from Fridget's ledger.
 
-### Add an item into Fridget: `list`
+Format: remove <ITEM_NAME>
+
+* The `ITEM_NAME` can be in a natural language format.
+* The `ITEM_NAME` should be the same or be a subset of the name of the item you are trying to delete.
+
+Example of usage:
+
+<ins>If there is only one item with a name containing `ITEM_NAME`</ins>
+```markdown
+userInput: remove burger
+__________________________________________
+You have successfully added:
+    burger | 23 Sep 2021
+__________________________________________
+You have successfully removed:
+    burger | Qty: 1 | 11 Nov 2021
+__________________________________________
+```
+
+<ins>If there are multiple items with a name containing `ITEM_NAME`</ins>
+```markdown
+__________________________________________
+userInput: remove burger
+__________________________________________
+Which item would you like to be removed? Type the index of the item below.
+    1. burger | Qty: 1 | 11 Nov 2021
+    2. burger | Qty: 1 | 23 Sep 2021
+__________________________________________
+userInput: 1
+__________________________________________
+You have successfully removed:
+    burger | Qty: 1 | 11 Nov 2021
+__________________________________________
+```
+
+
+### List all items in Fridget: `list`
 List items in Fridget's ledger.
 
 Format: list -<OPTIONAL_SortType>
@@ -86,7 +124,7 @@ Here are the list of items in your fridge:
 ____________________________________________________
 ```
 
-### Add an item into Fridget: `expiring`
+### Lists all items expiring soon: `expiring`
 Lists expired and expiring items that is in Fridget's Ledger.
 
 Format: expiring
