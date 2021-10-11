@@ -31,6 +31,7 @@ public class IngredientList {
 
     /**
      * Removes an ingredient from the ingredient list.
+     *
      * @param ingredient Ingredient to be removed.
      */
     public void removeIngredient(Ingredient ingredient, int qty) {
@@ -51,7 +52,7 @@ public class IngredientList {
      * @param byDate toggle to sort by name or expiry.
      * @return sorted ingredient ArrayList.
      */
-    public ArrayList<Ingredient> sortIngredient(boolean byDate) throws FridgetException{
+    public ArrayList<Ingredient> sortIngredient(boolean byDate) throws FridgetException {
         if (ingredientList.isEmpty()) {
             String emptyListMessage = "You currently have nothing in your fridge.\n"
                     + "Input \"help\" to get started!";

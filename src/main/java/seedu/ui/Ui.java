@@ -56,6 +56,7 @@ public class Ui {
 
     /**
      * Prints a reaction to user successfully adding an ingredient.
+     *
      * @param ingredient The ingredient the user has added.
      */
     public void printReactionToAddingIngredient(Ingredient ingredient) {
@@ -100,7 +101,7 @@ public class Ui {
      */
     public Ingredient getItemToBeRemoved(ArrayList<Ingredient> matchingItems) throws FridgetException {
         printLine("Which item would you like to be removed? Type the index of the item below.");
-        printListOfIngredients(matchingItems,true);
+        printListOfIngredients(matchingItems, true);
         printSeparatorLine();
 
         String userInput = readUserInput();
