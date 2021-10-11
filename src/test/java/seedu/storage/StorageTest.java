@@ -9,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StorageTest {
-    private static final String FILE_PATH_LIST = "config/testSavedList.txt";
-    private static final String FILE_PATH_LOGS = "config/testSavedLogs.txt";
+    private static final String FILE_PATH_LIST = "fridgetTestData/testSavedList.txt";
+    private static final String FILE_PATH_LOGS = "fridgetTestData/testSavedLogs.txt";
     private static final String REGEX_DATA_SEPARATOR = " \\| ";
 
     IngredientList ingredientList = new IngredientList();
