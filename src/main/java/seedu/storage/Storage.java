@@ -43,7 +43,7 @@ public class Storage {
         try {
             loadFile();
         } catch (IOException e) {
-            logger.log(Level.WARNING, "STORAGE: unable to load existing file");
+            logger.log(Level.WARNING, "in storage, unable to load existing file");
             System.out.println("Error while trying to load existing file.");
         }
     }
@@ -110,7 +110,7 @@ public class Storage {
     public void updateListFile(ArrayList<Ingredient> ingredients) throws IOException {
         FileWriter fileWriter = new FileWriter(listFilePath);
         for (Ingredient ingredient : ingredients) {
-            assert ingredient != null : "ingredient must not be null";
+            assert ingredient != null : "Ingredient must not be null!";
             fileWriter.write(ingredient.saveFormat());
             fileWriter.write(System.lineSeparator());
         }
@@ -125,7 +125,7 @@ public class Storage {
      */
     public void updateLogFile(Notification notification) throws IOException {
         FileWriter fileWriter = new FileWriter(logFilePath);
-        assert notification != null : "notification must not be null";
+        assert notification != null : "Notification must not be null!";
         fileWriter.write(notification.toString());
         fileWriter.close();
     }
