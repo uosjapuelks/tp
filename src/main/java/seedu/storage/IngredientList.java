@@ -16,17 +16,19 @@ public class IngredientList {
      * Adds an ingredient to ingredientList.
      *
      * @param ingredient The Ingredient to be added.
+     * @return Updated quantity of the ingredient added in the list.
      */
-    public void addIngredient(Ingredient ingredient) {
+    public int addIngredient(Ingredient ingredient) {
         for (Ingredient ingredient1 : ingredientList) {
             if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())
                     && ingredient1.getExpiryDate().equals(ingredient.getExpiryDate())) {
                 ingredient1.addQuantity(1);
-                return;
+                return ingredient1.getQuantity();
             }
         }
 
         this.ingredientList.add(ingredient);
+        return 1;
     }
 
     /**
