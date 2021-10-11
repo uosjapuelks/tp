@@ -21,18 +21,16 @@ Fridget is a <strong> desktop app for managing items in the fridge, built to be 
 
 ## Features 
 
-Feature | Command | Command Format |
------------|----------|-----------------
-Add an item into Fridget |`add` | add <item_name> /<expiry_date>
-Remove an item from Fridget | `remove` | remove <item_name>
-Get help | `help` | help
-Reset all items | `reset` | reset
-List in Alphabetical order |`list` | list
-List by expiry |`list` | list -e
-List least recent | `list` | list -r
-expiring | `expiring` | expiring 
-See notifications | `notifs` | notifs
-Exit Fridget | `exit` | exit
+Feature | Command Format |
+-----------|-----------------
+Add an item | `add <ITEM_NAME> /<EXPIRY_DATE>`
+Remove an item | `remove <ITEM_NAME>`
+Get help | `help`
+Reset all items | `reset`
+List all items | `list -<OPTIONAL_SORT_TYPE>`
+Find expiring items | `expiring`  
+See notifications | `notifs`
+Exit Fridget | `exit`
 
 
 ### Add an item into Fridget: `add`
@@ -46,29 +44,34 @@ Format: add <ITEM_NAME> /<EXPIRY_DATE>
 Example of usage:
 
 ```markdown
-userInput: add burger /2021-09-23
-____________________________________________________
+userInput: add burger /2021-11-11
+__________________________________________
 You have successfully added:
-burger | 23 Sep 2021
-____________________________________________________
+    burger | Qty: 1 | 11 Nov 2021
+__________________________________________
+```
+
+```markdown
+userInput: add burger /2021-11-11
+__________________________________________
+You have successfully increased the quantity of:
+    burger | Qty: 1->2 | 11 Nov 2021
+__________________________________________
 ```
 
 ### Remove an item from Fridget: `remove`
-Remove an item from Fridget's ledger.
+Remove an item from Fridget.
 
 Format: remove <ITEM_NAME>
 
 * The `ITEM_NAME` can be in a natural language format.
-* The `ITEM_NAME` should be the same or be a subset of the name of the item you are trying to delete.
+* The `ITEM_NAME` should be the same or be a subset of the name of the item you are trying to remove.
 
 Example of usage:
 
 <ins>If there is only one item with a name containing `ITEM_NAME`</ins>
 ```markdown
 userInput: remove burger
-__________________________________________
-You have successfully added:
-    burger | 23 Sep 2021
 __________________________________________
 You have successfully removed:
     burger | Qty: 1 | 11 Nov 2021
@@ -113,9 +116,9 @@ __________________________________________
 
 
 ### List all items in Fridget: `list`
-List items in Fridget's ledger.
+List all items stored in Fridget.
 
-Format: list -<OPTIONAL_SortType>
+Format: list -<OPTIONAL_SORT_TYPE>
 
 * `list` Lists in Alphabetical order of the Item Name.
 * `list -e` Lists items in ascending order of Expiry Dates.
@@ -126,8 +129,7 @@ Example of usage:
 ```markdown
 userInput: list
 ____________________________________________________
-Here are the list of items in your fridge:
-< Listing items in Alphabetical order >
+List sorted by item name:
     1. fish Cake | Qty: 2 | 12 Dec 2020
     2. frozen duck | Qty: 1 | 10 Oct 2022
     3. Yoghurt cake | Qty: 1 | 15 Oct 2021
@@ -136,38 +138,45 @@ ____________________________________________________
 ```
 userInput: list -e
 ____________________________________________________
-Here are the list of items in your fridge:
-< Listing earliest [Expiry Date] first >
+List sorted by expiry date:
     1. fish Cake | Qty: 2 | 12 Dec 2020
     2. Yoghurt cake | Qty: 1 | 15 Oct 2021
     3. frozen duck | Qty: 1 | 10 Oct 2022
 ____________________________________________________
 ```
-
+```
+userInput: list -r
+__________________________________________
+List sorted by earliest added:
+    1. fish Cake | Qty: 2 | 12 Dec 2020
+    2. Yoghurt cake | Qty: 1 | 15 Oct 2021
+    3. frozen duck | Qty: 1 | 10 Oct 2022
+__________________________________________
+```
 ### Lists all items expiring soon: `expiring`
-Lists expired and expiring items that is in Fridget's Ledger.
+Lists all items that are expired or expiring. Items are considered to be expiring if the expiry date is less than 7 days away from today.
 
 Format: expiring
 
-* `expiring` Lists in Alphabetical order of the Item Name.
+* `expiring`
 
 Example of usage:
-(Assuming Today is 10 Oct 2021)
 
 ```markdown
 userInput: expiring
 ____________________________________________________
-Items/ingredients expired or expiring within a week
+Expiring/Expired Items:
     1. fish Cake | Qty: 2 | 12 Dec 2020
     2. Yoghurt cake | Qty: 1 | 15 Oct 2021
 ____________________________________________________
 ```
-_Items are considered to be expiring if the expiry date is 7 days away from today._
 
-### Add an item into Fridget: `exit`
-Safely close the program.
+### Stop Fridget: `exit`
+Safely shut down Fridget.
 
 Format: exit
+
+- `exit`
 
 Example of usage:
 
@@ -183,6 +192,8 @@ ____________________________________________________
 Prints all available commands in Fridget.
 
 Format: help
+
+- `help`
 
 Example of usage:
 ```

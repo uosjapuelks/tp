@@ -175,21 +175,6 @@ public class Ui {
     }
 
     /**
-     * Prints list of items nearing expiry by 7 days.
-     *
-     * @param listOfIngredient The full list of ingredients.
-     */
-    public void printExpiringIngredients(ArrayList<Ingredient> listOfIngredient) {
-        ArrayList<Ingredient> expiringList = new ArrayList<Ingredient>();
-        for (Ingredient ingredient : listOfIngredient) {
-            if (ingredient.isNearExpiry()) {
-                expiringList.add(ingredient);
-            }
-        }
-        printListOfIngredients(expiringList, true);
-    }
-
-    /**
      * Prints a message informing user on list being printed.
      *
      * @param listOfIngredients The list of ingredients of all items in fridget.
@@ -239,9 +224,20 @@ public class Ui {
      * @param listOfIngredients list of Ingredients nearing expiry only.
      */
     public void printExpiringMessage(ArrayList<Ingredient> listOfIngredients) {
-        String expiringMessage = "Expiring/Expired Items:";
-        printLine(expiringMessage);
-        printExpiringIngredients(listOfIngredients);
+        ArrayList<Ingredient> expiringList = new ArrayList<Ingredient>();
+        for (Ingredient ingredient : listOfIngredients) {
+            if (ingredient.isNearExpiry()) {
+                expiringList.add(ingredient);
+            }
+        }
+
+        if (expiringList.size() == 0) {
+            printLine("No items expiring.");
+        } else {
+            String expiringMessage = "Expiring/Expired Items:";
+            printLine(expiringMessage);
+            printListOfIngredients(expiringList, true);
+        }
     }
 
     /**

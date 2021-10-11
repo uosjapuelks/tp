@@ -198,7 +198,7 @@ public class Parser {
      */
     public String parseSearchTerm(String userInput, CommandType commandType) throws FridgetException {
         String[] processedInput = processInput(userInput);
-        String searchTerm = extractDescription(processedInput, CommandType.REMOVE);
+        String searchTerm = extractDescription(processedInput, commandType);
         return searchTerm;
     }
 }
