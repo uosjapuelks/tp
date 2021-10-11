@@ -86,7 +86,7 @@ public class Storage {
         String[] splitString = savedDateTimeAndStatus.split(REGEX_DATA_SEPARATOR);
         notification.setDateAndTime(LocalDateTime.parse(splitString[0],
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-        notification.setNotificationStatus(!splitString[1].equals("no"));
+        Notification.setNotificationStatus(!splitString[1].equals("no"));
     }
 
     /**
