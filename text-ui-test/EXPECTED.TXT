@@ -62,7 +62,7 @@ list
 -> List out all the ingredients in alphabetical order.
 
 expiring
--> Prints out ingredients expiring within a week
+-> Prints out ingredients that have expired or are expiring within a week
 
 notifs
 -> Toggle the notification on or off depending on previous state. Default mode is on.
@@ -224,8 +224,8 @@ You have successfully removed:
     fish Cake | Qty: 1 | [31m12 Dec 2010[0m
 __________________________________________
 __________________________________________
-Here are the list of items in your fridge:
-< Listing items in Alphabetical order >
+You currently have nothing in your fridge.
+Input "help" to get started!
 __________________________________________
 __________________________________________
 We'll help you remember everything you told us :)

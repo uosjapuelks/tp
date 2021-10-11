@@ -22,7 +22,7 @@ public class HelpCommand extends Command {
             + "list\n"
             + "-> List out all the ingredients in alphabetical order.\n\n"
             + "expiring\n"
-            + "-> Prints out ingredients expiring within a week\n\n"
+            + "-> Prints out ingredients that have expired or are expiring within a week\n\n"
             + "notifs\n"
             + "-> Toggle the notification on or off depending on previous state. Default mode is on.\n\n"
             + "reset\n"
