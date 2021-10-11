@@ -97,7 +97,7 @@ __________________________________________
 userInput: remove burger
 __________________________________________
 Which item would you like to be removed? Type the index of the item below.
-    1. burger | Qty: 1 | 11 Nov 2021
+    1. burger | Qty: 3 | 11 Nov 2021
     2. burger | Qty: 1 | 23 Sep 2021
 __________________________________________
 userInput: 1
