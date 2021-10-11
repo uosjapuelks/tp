@@ -110,6 +110,7 @@ public class Storage {
     public void updateListFile(ArrayList<Ingredient> ingredients) throws IOException {
         FileWriter fileWriter = new FileWriter(listFilePath);
         for (Ingredient ingredient : ingredients) {
+            assert ingredient != null : "ingredient must not be null";
             fileWriter.write(ingredient.saveFormat());
             fileWriter.write(System.lineSeparator());
         }
@@ -124,6 +125,7 @@ public class Storage {
      */
     public void updateLogFile(Notification notification) throws IOException {
         FileWriter fileWriter = new FileWriter(logFilePath);
+        assert notification != null : "notification must not be null";
         fileWriter.write(notification.toString());
         fileWriter.close();
     }
