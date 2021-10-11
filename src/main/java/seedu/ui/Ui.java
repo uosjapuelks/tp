@@ -114,7 +114,7 @@ public class Ui {
      */
     public Ingredient getItemToBeRemoved(ArrayList<Ingredient> matchingItems) throws FridgetException {
         printLine("Which item would you like to be removed? Type the index of the item below.");
-        printListOfIngredients(matchingItems,true);
+        printListOfIngredients(matchingItems, true);
         printSeparatorLine();
 
         String userInput = readUserInput();
