@@ -82,7 +82,9 @@ public class Storage {
         }
 
         Scanner logScanner = new Scanner(logFile);
-        addSavedNotification(logScanner.nextLine());
+        if (logScanner.hasNext()) {
+            addSavedNotification(logScanner.nextLine());
+        }
 
         Scanner listScanner = new Scanner(listFile);
         while (listScanner.hasNext()) {
