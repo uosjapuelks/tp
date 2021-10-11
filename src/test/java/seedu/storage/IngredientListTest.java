@@ -48,13 +48,21 @@ class IngredientListTest {
     @Test
     void sortIngredient_sortByDate_expectCToBToA() {
         fillExpectedList(itemCExpireYesterday, itemBExpireToday, itemAExpireTomorrow);
-        assertEquals(expectedList, filledTestList().sortIngredient(true));
+        try {
+            assertEquals(expectedList, filledTestList().sortIngredient(true));
+        } catch (FridgetException e) {
+            fail();
+        }
     }
 
     @Test
     void sortIngredient_sortByName_expectAToBToC() {
         fillExpectedList(itemAExpireTomorrow, itemBExpireToday, itemCExpireYesterday);
-        assertEquals(expectedList, filledTestList().sortIngredient(false));
+        try {
+            assertEquals(expectedList, filledTestList().sortIngredient(false));
+        } catch (FridgetException e) {
+            fail();
+        }
     }
 
     @Test
