@@ -13,54 +13,55 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class IngredientListTest {
-    private final LocalDate TODAY = LocalDate.now();
-    private final Ingredient A = new Ingredient("aaa", TODAY.plusDays(1));
-    private final Ingredient B = new Ingredient("bbb", TODAY);
-    private final Ingredient C = new Ingredient("ccc", TODAY.minusDays(1));
-    private final IngredientList TEST_LIST = new IngredientList();
-    private final ArrayList<Ingredient> EXPECTED_LIST = new ArrayList<Ingredient>();
-    private void fillExpectedList(Ingredient a,Ingredient b, Ingredient c) {
-        EXPECTED_LIST.add(a);
-        EXPECTED_LIST.add(b);
-        EXPECTED_LIST.add(c);
+    private final LocalDate today = LocalDate.now();
+    private final Ingredient itemAExpireTomorrow = new Ingredient("aaa", today.plusDays(1));
+    private final Ingredient itemBExpireToday = new Ingredient("bbb", today);
+    private final Ingredient itemCExpireYesterday = new Ingredient("ccc", today.minusDays(1));
+    private final IngredientList testList = new IngredientList();
+    private final ArrayList<Ingredient> expectedList = new ArrayList<Ingredient>();
+
+    private void fillExpectedList(Ingredient a, Ingredient b, Ingredient c) {
+        expectedList.add(a);
+        expectedList.add(b);
+        expectedList.add(c);
     }
+
     private IngredientList filledTestList() {
-        TEST_LIST.addIngredient(C);
-        TEST_LIST.addIngredient(A);
-        TEST_LIST.addIngredient(B);
-        return TEST_LIST;
+        testList.addIngredient(itemCExpireYesterday);
+        testList.addIngredient(itemAExpireTomorrow);
+        testList.addIngredient(itemBExpireToday);
+        return testList;
     }
 
     @Test
-
     void containsIngredient_aInTestList_expectedResultTrue() {
-        TEST_LIST.addIngredient(A);
-        assertTrue(TEST_LIST.containsIngredient(A));
+        testList.addIngredient(itemAExpireTomorrow);
+        assertTrue(testList.containsIngredient(itemAExpireTomorrow));
     }
 
     @Test
     void containsIngredient_aNotInTestList_expectedResultTrue() {
-        TEST_LIST.addIngredient(C);
-        assertFalse(TEST_LIST.containsIngredient(A));
+        testList.addIngredient(itemCExpireYesterday);
+        assertFalse(testList.containsIngredient(itemAExpireTomorrow));
     }
 
     @Test
-    void sortIngredient_sortByDate_expectCBA() {
-        fillExpectedList(C,B,A);
-        assertEquals(EXPECTED_LIST, filledTestList().sortIngredient(true));
+    void sortIngredient_sortByDate_expectCToBToA() {
+        fillExpectedList(itemCExpireYesterday, itemBExpireToday, itemAExpireTomorrow);
+        assertEquals(expectedList, filledTestList().sortIngredient(true));
     }
 
     @Test
-    void sortIngredient_sortByName_expectABC() {
-        fillExpectedList(A,B,C);
-        assertEquals(EXPECTED_LIST, filledTestList().sortIngredient(false));
+    void sortIngredient_sortByName_expectAToBToC() {
+        fillExpectedList(itemAExpireTomorrow, itemBExpireToday, itemCExpireYesterday);
+        assertEquals(expectedList, filledTestList().sortIngredient(false));
     }
 
     @Test
-    void getIngredient_CABInput_expectCABOutput() {
-        fillExpectedList(C, A, B);
+    void getIngredient_CtoAtoBInput_expectCToAToBOutput() {
+        fillExpectedList(itemCExpireYesterday, itemAExpireTomorrow, itemBExpireToday);
         try {
-            assertEquals(EXPECTED_LIST, filledTestList().getIngredientList("r"));
+            assertEquals(expectedList, filledTestList().getIngredientList("r"));
         } catch (FridgetException e) {
             fail();
         }
