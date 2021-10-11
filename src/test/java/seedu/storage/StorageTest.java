@@ -4,8 +4,10 @@ import org.junit.jupiter.api.Test;
 import seedu.data.exception.FridgetException;
 import seedu.notification.Notification;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class StorageTest {
     private static final String FILE_PATH_LIST = "config/savedList.txt";
@@ -30,7 +32,10 @@ public class StorageTest {
     }
 
     @Test
-    void add() {
+    void addSavedNotification_correctSavedLogFormat_expectNotificationOn() {
+        String savedNotification = "2021-10-11 14:38 | yes";
+        storage.addSavedNotification(savedNotification);
 
+        assertTrue(Notification.isNotificationOn());
     }
 }
