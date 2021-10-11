@@ -20,7 +20,14 @@ public class AddCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
         Ingredient newIngredient = parser.parseIngredientForAdding(ui.getCurrentUserInput());
-        ingredientList.addIngredient(newIngredient);
-        ui.printReactionToAddingIngredient(newIngredient);
+        if (newIngredient.getIngredientName().contains(" | ")) {
+            throw new FridgetException("Please do not use ' | ' in your ingredient name.");
+        }
+        int qty = ingredientList.addIngredient(newIngredient);
+        if (qty > 1) {
+            ui.printReactionToAddingExistingIngredient(newIngredient, qty);
+        } else {
+            ui.printReactionToAddingIngredient(newIngredient);
+        }
     }
 }
