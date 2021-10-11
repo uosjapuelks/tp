@@ -35,6 +35,8 @@ public class IngredientList {
      * @param ingredient Ingredient to be removed.
      */
     public void removeIngredient(Ingredient ingredient, int qty) {
+        assert ingredient != null : "Ingredient must not be null!";
+        assert qty != 0 : "Quantity removed must not be 0!";
         if (ingredient.getQuantity() == qty) {
             ingredientList.remove(ingredient);
             return;
