@@ -55,13 +55,27 @@ public class Ui {
     }
 
     /**
-     * Prints a reaction to user successfully adding an ingredient.
+     * Prints a reaction to user after successfully adding an ingredient.
+     *
      * @param ingredient The ingredient the user has added.
      */
     public void printReactionToAddingIngredient(Ingredient ingredient) {
         String acknowledgeAdd = "You have successfully added:\n";
         String addReaction = acknowledgeAdd
                 + FOUR_SPACE_INDENTATION + ingredient;
+        printLine(addReaction);
+    }
+
+    /**
+     * Prints a reaction to user after successfully adding an ingredient that has existed in the list.
+     *
+     * @param ingredient The ingredient the user had added.
+     */
+    public void printReactionToAddingExistingIngredient(Ingredient ingredient, int qty) {
+        String acknowledgeAdd = "You have successfully increased the quantity of:\n";
+        String ingredientString = ingredient.getIngredientName() + " | Qty: " + (qty-1) + "->" + qty
+                + " | " + ingredient.getColoredExpiryDate();
+        String addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + ingredientString;
         printLine(addReaction);
     }
 
