@@ -50,7 +50,7 @@ public class Storage {
      *
      * @throws IOException The error thrown from file IO operations.
      */
-    private void loadFile() throws IOException {
+    protected void loadFile() throws IOException {
         File dataDirectory = new File(fileDirectory);
         File listFile = new File(listFilePath);
         File logFile = new File(logFilePath);
@@ -78,7 +78,7 @@ public class Storage {
      *
      * @param savedDateTimeAndStatus String containing date, time and status.
      */
-    private void addSavedNotification(String savedDateTimeAndStatus) {
+    protected void addSavedNotification(String savedDateTimeAndStatus) {
         String[] splitString = savedDateTimeAndStatus.split(REGEX_DATA_SEPARATOR);
         notification.setDateAndTime(LocalDateTime.parse(splitString[0],
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
@@ -90,7 +90,7 @@ public class Storage {
      *
      * @param listDataComponents The details of the ingredient.
      */
-    private void addSavedIngredient(String[] listDataComponents) {
+    protected void addSavedIngredient(String[] listDataComponents) {
         int quantity = parseInt(listDataComponents[1].substring(4).trim());
         LocalDate expiry = LocalDate.parse(listDataComponents[2].trim());
         Ingredient savedIngredient = new Ingredient(listDataComponents[0], expiry, quantity);
