@@ -65,8 +65,26 @@ public class Storage {
             return;
         }
 
+        if (!(listFile.exists() && logFile.exists())) {
+            listFile.createNewFile();
+            logFile.createNewFile();
+            return;
+        }
+
+        if (!listFile.exists()) {
+            listFile.createNewFile();
+            return;
+        }
+
+        if (!logFile.exists()) {
+            logFile.createNewFile();
+            return;
+        }
+
         Scanner logScanner = new Scanner(logFile);
-        addSavedNotification(logScanner.nextLine());
+        if (logScanner.hasNext()) {
+            addSavedNotification(logScanner.nextLine());
+        }
 
         Scanner listScanner = new Scanner(listFile);
         while (listScanner.hasNext()) {

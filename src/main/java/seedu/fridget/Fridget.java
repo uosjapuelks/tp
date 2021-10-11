@@ -11,8 +11,8 @@ import seedu.ui.Ui;
 import java.time.format.DateTimeParseException;
 
 public class Fridget {
-    private static final String FILE_PATH_LIST = "config/savedList.txt";
-    private static final String FILE_PATH_LOGS = "config/savedLogs.txt";
+    private static final String FILE_PATH_LIST = "fridgetData/savedList.txt";
+    private static final String FILE_PATH_LOGS = "fridgetData/savedLogs.txt";
 
     private final Ui ui;
     private final Parser parser;
