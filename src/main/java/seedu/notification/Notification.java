@@ -81,7 +81,9 @@ public class Notification {
      * @return String containing date, time and status.
      */
     public String toString() {
-        return dateAndTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+        String dateTimeAndStatus =  dateAndTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
                 + " | " + (isNotificationOn ? "yes" : "no");
+        assert dateTimeAndStatus.contains(" | ");
+        return dateTimeAndStatus;
     }
 }

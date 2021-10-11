@@ -14,9 +14,10 @@ import seedu.commands.ResetCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ParserTest {
     Parser parser = new Parser();
@@ -114,5 +115,26 @@ class ParserTest {
         assertThrows(FridgetException.class, () -> {
             parser.parseIngredientForAdding(inputString);
         });
+    }
+
+    @Test
+    void parseSortTypeForList_sortTypeE_expectSortTypeEqualsE() {
+        String inputString = "list -e";
+        String parsedResult = parser.parseSortTypeForList(inputString);
+        assertEquals(parsedResult, "e");
+    }
+
+    @Test
+    void parseSortTypeForList_sortTypeR_expectSortTypeEqualsR() {
+        String inputString = "list -r";
+        String parsedResult = parser.parseSortTypeForList(inputString);
+        assertEquals(parsedResult, "r");
+    }
+
+    @Test
+    void parseSortTypeForList_sortTypeDefault_expectSortTypeEqualsDefault() {
+        String inputString = "list";
+        String parsedResult = parser.parseSortTypeForList(inputString);
+        assertEquals(parsedResult, "default");
     }
 }
