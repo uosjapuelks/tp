@@ -8,7 +8,7 @@ Fridget is a <strong> desktop app for managing items in the fridge, built to be 
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed on your computer.
-2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp).
+2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v1.0/fridget.jar).
 3. Copy the file into the folder you want store Fridget's data.
 4. Double-click the file to launch the app. An interface that looks something like the following image will appear.
 5. Type your command in the command box and press Enter to execute it.
