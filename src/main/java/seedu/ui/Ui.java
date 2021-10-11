@@ -73,8 +73,7 @@ public class Ui {
      */
     public void printReactionToAddingExistingIngredient(Ingredient ingredient, int qty) {
         String acknowledgeAdd = "You have successfully increased the quantity of:\n";
-        String ingredientString = ingredient.getIngredientName() + " | Qty: " + (qty - 1) + "->" + qty
-                + " | " + ingredient.getColoredExpiryDate();
+        String ingredientString = ingredient.addExistingToString(qty);
         String addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + ingredientString;
         printLine(addReaction);
     }
