@@ -11,18 +11,18 @@ class UiTest {
     @Test
     void sortTypeMessage_emptySortTypeInput_expectReturnDefault() {
         String sortTypeString = "";
-        assertEquals("< Listing items in Alphabetical order >", ui.sortTypeMessage(sortTypeString));
+        assertEquals("List sorted by item name:", ui.sortTypeMessage(sortTypeString));
     }
 
     @Test
     void sortTypeMessage_rSortTypeInput_expectByLeastRecentMessage() {
         String sortTypeString = "r";
-        assertEquals("< Listing Most Recently Added items last >", ui.sortTypeMessage(sortTypeString));
+        assertEquals("List sorted by earliest added:", ui.sortTypeMessage(sortTypeString));
     }
 
     @Test
     void sortTypeMessage_eSortTypeInput_expectByExpiryMessage() {
         String sortTypeString = "e";
-        assertEquals("< Listing earliest [Expiry Date] first >", ui.sortTypeMessage(sortTypeString));
+        assertEquals("List sorted by expiry date:", ui.sortTypeMessage(sortTypeString));
     }
 }
