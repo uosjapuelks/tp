@@ -18,6 +18,7 @@ public class IngredientList {
      * @param ingredient The Ingredient to be added.
      */
     public void addIngredient(Ingredient ingredient) {
+        assert ingredient != null : "Ingredient must not be null!";
         for (Ingredient ingredient1 : ingredientList) {
             if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())
                     && ingredient1.getExpiryDate().equals(ingredient.getExpiryDate())) {
