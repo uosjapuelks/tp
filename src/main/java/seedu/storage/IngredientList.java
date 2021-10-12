@@ -93,8 +93,13 @@ public class IngredientList {
      *
      * @param searchTerm The search term used to find matching Ingredients.
      */
-    public ArrayList<Ingredient> findAllMatchingIngredients(String searchTerm) {
+    public ArrayList<Ingredient> findAllMatchingIngredients(String searchTerm) throws FridgetException {
         assert searchTerm != null : "Search term must not be null!";
+        if (ingredientList.isEmpty()) {
+            String emptyListMessage = "You currently have nothing in your fridge.\n"
+                    + "Input \"help\" to get started!";
+            throw new FridgetException(emptyListMessage);
+        }
         ArrayList<Ingredient> matchingIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredientList) {
             if (ingredient.getIngredientName().contains(searchTerm)) {
