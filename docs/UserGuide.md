@@ -238,7 +238,8 @@ Find all items associated with the keyword.
 
 Format: find <KEYWORD>
 
-* The `KEYWORD` should be something associated with the ingredient.
+* The `KEYWORD` should be the same as the name of the item you are looking for.
+* The `KEYWORD` can also be a part of the name of the item.
 
 ```
 userInput: find burger
