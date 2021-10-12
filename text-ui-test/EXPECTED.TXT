@@ -117,7 +117,8 @@ __________________________________________
 Ingredient list has been reset successfully.
 __________________________________________
 __________________________________________
-No matching tasks found!
+You currently have nothing in your fridge.
+Input "help" to get started!
 __________________________________________
 __________________________________________
 You have successfully added:
