@@ -57,6 +57,7 @@ public class IngredientList {
      *
      * @param byDate toggle to sort by name or expiry.
      * @return sorted ingredient ArrayList.
+     * @throws FridgetException thrown when there are no items in ingredientList.
      */
     public ArrayList<Ingredient> sortIngredient(boolean byDate) throws FridgetException {
         if (ingredientList.isEmpty()) {
@@ -73,6 +74,7 @@ public class IngredientList {
      * Returns the current list of ingredients.
      *
      * @return List of ingredients.
+     * @throws FridgetException thrown when String after list is unrecognised.
      */
     public ArrayList<Ingredient> getIngredientList(String sortType) throws FridgetException {
         assert sortType != null : "Sort type must not be null!";
@@ -92,9 +94,15 @@ public class IngredientList {
      * Returns an Array List of Ingredients with names containing the search term.
      *
      * @param searchTerm The search term used to find matching Ingredients.
+     * @throws FridgetException thrown when there are no items in ingredientList.
      */
-    public ArrayList<Ingredient> findAllMatchingIngredients(String searchTerm) {
+    public ArrayList<Ingredient> findAllMatchingIngredients(String searchTerm) throws FridgetException {
         assert searchTerm != null : "Search term must not be null!";
+        if (ingredientList.isEmpty()) {
+            String emptyListMessage = "You currently have nothing in your fridge.\n"
+                    + "Input \"help\" to get started!";
+            throw new FridgetException(emptyListMessage);
+        }
         ArrayList<Ingredient> matchingIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredientList) {
             if (ingredient.getIngredientName().contains(searchTerm)) {

@@ -209,8 +209,8 @@ public class Ui {
      */
     public void printListOfMatchingIngredients(ArrayList<Ingredient> listOfIngredients) {
         if (listOfIngredients.isEmpty()) {
-            String noMatchingTasks = "No matching tasks found!";
-            printLine(noMatchingTasks);
+            String noMatchingIngredient = "No matching ingredient found!";
+            printLine(noMatchingIngredient);
         } else {
             String resultsHeader = "These are the matching ingredients:";
             printLine(resultsHeader);

@@ -117,6 +117,7 @@ public class Parser {
      *
      * @param processedInput userInput after processInput().
      * @return expiry as String in format ("yyyy-mm-dd")
+     * @throws FridgetException thrown when there are is no expiry date.
      */
     private String extractExpiry(String[] processedInput) throws FridgetException {
         String expiry = "";
@@ -135,6 +136,7 @@ public class Parser {
      *
      * @param processedInput userInput after processInput().
      * @return name or item description.
+     * @throws FridgetException thrown when there are missing inputs, name or expiry date.
      */
     private String extractDescription(String[] processedInput, CommandType commandType) throws FridgetException {
         String correctFormat;

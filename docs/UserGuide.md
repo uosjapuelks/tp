@@ -28,13 +28,14 @@ Remove an item | `remove <ITEM_NAME>`
 Get help | `help`
 Reset all items | `reset`
 List all items | `list -<OPTIONAL_SORT_TYPE>`
-Find expiring items | `expiring`  
+Find an item | `find <KEYWORD>`
+List expiring items | `expiring`  
 See notifications | `notifs`
 Exit Fridget | `exit`
 
 
 ### Add an item into Fridget: `add`
-Add an item into Fridget's ledger.
+Add an item into Fridget.
 
 Format: add <ITEM_NAME> /<EXPIRY_DATE>
 
@@ -114,80 +115,6 @@ You have successfully removed:
 __________________________________________
 ```
 
-
-### List all items in Fridget: `list`
-List all items stored in Fridget.
-
-Format: list -<OPTIONAL_SORT_TYPE>
-
-* `list` Lists in Alphabetical order of the Item Name.
-* `list -e` Lists items in ascending order of Expiry Dates.
-* `list -r` Lists items in descending order the item entered the ledger.
-
-Example of usage:
-
-```markdown
-userInput: list
-____________________________________________________
-List sorted by item name:
-    1. fish Cake | Qty: 2 | 12 Dec 2020
-    2. frozen duck | Qty: 1 | 10 Oct 2022
-    3. Yoghurt cake | Qty: 1 | 15 Oct 2021
-____________________________________________________
-```
-```
-userInput: list -e
-____________________________________________________
-List sorted by expiry date:
-    1. fish Cake | Qty: 2 | 12 Dec 2020
-    2. Yoghurt cake | Qty: 1 | 15 Oct 2021
-    3. frozen duck | Qty: 1 | 10 Oct 2022
-____________________________________________________
-```
-```
-userInput: list -r
-__________________________________________
-List sorted by earliest added:
-    1. fish Cake | Qty: 2 | 12 Dec 2020
-    2. Yoghurt cake | Qty: 1 | 15 Oct 2021
-    3. frozen duck | Qty: 1 | 10 Oct 2022
-__________________________________________
-```
-### Lists all items expiring soon: `expiring`
-Lists all items that are expired or expiring. Items are considered to be expiring if the expiry date is less than 7 days away from today.
-
-Format: expiring
-
-* `expiring`
-
-Example of usage:
-
-```markdown
-userInput: expiring
-____________________________________________________
-Expiring/Expired Items:
-    1. fish Cake | Qty: 2 | 12 Dec 2020
-    2. Yoghurt cake | Qty: 1 | 15 Oct 2021
-____________________________________________________
-```
-
-### Stop Fridget: `exit`
-Safely shut down Fridget.
-
-Format: exit
-
-- `exit`
-
-Example of usage:
-
-```markdown
-userInput: exit
-____________________________________________________
-We'll help you remember everything you told us :)
-See you again!~~
-____________________________________________________
-```
-
 ### Get help: `help`
 Prints all available commands in Fridget.
 
@@ -236,10 +163,13 @@ __________________________________________
 ```
 
 
+
 ### Reset all items: `reset`
 Resets all your items in the ingredient list.
 
 Format: reset
+
+* `reset`
 
 Example of usage:
 ```
@@ -264,20 +194,101 @@ __________________________________________
 ```
 
 
+### List all items in Fridget: `list`
+List all items stored in Fridget.
+
+Format: list -<OPTIONAL_SORT_TYPE> or list <OPTIONAL_SORT_TYPE>
+
+* `list` Lists in Alphabetical order of the Item Name.
+* `list -e` Lists items in ascending order of Expiry Dates.
+* `list -r` Lists items in descending order the item entered the ledger.
+
+Example of usage:
+
+```markdown
+userInput: list
+__________________________________________
+List sorted by item name:
+    1. fish Cake | Qty: 2 | 12 Dec 2020
+    2. frozen duck | Qty: 1 | 10 Oct 2022
+    3. Yoghurt cake | Qty: 1 | 15 Oct 2021
+__________________________________________
+```
+```
+userInput: list -e
+__________________________________________
+List sorted by expiry date:
+    1. fish Cake | Qty: 2 | 12 Dec 2020
+    2. Yoghurt cake | Qty: 1 | 15 Oct 2021
+    3. frozen duck | Qty: 1 | 10 Oct 2022
+__________________________________________
+```
+```
+userInput: list -r
+__________________________________________
+List sorted by earliest added:
+    1. fish Cake | Qty: 2 | 12 Dec 2020
+    2. Yoghurt cake | Qty: 1 | 15 Oct 2021
+    3. frozen duck | Qty: 1 | 10 Oct 2022
+__________________________________________
+```
+
+### Find items stored in Fridget: `find`
+Find all items associated with the keyword.
+
+Format: find <KEYWORD>
+
+* The `KEYWORD` should be the same as the name of the item you are looking for.
+* The `KEYWORD` can also be a part of the name of the item.
+
+```
+userInput: find burger
+__________________________________________
+These are the matching ingredients:
+    1. burger | Qty: 1 | 23 Sep 2030
+__________________________________________
+userInput: find apple
+__________________________________________
+No matching ingredient found!
+__________________________________________
+```
+
+### Lists all items expiring soon: `expiring`
+Lists all items that are expired or expiring. Items are considered to be expiring if the expiry date is less than 7 days away from today.
+
+Format: expiring
+
+* `expiring`
+
+Example of usage:
+
+```markdown
+userInput: expiring
+__________________________________________
+Expiring/Expired Items:
+    1. fish Cake | Qty: 2 | 12 Dec 2020
+    2. Yoghurt cake | Qty: 1 | 15 Oct 2021
+__________________________________________
+```
+
+
+
 ### See notifications: `notifs`
 Display notification reminder scheduled at 6 hours interval. Can be toggled on or off. 
 
 Format: notifs
 
+* `notifs`
+
 Example of usage:
 ````
 userInput: notifs
 __________________________________________
-Notification off!
+Turning notification off!
 __________________________________________
 userInput: notifs
 __________________________________________
-Notification on!
+Turning notification on!
 __________________________________________
 ````
 ````
@@ -298,8 +309,52 @@ __________________________________________
 |___________________________________________________|
 ````
 
-## FAQ
+### Stop Fridget: `exit`
+Safely shut down Fridget.
 
-**Q**: How do I transfer my data to another computer? 
+Format: exit
 
-**A**: {your answer here}
+- `exit`
+
+Example of usage:
+
+```markdown
+userInput: exit
+__________________________________________
+We'll help you remember everything you told us :)
+See you again!~~
+__________________________________________
+```
+
+
+## Things to note
+
+1. For commands help, expiring, reset and notifs, adding a space and random String behind will still trigger the command.
+
+Example:
+```
+userInput: notifs ajsdfasf
+__________________________________________
+Turning notification off!
+____________________________________________
+userInput: reset jadfgasgdka
+__________________________________________
+Are you sure you want to reset everything in the ingredient list? (Y/N)
+__________________________________________
+```
+
+2. If no item is recorded, Fridget will prompt you to get help.
+
+Example:
+```
+userInput: find a
+__________________________________________
+You currently have nothing in your fridge.
+Input "help" to get started!
+__________________________________________
+userInput: expiring
+__________________________________________
+You currently have nothing in your fridge.
+Input "help" to get started!
+__________________________________________
+```
