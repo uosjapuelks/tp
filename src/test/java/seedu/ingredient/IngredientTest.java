@@ -45,7 +45,8 @@ class IngredientTest {
     void getColoredExpiryDate_ExpiringIngredient_expectOrangeFormattedExpiry() {
         Ingredient expiringDummy = new Ingredient(DUMMY_NAME, TOMORROW);
         String date = TOMORROW.format(DateTimeFormatter.ofPattern("dd MMM yyyy"));
-        String expected = String.format("\u001B[33m%s\u001B[0m", date);
+        // String expected = String.format("\u001B[33m%s\u001B[0m", date);
+        String expected = date;
         assertEquals(expected, expiringDummy.getColoredExpiryDate());
     }
 
@@ -53,7 +54,8 @@ class IngredientTest {
     void toString_expiredDummyIngredient_expectCorrectStringFormat() {
         LocalDate expiredDate = LocalDate.parse("1212-12-12");
         Ingredient expiredDummy = new Ingredient(DUMMY_NAME, expiredDate);
-        assertEquals("dummyIngredient | Qty: 1 | \u001B[31m12 Dec 1212\u001B[0m", expiredDummy.toString());
+        // assertEquals("dummyIngredient | Qty: 1 | \u001B[31m12 Dec 1212\u001B[0m", expiredDummy.toString());
+        assertEquals("dummyIngredient | Qty: 1 | 12 Dec 1212", expiredDummy.toString());
     }
 
     @Test

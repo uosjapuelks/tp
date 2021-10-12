@@ -131,8 +131,9 @@ public class Ingredient {
      */
     public String getColoredExpiryDate() {
         String expiry = expiryDate.format((DateTimeFormatter.ofPattern("dd MMM yyyy")));
-        String decidedColor = decideColor();
-        return String.format(decidedColor, expiry);
+        // TODO: implement in Milestone 2.0
+        // String decidedColor = decideColor();
+        return expiry;
     }
 
     /**
