@@ -37,7 +37,7 @@ Exit Fridget | `exit`
 ### Add an item into Fridget: `add`
 Add an item into Fridget.
 
-Format: add <ITEM_NAME> /<EXPIRY_DATE>
+Format: add ITEM_NAME /EXPIRY_DATE
 
 * The `ITEM_NAME` can be in a natural language format.
 * The `EXPIRY_DATE` must be in the `YYYY-MM-DD` format.  
@@ -63,7 +63,7 @@ __________________________________________
 ### Remove an item from Fridget: `remove`
 Remove an item from Fridget.
 
-Format: remove <ITEM_NAME>
+Format: remove ITEM_NAME
 
 * The `ITEM_NAME` can be in a natural language format.
 * The `ITEM_NAME` should be the same or be a subset of the name of the item you are trying to remove.
@@ -197,7 +197,7 @@ __________________________________________
 ### List all items in Fridget: `list`
 List all items stored in Fridget.
 
-Format: list -<OPTIONAL_SORT_TYPE> or list <OPTIONAL_SORT_TYPE>
+Format: list -OPTIONAL_SORT_TYPE or list OPTIONAL_SORT_TYPE
 
 * `list` Lists in Alphabetical order of the Item Name.
 * `list -e` Lists items in ascending order of Expiry Dates.
@@ -236,7 +236,7 @@ __________________________________________
 ### Find items stored in Fridget: `find`
 Find all items associated with the keyword.
 
-Format: find <KEYWORD>
+Format: find KEYWORD
 
 * The `KEYWORD` should be the same as the name of the item you are looking for.
 * The `KEYWORD` can also be a part of the name of the item.
