@@ -82,6 +82,9 @@ public class Storage {
         }
 
         Scanner logScanner = new Scanner(logFile);
+        if (logScanner == null) {
+            logger.log(Level.WARNING, "Please restart the program! Data storage has been corrupted.");
+        }
         if (logScanner.hasNext()) {
             addSavedNotification(logScanner.nextLine());
         }
