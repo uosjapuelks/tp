@@ -160,7 +160,7 @@ public class Storage {
             updateListFile(ingredients);
             updateLogFile(notification);
         } catch (IOException e) {
-            System.out.println("Error while trying to update ingredient list file.");
+            logger.log(Level.WARNING, "Error while trying to update ingredient list file.");
         }
     }
 }
