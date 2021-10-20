@@ -11,9 +11,9 @@ activate Parser
 AddCommand <-- Parser: Ingredient
 deactivate Parser
 
-alt ingredientName contains '|'
+alt ingredientName contains ' | '
 
-    <-- AddCommand: Tell user not to use '|'
+    <-- AddCommand: Tell user not to use ' | '
 
 else
 

@@ -41,8 +41,8 @@ The parser returns an Ingredient with the name and expiry date specified in the 
 
 Step 4:
 
-If the user uses the '|' character in the ingredient's name, an exception is thrown.
-This is done as the '|' may confuse the Storage class.
+If the user uses the ' | ' character in the ingredient's name, an exception is thrown.
+This is done as the ' | ' may confuse the Storage class.
 
 Step 5 & 6:
 
