@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+-> AddCommand: execute()
+activate AddCommand
+
+AddCommand -> Parser: parseIngredientForAdding(currentUserInput)
+activate Parser
+AddCommand <-- Parser: Ingredient
+deactivate Parser
+
+alt ingredientName contains ' | '
+
+    <-- AddCommand: Tell user not to use ' | '
+
+else
+
+    AddCommand -> IngredientList: addIngredient(Ingredient)
+    activate IngredientList
+
+    AddCommand <-- IngredientList: qtyOfIngredient
+    deactivate IngredientList
+
+    alt qtyOfIngredient > 1
+
+        AddCommand -> Ui: printReactionToAddingExistingIngredient()
+        activate Ui
+        AddCommand <-- Ui
+        deactivate Ui
+
+    else
+        AddCommand -> Ui: printReactionToAddingIngredient()
+        activate Ui
+        AddCommand <-- Ui
+        deactivate Ui
+
+    end
+
+    <-- AddCommand
+    deactivate AddCommand
+end
+
+
+@enduml
