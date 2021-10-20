@@ -150,7 +150,13 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
+|v1.0|busy house-husband|easily find out if I have a certain item in the fridge|spend less time checking through my Fridge|
+|v1.0|busy house-husband|easily add or remove an item into the Fridget|spend less time writing down and scratching out items on a written ledger|
+|v1.0|busy house-husband|easily find out expiry date of ingredient|spend less time going through every ingredient.|
+|v1.0|frugal house-husband|know what foods are about to expire|quickly use them before they become inedible|
+|v1.0|perfectionist house-husband|reset the list of items in Fridget|start using Fridget after not using it for a while, or after initial testing with fake items|
+|v1.0|new user|have a manual instructions|easily navigate through the cli app|
+|v1.0|fitness fanatic|have health-focused reminders for family members to eat more fruits and healthy snacks|my family can be healthy together|
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
 
 ## Non-Functional Requirements
