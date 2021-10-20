@@ -65,6 +65,36 @@ Step 11:
 
 The execution of the execute() method ends.
 
+### Getting Help Manual 
+
+#### Main Objectives:
+
+The objective of a help manual in Fridget is to ensure users are equipped with the basic knowledge to get 
+started with Fridget.
+
+The idea behind an inbuilt help manual is to ensure Fridget is convenient and reduce the heavy reference of 
+the User Guide.
+
+Future uses include:
+* More in-depth coverage of all basic functions.
+* Interactive component to explore capabilities of each commands.
+
+#### Sequence of execution:
+
+![image info](./umlDiagrams/HelpSequence.png)
+
+Step 1: 
+
+The execution of the Help Command is initiated by Fridget.
+
+Step 2 & 3: 
+
+The printLine() method is called in the Ui which prints out the String that is input into the method, 
+in this case it is the help manual.
+
+Step 4:
+
+The execution of the execute() method ends.
 
 ## Product scope
 ### Target user profile
