@@ -65,6 +65,8 @@ Step 11:
 
 The execution of the execute() method ends.
 
+### Removing Items From Fridget
+
 ### Getting Help Manual 
 
 #### Main Objectives:
@@ -95,6 +97,34 @@ in this case it is the help manual.
 Step 4:
 
 The execution of the execute() method ends.
+
+### Resetting Item List In Fridget
+
+### Listing Items In Fridget
+
+### Finding Items In Fridget
+
+### Listing Items Expiring In Fridget
+
+### Configuring Notifications 
+
+#### Main Objectives:
+
+The objective of the notification based on current functionality is to print out a reminder notification 
+to remind users to eat healthily.
+
+Current implementation allow users to toggle the notifications on or off, with reminders sent out at intervals of 6 hours.
+
+The purpose of implementing time interval and ability to toggle is to prevent excessive notification printing.
+
+Future uses include:
+* Notification on expired and expiring items printed.
+* Notification on items that are rarely used.
+
+#### Sequence of execution:
+
+
+### Exiting From Fridget
 
 ## Product scope
 ### Target user profile
