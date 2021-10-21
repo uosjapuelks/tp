@@ -102,6 +102,44 @@ The execution of the execute() method ends.
 
 ### Listing Items In Fridget
 
+#### Main Objectives:
+
+The functionality to list items is bound by two main objectives:
+* Allow users to easily view the contents of Fidget.
+* Allow users to choose their preferred sort type.
+
+As a result, the current iteration optionally requires an additional info from the user:
+* The sort type of the list.
+
+This additional is optional as the default settings sorts the list by ingredient name.
+
+#### Overall Sequence:
+
+![image info](./umlDiagrams/ListSequence.png)
+
+Step 1:
+
+This step is almost always initiated by Fridget, but could potentially be done by another class in the future.
+
+Step 2 & 3:
+
+The parseSortTypeForList() method is called in Parser, with the currentUserInput as a parameter.
+The parser returns a String as sortType with the detected sort type in the user input.
+
+Step 4 & 5:
+
+The getIngredientList() method is called in IngredientList, with the sortType as a parameter.
+The IngredientList returns an ArrayList<Ingredient> as listOfIngredients that are sorted according to the sort type.
+
+Step 6 & 7:
+
+The printListMessage() method is called in Ui, with the listOfIngredient, and sortType as parameters.
+The Ui prints out the list of Ingredients for the user.
+
+Step 8:
+
+The execution of the execute() method ends.
+
 ### Finding Items In Fridget
 
 ### Listing Items Expiring In Fridget
