@@ -3,15 +3,15 @@
 
 autonumber
 
--> HelpCommand: execute()
-activate HelpCommand
+-> ":HelpCommand": execute()
+activate ":HelpCommand"
 
-    HelpCommand -> Ui: printLine()
-    activate Ui
-    HelpCommand <-- Ui
-    deactivate Ui
+    ":HelpCommand" -> ":Ui": printLine()
+    activate ":Ui"
+    ":HelpCommand" <-- ":Ui"
+    deactivate ":Ui"
 
-    <-- HelpCommand
-deactivate HelpCommand
+    <-- ":HelpCommand"
+deactivate ":HelpCommand"
 
 @enduml
