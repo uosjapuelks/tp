@@ -110,16 +110,20 @@ The objective of the reset functionality is to provide users an easy way to remo
 
 Step 1: 
 
-This execution of this step is initiated by Fridget.
+The execution of this step is initiated by Fridget.
 
 Step 2 & 3: 
 
-If the user double confirms the reset command, the resetList() function is called in the IngredientList and resets 
+If the user double confirms the reset command, the resetList() method is called in the IngredientList and resets 
 the ingredient list by overwriting it with a new ingredient list.
 
 Step 4 & 5:
 
-The printResetMessage() function is called in the Ui which prints a message stating that the ingredient list has been reset.
+The printResetMessage() method is called in the Ui which prints a String stating that the ingredient list has been reset.
+
+Step 6:
+
+The execution of the execute() method ends.
 
 ### Listing Items In Fridget
 
