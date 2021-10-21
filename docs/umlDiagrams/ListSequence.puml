@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+autonumber
+
+-> "ListCommand:Command": execute()
+activate "ListCommand:Command"
+
+"ListCommand:Command" -> ":Parser": parseSortTypeForList(currentUserInput)
+activate ":Parser"
+"ListCommand:Command" <-- ":Parser": sortType :String
+deactivate ":Parser"
+"ListCommand:Command" -> ":IngredientList": getIngredientList(sortType)
+activate ":IngredientList"
+"ListCommand:Command" <--":IngredientList": listOfIngredients :ArrayList<Ingredient>
+deactivate ":IngredientList"
+"ListCommand:Command" -> ":Ui": printListMessage(listOfIngredients, sortType)
+activate ":Ui"
+"ListCommand:Command" <-- ":Ui"
+deactivate ":Ui"
+
+<-- "ListCommand:Command"
+deactivate "ListCommand:Command"
+
+@enduml
