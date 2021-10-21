@@ -18,7 +18,8 @@ alt Reconfirm Reset Command
     ":ResetCommand" <-- ":Ui"
     deactivate ":Ui"
 
-deactivate ":ResetCommand"
+    <-- ":ResetCommand"
+    deactivate ":ResetCommand"
 end
 
 @enduml
