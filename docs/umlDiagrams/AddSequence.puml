@@ -3,43 +3,43 @@
 
 autonumber
 
--> AddCommand: execute()
-activate AddCommand
+-> ":AddCommand": execute()
+activate ":AddCommand"
 
-AddCommand -> Parser: parseIngredientForAdding(currentUserInput)
-activate Parser
-AddCommand <-- Parser: Ingredient
-deactivate Parser
+":AddCommand" -> ":Parser": parseIngredientForAdding(currentUserInput)
+activate ":Parser"
+":AddCommand" <-- ":Parser": Ingredient
+deactivate ":Parser"
 
 alt ingredientName contains ' | '
 
-    <-- AddCommand: Tell user not to use ' | '
+    <-- ":AddCommand": Tell user not to use ' | '
 
 else
 
-    AddCommand -> IngredientList: addIngredient(Ingredient)
-    activate IngredientList
+    ":AddCommand" -> ":IngredientList": addIngredient(Ingredient)
+    activate ":IngredientList"
 
-    AddCommand <-- IngredientList: qtyOfIngredient
-    deactivate IngredientList
+    ":AddCommand" <-- ":IngredientList": qtyOfIngredient
+    deactivate ":IngredientList"
 
     alt qtyOfIngredient > 1
 
-        AddCommand -> Ui: printReactionToAddingExistingIngredient()
+        ":AddCommand" -> Ui: printReactionToAddingExistingIngredient()
         activate Ui
-        AddCommand <-- Ui
+        ":AddCommand" <-- Ui
         deactivate Ui
 
     else
-        AddCommand -> Ui: printReactionToAddingIngredient()
+        ":AddCommand" -> Ui: printReactionToAddingIngredient()
         activate Ui
-        AddCommand <-- Ui
+        ":AddCommand" <-- Ui
         deactivate Ui
 
     end
 
-    <-- AddCommand
-    deactivate AddCommand
+    <-- ":AddCommand"
+    deactivate ":AddCommand"
 end
 
 
