@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+-> Notification: Notification()
+activate Notification
+
+    Notification -> Notification: printNotification()
+    opt isNotificationOn() && isMoreThan6Hours()
+        Notification -> Notification: System.out.println(NOTIFICATION)
+        <-- Notification
+        Notification -> Notification: setDateAndTime(LocalDateTime.now());
+    end
+
+
+-> NotificationCommand: execute()
+activate NotificationCommand
+
+    alt isNotificationOn()
+        NotificationCommand -> Notification: setNotificationStatus(false)
+        NotificationCommand -> Ui: printline()
+        activate Ui
+        NotificationCommand <-- Ui
+        deactivate Ui
+
+    else
+            NotificationCommand -> Notification: setNotificationStatus(true)
+            NotificationCommand -> Ui: printline()
+            activate Ui
+            NotificationCommand <-- Ui
+            deactivate Ui
+
+    end
+    <-- NotificationCommand
+deactivate NotificationCommand
+
+@enduml

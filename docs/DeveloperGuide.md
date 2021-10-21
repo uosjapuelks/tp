@@ -2,7 +2,11 @@
 
 ## Acknowledgements
 
-{list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
+* Inspired by [AddressBook-Level3 (AB3) DG](https://se-education.org/addressbook-level3/DeveloperGuide.html#architecture).
+* Additional library used include [JANSI](https://github.com/fusesource/jansi).
+
+## Setting Up Fridget
+Refer to User Guide section on [Quick Start](https://ay2122s1-cs2113t-w12-4.github.io/tp/UserGuide.html#:~:text=be%20more%20efficient.-,Quick%20Start,-Ensure%20that%20you).
 
 ## Design & implementation
 
@@ -61,6 +65,41 @@ Step 11:
 
 The execution of the execute() method ends.
 
+### Removing Items From Fridget
+
+### Getting Help Manual 
+
+#### Main Objectives:
+
+The objective of a help manual in Fridget is to ensure users are equipped with the basic knowledge to get 
+started with Fridget.
+
+The idea behind an inbuilt help manual is to ensure Fridget is convenient and reduce the heavy reference of 
+the User Guide.
+
+Future uses include:
+* More in-depth coverage of all basic functions.
+* Interactive component to explore capabilities of each commands.
+
+#### Sequence of execution:
+
+![image info](./umlDiagrams/HelpSequence.png)
+
+Step 1: 
+
+The execution of the Help Command is initiated by Fridget.
+
+Step 2 & 3: 
+
+The printLine() method is called in the Ui which prints out the String that is input into the method, 
+in this case it is the help manual.
+
+Step 4:
+
+The execution of the execute() method ends.
+
+### Resetting Item List In Fridget
+
 ### Listing Items In Fridget
 
 #### Main Objectives:
@@ -101,6 +140,30 @@ Step 8:
 
 The execution of the execute() method ends.
 
+### Finding Items In Fridget
+
+### Listing Items Expiring In Fridget
+
+### Configuring Notifications 
+
+#### Main Objectives:
+
+The objective of the notification based on current functionality is to print out a reminder notification 
+to remind users to eat healthily.
+
+Current implementation allow users to toggle the notifications on or off, with reminders sent out at intervals of 6 hours.
+
+The purpose of implementing time interval and ability to toggle is to prevent excessive notification printing.
+
+Future uses include:
+* Notification on expired and expiring items printed.
+* Notification on items that are rarely used.
+
+#### Sequence of execution:
+
+
+### Exiting From Fridget
+
 ## Product scope
 ### Target user profile
 
@@ -125,7 +188,13 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 
 |Version| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
+|v1.0|busy house-husband|easily find out if I have a certain item in the fridge|spend less time checking through my Fridge|
+|v1.0|busy house-husband|easily add or remove an item into the Fridget|spend less time writing down and scratching out items on a written ledger|
+|v1.0|busy house-husband|easily find out expiry date of ingredient|spend less time going through every ingredient.|
+|v1.0|frugal house-husband|know what foods are about to expire|quickly use them before they become inedible|
+|v1.0|perfectionist house-husband|reset the list of items in Fridget|start using Fridget after not using it for a while, or after initial testing with fake items|
+|v1.0|new user|have a manual instructions|easily navigate through the cli app|
+|v1.0|fitness fanatic|have health-focused reminders for family members to eat more fruits and healthy snacks|my family can be healthy together|
 |v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
 
 ## Non-Functional Requirements
