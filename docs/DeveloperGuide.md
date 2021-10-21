@@ -100,6 +100,27 @@ The execution of the execute() method ends.
 
 ### Resetting Item List In Fridget
 
+#### Main Objectives:
+
+The objective of the reset functionality is to provide users an easy way to remove all the items in Fridget.
+
+#### Overall Sequence:
+
+![image info](./umlDiagrams/ResetSequence.png)
+
+Step 1: 
+
+This execution of this step is initiated by Fridget.
+
+Step 2 & 3: 
+
+If the user double confirms the reset command, the resetList() function is called in the IngredientList and resets 
+the ingredient list by overwriting it with a new ingredient list.
+
+Step 4 & 5:
+
+The printResetMessage() function is called in the Ui which prints a message stating that the ingredient list has been reset.
+
 ### Listing Items In Fridget
 
 #### Main Objectives:
