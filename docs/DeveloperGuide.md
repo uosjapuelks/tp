@@ -206,7 +206,6 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 
 ## Non-Functional Requirements
 
-{Give non-functional requirements}
 1. Fridget should operate on most OS with Java `11` installed.
 2. A user with a fast typing speed should be able to fully optimize the usage of Fridget.
 3. Coloured dates should be able to display on most OS.
@@ -215,6 +214,29 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 
 * **OS**: Windows, Linux, OS X
 
-## Instructions for manual testing
+## Instructions For Manual Testing
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+
+### Launch And Shutdown
+1. Initial launch
+   1. Download the jar file, [Fridget.jar](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v1.0/fridget.jar) and copy into empty folder.
+   2. Double-click the file to launch the app or enter command `java -jar Fridget.jar` into command window to start the program.
+
+2. Shutting down
+   1. A typical file shutdown would be using `exit` command. Items added will be retained and saved in the text file and loaded on next launch.
+   2. Exiting by closing the window is permitted but not encouraged.
+
+### Adding Items
+
+### Deleting Items
+
+### Listing Items
+
+### Saving And Loading Data
+1. Saving and loading data is automated as long as file is not corrupted.
+   1. To track your data in terms of a text file, open up fridgetData folder to access savedList.txt.
+   2. Do not modify any items in the text file which could cause corruption to file.
+2. Dealing with missing file.
+   1. In general, a missing file will not result in any error as files will be generated automatically.
+   2. To simulate a missing file, simple run and exit program, locate the fridgetData folder and delete the savedList.txt file.
