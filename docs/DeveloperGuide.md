@@ -207,10 +207,13 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 ## Non-Functional Requirements
 
 {Give non-functional requirements}
+1. Fridget should operate on most OS with Java `11` installed.
+2. A user with a fast typing speed should be able to fully optimize the usage of Fridget.
+3. Coloured dates should be able to display on most OS.
 
 ## Glossary
 
-* *glossary item* - Definition
+* **OS**: Windows, Linux, OS X
 
 ## Instructions for manual testing
 
