@@ -25,16 +25,16 @@ else
 
     alt qtyOfIngredient > 1
 
-        ":AddCommand" -> Ui: printReactionToAddingExistingIngredient()
-        activate Ui
-        ":AddCommand" <-- Ui
-        deactivate Ui
+        ":AddCommand" -> ":Ui": printReactionToAddingExistingIngredient()
+        activate ":Ui"
+        ":AddCommand" <-- ":Ui"
+        deactivate ":Ui"
 
     else
-        ":AddCommand" -> Ui: printReactionToAddingIngredient()
-        activate Ui
-        ":AddCommand" <-- Ui
-        deactivate Ui
+        ":AddCommand" -> ":Ui": printReactionToAddingIngredient()
+        activate ":Ui"
+        ":AddCommand" <-- ":Ui"
+        deactivate ":Ui"
 
     end
 
