@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+-> ":ResetCommand": execute()
+activate ":ResetCommand"
+
+alt Reconfirm Reset Command
+
+    ":ResetCommand" -> ":IngredientList": resetList()
+    activate ":IngredientList"
+    ":ResetCommand" <-- ":IngredientList":
+    deactivate ":IngredientList"
+
+    ":ResetCommand" -> ":Ui": printResetMessage()
+    activate ":Ui"
+    ":ResetCommand" <-- ":Ui"
+    deactivate ":Ui"
+
+    <-- ":ResetCommand"
+    deactivate ":ResetCommand"
+end
+
+@enduml
