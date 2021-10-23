@@ -88,7 +88,7 @@ The <b>EXPIRY_DATE</b> must be in the <ins>YYYY-MM-DD</ins> format.
 <ins>If you are adding an item not in Fridget:</ins>
 
 ```markdown
-userInput: add burger /2021-11-11
+USER INPUT: add burger /2021-11-11
 __________________________________________
 You have successfully added:
     burger | Qty: 1 | 11 Nov 2021
@@ -98,7 +98,7 @@ __________________________________________
 <ins>If you are adding an item already in Fridget:</ins>
 
 ```markdown
-userInput: add burger /2021-11-11
+USER INPUT: add burger /2021-11-11
 __________________________________________
 You have successfully increased the quantity of:
     burger | Qty: 1->2 | 11 Nov 2021
@@ -131,7 +131,7 @@ The <b>ITEM_NAME</b> can also be a <ins>part of the name</ins> of the item.
 
 <ins>If there is only one item with a name containing `ITEM_NAME`</ins>:
 ```markdown
-userInput: remove burger
+USER INPUT: remove burger
 __________________________________________
 You have successfully removed:
     burger | Qty: 1 | 11 Nov 2021
@@ -140,14 +140,13 @@ __________________________________________
 
 <ins>If there are multiple items with a name containing `ITEM_NAME`</ins>:
 ```markdown
-__________________________________________
-userInput: remove burger
+USER INPUT: remove burger
 __________________________________________
 Which item would you like to be removed? Type the index of the item below.
     1. burger | Qty: 1 | 11 Nov 2021
     2. burger | Qty: 1 | 23 Sep 2021
 __________________________________________
-userInput: 1
+USER INPUT: 1
 __________________________________________
 You have successfully removed:
     burger | Qty: 1 | 11 Nov 2021
@@ -156,18 +155,17 @@ __________________________________________
 
 <ins>If there are multiple quantities of the same item</ins>:
 ```
-__________________________________________
-userInput: remove burger
+USER INPUT: remove burger
 __________________________________________
 Which item would you like to be removed? Type the index of the item below.
     1. burger | Qty: 3 | 11 Nov 2021
     2. burger | Qty: 1 | 23 Sep 2021
 __________________________________________
-userInput: 1
+USER INPUT: 1
 __________________________________________
 There are 3 items, how many would like to remove?
 __________________________________________
-userInput: 2
+USER INPUT: 2
 __________________________________________
 You have successfully removed:
     burger | Qty: 2 | 11 Nov 2021
@@ -184,7 +182,7 @@ Format: `help`
 
 **Example of usage:**
 ```
-userInput: help
+USER INPUT: help
 __________________________________________
 Generating command list...
 __________________________________________
@@ -236,11 +234,11 @@ Format: `reset`
 <ins>If you decide to not reset in the end:</ins>
 
 ```
-userInput: reset
+USER INPUT: reset
 __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
 __________________________________________
-userInput: N
+USER INPUT: N
 __________________________________________
 Abort reset command.
 __________________________________________
@@ -249,11 +247,11 @@ __________________________________________
 <ins>If you are sure you want to reset:</ins>
 
 ```
-userInput: reset
+USER INPUT: reset
 __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
 __________________________________________
-userInput: Y
+USER INPUT: Y
 __________________________________________
 Ingredient list has been reset successfully.
 __________________________________________
@@ -276,7 +274,7 @@ Format: `list -OPTIONAL_SORT_TYPE` or `list OPTIONAL_SORT_TYPE`
 <ins> If you want to list items in alphabetical order: </ins>
 
 ```markdown
-userInput: list
+USER INPUT: list
 __________________________________________
 List sorted by item name:
     1. fish Cake | Qty: 2 | 12 Dec 2020
@@ -288,7 +286,7 @@ __________________________________________
 <ins> If you want to list items in ascending order of expiry dates: </ins>
 
 ```
-userInput: list -e
+USER INPUT: list -e
 __________________________________________
 List sorted by expiry date:
     1. fish Cake | Qty: 2 | 12 Dec 2020
@@ -300,7 +298,7 @@ __________________________________________
 <ins> If you want to list items in order of how recently they were added: </ins>
 
 ```
-userInput: list -r
+USER INPUT: list -r
 __________________________________________
 List sorted by earliest added:
     1. fish Cake | Qty: 2 | 12 Dec 2020
@@ -331,12 +329,12 @@ The <b>KEYWORD</b> can also be a <ins>part of the name</ins> of the item.
 **Example of usage:**
 
 ```
-userInput: find burger
+USER INPUT: find burger
 __________________________________________
 These are the matching ingredients:
     1. burger | Qty: 1 | 23 Sep 2030
 __________________________________________
-userInput: find apple
+USER INPUT: find apple
 __________________________________________
 No matching ingredient found!
 __________________________________________
@@ -358,7 +356,7 @@ Format: `expiring`
 **Example of usage:**
 
 ```markdown
-userInput: expiring
+USER INPUT: expiring
 __________________________________________
 Expiring/Expired Items:
     1. fish Cake | Qty: 2 | 12 Dec 2020
@@ -381,11 +379,11 @@ Format: notifs
 
 **Example of usage:**
 ````
-userInput: notifs
+USER INPUT: notifs
 __________________________________________
 Turning notification off!
 __________________________________________
-userInput: notifs
+USER INPUT: notifs
 __________________________________________
 Turning notification on!
 __________________________________________
@@ -419,7 +417,7 @@ Format: `exit`
 **Example of usage:**
 
 ```markdown
-userInput: exit
+USER INPUT: exit
 __________________________________________
 We'll help you remember everything you told us :)
 See you again!~~
@@ -436,11 +434,11 @@ __________________________________________
 
 Example:
 ```
-userInput: notifs ajsdfasf
+USER INPUT: notifs ajsdfasf
 __________________________________________
 Turning notification off!
 ____________________________________________
-userInput: reset jadfgasgdka
+USER INPUT: reset jadfgasgdka
 __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
 __________________________________________
@@ -451,12 +449,12 @@ __________________________________________
 
 Example:
 ```
-userInput: find a
+USER INPUT: find a
 __________________________________________
 You currently have nothing in your fridge.
 Input "help" to get started!
 __________________________________________
-userInput: expiring
+USER INPUT: expiring
 __________________________________________
 You currently have nothing in your fridge.
 Input "help" to get started!
