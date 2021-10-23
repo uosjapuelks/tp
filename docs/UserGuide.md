@@ -1,5 +1,7 @@
 # User Guide
 
+<hr/>
+
 ## Introduction
 
 Fridget is a <strong> desktop app built to be used via Command Line Interface </strong> (CLI). Fridget is an easier way for you to keep track of the items in your fridge. It is convenient to add, remove, and find items stored in your fridge. Fridget also reminds you when items are nearing expiry.
@@ -44,8 +46,9 @@ You can key in "java -version" to check your version of java.
 This guide has been arranged according to the features offered by Fridget.
 You can see the list of features in the Features section below.
 
+<hr/>
 
-## Features 
+## Features
 
 Feature | Command Format |
 -----------|-----------------
@@ -87,6 +90,7 @@ You have successfully increased the quantity of:
     burger | Qty: 1->2 | 11 Nov 2021
 __________________________________________
 ```
+
 
 ### Remove an item from Fridget: `remove`
 Use this command to remove items from Fridget.
@@ -142,6 +146,8 @@ You have successfully removed:
     burger | Qty: 2 | 11 Nov 2021
 __________________________________________
 ```
+
+
 
 ### Get help: `help`
 Prints all available commands in Fridget.
@@ -222,14 +228,15 @@ __________________________________________
 ```
 
 
+
 ### List all items in Fridget: `list`
 List all items stored in Fridget.
 
 Format: list -OPTIONAL_SORT_TYPE or list OPTIONAL_SORT_TYPE
 
-* `list` Lists in Alphabetical order of the Item Name.
-* `list -e` Lists items in ascending order of Expiry Dates.
-* `list -r` Lists items in descending order the item entered the ledger.
+* `list` Lists items in alphabetical order.
+* `list -e` Lists items in ascending order of expiry dates.
+* `list -r` Lists items in order of how recent it is added.
 
 Example of usage:
 
@@ -261,6 +268,8 @@ List sorted by earliest added:
 __________________________________________
 ```
 
+
+
 ### Find items stored in Fridget: `find`
 Find all items associated with the keyword.
 
@@ -280,6 +289,8 @@ __________________________________________
 No matching ingredient found!
 __________________________________________
 ```
+
+
 
 ### Lists all items expiring soon: `expiring`
 Lists all items that are expired or expiring. Items are considered to be expiring if the expiry date is less than 7 days away from today.
@@ -337,6 +348,8 @@ __________________________________________
 |___________________________________________________|
 ````
 
+
+
 ### Stop Fridget: `exit`
 Safely shut down Fridget.
 
@@ -354,6 +367,7 @@ See you again!~~
 __________________________________________
 ```
 
+<hr/>
 
 ## Things to note
 
