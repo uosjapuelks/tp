@@ -28,13 +28,8 @@ A command like `add ITEM_NAME /EXPIRY DATE` would actually be typed by the user 
 
 1. Ensure that you have Java 11 or above installed on your computer.
 2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v1.0/fridget.jar).
-3. Copy the file into the folder you want store Fridget's data.
+3. Copy the file into the folder you want to store Fridget's data.
 4. Launch the terminal on your computer. You can refer to [this website](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) on how to launch the terminal on your specific OS (Windows/Mac/Linux).
-
-<div markdown="span" class="alert alert-primary">:bulb: Tip:
-You can key in "java -version" to check your version of java.
-</div>
-
 5. Type in `java -jar Fridget.jar` into the terminal to launch the app.
 6. Type your command in the command box and press Enter to execute it.
     * Some example commands you can try:
@@ -42,6 +37,9 @@ You can key in "java -version" to check your version of java.
         - reset: prompts the user to confirm clearing all data.
         - exit: close the app.
 7. Congratulations! You should be good to go!
+
+:bulb: **Tip:**
+You can key in `java -version` into your terminal to check your version of java.
 
 This guide has been arranged according to the features offered by Fridget.
 You can see the list of features in the Features section below.
@@ -68,10 +66,12 @@ Use this command to add your items into Fridget.
 
 Format: add ITEM_NAME /EXPIRY_DATE
 
-<div markdown="span" class="alert alert-warning">:exclamation: Caution:
-The ITEM_NAME can be in a natural language format.
-</div>
-* The `EXPIRY_DATE` must be in the `YYYY-MM-DD` format.  
+
+:exclamation: Caution:
+The `ITEM_NAME` can be in a natural language format. 
+
+:exclamation: Caution:
+The `EXPIRY_DATE` must be in the `YYYY-MM-DD` format.  
 
 Example of usage:
 
