@@ -2,44 +2,72 @@
 
 ## Introduction
 
-Fridget is a <strong> desktop app for managing items in the fridge, built to be used via Command Line Interface </strong> (CLI). If you consistently update the app, housekeeping of items in the fridge will be more efficient.
+Fridget is a <strong> desktop app built to be used via Command Line Interface </strong> (CLI). Fridget is an easier way for you to keep track of the items in your fridge. It is convenient to add, remove, and find items stored in your fridge. Fridget also reminds you when items are nearing expiry.
 
+If you want to start taking charge of your fridge and stop wasting your food, Fridget is for you.
+
+- Forget scribbling your items on a piece of paper. 
+- Forget throwing your food away when it goes bad.
+- Forget expensive smart fridges that are more trouble than they are worth.
+
+Use Fridget today.
+
+This guide is meant for you to quickly get started with Fridget so you can stop worrying about expired food and start enjoying life.
+
+### Legend:
+
+`add ITEM_NAME /EXPIRY_DATE` - Texts inside `this` box refers to either input text by the user or output from Fridget in the terminal.
+It could also refer to file names like `Fridget.jar`.
+
+`ITEM_NAME` or `EXPIRY_DATE` - Texts which have been capitalized refer to parameters which the user should type in. For example:
+A command like `add ITEM_NAME /EXPIRY DATE` would actually be typed by the user as `add burger /2021-11-11`.
 
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed on your computer.
 2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v1.0/fridget.jar).
 3. Copy the file into the folder you want store Fridget's data.
-4. Double-click the file to launch the app. An interface that looks something like the following image will appear.
-5. Type your command in the command box and press Enter to execute it.
+4. Launch the terminal on your computer. You can refer to [this website](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) on how to launch the terminal on your specific OS (Windows/Mac/Linux).
+
+<div markdown="span" class="alert alert-primary">:bulb: Tip:
+You can key in "java -version" to check your version of java.
+</div>
+
+5. Type in `java -jar Fridget.jar` into the terminal to launch the app.
+6. Type your command in the command box and press Enter to execute it.
     * Some example commands you can try:
-        - help: lists all commands and input format in a separate window.
+        - help: lists all commands and input format.
         - reset: prompts the user to confirm clearing all data.
         - exit: close the app.
-6. Congratulations! You should be good to go!
+7. Congratulations! You should be good to go!
+
+This guide has been arranged according to the features offered by Fridget.
+You can see the list of features in the Features section below.
 
 
 ## Features 
 
 Feature | Command Format |
 -----------|-----------------
-Add an item | `add <ITEM_NAME> /<EXPIRY_DATE>`
-Remove an item | `remove <ITEM_NAME>`
+Add an item | `add ITEM_NAME /EXPIRY_DATE`
+Remove an item | `remove ITEM_NAME`
 Get help | `help`
 Reset all items | `reset`
-List all items | `list -<OPTIONAL_SORT_TYPE>`
-Find an item | `find <KEYWORD>`
+List all items | `list -OPTIONAL_SORT_TYPE`
+Find an item | `find KEYWORD`
 List expiring items | `expiring`  
 See notifications | `notifs`
 Exit Fridget | `exit`
 
 
 ### Add an item into Fridget: `add`
-Add an item into Fridget.
+Use this command to add your items into Fridget.
 
 Format: add ITEM_NAME /EXPIRY_DATE
 
-* The `ITEM_NAME` can be in a natural language format.
+<div markdown="span" class="alert alert-warning">:exclamation: Caution:
+The ITEM_NAME can be in a natural language format.
+</div>
 * The `EXPIRY_DATE` must be in the `YYYY-MM-DD` format.  
 
 Example of usage:
@@ -61,7 +89,7 @@ __________________________________________
 ```
 
 ### Remove an item from Fridget: `remove`
-Remove an item from Fridget.
+Use this command to remove items from Fridget.
 
 Format: remove ITEM_NAME
 
@@ -130,13 +158,13 @@ Generating command list...
 __________________________________________
 List of commands available:
 
-add <INGREDIENT_NAME> </EXPIRY_DATE(format: yyyy-mm-dd)> [eg. add bacon /2022-11-11]
+add INGREDIENT_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
 -> Adds an ingredient and its expiry date to the ingredient list.
 
-find <KEYWORD> [eg. find bacon]
+find KEYWORD [eg. find bacon]
 -> Find and print all ingredient associated with keyword.
 
-remove <INGREDIENT_NAME> [eg. delete bacon]
+remove INGREDIENT_NAME [eg. delete bacon]
 -> Removes the ingredient from the ingredient list.
 
 list -e
