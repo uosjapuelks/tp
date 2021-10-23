@@ -16,13 +16,17 @@ Use Fridget today.
 
 This guide is meant for you to quickly get started with Fridget so you can stop worrying about expired food and start enjoying life.
 
-### Legend:
+<hr/>
+
+## Legend
 
 `add ITEM_NAME /EXPIRY_DATE` - Texts inside `this` box refers to either input text by the user or output from Fridget in the terminal.
 It could also refer to file names like `Fridget.jar`.
 
 `ITEM_NAME` or `EXPIRY_DATE` - Texts which have been capitalized refer to parameters which the user should type in. For example:
 A command like `add ITEM_NAME /EXPIRY DATE` would actually be typed by the user as `add burger /2021-11-11`.
+
+<hr/>
 
 ## Quick Start
 
@@ -37,9 +41,11 @@ A command like `add ITEM_NAME /EXPIRY DATE` would actually be typed by the user 
         - reset: prompts the user to confirm clearing all data.
         - exit: close the app.
 7. Congratulations! You should be good to go!
+<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+:bulb: <b>Tip:</b>
+You can key in "<b>java -version</b>" into your terminal to check your version of java.
+</div>
 
-:bulb: **Tip:**
-You can key in `java -version` into your terminal to check your version of java.
 
 This guide has been arranged according to the features offered by Fridget.
 You can see the list of features in the Features section below.
@@ -50,30 +56,36 @@ You can see the list of features in the Features section below.
 
 Feature | Command Format |
 -----------|-----------------
-Add an item | `add ITEM_NAME /EXPIRY_DATE`
-Remove an item | `remove ITEM_NAME`
-Get help | `help`
-Reset all items | `reset`
-List all items | `list -OPTIONAL_SORT_TYPE`
-Find an item | `find KEYWORD`
-List expiring items | `expiring`  
-See notifications | `notifs`
-Exit Fridget | `exit`
+[Add an item](#add-an-item-into-fridget-add) | `add ITEM_NAME /EXPIRY_DATE`
+[Remove an item](#remove-an-item-from-fridget-remove) | `remove ITEM_NAME`
+[Get help](#get-help-help) | `help`
+[Reset all items](#reset-all-items-reset) | `reset`
+[List all items](#list-all-items-in-fridget-list) | `list -OPTIONAL_SORT_TYPE`
+[Find an item](#find-items-stored-in-fridget-find) | `find KEYWORD`
+[List expiring items](#lists-all-items-expiring-soon-expiring) | `expiring`  
+[See notifications](#see-notifications-notifs) | `notifs`
+[Exit Fridget](#stop-fridget-exit) | `exit`
 
+<hr/>
 
 ### Add an item into Fridget: `add`
 Use this command to add your items into Fridget.
 
-Format: add ITEM_NAME /EXPIRY_DATE
+Format: `add ITEM_NAME /EXPIRY_DATE`
 
+<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+:exclamation:
+The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
+</div>
 
-:exclamation: Caution:
-The `ITEM_NAME` can be in a natural language format. 
+<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+:exclamation: 
+The <b>EXPIRY_DATE</b> must be in the <ins>YYYY-MM-DD</ins> format.  
+</div>
 
-:exclamation: Caution:
-The `EXPIRY_DATE` must be in the `YYYY-MM-DD` format.  
+**Example of usage:**
 
-Example of usage:
+<ins>If you are adding an item not in Fridget:</ins>
 
 ```markdown
 userInput: add burger /2021-11-11
@@ -83,6 +95,8 @@ You have successfully added:
 __________________________________________
 ```
 
+<ins>If you are adding an item already in Fridget:</ins>
+
 ```markdown
 userInput: add burger /2021-11-11
 __________________________________________
@@ -91,18 +105,31 @@ You have successfully increased the quantity of:
 __________________________________________
 ```
 
+<hr/>
 
 ### Remove an item from Fridget: `remove`
 Use this command to remove items from Fridget.
 
-Format: remove ITEM_NAME
+Format: `remove ITEM_NAME`
 
-* The `ITEM_NAME` can be in a natural language format.
-* The `ITEM_NAME` should be the same or be a subset of the name of the item you are trying to remove.
+<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+:exclamation:
+The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
+</div>
 
-Example of usage:
+<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation:
+The <b>ITEM_NAME</b> should be the <ins>same</ins> as the name of the item you are trying to remove. 
+</div>
 
-<ins>If there is only one item with a name containing `ITEM_NAME`</ins>
+<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation:
+The <b>ITEM_NAME</b> can also be a <ins>part of the name</ins> of the item. 
+</div>
+
+**Example of usage:**
+
+<ins>If there is only one item with a name containing `ITEM_NAME`</ins>:
 ```markdown
 userInput: remove burger
 __________________________________________
@@ -111,7 +138,7 @@ You have successfully removed:
 __________________________________________
 ```
 
-<ins>If there are multiple items with a name containing `ITEM_NAME`</ins>
+<ins>If there are multiple items with a name containing `ITEM_NAME`</ins>:
 ```markdown
 __________________________________________
 userInput: remove burger
@@ -127,7 +154,7 @@ You have successfully removed:
 __________________________________________
 ```
 
-<ins>If there are multiple quantities of the same item</ins>
+<ins>If there are multiple quantities of the same item</ins>:
 ```
 __________________________________________
 userInput: remove burger
@@ -147,16 +174,15 @@ You have successfully removed:
 __________________________________________
 ```
 
-
+<hr/>
 
 ### Get help: `help`
-Prints all available commands in Fridget.
 
-Format: help
+Use this command to see the list of commands from within Fridget.
 
-- `help`
+Format: `help`
 
-Example of usage:
+**Example of usage:**
 ```
 userInput: help
 __________________________________________
@@ -196,16 +222,19 @@ exit
 __________________________________________
 ```
 
-
+<hr/>
 
 ### Reset all items: `reset`
-Resets all your items in the ingredient list.
 
-Format: reset
+Use this command to reset Fridget
+- This erases all stored items in Fridget.
 
-* `reset`
+Format: `reset`
 
-Example of usage:
+**Example of usage:**
+
+<ins>If you decide to not reset in the end:</ins>
+
 ```
 userInput: reset
 __________________________________________
@@ -216,6 +245,9 @@ __________________________________________
 Abort reset command.
 __________________________________________
 ```
+
+<ins>If you are sure you want to reset:</ins>
+
 ```
 userInput: reset
 __________________________________________
@@ -227,18 +259,21 @@ Ingredient list has been reset successfully.
 __________________________________________
 ```
 
-
+<hr/>
 
 ### List all items in Fridget: `list`
-List all items stored in Fridget.
 
-Format: list -OPTIONAL_SORT_TYPE or list OPTIONAL_SORT_TYPE
+This commands lists all items in Fridget, in the order that you prefer.
+
+Format: `list -OPTIONAL_SORT_TYPE` or `list OPTIONAL_SORT_TYPE`
 
 * `list` Lists items in alphabetical order.
 * `list -e` Lists items in ascending order of expiry dates.
-* `list -r` Lists items in order of how recent it is added.
+* `list -r` Lists items in order of how recently it was added.
 
-Example of usage:
+**Example of usage:**
+
+<ins> If you want to list items in alphabetical order: </ins>
 
 ```markdown
 userInput: list
@@ -249,6 +284,9 @@ List sorted by item name:
     3. Yoghurt cake | Qty: 1 | 15 Oct 2021
 __________________________________________
 ```
+
+<ins> If you want to list items in ascending order of expiry dates: </ins>
+
 ```
 userInput: list -e
 __________________________________________
@@ -258,6 +296,9 @@ List sorted by expiry date:
     3. frozen duck | Qty: 1 | 10 Oct 2022
 __________________________________________
 ```
+
+<ins> If you want to list items in order of how recently they were added: </ins>
+
 ```
 userInput: list -r
 __________________________________________
@@ -268,15 +309,26 @@ List sorted by earliest added:
 __________________________________________
 ```
 
+<hr/>
 
 
 ### Find items stored in Fridget: `find`
-Find all items associated with the keyword.
 
-Format: find KEYWORD
+Use this command to easily find an item in Fridget by name.
 
-* The `KEYWORD` should be the same as the name of the item you are looking for.
-* The `KEYWORD` can also be a part of the name of the item.
+Format: `find KEYWORD`
+
+<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation:
+The <b>KEYWORD</b> should be the <ins>same</ins> as the name of the item you are trying to remove. 
+</div>
+
+<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation:
+The <b>KEYWORD</b> can also be a <ins>part of the name</ins> of the item. 
+</div>
+
+**Example of usage:**
 
 ```
 userInput: find burger
@@ -290,16 +342,20 @@ No matching ingredient found!
 __________________________________________
 ```
 
-
+<hr/>
 
 ### Lists all items expiring soon: `expiring`
-Lists all items that are expired or expiring. Items are considered to be expiring if the expiry date is less than 7 days away from today.
 
-Format: expiring
+Use this command to get a list of all expiring items.
 
-* `expiring`
+<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+:bulb: <b>Tip:</b>
+Only items expiring within 7 days will be shown. Expired items will be shown too.
+</div>
 
-Example of usage:
+Format: `expiring`
+
+**Example of usage:**
 
 ```markdown
 userInput: expiring
@@ -310,16 +366,20 @@ Expiring/Expired Items:
 __________________________________________
 ```
 
-
+<hr/>
 
 ### See notifications: `notifs`
-Display notification reminder scheduled at 6 hours interval. Can be toggled on or off. 
+
+Use this command to turn notifications on or off.
+
+<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+:bulb: <b>Tip:</b>
+Notifications are scheduled by default to be turned on every 6 hours.
+</div>
 
 Format: notifs
 
-* `notifs`
-
-Example of usage:
+**Example of usage:**
 ````
 userInput: notifs
 __________________________________________
@@ -348,16 +408,15 @@ __________________________________________
 |___________________________________________________|
 ````
 
-
+<hr/>
 
 ### Stop Fridget: `exit`
-Safely shut down Fridget.
 
-Format: exit
+Use this command when you are done using Fridget. Fridget will help you to remember everything you did.
 
-- `exit`
+Format: `exit`
 
-Example of usage:
+**Example of usage:**
 
 ```markdown
 userInput: exit
@@ -371,7 +430,9 @@ __________________________________________
 
 ## Things to note
 
-1. For commands help, expiring, reset and notifs, adding a space and random String behind will still trigger the command.
+<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation: For commands help, expiring, reset and notifs, adding a space and random text behind will still trigger the command.
+</div>
 
 Example:
 ```
@@ -384,8 +445,9 @@ __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
 __________________________________________
 ```
-
-2. If no item is recorded, Fridget will prompt you to get help.
+<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation: If no item is recorded, Fridget will prompt you to get help.
+</div>
 
 Example:
 ```
