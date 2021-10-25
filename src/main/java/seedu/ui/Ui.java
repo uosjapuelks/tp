@@ -148,7 +148,7 @@ public class Ui {
         }
 
         printConfirmItemMessage(matchingItems, commandType);
-        int userIntInput = getIntInput();
+        int userIntInput = getIntInput(commandType);
         int index = checkAndGetIndex(matchingItems, userIntInput);
 
         return matchingItems.get(index - 1);
@@ -297,9 +297,29 @@ public class Ui {
     public int getIntInput() throws FridgetException {
         String toIntInput = readUserInput();
         printSeparatorLine();
- 
-        if (toIntInput.toLowerCase().matches("quit")) {
-            throw new FridgetException("You have decided to quit. The remove command has been shutdown.");
+
+        try {
+            int intOutput = Integer.parseInt(toIntInput);
+            return intOutput;
+        } catch (NumberFormatException e) {
+            throw new FridgetException("No valid number was stated. The command has been shutdown");
+        }
+    }
+
+    /**
+     * Asks user for input and expect only Integer input.
+     *
+     * @return The integer of the input.
+     * @throws FridgetException if userInput is not integer.
+     */
+    public int getIntInput(CommandType commandType) throws FridgetException {
+        String toIntInput = readUserInput();
+        printSeparatorLine();
+
+        if (commandType.equals(CommandType.REMOVE)) {
+            if (toIntInput.toLowerCase().matches("quit")) {
+                throw new FridgetException("You have decided to quit. The remove command has been shutdown.");
+            }
         }
 
         try {
