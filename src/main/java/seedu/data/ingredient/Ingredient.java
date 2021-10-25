@@ -62,6 +62,10 @@ public class Ingredient {
         return quantity;
     }
 
+    public void setQuantity(int toQuantity) {
+        this.quantity = toQuantity;
+    }
+
     /**
      * String is represented as name + quantity + Expiry date that is colored depending on expiry status.
      *
