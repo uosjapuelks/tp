@@ -40,12 +40,13 @@ public class RemoveCommand extends Command {
      */
     private void handleRemovalOfItem(Ui ui, IngredientList ingredientList, String nameOfItemToBeRemoved,
                                      ArrayList<Ingredient> matchingItems) throws FridgetException {
+        // If there are no matching items, let the user know
         if (matchingItems.size() == 0) {
             ui.printLine("No such item exists.");
             return;
         }
 
-        // Make it convenient if the user only returns 1 result, result is same as input, & only one of item in list
+        // Remove item automatically if matching item is unique
         if (matchingItems.size() == 1) {
             Ingredient itemToBeRemoved = matchingItems.get(0);
             if (itemToBeRemoved.getIngredientName().equals(nameOfItemToBeRemoved)) {

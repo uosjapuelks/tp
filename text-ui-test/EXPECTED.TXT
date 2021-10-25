@@ -170,6 +170,7 @@ __________________________________________
 Which item would you like to be removed? Type the index of the item below.
     1. fish Cake | Qty: 3 | 12 Dec 2010
     2. JimBeam | Qty: 2 | 03 Oct 2030
+If you've changed your mind, simply type 'quit'.
 __________________________________________
 __________________________________________
 This index is not valid. The remove command has been shutdown.
@@ -184,6 +185,7 @@ __________________________________________
 Which item would you like to be removed? Type the index of the item below.
     1. fish Cake | Qty: 3 | 12 Dec 2010
     2. JimBeam | Qty: 2 | 03 Oct 2030
+If you've changed your mind, simply type 'quit'.
 __________________________________________
 __________________________________________
 There are 2 items, how many would like to remove?
