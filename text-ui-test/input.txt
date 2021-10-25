@@ -27,6 +27,17 @@ add JimBeam /2030-10-03
 remove i
 0
 list
+remove beam
+n
+remove beam
+y
+1
+update beam
+y
+2000
+update a
+1
+675
 remove i
 2
 2
@@ -35,6 +46,7 @@ remove fish Cake
 2
 list
 remove yoghurt cake
+675
 remove fish Cake
 list
 exit

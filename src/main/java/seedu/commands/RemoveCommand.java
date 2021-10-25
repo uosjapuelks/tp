@@ -4,7 +4,6 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
-import seedu.notification.Notification;
 import seedu.ui.Ui;
 
 import java.util.ArrayList;
@@ -18,13 +17,14 @@ public class RemoveCommand extends Command {
 
     /**
      * Executes the command.
+     *
      * @throws FridgetException if user types an incorrect value when prompted.
      */
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
         String nameOfItemToBeRemoved = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.REMOVE);
         if (nameOfItemToBeRemoved.contains(" | ") | nameOfItemToBeRemoved.contains("/")) {
-            throw new FridgetException("You are not able to use '/' and '|' in ingredient names.");
+            throw new FridgetException("You are not able to use '/' and ' | ' in ingredient names.");
         }
         ArrayList<Ingredient> matchingItems = ingredientList.findAllMatchingIngredients(nameOfItemToBeRemoved);
         handleRemovalOfItem(ui, ingredientList, nameOfItemToBeRemoved, matchingItems);
@@ -41,23 +41,26 @@ public class RemoveCommand extends Command {
     private void handleRemovalOfItem(Ui ui, IngredientList ingredientList, String nameOfItemToBeRemoved,
                                      ArrayList<Ingredient> matchingItems) throws FridgetException {
         // If there are no matching items, let the user know
-        if (matchingItems.size() == 0) {
-            ui.printLine("No such item exists.");
-            return;
-        }
+        ui.printIfNotFoundMessage(matchingItems);
 
         // Remove item automatically if matching item is unique
         if (matchingItems.size() == 1) {
+            boolean acceptDefault = true;
             Ingredient itemToBeRemoved = matchingItems.get(0);
-            if (itemToBeRemoved.getIngredientName().equals(nameOfItemToBeRemoved)) {
+            if (!itemToBeRemoved.getIngredientName().equals(nameOfItemToBeRemoved)) {
+                acceptDefault = ui.giveSuggestion(itemToBeRemoved);
+            }
+            if (acceptDefault) {
                 handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
                 return;
             }
         }
 
-        Ingredient itemToBeRemoved = ui.getItemToBeRemoved(matchingItems);
-        assert ingredientList.containsIngredient(itemToBeRemoved);
-        handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
+        if (matchingItems.size() > 1) {
+            Ingredient itemToBeRemoved = ui.matchItem(matchingItems, Ui.CommandType.REMOVE);
+            assert ingredientList.containsIngredient(itemToBeRemoved);
+            handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
+        }
     }
 
     /**
