@@ -115,7 +115,7 @@ public class IngredientList {
         }
         ArrayList<Ingredient> matchingIngredients = new ArrayList<>();
         for (Ingredient ingredient : ingredientList) {
-            if (ingredient.getIngredientName().contains(searchTerm)) {
+            if (ingredient.getIngredientName().toLowerCase().contains(searchTerm.toLowerCase())) {
                 matchingIngredients.add(ingredient);
             }
         }

@@ -130,6 +130,7 @@ public class Ui {
         }
         printLine(String.format(question, correctText));
         printListOfIngredients(matchingItems, true);
+        printLine("If you've changed your mind, simply type 'quit'.");
         printSeparatorLine();
     }
 
@@ -296,6 +297,10 @@ public class Ui {
     public int getIntInput() throws FridgetException {
         String toIntInput = readUserInput();
         printSeparatorLine();
+ 
+        if (toIntInput.toLowerCase().matches("quit")) {
+            throw new FridgetException("You have decided to quit. The remove command has been shutdown.");
+        }
 
         try {
             int intOutput = Integer.parseInt(toIntInput);
