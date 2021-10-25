@@ -13,6 +13,11 @@ public class Ui {
 
     private String currentUserInput;
 
+    public enum CommandType {
+        REMOVE,
+        UPDATE
+    }
+
     /**
      * A constructor to initialise ui.
      */
@@ -105,16 +110,38 @@ public class Ui {
     }
 
     /**
+     * Prints Question to ask user which item is the target item.
+     *
+     * @param matchingItems The list of items which match the user's serach term.
+     * @param commandType Type of command printing the message.
+     */
+    public void printConfirmItemMessage(ArrayList<Ingredient> matchingItems, CommandType commandType) {
+        String question = "Which item would you like to %s? Type the index of the item below.";
+        String correctText;
+        switch (commandType) {
+        case REMOVE:
+            correctText = "remove";
+            break;
+        case UPDATE:
+            correctText = "overwrite quantity";
+            break;
+        default:
+            correctText = "";
+        }
+        printLine(String.format(question, correctText));
+        printListOfIngredients(matchingItems, true);
+        printSeparatorLine();
+    }
+
+    /**
      * Returns the item the user wants to remove from Fridget.
      *
      * @param matchingItems The list of items which match the user's search term.
      * @return The item that the user wants to remove.
      * @throws FridgetException if the user types a wrong value (non-integer or outside of index of matchingItems)
      */
-    public Ingredient getItemToBeRemoved(ArrayList<Ingredient> matchingItems) throws FridgetException {
-        printLine("Which item would you like to be removed? Type the index of the item below.");
-        printListOfIngredients(matchingItems, true);
-        printSeparatorLine();
+    public Ingredient getItemToBeRemoved(ArrayList<Ingredient> matchingItems, CommandType commandType) throws FridgetException {
+        printConfirmItemMessage(matchingItems, CommandType.REMOVE);
 
         String userInput = readUserInput();
         printSeparatorLine();
@@ -130,6 +157,31 @@ public class Ui {
         }
 
         return matchingItems.get(index - 1);
+    }
+
+    public Ingredient getCorrectItem(ArrayList<Ingredient> matchingItems, CommandType commandType) throws FridgetException{
+        if (matchingItems.size() == 1) {
+            return matchingItems.get(0);
+        }
+
+        printConfirmItemMessage(matchingItems, commandType);
+        String userInput = readUserInput();
+        printSeparatorLine();
+        int index = checkAndGetIndex(matchingItems, userInput);
+
+        return matchingItems.get(index - 1);
+    }
+
+    private int checkAndGetIndex(ArrayList<Ingredient> matchingItems, String userInput) throws FridgetException {
+        if (!(userInput.matches("\\d"))) {
+            throw new FridgetException("No valid number was stated. The command has been shutdown.");
+        }
+
+        int index = Integer.parseInt(userInput);
+        if (index <= 0 | index > matchingItems.size()) {
+            throw new FridgetException("This index is not valid. The command has been shutdown.");
+        }
+        return index;
     }
 
     /**
@@ -237,6 +289,12 @@ public class Ui {
             String expiringMessage = "Expiring/Expired Items:";
             printLine(expiringMessage);
             printListOfIngredients(expiringList, true);
+        }
+    }
+
+    public void printIfNotFoundMessage(ArrayList<Ingredient> matchingItems) {
+        if (matchingItems.size() == 0) {
+            printLine("No such item exists.");
         }
     }
 

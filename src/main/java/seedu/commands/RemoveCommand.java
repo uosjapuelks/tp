@@ -4,7 +4,6 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
-import seedu.notification.Notification;
 import seedu.ui.Ui;
 
 import java.util.ArrayList;
@@ -40,10 +39,7 @@ public class RemoveCommand extends Command {
      */
     private void handleRemovalOfItem(Ui ui, IngredientList ingredientList, String nameOfItemToBeRemoved,
                                      ArrayList<Ingredient> matchingItems) throws FridgetException {
-        if (matchingItems.size() == 0) {
-            ui.printLine("No such item exists.");
-            return;
-        }
+        ui.printIfNotFoundMessage(matchingItems);
 
         // Make it convenient if the user only returns 1 result, result is same as input, & only one of item in list
         if (matchingItems.size() == 1) {
@@ -54,7 +50,7 @@ public class RemoveCommand extends Command {
             }
         }
 
-        Ingredient itemToBeRemoved = ui.getItemToBeRemoved(matchingItems);
+        Ingredient itemToBeRemoved = ui.getCorrectItem(matchingItems, Ui.CommandType.REMOVE);
         assert ingredientList.containsIngredient(itemToBeRemoved);
         handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
     }

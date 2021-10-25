@@ -8,20 +8,23 @@ import seedu.ui.Ui;
 
 import java.util.ArrayList;
 
-public class QuantityCommand extends Command {
+public class UpdateCommand extends Command {
     /**
      * Constructor for QuantityCommand
      */
-    public QuantityCommand() {
+    public UpdateCommand() {
     }
 
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
-        String targetItem = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.QUANTITY);
+        String targetItem = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.UPDATE);
         if (targetItem.contains(" | ") | targetItem.contains("/")) {
             throw new FridgetException("You are not able to use '/' and '|' in ingredient name.");
         }
         ArrayList<Ingredient> matchingItems = ingredientList.findAllMatchingIngredients(targetItem);
         ui.printIfNotFoundMessage(matchingItems);
-        Ingredient itemToUpdate = ui.getCorrectItem(matchingItems);
+        Ingredient itemToUpdate = ui.getCorrectItem(matchingItems, Ui.CommandType.UPDATE);
+
+        int qty;
+
     }
 }
