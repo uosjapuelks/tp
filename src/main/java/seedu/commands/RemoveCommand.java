@@ -17,13 +17,14 @@ public class RemoveCommand extends Command {
 
     /**
      * Executes the command.
+     *
      * @throws FridgetException if user types an incorrect value when prompted.
      */
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
         String nameOfItemToBeRemoved = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.REMOVE);
         if (nameOfItemToBeRemoved.contains(" | ") | nameOfItemToBeRemoved.contains("/")) {
-            throw new FridgetException("You are not able to use '/' and '|' in ingredient names.");
+            throw new FridgetException("You are not able to use '/' and ' | ' in ingredient names.");
         }
         ArrayList<Ingredient> matchingItems = ingredientList.findAllMatchingIngredients(nameOfItemToBeRemoved);
         handleRemovalOfItem(ui, ingredientList, nameOfItemToBeRemoved, matchingItems);
@@ -50,9 +51,11 @@ public class RemoveCommand extends Command {
             }
         }
 
-        Ingredient itemToBeRemoved = ui.getCorrectItem(matchingItems, Ui.CommandType.REMOVE);
-        assert ingredientList.containsIngredient(itemToBeRemoved);
-        handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
+        if (matchingItems.size() > 1) {
+            Ingredient itemToBeRemoved = ui.matchItem(matchingItems, Ui.CommandType.REMOVE);
+            assert ingredientList.containsIngredient(itemToBeRemoved);
+            handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
+        }
     }
 
     /**
