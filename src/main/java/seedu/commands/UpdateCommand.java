@@ -24,7 +24,7 @@ public class UpdateCommand extends Command {
         ui.printIfNotFoundMessage(matchingItems);
         Ingredient itemToUpdate = ui.getCorrectItem(matchingItems, Ui.CommandType.UPDATE);
 
-        int qty;
-
+        int newQty = ui.getIntInput();
+        ingredientList.updateQuantity(itemToUpdate, newQty);
     }
 }
