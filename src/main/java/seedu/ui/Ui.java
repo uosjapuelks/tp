@@ -114,10 +114,15 @@ public class Ui {
     public Ingredient getItemToBeRemoved(ArrayList<Ingredient> matchingItems) throws FridgetException {
         printLine("Which item would you like to be removed? Type the index of the item below.");
         printListOfIngredients(matchingItems, true);
+        printLine("If you've changed your mind, simply type 'quit'.");
         printSeparatorLine();
 
         String userInput = readUserInput();
         printSeparatorLine();
+
+        if(userInput.toLowerCase().matches("quit")) {
+            throw new FridgetException("You have decided to quit. The remove command has been shutdown.");
+        }
 
         if (!(userInput.matches("\\d"))) {
             throw new FridgetException("No valid number was stated. The remove command has been shutdown.");
