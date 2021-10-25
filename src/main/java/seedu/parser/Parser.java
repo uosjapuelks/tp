@@ -75,12 +75,12 @@ public class Parser {
     }
 
     /**
-     * Splits user inputs.
+     * Splits user inputs by " ".
      *
      * @param userInput String input to be split by " ".
      * @return String[] from splitting input.
      */
-    private String[] splitUserInput(String userInput) {
+    private String[] splitUserInputByWhitespace(String userInput) {
         String[] splitInput = userInput.trim().split(" ", 2);
         assert splitInput.length >= 1;
         return splitInput;
@@ -104,10 +104,10 @@ public class Parser {
      * Execute splitUserInput and trimContents on userInput.
      *
      * @param userInput String input by user.
-     * @return String[] after processing using splitUserInput and trimContents.
+     * @return String[] after processing using splitUserInputByWhitespace and trimContents.
      */
     private String[] processInput(String userInput) {
-        String[] splitInput = splitUserInput(userInput);
+        String[] splitInput = splitUserInputByWhitespace(userInput);
         String[] trimmedInput = trimContents(splitInput);
         return trimmedInput;
     }
