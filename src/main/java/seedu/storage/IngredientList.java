@@ -47,6 +47,10 @@ public class IngredientList {
         ingredient.removeQuantity(qty);
     }
 
+    public void updateQuantity(Ingredient targetIngredient, int toQuantity) {
+        targetIngredient.setQuantity(toQuantity);
+    }
+
     public boolean containsIngredient(Ingredient ingredient) {
         assert ingredient != null : "Ingredient must not be null!";
         return ingredientList.contains(ingredient);
