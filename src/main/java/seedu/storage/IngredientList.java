@@ -47,6 +47,12 @@ public class IngredientList {
         ingredient.removeQuantity(qty);
     }
 
+    /**
+     * Overwrite the quantity of an item to the new amount.
+     *
+     * @param targetIngredient Item in which quantity is to be overwritten.
+     * @param toQuantity Overwrite to this quantity.
+     */
     public void updateQuantity(Ingredient targetIngredient, int toQuantity) {
         targetIngredient.setQuantity(toQuantity);
     }

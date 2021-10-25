@@ -113,7 +113,7 @@ public class Ui {
      * Prints Question to ask user which item is the target item.
      *
      * @param matchingItems The list of items which match the user's serach term.
-     * @param commandType Type of command printing the message.
+     * @param commandType   Type of command printing the message.
      */
     public void printConfirmItemMessage(ArrayList<Ingredient> matchingItems, CommandType commandType) {
         String question = "Which item would you like to %s? Type the index of the item below.";
@@ -133,7 +133,15 @@ public class Ui {
         printSeparatorLine();
     }
 
-    public Ingredient getCorrectItem(ArrayList<Ingredient> matchingItems, CommandType commandType) throws FridgetException{
+    /**
+     * Prints list of matching items to prompt user to pick the correct match.
+     *
+     * @param matchingItems List of items that matches the search term.
+     * @param commandType Whether it is UPDATE or REMOVE.
+     * @return The ingredient selected by the user.
+     * @throws FridgetException If input is out of bounds.
+     */
+    public Ingredient matchItem(ArrayList<Ingredient> matchingItems, CommandType commandType) throws FridgetException {
         if (matchingItems.size() == 1) {
             return matchingItems.get(0);
         }
@@ -145,6 +153,14 @@ public class Ui {
         return matchingItems.get(index - 1);
     }
 
+    /**
+     * Verifies if index is within bounds.
+     *
+     * @param matchingItems List of items that are matching.
+     * @param intInput The integer of userInput.
+     * @return The input integer if input is within bounds.
+     * @throws FridgetException if input Integer is out of Bounds.
+     */
     private int checkAndGetIndex(ArrayList<Ingredient> matchingItems, int intInput) throws FridgetException {
         if (intInput <= 0 | intInput > matchingItems.size()) {
             throw new FridgetException("This index is not valid. The command has been shutdown.");
@@ -260,19 +276,30 @@ public class Ui {
         }
     }
 
+    /**
+     * Prints message if there are no matching items.
+     *
+     * @param matchingItems List of matching items after parseSearchTerm.
+     */
     public void printIfNotFoundMessage(ArrayList<Ingredient> matchingItems) {
         if (matchingItems.size() == 0) {
             printLine("No such item exists.");
         }
     }
 
+    /**
+     * Asks user for input and expect only Integer input.
+     *
+     * @return The integer of the input.
+     * @throws FridgetException if userInput is not integer.
+     */
     public int getIntInput() throws FridgetException {
         String toIntInput = readUserInput();
         printSeparatorLine();
 
         try {
-            int outInput = Integer.parseInt(toIntInput);
-            return outInput;
+            int intOutput = Integer.parseInt(toIntInput);
+            return intOutput;
         } catch (NumberFormatException e) {
             throw new FridgetException("No valid number was stated. The command has been shutdown");
         }
