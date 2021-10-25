@@ -133,55 +133,23 @@ public class Ui {
         printSeparatorLine();
     }
 
-    /**
-     * Returns the item the user wants to remove from Fridget.
-     *
-     * @param matchingItems The list of items which match the user's search term.
-     * @return The item that the user wants to remove.
-     * @throws FridgetException if the user types a wrong value (non-integer or outside of index of matchingItems)
-     */
-    public Ingredient getItemToBeRemoved(ArrayList<Ingredient> matchingItems, CommandType commandType) throws FridgetException {
-        printConfirmItemMessage(matchingItems, CommandType.REMOVE);
-
-        String userInput = readUserInput();
-        printSeparatorLine();
-
-        if (!(userInput.matches("\\d"))) {
-            throw new FridgetException("No valid number was stated. The remove command has been shutdown.");
-        }
-
-        int index = Integer.parseInt(userInput);
-
-        if (index <= 0 | index > matchingItems.size()) {
-            throw new FridgetException("This index is not valid. The remove command has been shutdown.");
-        }
-
-        return matchingItems.get(index - 1);
-    }
-
     public Ingredient getCorrectItem(ArrayList<Ingredient> matchingItems, CommandType commandType) throws FridgetException{
         if (matchingItems.size() == 1) {
             return matchingItems.get(0);
         }
 
         printConfirmItemMessage(matchingItems, commandType);
-        String userInput = readUserInput();
-        printSeparatorLine();
-        int index = checkAndGetIndex(matchingItems, userInput);
+        int userIntInput = getIntInput();
+        int index = checkAndGetIndex(matchingItems, userIntInput);
 
         return matchingItems.get(index - 1);
     }
 
-    private int checkAndGetIndex(ArrayList<Ingredient> matchingItems, String userInput) throws FridgetException {
-        if (!(userInput.matches("\\d"))) {
-            throw new FridgetException("No valid number was stated. The command has been shutdown.");
-        }
-
-        int index = Integer.parseInt(userInput);
-        if (index <= 0 | index > matchingItems.size()) {
+    private int checkAndGetIndex(ArrayList<Ingredient> matchingItems, int intInput) throws FridgetException {
+        if (intInput <= 0 | intInput > matchingItems.size()) {
             throw new FridgetException("This index is not valid. The command has been shutdown.");
         }
-        return index;
+        return intInput;
     }
 
     /**
@@ -298,6 +266,18 @@ public class Ui {
         }
     }
 
+    public int getIntInput() throws FridgetException {
+        String toIntInput = readUserInput();
+        printSeparatorLine();
+
+        try {
+            int outInput = Integer.parseInt(toIntInput);
+            return outInput;
+        } catch (NumberFormatException e) {
+            throw new FridgetException("No valid number was stated. The command has been shutdown");
+        }
+    }
+
     /**
      * Gets the quantity of items to be removed from the user.
      *
@@ -313,23 +293,14 @@ public class Ui {
 
         printLine("There are " + limit + " items, how many would like to remove?");
         printSeparatorLine();
-        String userInput = readUserInput();
-        printSeparatorLine();
-
-        if (!(userInput.matches("\\d"))) {
-            throw new FridgetException("No valid number was stated. The remove command has been shutdown.");
-        }
-
-        int qty = Integer.parseInt(userInput);
+        int qty = getIntInput();
 
         if (qty == 0) {
             throw new FridgetException("No items have been removed.");
         }
-
         if (qty < 0 | qty > limit) {
             throw new FridgetException("This quantity is not valid. The remove command has been shutdown.");
         }
-
         return qty;
     }
 
