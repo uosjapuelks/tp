@@ -167,12 +167,12 @@ You have successfully increased the quantity of:
     JimBeam | Qty: 1->2 | 03 Oct 2030
 __________________________________________
 __________________________________________
-Which item would you like to be removed? Type the index of the item below.
+Which item would you like to remove? Type the index of the item below.
     1. fish Cake | Qty: 3 | 12 Dec 2010
     2. JimBeam | Qty: 2 | 03 Oct 2030
 __________________________________________
 __________________________________________
-This index is not valid. The remove command has been shutdown.
+This index is not valid. The command has been shutdown.
 __________________________________________
 __________________________________________
 List sorted by item name:
@@ -181,7 +181,7 @@ List sorted by item name:
     3. yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
 __________________________________________
-Which item would you like to be removed? Type the index of the item below.
+Which item would you like to remove? Type the index of the item below.
     1. fish Cake | Qty: 3 | 12 Dec 2010
     2. JimBeam | Qty: 2 | 03 Oct 2030
 __________________________________________
