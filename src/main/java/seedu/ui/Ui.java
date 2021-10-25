@@ -120,7 +120,7 @@ public class Ui {
         String userInput = readUserInput();
         printSeparatorLine();
 
-        if(userInput.toLowerCase().matches("quit")) {
+        if (userInput.toLowerCase().matches("quit")) {
             throw new FridgetException("You have decided to quit. The remove command has been shutdown.");
         }
 
