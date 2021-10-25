@@ -28,10 +28,18 @@ public class UpdateCommand extends Command {
         ArrayList<Ingredient> matchingItems = ingredientList.findAllMatchingIngredients(targetItem);
 
         ui.printIfNotFoundMessage(matchingItems);
+
         if (matchingItems.size() > 0) {
-            Ingredient itemToUpdate = ui.matchItem(matchingItems, Ui.CommandType.UPDATE);
-            int newQty = ui.getIntInput();
-            ingredientList.updateQuantity(itemToUpdate, newQty);
+            boolean correctTargetIngredient = true;
+            if (matchingItems.size() == 1 && !matchingItems.get(0).getIngredientName().equals(targetItem)) {
+                correctTargetIngredient = ui.giveSuggestion(matchingItems.get(0));
+            }
+            if (correctTargetIngredient) {
+                Ingredient itemToUpdate = ui.matchItem(matchingItems, Ui.CommandType.UPDATE);
+                int newQty = ui.getUpdate(itemToUpdate);
+                ingredientList.updateQuantity(itemToUpdate, newQty);
+                ui.acknowledgeUpdate(itemToUpdate);
+            }
         }
     }
 }

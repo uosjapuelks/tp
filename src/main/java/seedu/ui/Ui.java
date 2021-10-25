@@ -4,6 +4,7 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Ui {
@@ -110,6 +111,37 @@ public class Ui {
     }
 
     /**
+     * Suggests the correct item name if input is incomplete.
+     *
+     * @param predictedIngredient Only item available containing search term but is not exactly the same.
+     */
+    public boolean giveSuggestion(Ingredient predictedIngredient) throws FridgetException {
+        String message = String.format("Did you mean: %s? [Y/N]", predictedIngredient.getIngredientName());
+        printLine(message);
+        printSeparatorLine();
+        return getYesNo();
+    }
+
+    /**
+     * Gets user to input "y" or "n".
+     *
+     * @return true if "y", and false if "n".
+     */
+    private boolean getYesNo() throws FridgetException {
+        String answer = readUserInput().toLowerCase().trim();
+        printSeparatorLine();
+        switch (answer) {
+        case "y":
+            return true;
+        case "n":
+            printLine("Understood, Command has been shutdown.");
+            return false;
+        default:
+            throw new FridgetException("Invalid Confirmation. The Command has been shutdown.");
+        }
+    }
+
+    /**
      * Prints Question to ask user which item is the target item.
      *
      * @param matchingItems The list of items which match the user's serach term.
@@ -138,7 +170,7 @@ public class Ui {
      * Prints list of matching items to prompt user to pick the correct match.
      *
      * @param matchingItems List of items that matches the search term.
-     * @param commandType Whether it is UPDATE or REMOVE.
+     * @param commandType   Whether it is UPDATE or REMOVE.
      * @return The ingredient selected by the user.
      * @throws FridgetException If input is out of bounds.
      */
@@ -158,7 +190,7 @@ public class Ui {
      * Verifies if index is within bounds.
      *
      * @param matchingItems List of items that are matching.
-     * @param intInput The integer of userInput.
+     * @param intInput      The integer of userInput.
      * @return The input integer if input is within bounds.
      * @throws FridgetException if input Integer is out of Bounds.
      */
@@ -316,9 +348,11 @@ public class Ui {
         String toIntInput = readUserInput();
         printSeparatorLine();
 
-        if (commandType.equals(CommandType.REMOVE)) {
-            if (toIntInput.toLowerCase().matches("quit")) {
+        if (toIntInput.toLowerCase().matches("quit")) {
+            if (commandType.equals(CommandType.REMOVE)) {
                 throw new FridgetException("You have decided to quit. The remove command has been shutdown.");
+            } else if (commandType.equals(CommandType.UPDATE)) {
+                throw new FridgetException("You have decided to quit. The update command has been shutdown.");
             }
         }
 
@@ -328,6 +362,30 @@ public class Ui {
         } catch (NumberFormatException e) {
             throw new FridgetException("No valid number was stated. The command has been shutdown");
         }
+    }
+
+    /**
+     * Get the integer to update item quantity to.
+     *
+     * @param targetIngredient Item to update quantity.
+     * @return Int input from user.
+     * @throws FridgetException if input is invalid.
+     */
+    public int getUpdate(Ingredient targetIngredient) throws FridgetException {
+        String message = String.format("How many of %s do you have left?", targetIngredient.getIngredientName());
+        printLine(message);
+        printSeparatorLine();
+        return getIntInput();
+    }
+
+    /**
+     * Prints message to inform on successful change.
+     *
+     * @param updated Lastest update on ingredient.
+     */
+    public void acknowledgeUpdate(Ingredient updated) {
+        String msg = String.format("Quantity of %s is now %d.", updated.getIngredientName(), updated.getQuantity());
+        printLine(msg);
     }
 
     /**

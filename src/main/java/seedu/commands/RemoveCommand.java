@@ -45,8 +45,12 @@ public class RemoveCommand extends Command {
 
         // Remove item automatically if matching item is unique
         if (matchingItems.size() == 1) {
+            boolean acceptDefault = true;
             Ingredient itemToBeRemoved = matchingItems.get(0);
-            if (itemToBeRemoved.getIngredientName().equals(nameOfItemToBeRemoved)) {
+            if (!itemToBeRemoved.getIngredientName().equals(nameOfItemToBeRemoved)) {
+                acceptDefault = ui.giveSuggestion(itemToBeRemoved);
+            }
+            if (acceptDefault) {
                 handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
                 return;
             }
