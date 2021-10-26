@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+-> ":ShopListCommand": execute()
+activate ":ShopListCommand"
+
+":ShopListCommand" -> ":ShoppingList": getShoppingList()
+activate ":ShoppingList"
+":ShopListCommand" <-- ":ShoppingList": shoppingList
+deactivate ":ShoppingList"
+
+alt Shopping List Empty
+
+    <- ":ShopListCommand": FridgetException()
+
+else Shopping List Not Empty
+
+    ":ShopListCommand" -> ":Ui": printListMessage()
+    activate ":Ui"
+    ":ShopListCommand" <-- ":Ui"
+    deactivate ":Ui"
+
+    <-- ":ShopListCommand"
+    deactivate ":ShopListCommand"
+end
+
+@enduml

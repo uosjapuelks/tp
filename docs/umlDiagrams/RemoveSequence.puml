@@ -1,0 +1,91 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+-> ":RemoveCommand"++: execute()
+
+":RemoveCommand" -> ":Parser"++: parseSearchTerm()
+
+":Parser" -> ":Ui"++: getCurrentUserInput()
+":Parser" <-- ":Ui"--: currentUserInput
+
+":RemoveCommand" <-- ":Parser"--: searchTerm
+
+alt nameOfItemToBeRemoved contains "|" or "/"
+
+<- ":RemoveCommand": FridgetException()
+
+else else
+
+":RemoveCommand" -> ":IngredientList"++: findAllMatchingIngredients(nameOfItemToBeRemoved)
+":RemoveCommand" <-- ":IngredientList"--: matchingIngredients
+
+    group handleRemovalOfItem
+
+        ":RemoveCommand" -> ":Ui"++: printIfNotFoundMessage(matchingIngredients)
+        ":RemoveCommand" <-- ":Ui"--
+
+        alt Number of Matching Ingredient is 1
+
+            alt Name of itemToBeRemoved != Name of matchingItem
+                ":RemoveCommand" -> ":Ui"++: giveSuggestion(itemToBeRemoved)
+                ":RemoveCommand" <-- ":Ui"--: acceptDefault
+            end
+
+            alt acceptDefault == true
+
+                group handleRemovalOfMultipleQuantity
+
+                    ":RemoveCommand" -> ":Ui"++: getQuantityToBeRemoved(itemToBeRemoved)
+                    ":RemoveCommand" <-- ":Ui"--: quantity
+
+                    ":RemoveCommand" -> ":IngredientList"++: removeIngredient(itemToBeRemoved, quantity)
+                    ":RemoveCommand" <-- ":IngredientList"--: isRemoved
+
+                    ":RemoveCommand" -> ":Ui"++: printReactionToRemovingIngredient(itemToBeRemoved, quantity)
+                    ":RemoveCommand" <-- ":Ui"--
+
+                    alt isRemoved == true && Name of itemToBeRemoved not in shopping list
+
+                        group updateShopList
+
+                            ":RemoveCommand" -> ":Ui"++: getShopQuantity(itemRemoved)
+                            ":RemoveCommand" <-- ":Ui"--: quantity
+
+                            alt quantity > 0
+                                ":RemoveCommand" -> ":Ingredient"++: <<create>>
+                                ":RemoveCommand" <-- ":Ingredient"--: addedIngredient
+
+                                ":RemoveCommand" -> ":ShoppingList"++: addIngredient(addedIngredient, quantity)
+                                ":RemoveCommand" <-- ":ShoppingList"--
+
+                                ":RemoveCommand" -> ":Ui"++: printShopUpdateMessage(addedIngredient)
+                                ":RemoveCommand" <-- ":Ui"--
+                            end
+
+                        end
+
+                    end
+
+                end
+
+                <-- ":RemoveCommand"
+
+            end
+
+        else Number of Matching Ingredients > 1
+
+            ":RemoveCommand" -> ":Ui"++: matchItem(matchingIngredients)
+            ":RemoveCommand" <-- ":Ui"--: itemToBeRemoved
+
+            group handleRemovalOfMultipleQuantity
+            end
+
+        end
+
+    end
+    deactivate ":RemoveCommand"
+end
+
+@enduml
