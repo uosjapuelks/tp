@@ -200,7 +200,7 @@ public class Parser {
             return new Ingredient(ingredientName, expiryDate);
         } catch (DateTimeParseException e) {
             throw new FridgetException(expiryString + " is not formatted properly.\n"
-                    + "Please try this format for date:\n\n"
+                    + "Please try this format for the date:\n\n"
                     + "    /YYYY-MM-DD\n"
                     + "    Example: '... /2022-08-03");
         }

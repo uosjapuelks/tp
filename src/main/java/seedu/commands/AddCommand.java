@@ -34,7 +34,8 @@ public class AddCommand extends Command {
 
     }
 
-    private void addIngredientToIngredientList(Ui ui, IngredientList ingredientList, Ingredient newIngredient) throws FridgetException {
+    private void addIngredientToIngredientList(Ui ui, IngredientList ingredientList, Ingredient newIngredient)
+            throws FridgetException {
         if (newIngredient.getIngredientName().contains(" | ")) {
             throw new FridgetException("Please do not use ' | ' in your ingredient name.");
         }
