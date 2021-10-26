@@ -60,4 +60,11 @@ public class ShoppingList {
     public ArrayList<Ingredient> getShoppingList() {
         return shoppingList;
     }
+
+    /**
+     * Resets the shopping list.
+     */
+    public void resetList() {
+        shoppingList = new ArrayList<Ingredient>();
+    }
 }
