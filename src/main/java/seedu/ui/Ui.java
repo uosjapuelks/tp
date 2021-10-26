@@ -1,5 +1,6 @@
 package seedu.ui;
 
+import seedu.commands.Command;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -16,7 +17,9 @@ public class Ui {
 
     public enum CommandType {
         REMOVE,
-        UPDATE
+        UPDATE,
+        RESET,
+        SHOPRESET
     }
 
     /**
@@ -233,6 +236,7 @@ public class Ui {
      * Prints a list of ingredients, indented by four spaces and preceded by an index.
      *
      * @param listOfIngredients The list of ingredients to be printed.
+     * @param hasIndex Boolean value to indicate printing with index.
      */
     public void printListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
         int index = 1;
@@ -244,14 +248,35 @@ public class Ui {
     }
 
     /**
+     * Prints a shop list of ingredients, indented by four spaces and preceded by an index.
+     *
+     * @param listOfIngredients The shop list of ingredients to be printed.
+     * @param hasIndex Boolean value to indicate printing with index.
+     */
+    public void printShopListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
+        int index = 1;
+        for (Ingredient ingredient : listOfIngredients) {
+            String beforeIngredient = FOUR_SPACE_INDENTATION + (hasIndex ? index + ". " : "");
+            printLine(beforeIngredient + ingredient.toShopFormat());
+            index++;
+        }
+    }
+
+    /**
      * Prints a message informing user on list being printed.
      *
      * @param listOfIngredients The list of ingredients of all items in fridget.
+     * @param sortType The string indicating the sort type.
+     * @param isShop Boolean indicating if the message is used to print shopping list.
      */
-    public void printListMessage(ArrayList<Ingredient> listOfIngredients, String sortType) {
+    public void printListMessage(ArrayList<Ingredient> listOfIngredients, String sortType, boolean isShop) {
         String listMessage = sortTypeMessage(sortType);
         printLine(listMessage);
-        printListOfIngredients(listOfIngredients, true);
+        if (!isShop) {
+            printListOfIngredients(listOfIngredients, true);
+        } else {
+            printShopListOfIngredients(listOfIngredients, true);
+        }
     }
 
     /**
@@ -393,7 +418,7 @@ public class Ui {
      *
      * @param ingredient Ingredient to be removed.
      * @return Amount of items to be removed.
-     * @throws FridgetException if the user types a wrong value (non-integer or 0 or outside limit of quantity)
+     * @throws FridgetException If the user types a wrong value (non-integer or 0 or outside limit of quantity)
      */
     public int getQuantityToBeRemoved(Ingredient ingredient) throws FridgetException {
         int limit = ingredient.getQuantity();
@@ -415,26 +440,95 @@ public class Ui {
     }
 
     /**
+     * Prints a confirm message to add a removed item into the shopping list and returns the quantity to be
+     * added into the shopping list.
+     *
+     * @param itemRemoved The ingredient removed.
+     * @return Quantity of item to be added into the shopping list.
+     * @throws FridgetException If the user types a wrong value (non-integer or 0 or outside limit of quantity)
+     */
+    public int getShopQuantity(Ingredient itemRemoved) throws FridgetException {
+        String addConfirmMessage = "You have ran out of " + itemRemoved.getIngredientName()
+                + ". Would you like to add it to your shopping list? (Y/N)";
+        printSeparatorLine();
+        printLine(addConfirmMessage);
+        printSeparatorLine();
+
+        if (getYesNo()) {
+            String askQuantityMessage = "How many items would you like to buy?";
+            printLine(askQuantityMessage);
+            printSeparatorLine();
+            int qty = getIntInput();
+
+            if (qty == 0) {
+                throw new FridgetException("No items have been added.");
+            }
+            if (qty < 0) {
+                throw new FridgetException("This quantity is not valid. Shutting down the command...");
+            }
+            return qty;
+        }
+        return 0;
+    }
+
+    /**
+     * Prints the reaction after adding item into the shopping list.
+     *
+     * @param addedIngredient Ingredient added into the shopping list.
+     */
+    public void printShopUpdateMessage(Ingredient addedIngredient) {
+        String acknowledgeAdd = "You have successfully added:\n";
+        String addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + addedIngredient.toShopFormat();
+        printLine(addReaction);
+    }
+
+    /**
      * Prints a reconfirm message and gets the reconfirm result.
      *
      * @return Boolean representing reconfirm status (y: confirm, n: abort)
      */
-    public boolean getResetReconfirm() {
-        printLine("Are you sure you want to reset everything in the ingredient list? (Y/N)");
+    public boolean getResetReconfirm(CommandType commandType) {
+        printLine(getResetQuestion(commandType));
         printSeparatorLine();
         String confirm = readUserInput();
         if (!confirm.equalsIgnoreCase("y")) {
             printSeparatorLine();
-            printLine("Abort reset command.");
+            printLine("Shutting down the command...");
         }
         return confirm.equalsIgnoreCase("y");
     }
 
     /**
-     * Prints the reset message.
+     * Returns the reset question according to command.
+     *
+     * @param commandType The command used.
+     * @return String containing the reset question.
+     */
+    public String getResetQuestion(CommandType commandType) {
+        switch (commandType) {
+        case RESET:
+            return "Are you sure you want to reset everything in the fridge? (Y/N)";
+        case SHOPRESET:
+            return "Are you sure you want to reset everything in the shopping list? (Y/N)";
+        default:
+            return "";
+        }
+    }
+
+
+    /**
+     * Prints the ingredient list reset message.
      */
     public void printResetMessage() {
         printSeparatorLine();
         printLine("Ingredient list has been reset successfully.");
+    }
+
+    /**
+     * Prints the shopping list reset message.
+     */
+    public void printShopResetMessage() {
+        printSeparatorLine();
+        printLine("Shopping list has been reset successfully.");
     }
 }

@@ -19,6 +19,7 @@ class IngredientListTest {
     private final Ingredient itemCExpireYesterday = new Ingredient("ccc", today.minusDays(1));
     private final IngredientList testList = new IngredientList();
     private final ArrayList<Ingredient> expectedList = new ArrayList<Ingredient>();
+    private final IngredientList ingredientList = new IngredientList();
 
     private void fillExpectedList(Ingredient a, Ingredient b, Ingredient c) {
         expectedList.add(a);
@@ -43,6 +44,14 @@ class IngredientListTest {
     void containsIngredient_aNotInTestList_expectedResultTrue() {
         testList.addIngredient(itemCExpireYesterday);
         assertFalse(testList.containsIngredient(itemAExpireTomorrow));
+    }
+
+    @Test
+    void searchIngredientNameExist_itemInTestList_expectedResultTrue() {
+        Ingredient ingredientA = new Ingredient("burger", today.plusDays(1));
+        Ingredient ingredientB = new Ingredient("Burger", today.minusDays(1));
+        ingredientList.addIngredient(ingredientA);
+        assertTrue(ingredientList.searchIngredientNameExist(ingredientB));
     }
 
     @Test

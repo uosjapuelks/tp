@@ -11,6 +11,8 @@ import seedu.commands.ListCommand;
 import seedu.commands.NotificationCommand;
 import seedu.commands.RemoveCommand;
 import seedu.commands.ResetCommand;
+import seedu.commands.ShopResetCommand;
+import seedu.commands.ShopListCommand;
 import seedu.commands.UpdateCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
@@ -52,6 +54,8 @@ public class Parser {
             return new RemoveCommand();
         case "list":
             return new ListCommand();
+        case "shoplist":
+            return new ShopListCommand();
         case "expiring":
             return new ExpiringCommand();
         case "exit":
@@ -66,16 +70,20 @@ public class Parser {
             return new UpdateCommand();
         case "reset":
             return new ResetCommand();
+        case "shopreset":
+            return new ShopResetCommand();
         default:
             assert !userCommand.equalsIgnoreCase("add");
             assert !userCommand.equalsIgnoreCase("remove");
             assert !userCommand.equalsIgnoreCase("list");
+            assert !userCommand.equalsIgnoreCase("shoplist");
             assert !userCommand.equalsIgnoreCase("expiring");
             assert !userCommand.equalsIgnoreCase("exit");
             assert !userCommand.equalsIgnoreCase("help");
             assert !userCommand.equalsIgnoreCase("find");
             assert !userCommand.equalsIgnoreCase("notifs");
             assert !userCommand.equalsIgnoreCase("reset");
+            assert !userCommand.equalsIgnoreCase("shopreset");
             assert !userCommand.equalsIgnoreCase("update");
             throw new FridgetException("No command found!\n"
                     + "Enter help if you need the list of available commands.");
