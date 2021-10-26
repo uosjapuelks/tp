@@ -44,10 +44,10 @@ public class IngredientList {
         assert qty != 0 : "Quantity removed must not be 0!";
         if (ingredient.getQuantity() == qty) {
             ingredientList.remove(ingredient);
-            return !searchIngredientExist(ingredient);
+            return !searchIngredientNameExist(ingredient);
         }
         ingredient.removeQuantity(qty);
-        return !searchIngredientExist(ingredient);
+        return !searchIngredientNameExist(ingredient);
     }
 
     /**
@@ -56,7 +56,7 @@ public class IngredientList {
      * @param ingredient Ingredient to be searched.
      * @return Boolean value of true if exist.
      */
-    public boolean searchIngredientExist(Ingredient ingredient) {
+    public boolean searchIngredientNameExist(Ingredient ingredient) {
         for (Ingredient ingredient1 : ingredientList) {
             if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())) {
                 return true;
