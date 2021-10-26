@@ -18,10 +18,12 @@ import static java.lang.Integer.parseInt;
 
 public class Storage {
     private final IngredientList ingredientList;
+    private final ShoppingList shoppingList;
     private final Notification notification;
     private final String fileDirectory;
     private final String listFilePath;
     private final String logFilePath;
+    private final String shopFilePath;
 
     private static final Logger logger = Logger.getLogger("logger");
     private static final String REGEX_DATA_SEPARATOR = " \\| ";
@@ -32,13 +34,16 @@ public class Storage {
      * @param listFilePath pathway of ingredient list file storage.
      * @param logFilePath pathway of user log file storage.
      */
-    public Storage(IngredientList ingredientList, Notification notification, String listFilePath, String logFilePath) {
+    public Storage(IngredientList ingredientList, ShoppingList shoppingList, Notification notification
+            , String listFilePath, String logFilePath,  String shopFilePath) {
         String[] fileComponents = listFilePath.split("/");
         this.ingredientList = ingredientList;
+        this.shoppingList = shoppingList;
         this.notification = notification;
         this.fileDirectory = fileComponents[0];
         this.listFilePath = listFilePath;
         this.logFilePath = logFilePath;
+        this.shopFilePath = shopFilePath;
 
         try {
             loadFile();
@@ -57,28 +62,39 @@ public class Storage {
         File dataDirectory = new File(fileDirectory);
         File listFile = new File(listFilePath);
         File logFile = new File(logFilePath);
+        File shopFile = new File(shopFilePath);
 
         if (!dataDirectory.exists()) {
             dataDirectory.mkdir();
             listFile.createNewFile();
             logFile.createNewFile();
+            shopFile.createNewFile();
             return;
         }
 
-        if (!(listFile.exists() && logFile.exists())) {
-            listFile.createNewFile();
-            logFile.createNewFile();
+        if (!(listFile.exists() && logFile.exists() && shopFile.exists())) {
+            if (!listFile.exists()) {
+                listFile.createNewFile();
+            }
+
+            if (!logFile.exists()) {
+                logFile.createNewFile();
+            }
+
+            if (!shopFile.exists()) {
+                shopFile.createNewFile();
+            }
             return;
         }
 
-        if (!listFile.exists()) {
-            listFile.createNewFile();
-            return;
+        Scanner listScanner = new Scanner(listFile);
+        if (listScanner == null) {
+            logger.log(Level.WARNING, "Please restart the program! Data storage has been corrupted.");
         }
-
-        if (!logFile.exists()) {
-            logFile.createNewFile();
-            return;
+        while (listScanner.hasNext()) {
+            String line = listScanner.nextLine();
+            String[] listDataComponents = line.split(REGEX_DATA_SEPARATOR);
+            addSavedIngredient(listDataComponents);
         }
 
         Scanner logScanner = new Scanner(logFile);
@@ -89,24 +105,6 @@ public class Storage {
             addSavedNotification(logScanner.nextLine());
         }
 
-        Scanner listScanner = new Scanner(listFile);
-        while (listScanner.hasNext()) {
-            String line = listScanner.nextLine();
-            String[] listDataComponents = line.split(REGEX_DATA_SEPARATOR);
-            addSavedIngredient(listDataComponents);
-        }
-    }
-
-    /**
-     * Adds the log date and time, and notification on/off status.
-     *
-     * @param savedDateTimeAndStatus String containing date, time and status.
-     */
-    protected void addSavedNotification(String savedDateTimeAndStatus) {
-        String[] splitString = savedDateTimeAndStatus.split(REGEX_DATA_SEPARATOR);
-        notification.setDateAndTime(LocalDateTime.parse(splitString[0],
-                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-        Notification.setNotificationStatus(!splitString[1].equals("no"));
     }
 
     /**
@@ -119,6 +117,18 @@ public class Storage {
         LocalDate expiry = LocalDate.parse(listDataComponents[2].trim());
         Ingredient savedIngredient = new Ingredient(listDataComponents[0], expiry, quantity);
         ingredientList.addIngredient(savedIngredient);
+    }
+
+    /**
+     * Adds the log date and time, and notification on/off status.
+     *
+     * @param savedDateTimeAndStatus String containing date, time and status.
+     */
+    protected void addSavedNotification(String savedDateTimeAndStatus) {
+        String[] splitString = savedDateTimeAndStatus.split(REGEX_DATA_SEPARATOR);
+        notification.setDateAndTime(LocalDateTime.parse(splitString[0],
+                DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        Notification.setNotificationStatus(!splitString[1].equals("no"));
     }
 
     /**
@@ -153,11 +163,12 @@ public class Storage {
     /**
      * Updates all the text files.
      *
-     * @param ingredients The current list of ingredients.
+     * @param storedIngredients The current list of ingredients.
+     * @param notification Notification object.
      */
-    public void updateFiles(ArrayList<Ingredient> ingredients, Notification notification) {
+    public void updateFiles(ArrayList<Ingredient> storedIngredients, Notification notification) {
         try {
-            updateListFile(ingredients);
+            updateListFile(storedIngredients);
             updateLogFile(notification);
         } catch (IOException e) {
             logger.log(Level.WARNING, "Error while trying to update ingredient list file.");
