@@ -90,6 +90,15 @@ public class Ingredient {
     }
 
     /**
+     * String is represented as name + quantity
+     *
+     * @return Ingredient name, quantity
+     */
+    public String toShopFormat() {
+        return ingredientName + " | Qty: " + quantity;
+    }
+
+    /**
      * String used when adding items already existing in the list.
      *
      * @param qty Total quantity of item in the list.
