@@ -4,7 +4,6 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
-import seedu.notification.Notification;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
