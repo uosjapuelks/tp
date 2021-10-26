@@ -27,12 +27,24 @@ public class Ingredient {
      *
      * @param ingredientName name of the ingredient.
      * @param expiryDate date of expiry for ingredient.
-     * @param qty quantity to start from.
+     * @param quantity quantity to start from.
      */
-    public Ingredient(String ingredientName, LocalDate expiryDate, int qty) {
+    public Ingredient(String ingredientName, LocalDate expiryDate, int quantity) {
         this.ingredientName = ingredientName;
         this.expiryDate = expiryDate;
-        this.quantity = qty;
+        this.quantity = quantity;
+    }
+
+    /**
+     * Overloads constructor to ignore expiry date and start quantity from more than 1.
+     *
+     * @param ingredientName name of the ingredient.
+     * @param quantity quantity to start from.
+     */
+    public Ingredient(String ingredientName, int quantity) {
+        this.ingredientName = ingredientName;
+        this.expiryDate = null;
+        this.quantity = quantity;
     }
 
     /**
@@ -69,7 +81,7 @@ public class Ingredient {
     /**
      * String is represented as name + quantity + Expiry date that is colored depending on expiry status.
      *
-     * @return Ingredient Name, quantity and Expiry that is colored.
+     * @return Ingredient name, quantity and Expiry that is colored.
      */
     @Override
     public String toString() {
