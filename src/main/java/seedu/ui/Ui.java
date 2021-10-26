@@ -4,13 +4,13 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Ui {
     private final Scanner in;
     private static final String SEPARATOR_LINE = "__________________________________________";
     private static final String FOUR_SPACE_INDENTATION = "    ";
+    private static final String USER_INPUT = "USER INPUT: ";
 
     private String currentUserInput;
 
@@ -436,5 +436,12 @@ public class Ui {
     public void printResetMessage() {
         printSeparatorLine();
         printLine("Ingredient list has been reset successfully.");
+    }
+
+    /**
+     * Prints a prompt for user input.
+     */
+    public void printUserInputMessage() {
+        System.out.print(USER_INPUT);
     }
 }
