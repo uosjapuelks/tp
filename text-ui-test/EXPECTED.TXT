@@ -100,10 +100,10 @@ These are the matching ingredients:
     1. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
 __________________________________________
-Are you sure you want to reset everything in the ingredient list? (Y/N)
+Are you sure you want to reset everything in the fridge? (Y/N)
 __________________________________________
 __________________________________________
-Abort reset command.
+Shutting down the command...
 __________________________________________
 __________________________________________
 These are the matching ingredients:
@@ -111,7 +111,7 @@ These are the matching ingredients:
     2. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
 __________________________________________
-Are you sure you want to reset everything in the ingredient list? (Y/N)
+Are you sure you want to reset everything in the fridge? (Y/N)
 __________________________________________
 __________________________________________
 Ingredient list has been reset successfully.
