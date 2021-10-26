@@ -17,10 +17,10 @@ public class AddCommand extends Command {
     /**
      * Executes the "add" command.
      *
-     * @param ui The ui object to interact with user.
-     * @param parser The parser object to parse user inputs.
+     * @param ui             The ui object to interact with user.
+     * @param parser         The parser object to parse user inputs.
      * @param ingredientList The ingredientList object.
-     * @param shoppingList The shoppingList object.
+     * @param shoppingList   The shoppingList object.
      * @throws FridgetException The error object thrown.
      */
     @Override
@@ -36,16 +36,7 @@ public class AddCommand extends Command {
         } else {
             ui.printReactionToAddingIngredient(newIngredient);
         }
-        updateShopList(shoppingList, newIngredient);
-    }
-
-    /**
-     * Updates the shopping list if added item exists in the shopping list.
-     *
-     * @param shoppingList The shopping list object.
-     * @param addedIngredient The ingredient that was added.
-     */
-    private void updateShopList(ShoppingList shoppingList, Ingredient addedIngredient) {
-        shoppingList.removeIngredient(addedIngredient, addedIngredient.getQuantity());
+        shoppingList.removeIngredient(newIngredient, newIngredient.getQuantity());
     }
 }
+

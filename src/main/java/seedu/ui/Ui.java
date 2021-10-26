@@ -447,7 +447,7 @@ public class Ui {
      * @return Quantity of item to be added into the shopping list.
      * @throws FridgetException If the user types a wrong value (non-integer or 0 or outside limit of quantity)
      */
-    public int getShopUpdateQuantity(Ingredient itemRemoved) throws FridgetException {
+    public int getShopQuantity(Ingredient itemRemoved) throws FridgetException {
         String addConfirmMessage = "You have ran out of " + itemRemoved.getIngredientName()
                 + ". Would you like to add it to your shopping list? (Y/N)";
         printSeparatorLine();
@@ -458,9 +458,7 @@ public class Ui {
             String askQuantityMessage = "How many items would you like to buy?";
             printLine(askQuantityMessage);
             printSeparatorLine();
-            String answer = readUserInput().trim();
-            printSeparatorLine();
-            int qty = Integer.parseInt(answer);
+            int qty = getIntInput();
 
             if (qty == 0) {
                 throw new FridgetException("No items have been added.");

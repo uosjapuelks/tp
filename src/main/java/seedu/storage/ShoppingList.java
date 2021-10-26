@@ -53,6 +53,21 @@ public class ShoppingList {
     }
 
     /**
+     * Checks if an item with the same name exists in the shopping list.
+     *
+     * @param ingredient Ingredient to be searched.
+     * @return Boolean value of true if exist.
+     */
+    public boolean searchIngredientNameExist(Ingredient ingredient) {
+        for (Ingredient ingredient1 : shoppingList) {
+            if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Returns the current shopping list.
      *
      * @return List of ingredients in the shopping list.

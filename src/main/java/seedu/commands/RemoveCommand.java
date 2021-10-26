@@ -85,22 +85,18 @@ public class RemoveCommand extends Command {
         boolean isRemoved = ingredientList.removeIngredient(itemToBeRemoved, qty);
         ui.printReactionToRemovingIngredient(itemToBeRemoved, qty);
 
-        if (isRemoved) {
+        if (isRemoved && !shoppingList.searchIngredientNameExist(itemToBeRemoved)) {
             updateShopList(ui,shoppingList, itemToBeRemoved);
         }
     }
 
     private void updateShopList(Ui ui, ShoppingList shoppingList, Ingredient itemRemoved)
             throws FridgetException {
-        try {
-            int qty = ui.getShopUpdateQuantity(itemRemoved);
-            if (qty > 0) {
-                Ingredient addedIngredient = new Ingredient(itemRemoved.getIngredientName(), qty);
-                shoppingList.addIngredient(addedIngredient, qty);
-                ui.printShopUpdateMessage(addedIngredient);
-            }
-        } catch (NumberFormatException e) {
-            throw new FridgetException("No valid number was stated. The command has been shutdown.");
+        int qty = ui.getShopQuantity(itemRemoved);
+        if (qty > 0) {
+            Ingredient addedIngredient = new Ingredient(itemRemoved.getIngredientName(), qty);
+            shoppingList.addIngredient(addedIngredient, qty);
+            ui.printShopUpdateMessage(addedIngredient);
         }
     }
 }
