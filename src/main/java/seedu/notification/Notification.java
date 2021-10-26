@@ -100,7 +100,7 @@ public class Notification {
     private void printExpiringItems(ArrayList<Ingredient> expiringList, int i) {
         if (expiringList.size() - i > 0) {
             int index = 1;
-            printMessage( NOTIFICATION_SEPARATOR + EXPIRING_MESSAGE);
+            printMessage(NOTIFICATION_SEPARATOR + EXPIRING_MESSAGE);
             for (; i < expiringList.size(); i++) {
                 String beforeIngredient = FIVE_SPACE_INDENTATION + index + ". ";
                 printMessage(beforeIngredient + expiringList.get(i));
