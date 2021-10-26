@@ -4,6 +4,7 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
+import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
 import java.util.ArrayList;
@@ -20,7 +21,8 @@ public class UpdateCommand extends Command {
      *
      * @throws FridgetException if user types an incorrect value when prompted.
      */
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
+            throws FridgetException {
         String targetItem = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.UPDATE);
         if (targetItem.contains(" | ") | targetItem.contains("/")) {
             throw new FridgetException("You are not able to use '/' and ' | ' in ingredient name.");

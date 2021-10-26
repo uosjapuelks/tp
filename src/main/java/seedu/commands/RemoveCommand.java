@@ -4,6 +4,7 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
+import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
 import java.util.ArrayList;
@@ -21,7 +22,8 @@ public class RemoveCommand extends Command {
      * @throws FridgetException if user types an incorrect value when prompted.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
+            throws FridgetException {
         String nameOfItemToBeRemoved = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.REMOVE);
         if (nameOfItemToBeRemoved.contains(" | ") | nameOfItemToBeRemoved.contains("/")) {
             throw new FridgetException("You are not able to use '/' and ' | ' in ingredient names.");

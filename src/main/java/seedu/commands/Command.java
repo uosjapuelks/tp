@@ -3,7 +3,7 @@ package seedu.commands;
 import seedu.data.exception.FridgetException;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
-import seedu.notification.Notification;
+import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
 public class Command {
@@ -27,6 +27,6 @@ public class Command {
     /**
      * Executes the command.
      */
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList) throws FridgetException {
     }
 }

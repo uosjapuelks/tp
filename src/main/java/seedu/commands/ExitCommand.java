@@ -3,6 +3,7 @@ package seedu.commands;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
 import seedu.notification.Notification;
+import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
 public class ExitCommand extends Command {
@@ -19,7 +20,7 @@ public class ExitCommand extends Command {
      *
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList) {
         ui.printExitMessage();
     }
 }

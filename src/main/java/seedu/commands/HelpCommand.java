@@ -3,6 +3,7 @@ package seedu.commands;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
 import seedu.notification.Notification;
+import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
 public class HelpCommand extends Command {
@@ -40,7 +41,7 @@ public class HelpCommand extends Command {
      * Executes the "help" command.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList) {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList) {
         ui.printLine(COMMAND_LIST);
     }
 }
