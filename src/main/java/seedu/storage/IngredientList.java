@@ -36,15 +36,17 @@ public class IngredientList {
      * Removes an ingredient from the ingredient list.
      *
      * @param ingredient Ingredient to be removed.
+     * @return Returns true if ingredient is removed from the list (qty = 0)
      */
-    public void removeIngredient(Ingredient ingredient, int qty) {
+    public boolean removeIngredient(Ingredient ingredient, int qty) {
         assert ingredient != null : "Ingredient must not be null!";
         assert qty != 0 : "Quantity removed must not be 0!";
         if (ingredient.getQuantity() == qty) {
             ingredientList.remove(ingredient);
-            return;
+            return true;
         }
         ingredient.removeQuantity(qty);
+        return false;
     }
 
     /**
