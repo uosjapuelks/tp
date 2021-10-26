@@ -213,16 +213,24 @@ Step 1:
 
 The execution of this step is initiated by Fridget.
 
-Step 2 & 3: 
+Step 2 & 3:
+
+The getIngredientList() method is called in the IngredientList, and the current ingredientList is returned.
+
+Step 4:
+
+If returned ingredientList is empty, a FridgetException is thrown and the command exits. Else, it will continue to step 5.
+
+Step 5 & 6: 
 
 If the user double confirms the reset command, the resetList() method is called in the IngredientList and resets 
 the ingredient list by overwriting it with a new ingredient list.
 
-Step 4 & 5:
+Step 7 & 8:
 
-The printResetMessage() method is called in the Ui which prints a String stating that the ingredient list has been reset.
+The printResetMessage() method is called in the Ui, and prints a String stating that the ingredient list has been reset.
 
-Step 6:
+Step 9:
 
 The execution of the execute() method ends.
 
@@ -266,6 +274,35 @@ Step 8:
 
 The execution of the execute() method ends.
 
+### Listing Items In Shopping List
+
+#### Main Objectives:
+The objective of this functionality is to allow users to easily view the contents of the shopping list.
+
+#### Sequence of execution:
+
+![ShopListSequence](./umlDiagrams/ShopListSequence.png)
+
+Step 1:
+
+The execution of this step is initiated by Fridget.
+
+Step 2 & 3:
+
+The getShoppingList() method is called in ShoppingList, and returns the current shoppingList.
+
+Step 4:
+
+If the shoppingList returned in step 3 is empty, a FridgetException is thrown and the command will stop. Else, it will continue to step 5.
+
+Step 5 & 6:
+
+The printListMessage() method is called in Ui, and prints out the list of ingredients in the shoppingList.
+
+Step 7:
+
+The execution of the execute() method ends.
+
 ### Configuring Notifications 
 
 #### Main Objectives:
@@ -278,6 +315,7 @@ Current implementation allow users to toggle the notifications on or off, with r
 The purpose of implementing time interval and ability to toggle is to prevent excessive notification printing. 
 
 #### Sequence of execution:
+
 ![image info](./umlDiagrams/NotificationSequence.png)
 
 Step 1:
