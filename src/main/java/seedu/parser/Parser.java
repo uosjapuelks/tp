@@ -14,6 +14,8 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 public class Parser {
 
@@ -184,9 +186,28 @@ public class Parser {
 
         String expiryString = extractExpiry(processedInput);
         assert !expiryString.isEmpty();
-        LocalDate expiryDate = LocalDate.parse(expiryString);
+        try {
+            LocalDate expiryDate = LocalDate.parse(expiryString);
+            return new Ingredient(ingredientName, expiryDate);
+        } catch (DateTimeParseException e) {
+            throw new FridgetException(expiryString + " is not formatted properly.\n"
+                    + "Please try this format for date:\n\n"
+                    + "    /YYYY-MM-DD\n"
+                    + "    Example: '... /2022-08-03");
+        }
+    }
 
-        return new Ingredient(ingredientName, expiryDate);
+    public ArrayList<Ingredient> parseMultipleIngredientsForAdding(String userInput) throws FridgetException {
+        String[] processedInput = processInput(userInput);
+        String[] ingredientsInfo = processedInput[1].split(";");
+
+        ArrayList<Ingredient> allIngredientsToBeAdded = new ArrayList<>();
+        for (String ingredientInfo: ingredientsInfo) {
+            Ingredient newIngredient = parseIngredientForAdding(processedInput[0] + " " + ingredientInfo);
+            allIngredientsToBeAdded.add(newIngredient);
+        }
+
+        return allIngredientsToBeAdded;
     }
 
     /**
