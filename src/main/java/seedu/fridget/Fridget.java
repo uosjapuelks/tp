@@ -36,12 +36,14 @@ public class Fridget {
         Command command = new Command();
         do {
             try {
-                notification.printNotification();
+                notification.printNotification(ingredientList.getIngredientList("r"));
+                ui.printUserInputMessage();
                 String userInput = ui.readUserInput();
                 ui.printSeparatorLine();
                 command = parser.parseCommand(userInput);
                 command.execute(ui, parser, ingredientList);
                 storage.updateFiles(ingredientList.getIngredientList("r"), notification);
+
             } catch (FridgetException e) {
                 ui.printLine(e.getMessage());
             } catch (DateTimeParseException e) {
