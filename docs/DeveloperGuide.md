@@ -112,16 +112,24 @@ Step 1:
 
 The execution of this step is initiated by Fridget.
 
-Step 2 & 3: 
+Step 2 & 3:
+
+The getIngredientList() method is called in the IngredientList, and the current ingredientList is returned.
+
+Step 4:
+
+If returned ingredientList is empty, a FridgetException is thrown and the command exits. Else, it will continue to step 5.
+
+Step 5 & 6: 
 
 If the user double confirms the reset command, the resetList() method is called in the IngredientList and resets 
 the ingredient list by overwriting it with a new ingredient list.
 
-Step 4 & 5:
+Step 7 & 8:
 
-The printResetMessage() method is called in the Ui which prints a String stating that the ingredient list has been reset.
+The printResetMessage() method is called in the Ui, and prints a String stating that the ingredient list has been reset.
 
-Step 6:
+Step 9:
 
 The execution of the execute() method ends.
 
