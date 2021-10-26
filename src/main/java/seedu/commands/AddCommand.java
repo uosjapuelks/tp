@@ -7,6 +7,8 @@ import seedu.storage.IngredientList;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
+import java.util.ArrayList;
+
 public class AddCommand extends Command {
     /**
      * Constructor for AddCommand.
@@ -26,7 +28,19 @@ public class AddCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
             throws FridgetException {
-        Ingredient newIngredient = parser.parseIngredientForAdding(ui.getCurrentUserInput());
+        if (ui.getCurrentUserInput().contains(";")) {
+            ArrayList<Ingredient> newIngredients = parser.parseMultipleIngredientsForAdding(ui.getCurrentUserInput());
+            for (Ingredient newIngredient : newIngredients) {
+                addIngredientToIngredientList(ui, ingredientList, newIngredient, shoppingList);
+            }
+        } else {
+            Ingredient newIngredient = parser.parseIngredientForAdding(ui.getCurrentUserInput());
+            addIngredientToIngredientList(ui, ingredientList, newIngredient, shoppingList);
+        }
+    }
+
+    private void addIngredientToIngredientList(Ui ui, IngredientList ingredientList, Ingredient newIngredient,
+            ShoppingList shoppingList) throws FridgetException {
         if (newIngredient.getIngredientName().contains(" | ")) {
             throw new FridgetException("Please do not use ' | ' in your ingredient name.");
         }
