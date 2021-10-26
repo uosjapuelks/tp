@@ -233,6 +233,7 @@ public class Ui {
      * Prints a list of ingredients, indented by four spaces and preceded by an index.
      *
      * @param listOfIngredients The list of ingredients to be printed.
+     * @param hasIndex Boolean value to indicate printing with index.
      */
     public void printListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
         int index = 1;
@@ -244,14 +245,35 @@ public class Ui {
     }
 
     /**
+     * Prints a shop list of ingredients, indented by four spaces and preceded by an index.
+     *
+     * @param listOfIngredients The shop list of ingredients to be printed.
+     * @param hasIndex Boolean value to indicate printing with index.
+     */
+    public void printShopListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
+        int index = 1;
+        for (Ingredient ingredient : listOfIngredients) {
+            String beforeIngredient = FOUR_SPACE_INDENTATION + (hasIndex ? index + ". " : "");
+            printLine(beforeIngredient + ingredient.toShopFormat());
+            index++;
+        }
+    }
+
+    /**
      * Prints a message informing user on list being printed.
      *
      * @param listOfIngredients The list of ingredients of all items in fridget.
+     * @param sortType The string indicating the sort type.
+     * @param isShop Boolean indicating if the message is used to print shopping list.
      */
-    public void printListMessage(ArrayList<Ingredient> listOfIngredients, String sortType) {
+    public void printListMessage(ArrayList<Ingredient> listOfIngredients, String sortType, boolean isShop) {
         String listMessage = sortTypeMessage(sortType);
         printLine(listMessage);
-        printListOfIngredients(listOfIngredients, true);
+        if (!isShop) {
+            printListOfIngredients(listOfIngredients, true);
+        } else {
+            printShopListOfIngredients(listOfIngredients, true);
+        }
     }
 
     /**
