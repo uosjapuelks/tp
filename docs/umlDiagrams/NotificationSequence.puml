@@ -6,10 +6,9 @@ autonumber
 -> ":Notification": Notification()
 activate ":Notification"
 
-    ":Notification" -> ":Notification": printNotification()
-    opt isNotificationOn() && isMoreThan6Hours()
-        ":Notification" -> ":Notification": System.out.println(NOTIFICATION)
-        ":Notification" -> ":Notification": setDateAndTime(LocalDateTime.now());
+    opt isNotificationOn() && isMoreThan4Hours()
+        ":Notification" -> ":Notification": printHealthNotification()
+        ":Notification" -> ":Notification": printExpiryNotification();
         <-- ":Notification"
     end
 
