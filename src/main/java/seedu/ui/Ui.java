@@ -4,6 +4,7 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Ui {
@@ -12,6 +13,11 @@ public class Ui {
     private static final String FOUR_SPACE_INDENTATION = "    ";
 
     private String currentUserInput;
+
+    public enum CommandType {
+        REMOVE,
+        UPDATE
+    }
 
     /**
      * A constructor to initialise ui.
@@ -105,36 +111,94 @@ public class Ui {
     }
 
     /**
-     * Returns the item the user wants to remove from Fridget.
+     * Suggests the correct item name if input is incomplete.
      *
-     * @param matchingItems The list of items which match the user's search term.
-     * @return The item that the user wants to remove.
-     * @throws FridgetException if the user types a wrong value (non-integer or outside of index of matchingItems)
+     * @param predictedIngredient Only item available containing search term but is not exactly the same.
      */
-    public Ingredient getItemToBeRemoved(ArrayList<Ingredient> matchingItems) throws FridgetException {
-        printLine("Which item would you like to be removed? Type the index of the item below.");
+    public boolean giveSuggestion(Ingredient predictedIngredient) throws FridgetException {
+        String message = String.format("Did you mean: %s? [Y/N]", predictedIngredient.getIngredientName());
+        printLine(message);
+        printSeparatorLine();
+        return getYesNo();
+    }
+
+    /**
+     * Gets user to input "y" or "n".
+     *
+     * @return true if "y", and false if "n".
+     */
+    private boolean getYesNo() throws FridgetException {
+        String answer = readUserInput().toLowerCase().trim();
+        printSeparatorLine();
+        switch (answer) {
+        case "y":
+            return true;
+        case "n":
+            printLine("Understood, Command has been shutdown.");
+            return false;
+        default:
+            throw new FridgetException("Invalid Confirmation. The Command has been shutdown.");
+        }
+    }
+
+    /**
+     * Prints Question to ask user which item is the target item.
+     *
+     * @param matchingItems The list of items which match the user's serach term.
+     * @param commandType   Type of command printing the message.
+     */
+    public void printConfirmItemMessage(ArrayList<Ingredient> matchingItems, CommandType commandType) {
+        String question = "Which item would you like to %s? Type the index of the item below.";
+        String correctText;
+        switch (commandType) {
+        case REMOVE:
+            correctText = "remove";
+            break;
+        case UPDATE:
+            correctText = "overwrite quantity";
+            break;
+        default:
+            correctText = "";
+        }
+        printLine(String.format(question, correctText));
         printListOfIngredients(matchingItems, true);
         printLine("If you've changed your mind, simply type 'quit'.");
         printSeparatorLine();
+    }
 
-        String userInput = readUserInput();
-        printSeparatorLine();
-
-        if (userInput.toLowerCase().matches("quit")) {
-            throw new FridgetException("You have decided to quit. The remove command has been shutdown.");
+    /**
+     * Prints list of matching items to prompt user to pick the correct match.
+     *
+     * @param matchingItems List of items that matches the search term.
+     * @param commandType   Whether it is UPDATE or REMOVE.
+     * @return The ingredient selected by the user.
+     * @throws FridgetException If input is out of bounds.
+     */
+    public Ingredient matchItem(ArrayList<Ingredient> matchingItems, CommandType commandType) throws FridgetException {
+        if (matchingItems.size() == 1) {
+            return matchingItems.get(0);
         }
 
-        if (!(userInput.matches("\\d"))) {
-            throw new FridgetException("No valid number was stated. The remove command has been shutdown.");
-        }
-
-        int index = Integer.parseInt(userInput);
-
-        if (index <= 0 | index > matchingItems.size()) {
-            throw new FridgetException("This index is not valid. The remove command has been shutdown.");
-        }
+        printConfirmItemMessage(matchingItems, commandType);
+        int userIntInput = getIntInput(commandType);
+        int index = checkAndGetIndex(matchingItems, userIntInput);
 
         return matchingItems.get(index - 1);
+    }
+
+    /**
+     * Verifies if index is within bounds.
+     *
+     * @param matchingItems List of items that are matching.
+     * @param intInput      The integer of userInput.
+     * @return The input integer if input is within bounds.
+     * @throws FridgetException if input Integer is out of Bounds.
+     */
+    private int checkAndGetIndex(ArrayList<Ingredient> matchingItems, int intInput) throws FridgetException {
+        if (intInput <= 0 | intInput > matchingItems.size()) {
+            throw new FridgetException("This index is not valid. The command has been shutdown.");
+        }
+        return intInput;
     }
 
     /**
@@ -246,6 +310,85 @@ public class Ui {
     }
 
     /**
+     * Prints message if there are no matching items.
+     *
+     * @param matchingItems List of matching items after parseSearchTerm.
+     */
+    public void printIfNotFoundMessage(ArrayList<Ingredient> matchingItems) {
+        if (matchingItems.size() == 0) {
+            printLine("No such item exists.");
+        }
+    }
+
+    /**
+     * Asks user for input and expect only Integer input.
+     *
+     * @return The integer of the input.
+     * @throws FridgetException if userInput is not integer.
+     */
+    public int getIntInput() throws FridgetException {
+        String toIntInput = readUserInput();
+        printSeparatorLine();
+
+        try {
+            int intOutput = Integer.parseInt(toIntInput);
+            return intOutput;
+        } catch (NumberFormatException e) {
+            throw new FridgetException("No valid number was stated. The command has been shutdown");
+        }
+    }
+
+    /**
+     * Asks user for input and expect only Integer input.
+     *
+     * @return The integer of the input.
+     * @throws FridgetException if userInput is not integer.
+     */
+    public int getIntInput(CommandType commandType) throws FridgetException {
+        String toIntInput = readUserInput();
+        printSeparatorLine();
+
+        if (toIntInput.toLowerCase().matches("quit")) {
+            if (commandType.equals(CommandType.REMOVE)) {
+                throw new FridgetException("You have decided to quit. The remove command has been shutdown.");
+            } else if (commandType.equals(CommandType.UPDATE)) {
+                throw new FridgetException("You have decided to quit. The update command has been shutdown.");
+            }
+        }
+
+        try {
+            int intOutput = Integer.parseInt(toIntInput);
+            return intOutput;
+        } catch (NumberFormatException e) {
+            throw new FridgetException("No valid number was stated. The command has been shutdown");
+        }
+    }
+
+    /**
+     * Get the integer to update item quantity to.
+     *
+     * @param targetIngredient Item to update quantity.
+     * @return Int input from user.
+     * @throws FridgetException if input is invalid.
+     */
+    public int getUpdate(Ingredient targetIngredient) throws FridgetException {
+        String message = String.format("How many of %s do you have left?", targetIngredient.getIngredientName());
+        printLine(message);
+        printSeparatorLine();
+        return getIntInput();
+    }
+
+    /**
+     * Prints message to inform on successful change.
+     *
+     * @param updated Lastest update on ingredient.
+     */
+    public void acknowledgeUpdate(Ingredient updated) {
+        String msg = String.format("Quantity of %s is now %d.", updated.getIngredientName(), updated.getQuantity());
+        printLine(msg);
+    }
+
+    /**
      * Gets the quantity of items to be removed from the user.
      *
      * @param ingredient Ingredient to be removed.
@@ -260,23 +403,14 @@ public class Ui {
 
         printLine("There are " + limit + " items, how many would like to remove?");
         printSeparatorLine();
-        String userInput = readUserInput();
-        printSeparatorLine();
-
-        if (!(userInput.matches("\\d"))) {
-            throw new FridgetException("No valid number was stated. The remove command has been shutdown.");
-        }
-
-        int qty = Integer.parseInt(userInput);
+        int qty = getIntInput();
 
         if (qty == 0) {
             throw new FridgetException("No items have been removed.");
         }
-
         if (qty < 0 | qty > limit) {
             throw new FridgetException("This quantity is not valid. The remove command has been shutdown.");
         }
-
         return qty;
     }
 

@@ -167,13 +167,13 @@ You have successfully increased the quantity of:
     JimBeam | Qty: 1->2 | 03 Oct 2030
 __________________________________________
 __________________________________________
-Which item would you like to be removed? Type the index of the item below.
+Which item would you like to remove? Type the index of the item below.
     1. fish Cake | Qty: 3 | 12 Dec 2010
     2. JimBeam | Qty: 2 | 03 Oct 2030
 If you've changed your mind, simply type 'quit'.
 __________________________________________
 __________________________________________
-This index is not valid. The remove command has been shutdown.
+This index is not valid. The command has been shutdown.
 __________________________________________
 __________________________________________
 List sorted by item name:
@@ -182,13 +182,51 @@ List sorted by item name:
     3. yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
 __________________________________________
-Which item would you like to be removed? Type the index of the item below.
-    1. fish Cake | Qty: 3 | 12 Dec 2010
-    2. JimBeam | Qty: 2 | 03 Oct 2030
-If you've changed your mind, simply type 'quit'.
+Did you mean: JimBeam? [Y/N]
+__________________________________________
+__________________________________________
+Understood, Command has been shutdown.
+__________________________________________
+__________________________________________
+Did you mean: JimBeam? [Y/N]
 __________________________________________
 __________________________________________
 There are 2 items, how many would like to remove?
+__________________________________________
+__________________________________________
+You have successfully removed:
+    JimBeam | Qty: 1 | 03 Oct 2030
+__________________________________________
+__________________________________________
+Did you mean: JimBeam? [Y/N]
+__________________________________________
+__________________________________________
+How many of JimBeam do you have left?
+__________________________________________
+__________________________________________
+Quantity of JimBeam is now 2000.
+__________________________________________
+__________________________________________
+Which item would you like to overwrite quantity? Type the index of the item below.
+    1. yoghurt cake | Qty: 1 | 15 Oct 2030
+    2. fish Cake | Qty: 3 | 12 Dec 2010
+    3. JimBeam | Qty: 2000 | 03 Oct 2030
+If you've changed your mind, simply type 'quit'.
+__________________________________________
+__________________________________________
+How many of yoghurt cake do you have left?
+__________________________________________
+__________________________________________
+Quantity of yoghurt cake is now 675.
+__________________________________________
+__________________________________________
+Which item would you like to remove? Type the index of the item below.
+    1. fish Cake | Qty: 3 | 12 Dec 2010
+    2. JimBeam | Qty: 2000 | 03 Oct 2030
+If you've changed your mind, simply type 'quit'.
+__________________________________________
+__________________________________________
+There are 2000 items, how many would like to remove?
 __________________________________________
 __________________________________________
 You have successfully removed:
@@ -197,7 +235,8 @@ __________________________________________
 __________________________________________
 List sorted by item name:
     1. fish Cake | Qty: 3 | 12 Dec 2010
-    2. yoghurt cake | Qty: 1 | 15 Oct 2030
+    2. JimBeam | Qty: 1998 | 03 Oct 2030
+    3. yoghurt cake | Qty: 675 | 15 Oct 2030
 __________________________________________
 __________________________________________
 There are 3 items, how many would like to remove?
@@ -209,19 +248,23 @@ __________________________________________
 __________________________________________
 List sorted by item name:
     1. fish Cake | Qty: 1 | 12 Dec 2010
-    2. yoghurt cake | Qty: 1 | 15 Oct 2030
+    2. JimBeam | Qty: 1998 | 03 Oct 2030
+    3. yoghurt cake | Qty: 675 | 15 Oct 2030
+__________________________________________
+__________________________________________
+There are 675 items, how many would like to remove?
 __________________________________________
 __________________________________________
 You have successfully removed:
-    yoghurt cake | Qty: 1 | 15 Oct 2030
+    yoghurt cake | Qty: 675 | 15 Oct 2030
 __________________________________________
 __________________________________________
 You have successfully removed:
     fish Cake | Qty: 1 | 12 Dec 2010
 __________________________________________
 __________________________________________
-You currently have nothing in your fridge.
-Input "help" to get started!
+List sorted by item name:
+    1. JimBeam | Qty: 1998 | 03 Oct 2030
 __________________________________________
 __________________________________________
 We'll help you remember everything you told us :)

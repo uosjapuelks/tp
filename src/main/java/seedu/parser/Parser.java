@@ -1,5 +1,6 @@
 package seedu.parser;
 
+
 import seedu.commands.AddCommand;
 import seedu.commands.Command;
 import seedu.commands.ExitCommand;
@@ -10,6 +11,7 @@ import seedu.commands.ListCommand;
 import seedu.commands.NotificationCommand;
 import seedu.commands.RemoveCommand;
 import seedu.commands.ResetCommand;
+import seedu.commands.UpdateCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -22,7 +24,8 @@ public class Parser {
     public enum CommandType {
         ADD,
         REMOVE,
-        FIND
+        FIND,
+        UPDATE
     }
 
     /**
@@ -59,6 +62,8 @@ public class Parser {
             return new FindCommand();
         case "notifs":
             return new NotificationCommand();
+        case "update":
+            return new UpdateCommand();
         case "reset":
             return new ResetCommand();
         default:
@@ -71,6 +76,7 @@ public class Parser {
             assert !userCommand.equalsIgnoreCase("find");
             assert !userCommand.equalsIgnoreCase("notifs");
             assert !userCommand.equalsIgnoreCase("reset");
+            assert !userCommand.equalsIgnoreCase("update");
             throw new FridgetException("No command found!\n"
                     + "Enter help if you need the list of available commands.");
         }
@@ -151,6 +157,9 @@ public class Parser {
             break;
         case FIND:
             correctFormat = " Try: [find] <ITEM_NAME>";
+            break;
+        case UPDATE:
+            correctFormat = " Try: [update] <ITEM_NAME>";
             break;
         default:
             correctFormat = "";
