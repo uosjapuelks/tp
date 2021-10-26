@@ -8,6 +8,15 @@
 ## Setting Up Fridget
 Refer to User Guide section on [Quick Start](https://ay2122s1-cs2113t-w12-4.github.io/tp/UserGuide.html#:~:text=be%20more%20efficient.-,Quick%20Start,-Ensure%20that%20you).
 
+## Architecture
+
+### Command
+![image info](./umlDiagrams/Command.png)
+The Command class is inherited by all other command class with their specific functionalities.
+
+The Command class contain an execute() method which is inherited by all other classes to execute the
+function specified by their names.
+
 ## Design & implementation
 
 ### Adding Items Into Fridget
@@ -217,7 +226,7 @@ The printLine() method is called in the Ui, to print a message to notify user th
 
 Step 12:
 
-The execution of the execute() method ends. While notification continues to run until program termination.
+The execution of the execute() method ends, while notification continues to run until program termination.
 
 ### Exiting From Fridget
 
@@ -252,14 +261,11 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 |v1.0|perfectionist house-husband|reset the list of items in Fridget|start using Fridget after not using it for a while, or after initial testing with fake items|
 |v1.0|new user|have a manual instructions|easily navigate through the cli app|
 |v1.0|fitness fanatic|have health-focused reminders for family members to eat more fruits and healthy snacks|my family can be healthy together|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
-|v2.0|forgetful house-husband|be reminded on items nearing expiry|use it before its too late|
 |v2.0|busy house-husband|check if any ingredient requires me to replenish|easily curate my shopping list|
-|v2.0|forgetful house-husband|check my recently thrown items in the past week|know what items to restock|
-|v2.0|lazy house-husband|add items I always want to have in the fridge|add to the shopping list immediately after it runs out|
 |v2.0|lazy house-husband|update the amount that is left of the item|know if it is very urgent to consume when it nears expiry|
-|v2.0|forgetful house-husband|be informed of what has not been used for a long time|utilise the item more|
 |v2.0|lazy house-husband|I want to be able to add multiple items at once|type lesser commands to add them in|
+|v2.1|forgetful house-husband|be reminded on items nearing expiry|use it before its too late|
+
 
 ## Non-Functional Requirements
 
@@ -285,16 +291,92 @@ This CLI based application hopes to automate a lot of the tasks users have relat
    2. Exiting by closing the window is permitted but not encouraged.
 
 ### Adding Items
-
+1. Adding item to Fridget.
+   1. Adding format to follow would be, `add ITEM_NAME /EXPIRY_DATE`.
+   2. ITEM_NAME is the parameter for the name and EXPIRY_DATE will be in the format of /yyyy-mm-dd
+2. Test cases: 
+   1. `add bacon /2021-12-12`
+      Expected: Message will be printed to inform you item is added. Type command `list` to view the item added to Fridget.
+   2. `add bacon`
+      Expected: Error message printed to prompt that there is lack of expiry date. No item added.
+   3. `add /2021-11-11`
+      Expected: Error message printed to indicate the lack of item name. No item will be added.
+   4. `add bacon /2021-13-13`
+      Expected: Error message to inform that date is in the wrong format. No item will be added.
+   5. `add | /2021-12-12`
+      Expected: Error message to inform user to not input '|' in item name. No item will be added.
 
 ### Deleting Items
+1. Removing item from Fridget.
+   1. Removing item format will be `remove ITEM_NAME`.
+   2. ITEM_NAME is the parameter for the name.
+   3. If there are multiple item with same name, Fridget prompts you to choose the index of item to remove.
+   4. If there are multiple quantity of an item, Fridget prompts you to input quantity to remove.
+2. Prerequisites: There should be a prepare list of items in Fridget.
+   1. Add 3 bacon of different dates. (eg. 2021-11-11, 2021-12-12)
+   2. Add 3 egg of same date.
+3. Test Cases:
+   1. `remove bacon`
+   Expected: Prompt from Fridget to ask which of the item from a list to remove. Type 1, and first bacon from
+   the list will be removed. Type `list` to confirm the right bacon (correct date) is removed.
+   2. `remove egg`
+   Expected: Prompt to type in the quantity to remove, type in 2 and a message will be printed to
+   notify that 2 eggs have been removed. Type `list` to check quantity of egg.
+   3. `remove`
+   Expected: Error message printed to indicate the lack of item name. No item will be removed.
+   4. `remove chicken`
+   Expected: Error message printed to inform you no such item exists.
 
 ### Listing Items
+1. Listing all items from Fridget.
+   1. Format for list will be `list` or `list -r` or `list -e`
+   2. `list` list by alphabetical order.
+   3. `list -e` list by ascending order of expiry date.
+   4. `list -r` list by how recent item is added.
+2. Prerequisites: There should be a prepared list of items.
+   1. Add bacon of date 2022-12-12
+   2. Add apple of date 2023-12-12
+   3. add cucumber of date 2021-12-12
+3. Test cases:
+   1. `list` 
+   Expected: Items will be listed out in alphabetical order.
+   2. `list -e` 
+   Expected: Items will be listed out in ascending order of expiry date.
+   3. `list -r`
+   Expected: Items will be listed out by how recent they are added.
+
+### Finding Items
+1. Finding items from Fridget.
+   1. Format for finding item will be `find ITEM_NAME`
+   2. ITEM_NAME is the parameter for the name.
+2. Prerequisites: There should be a prepared list of items.
+   1. Add bacon of date 2022-12-12
+   2. Add bacon of date 2023-12-12
+   3. add cucumber of date 2021-12-12
+3. Test cases: 
+   1. `find bacon`
+   Expected: A list of the item associated with the name will be printed.
+   2. `find chicken`
+   Expected: Error message will be printed to inform that no matching item is found.
+   3. `find`
+   Expected: Error message will prompt for user to input ITEM_NAME. No items will be printed.
+
+### List Expiring Items
+1. Listing all expired and expiring items.
+   1. Format for listing expiring items will be `expiring`
+2. Prerequisites: There should be a prepared list of items.
+   1. Add bacon of date 2021-10-10
+   2. Add egg of date within 7 days from today's date.
+   3. Add duck of date 2022-10-10
+3. Test cases:
+   1. `expiring`
+   Expected: A list containing all items expiring within 7 days or expired will be listed.
 
 ### Saving And Loading Data
 1. Saving and loading data is automated as long as file is not corrupted.
    1. To track your data in terms of a text file, open up fridgetData folder to access savedList.txt.
    2. Do not modify any items in the text file which could cause corruption to file.
+   
 2. Dealing with missing file.
    1. In general, a missing file will not result in any error as files will be generated automatically.
    2. To simulate a missing file, simple run and exit program, locate the fridgetData folder and delete the savedList.txt file.
