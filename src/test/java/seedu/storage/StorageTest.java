@@ -11,11 +11,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class StorageTest {
     private static final String FILE_PATH_LIST = "fridgetTestData/testSavedList.txt";
     private static final String FILE_PATH_LOGS = "fridgetTestData/testSavedLogs.txt";
+    private static final String FILE_PATH_SHOP = "fridgetTestData/testSavedShop.txt";
     private static final String REGEX_DATA_SEPARATOR = " \\| ";
 
     IngredientList ingredientList = new IngredientList();
+    ShoppingList shoppingList = new ShoppingList();
     Notification notification = new Notification();
-    Storage storage = new Storage(ingredientList, notification, FILE_PATH_LIST, FILE_PATH_LOGS);
+    Storage storage = new Storage(ingredientList, shoppingList, notification, FILE_PATH_LIST,
+            FILE_PATH_LOGS, FILE_PATH_SHOP);
 
     @Test
     void addSavedIngredient_correctSavedIngredientFormat_expectCorrectFormatInIngredientList() {

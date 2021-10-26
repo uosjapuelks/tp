@@ -9,11 +9,11 @@ import seedu.ui.Ui;
 
 import java.util.ArrayList;
 
-public class ListCommand extends Command {
+public class ShopListCommand extends Command {
     /**
-     * Constructor for ListCommand.
+     * Constructor for ShopListCommand.
      */
-    public ListCommand() {
+    public ShopListCommand() {
     }
 
     /**
@@ -28,8 +28,12 @@ public class ListCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
             throws FridgetException {
-        String sortType = parser.parseSortTypeForList(ui.getCurrentUserInput());
-        ArrayList<Ingredient> listOfIngredients = ingredientList.getIngredientList(sortType);
-        ui.printListMessage(listOfIngredients, sortType, false);
+        ArrayList<Ingredient> listOfIngredients = shoppingList.getShoppingList();
+        if (listOfIngredients.isEmpty()) {
+            String errorMessage = "You currently have nothing in your shopping list.\n"
+                    + "Input \"help\" to get started!";
+            throw new FridgetException(errorMessage);
+        }
+        ui.printListMessage(listOfIngredients, "", true);
     }
 }

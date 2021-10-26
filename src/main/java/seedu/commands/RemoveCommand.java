@@ -4,6 +4,7 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
+import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
 import java.util.ArrayList;
@@ -18,28 +19,34 @@ public class RemoveCommand extends Command {
     /**
      * Executes the command.
      *
-     * @throws FridgetException if user types an incorrect value when prompted.
+     * @param ui The ui object to interact with user.
+     * @param parser The parser object to parse user inputs.
+     * @param ingredientList The ingredientList object.
+     * @param shoppingList The shoppingList object.
+     * @throws FridgetException The error object thrown.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList) throws FridgetException {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
+            throws FridgetException {
         String nameOfItemToBeRemoved = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.REMOVE);
         if (nameOfItemToBeRemoved.contains(" | ") | nameOfItemToBeRemoved.contains("/")) {
             throw new FridgetException("You are not able to use '/' and ' | ' in ingredient names.");
         }
         ArrayList<Ingredient> matchingItems = ingredientList.findAllMatchingIngredients(nameOfItemToBeRemoved);
-        handleRemovalOfItem(ui, ingredientList, nameOfItemToBeRemoved, matchingItems);
+        handleRemovalOfItem(ui, ingredientList, shoppingList, nameOfItemToBeRemoved, matchingItems);
     }
 
     /**
      * Handles all cases when user wants to remove an item based on the name of item to be removed.
+     *
      * @param ui The Ui which will send output and collect input from the user.
      * @param ingredientList The ingredientList where items are stored.
      * @param nameOfItemToBeRemoved The name of the item to be removed.
      * @param matchingItems The list of items in ingredientList which match the nameOfItemToBeRemoved.
      * @throws FridgetException if the user types an invalid index to remove from ingredientsList.
      */
-    private void handleRemovalOfItem(Ui ui, IngredientList ingredientList, String nameOfItemToBeRemoved,
-                                     ArrayList<Ingredient> matchingItems) throws FridgetException {
+    private void handleRemovalOfItem(Ui ui, IngredientList ingredientList, ShoppingList shoppingList,
+            String nameOfItemToBeRemoved, ArrayList<Ingredient> matchingItems) throws FridgetException {
         // If there are no matching items, let the user know
         ui.printIfNotFoundMessage(matchingItems);
 
@@ -51,7 +58,7 @@ public class RemoveCommand extends Command {
                 acceptDefault = ui.giveSuggestion(itemToBeRemoved);
             }
             if (acceptDefault) {
-                handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
+                handleRemovalOfMultipleQuantity(ui, ingredientList, shoppingList, itemToBeRemoved);
                 return;
             }
         }
@@ -59,7 +66,7 @@ public class RemoveCommand extends Command {
         if (matchingItems.size() > 1) {
             Ingredient itemToBeRemoved = ui.matchItem(matchingItems, Ui.CommandType.REMOVE);
             assert ingredientList.containsIngredient(itemToBeRemoved);
-            handleRemovalOfMultipleQuantity(ui, ingredientList, itemToBeRemoved);
+            handleRemovalOfMultipleQuantity(ui, ingredientList, shoppingList, itemToBeRemoved);
         }
     }
 
@@ -71,11 +78,25 @@ public class RemoveCommand extends Command {
      * @param itemToBeRemoved The item to be removed.
      * @throws FridgetException if the user types an invalid quantity to remove from ingredientsList.
      */
-    private void handleRemovalOfMultipleQuantity(Ui ui, IngredientList ingredientList, Ingredient itemToBeRemoved)
-            throws FridgetException {
+    private void handleRemovalOfMultipleQuantity(Ui ui, IngredientList ingredientList, ShoppingList shoppingList,
+            Ingredient itemToBeRemoved) throws FridgetException {
         int qty;
         qty = ui.getQuantityToBeRemoved(itemToBeRemoved);
-        ingredientList.removeIngredient(itemToBeRemoved, qty);
+        boolean isRemoved = ingredientList.removeIngredient(itemToBeRemoved, qty);
         ui.printReactionToRemovingIngredient(itemToBeRemoved, qty);
+
+        if (isRemoved && !shoppingList.searchIngredientNameExist(itemToBeRemoved)) {
+            updateShopList(ui,shoppingList, itemToBeRemoved);
+        }
+    }
+
+    private void updateShopList(Ui ui, ShoppingList shoppingList, Ingredient itemRemoved)
+            throws FridgetException {
+        int qty = ui.getShopQuantity(itemRemoved);
+        if (qty > 0) {
+            Ingredient addedIngredient = new Ingredient(itemRemoved.getIngredientName(), qty);
+            shoppingList.addIngredient(addedIngredient, qty);
+            ui.printShopUpdateMessage(addedIngredient);
+        }
     }
 }

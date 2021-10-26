@@ -204,6 +204,9 @@ list -r
 list
 -> List out all the ingredients in alphabetical order.
 
+shoplist
+-> List out all the ingredients in the shopping list in alphabetical order.
+
 expiring
 -> Prints out ingredients that have expired or are expiring within a week.
 
@@ -215,6 +218,9 @@ notifs
 
 reset
 -> Deletes all the previous ingredient entries from the reader.
+
+shopreset
+-> Deletes all the previous ingredient entries in the shopping list.
 
 exit
 -> Exits the program.

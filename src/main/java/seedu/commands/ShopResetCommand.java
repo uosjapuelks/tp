@@ -1,23 +1,20 @@
 package seedu.commands;
 
 import seedu.data.exception.FridgetException;
-import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
-import java.util.ArrayList;
-
-public class ListCommand extends Command {
+public class ShopResetCommand extends Command {
     /**
-     * Constructor for ListCommand.
+     * Constructor for ShopResetCommand.
      */
-    public ListCommand() {
+    public ShopResetCommand() {
     }
 
     /**
-     * Executes the command.
+     * Executes the "shopreset" command.
      *
      * @param ui The ui object to interact with user.
      * @param parser The parser object to parse user inputs.
@@ -28,8 +25,13 @@ public class ListCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
             throws FridgetException {
-        String sortType = parser.parseSortTypeForList(ui.getCurrentUserInput());
-        ArrayList<Ingredient> listOfIngredients = ingredientList.getIngredientList(sortType);
-        ui.printListMessage(listOfIngredients, sortType, false);
+        if (shoppingList.getShoppingList().isEmpty()) {
+            throw new FridgetException("You currently have nothing in your shopping list.");
+        }
+
+        if (ui.getResetReconfirm(Ui.CommandType.SHOPRESET)) {
+            shoppingList.resetList();
+            ui.printShopResetMessage();
+        }
     }
 }

@@ -11,11 +11,15 @@ import seedu.commands.ListCommand;
 import seedu.commands.NotificationCommand;
 import seedu.commands.RemoveCommand;
 import seedu.commands.ResetCommand;
+import seedu.commands.ShopResetCommand;
+import seedu.commands.ShopListCommand;
 import seedu.commands.UpdateCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 
 public class Parser {
 
@@ -50,6 +54,8 @@ public class Parser {
             return new RemoveCommand();
         case "list":
             return new ListCommand();
+        case "shoplist":
+            return new ShopListCommand();
         case "expiring":
             return new ExpiringCommand();
         case "exit":
@@ -64,16 +70,20 @@ public class Parser {
             return new UpdateCommand();
         case "reset":
             return new ResetCommand();
+        case "shopreset":
+            return new ShopResetCommand();
         default:
             assert !userCommand.equalsIgnoreCase("add");
             assert !userCommand.equalsIgnoreCase("remove");
             assert !userCommand.equalsIgnoreCase("list");
+            assert !userCommand.equalsIgnoreCase("shoplist");
             assert !userCommand.equalsIgnoreCase("expiring");
             assert !userCommand.equalsIgnoreCase("exit");
             assert !userCommand.equalsIgnoreCase("help");
             assert !userCommand.equalsIgnoreCase("find");
             assert !userCommand.equalsIgnoreCase("notifs");
             assert !userCommand.equalsIgnoreCase("reset");
+            assert !userCommand.equalsIgnoreCase("shopreset");
             assert !userCommand.equalsIgnoreCase("update");
             throw new FridgetException("No command found!\n"
                     + "Enter help if you need the list of available commands.");
@@ -81,12 +91,12 @@ public class Parser {
     }
 
     /**
-     * Splits user inputs.
+     * Splits user inputs by " ".
      *
      * @param userInput String input to be split by " ".
      * @return String[] from splitting input.
      */
-    private String[] splitUserInput(String userInput) {
+    private String[] splitUserInputByWhitespace(String userInput) {
         String[] splitInput = userInput.trim().split(" ", 2);
         assert splitInput.length >= 1;
         return splitInput;
@@ -110,10 +120,10 @@ public class Parser {
      * Execute splitUserInput and trimContents on userInput.
      *
      * @param userInput String input by user.
-     * @return String[] after processing using splitUserInput and trimContents.
+     * @return String[] after processing using splitUserInputByWhitespace and trimContents.
      */
     private String[] processInput(String userInput) {
-        String[] splitInput = splitUserInput(userInput);
+        String[] splitInput = splitUserInputByWhitespace(userInput);
         String[] trimmedInput = trimContents(splitInput);
         return trimmedInput;
     }
@@ -193,9 +203,28 @@ public class Parser {
 
         String expiryString = extractExpiry(processedInput);
         assert !expiryString.isEmpty();
-        LocalDate expiryDate = LocalDate.parse(expiryString);
+        try {
+            LocalDate expiryDate = LocalDate.parse(expiryString);
+            return new Ingredient(ingredientName, expiryDate);
+        } catch (DateTimeParseException e) {
+            throw new FridgetException(expiryString + " is not formatted properly.\n"
+                    + "Please try this format for the date:\n\n"
+                    + "    /YYYY-MM-DD\n"
+                    + "    Example: '... /2022-08-03");
+        }
+    }
 
-        return new Ingredient(ingredientName, expiryDate);
+    public ArrayList<Ingredient> parseMultipleIngredientsForAdding(String userInput) throws FridgetException {
+        String[] processedInput = processInput(userInput);
+        String[] ingredientsInfo = processedInput[1].split(";");
+
+        ArrayList<Ingredient> allIngredientsToBeAdded = new ArrayList<>();
+        for (String ingredientInfo: ingredientsInfo) {
+            Ingredient newIngredient = parseIngredientForAdding(processedInput[0] + " " + ingredientInfo);
+            allIngredientsToBeAdded.add(newIngredient);
+        }
+
+        return allIngredientsToBeAdded;
     }
 
     /**
