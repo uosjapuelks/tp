@@ -19,7 +19,11 @@ public class UpdateCommand extends Command {
     /**
      * Executes the command.
      *
-     * @throws FridgetException if user types an incorrect value when prompted.
+     * @param ui The ui object to interact with user.
+     * @param parser The parser object to parse user inputs.
+     * @param ingredientList The ingredientList object.
+     * @param shoppingList The shoppingList object.
+     * @throws FridgetException The error object thrown.
      */
     public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
             throws FridgetException {
@@ -47,7 +51,17 @@ public class UpdateCommand extends Command {
         }
     }
 
+    /**
+     * Updates the shopping list.
+     *
+     * @param shoppingList The shoppingList object.
+     * @param updatedIngredient The ingredient updated.
+     * @param qty The difference in quantity of the update.
+     */
     private void updateShopList(ShoppingList shoppingList, Ingredient updatedIngredient, int qty) {
+        if (qty <= 0) {
+            return;
+        }
         shoppingList.removeIngredient(updatedIngredient, qty);
     }
 }

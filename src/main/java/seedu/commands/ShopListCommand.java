@@ -18,6 +18,12 @@ public class ShopListCommand extends Command {
 
     /**
      * Executes the command.
+     *
+     * @param ui The ui object to interact with user.
+     * @param parser The parser object to parse user inputs.
+     * @param ingredientList The ingredientList object.
+     * @param shoppingList The shoppingList object.
+     * @throws FridgetException The error object thrown.
      */
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
