@@ -1,0 +1,121 @@
+@startuml
+'https://plantuml.com/class-diagram
+hide circle
+skinparam classAttributeIconSize 0
+
+class Command
+class AddCommand
+class ExitCommand
+class FindCommand
+class HelpCommand
+class ListCommand
+class ResetCommand
+class RemoveCommand
+class ExpiringCommand
+class NotificationCommand
+class ShopListCommand
+class ShopResetCommand
+class UpdateCommand
+
+Command <|-up- AddCommand
+Command <|-up- ExitCommand
+Command <|-up- FindCommand
+Command <|-up- HelpCommand
+Command <|-left- ListCommand
+Command <|-left- ResetCommand
+Command <|-right- RemoveCommand
+Command <|-right- ExpiringCommand
+Command <|-down- NotificationCommand
+Command <|-down- ShopListCommand
+Command <|-down- ShopResetCommand
+Command <|-down- UpdateCommand
+
+class Command {
++isExit: boolean
++Command()
++exitNotRequired(): boolean
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+shoppingList: ShoppingList): void
+}
+
+class AddCommand {
++AddCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+}
+
+class ExitCommand {
++ExitCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+}
+
+class FindCommand {
++FindCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+}
+
+class HelpCommand {
+- {static} COMMAND_LIST: String
++HelpCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+}
+
+class ListCommand {
++ListCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+shoppingList: ShoppingList): void
+}
+
+class ResetCommand {
++ResetCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+}
+
+class RemoveCommand {
++RemoveCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+-handleRemovalOfItem(ui: Ui, ingredientList: IngredientList, shoppingList: ShoppingList,
+ nameOfItemToBeRemoved: String, matchingItems: ArrayList<Ingredient>): void
+-handleRemovalOfMultipleQuantity(ui: Ui, ingredientList: IngredientList,
+ shoppingList: ShoppingList, itemToBeRemoved: Ingredient): void
+-updateShopList(ui: Ui, shoppingList: ShoppingList, itemRemoved: Ingredient)
+}
+
+class ExpiringCommand {
++ExpiringCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+}
+
+class NotificationCommand {
++NotificationCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+}
+
+class ShopListCommand {
++ShopListCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+}
+
+class ShopResetCommand {
++ShopResetCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+}
+
+class UpdateCommand {
++UpdateCommand()
++execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
+ shoppingList: ShoppingList): void
+-updateShopList(shoppingList: ShoppingList, updatedIngredient: Ingredient,
+ qty: int): void
+}
+
+@enduml
