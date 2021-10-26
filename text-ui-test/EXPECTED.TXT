@@ -40,8 +40,6 @@ USER INPUT: __________________________________________
 Turning notification on!
 __________________________________________
 USER INPUT: __________________________________________
-Generating command list...
-__________________________________________
 List of commands available:
 
 add INGREDIENT_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
@@ -76,6 +74,9 @@ reset
 
 exit
 -> Exits the program.
+
+For more information about each command please visit our User Guide.
+Link: https://ay2122s1-cs2113t-w12-4.github.io/tp/UserGuide.html
 __________________________________________
 USER INPUT: __________________________________________
 You have successfully added:

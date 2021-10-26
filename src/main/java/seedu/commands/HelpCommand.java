@@ -5,9 +5,7 @@ import seedu.storage.IngredientList;
 import seedu.ui.Ui;
 
 public class HelpCommand extends Command {
-    private static final String COMMAND_LIST = "Generating command list...\n"
-            + "__________________________________________\n"
-            + "List of commands available:\n\n"
+    private static final String COMMAND_LIST = "List of commands available:\n\n"
             + "add INGREDIENT_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]\n"
             + "-> Adds an ingredient and its expiry date to the ingredient list.\n\n"
             + "find KEYWORD [eg. find bacon]\n"
@@ -29,7 +27,9 @@ public class HelpCommand extends Command {
             + "reset\n"
             + "-> Deletes all the previous ingredient entries from the reader.\n\n"
             + "exit\n"
-            + "-> Exits the program.";
+            + "-> Exits the program.\n\n"
+            + "For more information about each command please visit our User Guide.\n"
+            + "Link: https://ay2122s1-cs2113t-w12-4.github.io/tp/UserGuide.html";
 
     /**
      * Constructor for HelpCommand.
