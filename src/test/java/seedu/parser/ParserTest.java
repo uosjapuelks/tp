@@ -1,17 +1,7 @@
 package seedu.parser;
 
 import org.junit.jupiter.api.Test;
-import seedu.commands.AddCommand;
-import seedu.commands.Command;
-import seedu.commands.ExitCommand;
-import seedu.commands.ExpiringCommand;
-import seedu.commands.FindCommand;
-import seedu.commands.HelpCommand;
-import seedu.commands.ListCommand;
-import seedu.commands.NotificationCommand;
-import seedu.commands.RemoveCommand;
-import seedu.commands.ResetCommand;
-import seedu.commands.UpdateCommand;
+import seedu.commands.*;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -108,6 +98,20 @@ class ParserTest {
         String inputString = "update";
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(UpdateCommand.class));
+    }
+
+    @Test
+    void parseCommand_shopListCommandInput_expectReturnShopListCommand() throws FridgetException {
+        String inputString = "shoplist";
+        Command parsedResult = parser.parseCommand(inputString);
+        assertTrue(parsedResult.getClass().isAssignableFrom(ShopListCommand.class));
+    }
+
+    @Test
+    void parseCommand_shopResetCommandInput_expectReturnShopResetCommand() throws FridgetException {
+        String inputString = "shopreset";
+        Command parsedResult = parser.parseCommand(inputString);
+        assertTrue(parsedResult.getClass().isAssignableFrom(ShopResetCommand.class));
     }
 
     @Test
