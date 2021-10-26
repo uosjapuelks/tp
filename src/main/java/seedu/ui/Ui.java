@@ -437,6 +437,51 @@ public class Ui {
     }
 
     /**
+     * Prints a confirm message to add a removed item into the shopping list and returns the quantity to be
+     * added into the shopping list.
+     *
+     * @param itemRemoved The ingredient removed.
+     * @return Quantity of item to be added into the shopping list.
+     * @throws FridgetException
+     */
+    public int getShopUpdateQuantity(Ingredient itemRemoved) throws FridgetException {
+        String addConfirmMessage = "You have ran out of " + itemRemoved.getIngredientName()
+                + ". Would you like to add it to your shopping list? (Y/N)";
+        printSeparatorLine();
+        printLine(addConfirmMessage);
+        printSeparatorLine();
+
+        if (getYesNo()) {
+            String askQuantityMessage = "How many items would you like to buy?";
+            printLine(askQuantityMessage);
+            printSeparatorLine();
+            String answer = readUserInput().trim();
+            printSeparatorLine();
+            int qty = Integer.parseInt(answer);
+
+            if (qty == 0) {
+                throw new FridgetException("No items have been added.");
+            }
+            if (qty < 0) {
+                throw new FridgetException("This quantity is not valid. Shutting down the command...");
+            }
+            return qty;
+        }
+        return 0;
+    }
+
+    /**
+     * Prints the reaction after adding item into the shopping list.
+     *
+     * @param addedIngredient Ingredient added into the shopping list.
+     */
+    public void printShopUpdateMessage(Ingredient addedIngredient) {
+        String acknowledgeAdd = "You have successfully added:\n";
+        String addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + addedIngredient.toShopFormat();
+        printLine(addReaction);
+    }
+
+    /**
      * Prints a reconfirm message and gets the reconfirm result.
      *
      * @return Boolean representing reconfirm status (y: confirm, n: abort)
