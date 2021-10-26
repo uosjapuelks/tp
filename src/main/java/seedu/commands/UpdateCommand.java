@@ -39,9 +39,15 @@ public class UpdateCommand extends Command {
             if (correctTargetIngredient) {
                 Ingredient itemToUpdate = ui.matchItem(matchingItems, Ui.CommandType.UPDATE);
                 int newQty = ui.getUpdate(itemToUpdate);
+                int qtyDiff = newQty - itemToUpdate.getQuantity();
                 ingredientList.updateQuantity(itemToUpdate, newQty);
+                updateShopList(shoppingList, itemToUpdate, qtyDiff);
                 ui.acknowledgeUpdate(itemToUpdate);
             }
         }
+    }
+
+    private void updateShopList(ShoppingList shoppingList, Ingredient updatedIngredient, int qty) {
+        shoppingList.removeIngredient(updatedIngredient, qty);
     }
 }
