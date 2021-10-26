@@ -11,6 +11,7 @@ import seedu.commands.ListCommand;
 import seedu.commands.NotificationCommand;
 import seedu.commands.RemoveCommand;
 import seedu.commands.ResetCommand;
+import seedu.commands.UpdateCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -100,6 +101,13 @@ class ParserTest {
         String inputString = "notifs";
         Command parsedResult = parser.parseCommand(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(NotificationCommand.class));
+    }
+
+    @Test
+    void parseCommand_updateCommandInput_expectReturnUpdateCommand() throws FridgetException {
+        String inputString = "update";
+        Command parsedResult = parser.parseCommand(inputString);
+        assertTrue(parsedResult.getClass().isAssignableFrom(UpdateCommand.class));
     }
 
     @Test
