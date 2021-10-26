@@ -11,6 +11,7 @@ import seedu.commands.ListCommand;
 import seedu.commands.NotificationCommand;
 import seedu.commands.RemoveCommand;
 import seedu.commands.ResetCommand;
+import seedu.commands.ShopListCommand;
 import seedu.commands.UpdateCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
@@ -50,6 +51,8 @@ public class Parser {
             return new RemoveCommand();
         case "list":
             return new ListCommand();
+        case "shoplist":
+            return new ShopListCommand();
         case "expiring":
             return new ExpiringCommand();
         case "exit":

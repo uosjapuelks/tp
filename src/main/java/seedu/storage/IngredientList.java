@@ -13,7 +13,7 @@ public class IngredientList {
     }
 
     /**
-     * Adds an ingredient to ingredientList.
+     * Adds an ingredient into ingredientList.
      *
      * @param ingredient The Ingredient to be added.
      * @return Updated quantity of the ingredient added in the list.
