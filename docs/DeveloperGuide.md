@@ -165,6 +165,35 @@ Step 8:
 
 The execution of the execute() method ends.
 
+### Listing Items In Shopping List
+
+#### Main Objectives:
+The objective of this functionality is to allow users to easily view the contents of the shopping list.
+
+#### Sequence of execution:
+
+![ShopListSequence](./umlDiagrams/ShopListSequence.png)
+
+Step 1:
+
+The execution of this step is initiated by Fridget.
+
+Step 2 & 3:
+
+The getShoppingList() method is called in ShoppingList, and returns the current shoppingList.
+
+Step 4:
+
+If the shoppingList returned in step 3 is empty, a FridgetException is thrown and the command will stop. Else, it will continue to step 5.
+
+Step 5 & 6:
+
+The printListMessage() method is called in Ui, and prints out the list of ingredients in the shoppingList.
+
+Step 7:
+
+The execution of the execute() method ends.
+
 ### Configuring Notifications 
 
 #### Main Objectives:
@@ -177,6 +206,7 @@ Current implementation allow users to toggle the notifications on or off, with r
 The purpose of implementing time interval and ability to toggle is to prevent excessive notification printing. 
 
 #### Sequence of execution:
+
 ![image info](./umlDiagrams/NotificationSequence.png)
 
 Step 1:
