@@ -88,8 +88,8 @@ public class Notification {
             int i = 0;
             i = printExpiredItemsAndGetLastIndex(expiringList, i);
             printExpiringItems(expiringList, i);
+            printMessage(NOTIFICATION_CLOSING_LINE + SEPARATOR_LINE);
         }
-        printMessage(NOTIFICATION_CLOSING_LINE + SEPARATOR_LINE);
     }
 
     /**
