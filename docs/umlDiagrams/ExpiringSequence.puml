@@ -1,0 +1,22 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+autonumber
+
+-> "ExpiringCommand:Command": execute()
+activate "ExpiringCommand:Command"
+
+"ExpiringCommand:Command" -> "ExpiringCommand:Command" : sortByExpiry :String
+"ExpiringCommand:Command" -> ":IngredientList": getIngredientList(sortByExpiry)
+activate ":IngredientList"
+"ExpiringCommand:Command" <--":IngredientList": listOfIngredients :ArrayList<Ingredient>
+deactivate ":IngredientList"
+"ExpiringCommand:Command" -> ":Ui": printExpiringMessage(listOfIngredients)
+activate ":Ui"
+"ExpiringCommand:Command" <-- ":Ui"
+deactivate ":Ui"
+
+<-- "ExpiringCommand:Command"
+deactivate "ExpiringCommand:Command"
+
+@enduml
