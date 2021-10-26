@@ -105,6 +105,15 @@ public class Storage {
             addSavedNotification(logScanner.nextLine());
         }
 
+        Scanner shopScanner = new Scanner(shopFile);
+        if (shopScanner == null) {
+            logger.log(Level.WARNING, "Please restart the program! Data storage has been corrupted.");
+        }
+        while (shopScanner.hasNext()) {
+            String line = shopScanner.nextLine();
+            String[] shopDataComponents = line.split(REGEX_DATA_SEPARATOR);
+            addSavedShopIngredient(shopDataComponents);
+        }
     }
 
     /**
@@ -129,6 +138,12 @@ public class Storage {
         notification.setDateAndTime(LocalDateTime.parse(splitString[0],
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         Notification.setNotificationStatus(!splitString[1].equals("no"));
+    }
+
+    protected void addSavedShopIngredient(String[] shopDataComponents) {
+        int quantity = parseInt(shopDataComponents[1].substring(4).trim());
+        Ingredient savedIngredient = new Ingredient(shopDataComponents[0], quantity);
+        shoppingList.addIngredient(savedIngredient);
     }
 
     /**
@@ -161,15 +176,33 @@ public class Storage {
     }
 
     /**
+     * Updated the shop list text file.
+     *
+     * @param ingredients The current list of ingredients in the shopping list.
+     * @throws IOException The error thrown from file IO operations.
+     */
+    public void updateShopFile(ArrayList<Ingredient> ingredients) throws IOException {
+        FileWriter fileWriter = new FileWriter(shopFilePath);
+        for (Ingredient ingredient : ingredients) {
+            fileWriter.write(ingredient.toShopFormat());
+            fileWriter.write(System.lineSeparator());
+        }
+        fileWriter.close();
+    }
+
+    /**
      * Updates all the text files.
      *
      * @param storedIngredients The current list of ingredients.
+     * @param shoppingIngredients The current shopping list of ingredients.
      * @param notification Notification object.
      */
-    public void updateFiles(ArrayList<Ingredient> storedIngredients, Notification notification) {
+    public void updateFiles(ArrayList<Ingredient> storedIngredients, ArrayList<Ingredient> shoppingIngredients
+            , Notification notification) {
         try {
             updateListFile(storedIngredients);
             updateLogFile(notification);
+            updateShopFile(shoppingIngredients);
         } catch (IOException e) {
             logger.log(Level.WARNING, "Error while trying to update ingredient list file.");
         }
