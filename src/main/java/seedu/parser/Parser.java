@@ -71,6 +71,7 @@ public class Parser {
             assert !userCommand.equalsIgnoreCase("add");
             assert !userCommand.equalsIgnoreCase("remove");
             assert !userCommand.equalsIgnoreCase("list");
+            assert !userCommand.equalsIgnoreCase("shoplist");
             assert !userCommand.equalsIgnoreCase("expiring");
             assert !userCommand.equalsIgnoreCase("exit");
             assert !userCommand.equalsIgnoreCase("help");
