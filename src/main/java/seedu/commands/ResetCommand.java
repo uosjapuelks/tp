@@ -28,7 +28,7 @@ public class ResetCommand extends Command {
         if (ingredientList.getIngredientList("r").isEmpty()) {
             throw new FridgetException("You currently have nothing in your fridge.");
         }
-        if (ui.getResetReconfirm()) {
+        if (ui.getResetReconfirm(Ui.CommandType.RESET)) {
             ingredientList.resetList();
             ui.printResetMessage();
         }

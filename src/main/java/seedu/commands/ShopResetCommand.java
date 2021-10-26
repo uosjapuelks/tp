@@ -29,7 +29,7 @@ public class ShopResetCommand extends Command {
             throw new FridgetException("You currently have nothing in your shopping list.");
         }
 
-        if (ui.getResetReconfirm()) {
+        if (ui.getResetReconfirm(Ui.CommandType.SHOPRESET)) {
             shoppingList.resetList();
             ui.printShopResetMessage();
         }

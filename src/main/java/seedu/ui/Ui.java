@@ -1,5 +1,6 @@
 package seedu.ui;
 
+import seedu.commands.Command;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -16,7 +17,9 @@ public class Ui {
 
     public enum CommandType {
         REMOVE,
-        UPDATE
+        UPDATE,
+        RESET,
+        SHOPRESET
     }
 
     /**
@@ -486,8 +489,8 @@ public class Ui {
      *
      * @return Boolean representing reconfirm status (y: confirm, n: abort)
      */
-    public boolean getResetReconfirm() {
-        printLine("Are you sure you want to reset everything in the fridge? (Y/N)");
+    public boolean getResetReconfirm(CommandType commandType) {
+        printLine(getResetQuestion(commandType));
         printSeparatorLine();
         String confirm = readUserInput();
         if (!confirm.equalsIgnoreCase("y")) {
@@ -496,6 +499,24 @@ public class Ui {
         }
         return confirm.equalsIgnoreCase("y");
     }
+
+    /**
+     * Returns the reset question according to command.
+     *
+     * @param commandType The command used.
+     * @return String containing the reset question.
+     */
+    public String getResetQuestion(CommandType commandType) {
+        switch(commandType) {
+        case RESET:
+            return "Are you sure you want to reset everything in the fridge? (Y/N)";
+        case SHOPRESET:
+            return "Are you sure you want to reset everything in the shopping list? (Y/N)";
+        default:
+            return "";
+        }
+    }
+
 
     /**
      * Prints the ingredient list reset message.
