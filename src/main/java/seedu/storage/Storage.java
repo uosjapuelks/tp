@@ -140,6 +140,11 @@ public class Storage {
         Notification.setNotificationStatus(!splitString[1].equals("no"));
     }
 
+    /**
+     * Adds the saved ingredients in shopping list file into the shopping list.
+     *
+     * @param shopDataComponents The details of the ingredient.
+     */
     protected void addSavedShopIngredient(String[] shopDataComponents) {
         int quantity = parseInt(shopDataComponents[1].substring(4).trim());
         Ingredient savedIngredient = new Ingredient(shopDataComponents[0], quantity);
