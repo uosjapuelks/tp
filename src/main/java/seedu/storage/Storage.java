@@ -148,7 +148,7 @@ public class Storage {
     protected void addSavedShopIngredient(String[] shopDataComponents) {
         int quantity = parseInt(shopDataComponents[1].substring(4).trim());
         Ingredient savedIngredient = new Ingredient(shopDataComponents[0], quantity);
-        shoppingList.addIngredient(savedIngredient);
+        shoppingList.addIngredient(savedIngredient, quantity);
     }
 
     /**
