@@ -4,7 +4,6 @@ import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
-import seedu.notification.Notification;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
@@ -31,5 +30,16 @@ public class AddCommand extends Command {
         } else {
             ui.printReactionToAddingIngredient(newIngredient);
         }
+        updateShopList(shoppingList, newIngredient);
+    }
+
+    /**
+     * Updates the shopping list if added item exists in the shopping list.
+     *
+     * @param shoppingList The shopping list object.
+     * @param addedIngredient The ingredient that was added.
+     */
+    private void updateShopList(ShoppingList shoppingList, Ingredient addedIngredient) {
+        shoppingList.removeIngredient(addedIngredient, addedIngredient.getQuantity());
     }
 }
