@@ -42,7 +42,7 @@ public class AddCommand extends Command {
     private void addIngredientToIngredientList(Ui ui, IngredientList ingredientList, Ingredient newIngredient,
             ShoppingList shoppingList) throws FridgetException {
         if (newIngredient.getIngredientName().contains("|")) {
-            throw new FridgetException("Please do not use ' | ' in your ingredient name.");
+            throw new FridgetException("Please do not use '|' in your ingredient name.");
         }
         int qty = ingredientList.addIngredient(newIngredient);
         if (qty > 1) {
