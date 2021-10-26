@@ -21,12 +21,16 @@ public class HelpCommand extends Command {
             + "-> List out all the ingredients based on the order added.\n\n"
             + "list\n"
             + "-> List out all the ingredients in alphabetical order.\n\n"
+            + "shoplist\n"
+            + "-> List out all the ingredients in the shopping list in alphabetical order.\n\n"
             + "expiring\n"
             + "-> Prints out ingredients that have expired or are expiring within a week\n\n"
             + "notifs\n"
             + "-> Toggle the notification on or off depending on previous state. Default mode is on.\n\n"
             + "reset\n"
             + "-> Deletes all the previous ingredient entries from the reader.\n\n"
+            + "shopreset\n"
+            + "-> Deletes all the previous ingredient entries in the shopping list.\n\n"
             + "exit\n"
             + "-> Exits the program.";
 
