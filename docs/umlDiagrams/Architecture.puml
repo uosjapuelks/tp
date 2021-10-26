@@ -1,27 +1,34 @@
 @startuml
-'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+:Our\nFridget\nUser:  as user
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+rectangle Fridget
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+package Core #A9DCDF {
+    rectangle Command
+    rectangle Parser
+    rectangle IngredientList
+    rectangle ShoppingList
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+package Database #DDDDDD {
+    rectangle Storage
 }
+
+package Front\nEnd #ADD1B2 {
+        rectangle Ui
+    }
+
+user <-r-> Ui
+
+Ui <-> Fridget
+Fridget --> Parser
+Parser <-u-> Command
+Command <-> Fridget
+Command <-l-> Ui
+Command --> IngredientList
+Command --> ShoppingList
+
+Fridget -u-> Storage
 
 @enduml

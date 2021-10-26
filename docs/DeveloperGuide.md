@@ -10,6 +10,98 @@ Refer to User Guide section on [Quick Start](https://ay2122s1-cs2113t-w12-4.gith
 
 ## Design & implementation
 
+### Architecture Components
+
+![image info](./umlDiagrams/Architecture.png)
+
+This diagram illustrates the basic concept that underlies Fridget.
+
+Each rectangle above represents a class that exists to make Fridget work. 
+The larger folders represent the main purpose of the classes inside it.
+Their functions are as follows:
+
+#### **Front End**
+
+The front end aims to handle:
+- Reading <ins>inputs</ins> from the user
+- Sending <ins>outputs</ins> to the user
+
+##### `Ui`
+
+The Ui manages the entirety of the front end. 
+- It collects user input and stores it.
+- It also prints any necessary output to the terminal.
+
+#### **Core**
+
+The core aims to understand and execute the user's commands.
+
+#### `Parser`
+
+The Parser collects information from the user's input in a way that is usable by other classes within Fridget.
+
+#### `IngredientList`
+
+This class keeps track of all items currently stored within Fridget, and can be easily manipulated.
+
+#### `ShoppingList`
+
+This class keeps track of all items the user may want to shop for, and can be easily manipulated.
+
+#### `Command`
+
+There is a Command class for each possible command the user could execute.
+Each Command class controls the Ui, Parser, IngredientList, and ShoppingList so the User's intended outcome is achieved.
+
+#### **Database**
+
+The Database stores all info that is needed on a permanent basis. This may
+include info such as the contents of IngredientList. Most info in the Database
+is stored after any changes, and is usually retrieved when Fridget is turned
+on.
+
+#### `Storage`
+
+The Storage class takes charge of storing items after every command, and
+retrieving them upon startup.
+
+#### Fridget
+
+#### `Fridget`
+
+Fridget initialises all classes upon startup, and initiates the user feedback loop as shown below.
+
+![image info](./umlDiagrams/UserFeedbackLoop.png)
+
+### Architecture Logic
+
+The overall flow within Fridget occurs in three stages:
+
+- Startup
+- Execution
+- Shutdown
+
+#### Startup
+
+1. The `main` method in Fridget creates a new instance of `Fridget`.
+2. This new instance creates new instances of `Ui`, `Parser`,`IngredientList`, `ShoppingList`, and `Storage`.
+3. `Fridget.run()` is called, which asks `Storage` to check stored files in the directory: `fridgetData`.
+4. `IngredientList` and `ShoppingList` is updated based on the info obtained.
+5. `Fridget.run()` initiates the user feedback loop, to obtain input from the user.
+
+#### Execution
+
+1. The user types in an input into the `Ui`. `Parser` is used to extract a `Command` from the user's input.
+2. `Command.execute()` is called to execute the command.
+3. The `Command` takes control of the `Ui`, `IngredientList`, and `ShoppingList` to achieve the intended outcome the user requires.
+4. Once `Command.execute()` has ceased, the `Ui` awaits further input from the user.
+
+#### Shutdown
+
+1. When the `Ui` receives an input containing `exit`, `Parser` extracts an `ExitCommand`.
+2. This `ExitCommand` prints a message to let the user know Fridget is shutting down.
+3. `Fridget` recognises that `ExitCommand.exitNotRequired()` is not false, and shuts down Fridget safely.
+
 ### Adding Items Into Fridget
 
 #### Main Objectives:

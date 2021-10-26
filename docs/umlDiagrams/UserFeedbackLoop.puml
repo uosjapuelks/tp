@@ -1,0 +1,11 @@
+@startuml
+
+rectangle Fridget
+rectangle Ui
+
+Fridget -> Ui : Starts Loop
+
+:User: ---> Ui : Input
+:User: <--- Ui : Output
+
+@enduml
