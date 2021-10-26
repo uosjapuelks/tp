@@ -89,6 +89,7 @@ public class Notification {
             i = printExpiredItemsAndGetLastIndex(expiringList, i);
             printExpiringItems(expiringList, i);
         }
+        printMessage(NOTIFICATION_CLOSING_LINE + SEPARATOR_LINE);
     }
 
     /**
@@ -101,12 +102,12 @@ public class Notification {
         if (expiringList.size() - i > 0) {
             int index = 1;
             printMessage(NOTIFICATION_SEPARATOR + EXPIRING_MESSAGE);
-            for (; i < expiringList.size(); i++) {
+            while(i < expiringList.size()) {
                 String beforeIngredient = FIVE_SPACE_INDENTATION + index + ". ";
                 printMessage(beforeIngredient + expiringList.get(i));
                 index++;
+                i++;
             }
-            printMessage(NOTIFICATION_CLOSING_LINE + SEPARATOR_LINE);
         }
     }
 
@@ -121,10 +122,11 @@ public class Notification {
         if (expiringList.get(i).isExpired()) {
             printMessage(EXPIRING_NOTIFICATION + EXPIRED_MESSAGE);
             int index = 1;
-            for (; expiringList.get(i).isExpired(); i++) {
+            while((expiringList.size() - i > 0) && expiringList.get(i).isExpired()) {
                 String beforeIngredient = FIVE_SPACE_INDENTATION + index + ". ";
                 printMessage(beforeIngredient + expiringList.get(i));
                 index++;
+                i++;
             }
         }
         return i;
