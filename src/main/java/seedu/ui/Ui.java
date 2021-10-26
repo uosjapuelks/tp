@@ -415,7 +415,7 @@ public class Ui {
      *
      * @param ingredient Ingredient to be removed.
      * @return Amount of items to be removed.
-     * @throws FridgetException if the user types a wrong value (non-integer or 0 or outside limit of quantity)
+     * @throws FridgetException If the user types a wrong value (non-integer or 0 or outside limit of quantity)
      */
     public int getQuantityToBeRemoved(Ingredient ingredient) throws FridgetException {
         int limit = ingredient.getQuantity();
@@ -442,7 +442,7 @@ public class Ui {
      *
      * @param itemRemoved The ingredient removed.
      * @return Quantity of item to be added into the shopping list.
-     * @throws FridgetException
+     * @throws FridgetException If the user types a wrong value (non-integer or 0 or outside limit of quantity)
      */
     public int getShopUpdateQuantity(Ingredient itemRemoved) throws FridgetException {
         String addConfirmMessage = "You have ran out of " + itemRemoved.getIngredientName()

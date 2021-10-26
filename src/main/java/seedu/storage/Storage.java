@@ -34,13 +34,13 @@ public class Storage {
      * @param listFilePath pathway of ingredient list file storage.
      * @param logFilePath pathway of user log file storage.
      */
-    public Storage(IngredientList ingredientList, ShoppingList shoppingList, Notification notification
-            , String listFilePath, String logFilePath,  String shopFilePath) {
+    public Storage(IngredientList ingredientList, ShoppingList shoppingList, Notification notification,
+            String listFilePath, String logFilePath,  String shopFilePath) {
         String[] fileComponents = listFilePath.split("/");
+        this.fileDirectory = fileComponents[0];
         this.ingredientList = ingredientList;
         this.shoppingList = shoppingList;
         this.notification = notification;
-        this.fileDirectory = fileComponents[0];
         this.listFilePath = listFilePath;
         this.logFilePath = logFilePath;
         this.shopFilePath = shopFilePath;
@@ -202,8 +202,8 @@ public class Storage {
      * @param shoppingIngredients The current shopping list of ingredients.
      * @param notification Notification object.
      */
-    public void updateFiles(ArrayList<Ingredient> storedIngredients, ArrayList<Ingredient> shoppingIngredients
-            , Notification notification) {
+    public void updateFiles(ArrayList<Ingredient> storedIngredients, ArrayList<Ingredient> shoppingIngredients,
+            Notification notification) {
         try {
             updateListFile(storedIngredients);
             updateLogFile(notification);

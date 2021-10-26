@@ -90,9 +90,9 @@ public class Ingredient {
     }
 
     /**
-     * String is represented as name + quantity
+     * String is represented as name + quantity.
      *
-     * @return Ingredient name, quantity
+     * @return Ingredient name and quantity.
      */
     public String toShopFormat() {
         return ingredientName + " | Qty: " + quantity;

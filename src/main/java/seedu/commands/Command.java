@@ -27,6 +27,7 @@ public class Command {
     /**
      * Executes the command.
      */
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList) throws FridgetException {
+    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
+            throws FridgetException {
     }
 }

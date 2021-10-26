@@ -41,8 +41,8 @@ public class RemoveCommand extends Command {
      * @param matchingItems The list of items in ingredientList which match the nameOfItemToBeRemoved.
      * @throws FridgetException if the user types an invalid index to remove from ingredientsList.
      */
-    private void handleRemovalOfItem(Ui ui, IngredientList ingredientList, ShoppingList shoppingList
-            , String nameOfItemToBeRemoved, ArrayList<Ingredient> matchingItems) throws FridgetException {
+    private void handleRemovalOfItem(Ui ui, IngredientList ingredientList, ShoppingList shoppingList,
+            String nameOfItemToBeRemoved, ArrayList<Ingredient> matchingItems) throws FridgetException {
         // If there are no matching items, let the user know
         ui.printIfNotFoundMessage(matchingItems);
 
@@ -74,8 +74,8 @@ public class RemoveCommand extends Command {
      * @param itemToBeRemoved The item to be removed.
      * @throws FridgetException if the user types an invalid quantity to remove from ingredientsList.
      */
-    private void handleRemovalOfMultipleQuantity(Ui ui, IngredientList ingredientList, ShoppingList shoppingList
-            , Ingredient itemToBeRemoved) throws FridgetException {
+    private void handleRemovalOfMultipleQuantity(Ui ui, IngredientList ingredientList, ShoppingList shoppingList,
+            Ingredient itemToBeRemoved) throws FridgetException {
         int qty;
         qty = ui.getQuantityToBeRemoved(itemToBeRemoved);
         boolean isRemoved = ingredientList.removeIngredient(itemToBeRemoved, qty);
@@ -96,7 +96,7 @@ public class RemoveCommand extends Command {
                 ui.printShopUpdateMessage(addedIngredient);
             }
         } catch (NumberFormatException e) {
-            throw new FridgetException("Quantity input is invalid");
+            throw new FridgetException("No valid number was stated. The command has been shutdown.");
         }
     }
 }
