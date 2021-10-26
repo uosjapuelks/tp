@@ -36,6 +36,7 @@ public class IngredientList {
      * Removes an ingredient from the ingredient list.
      *
      * @param ingredient Ingredient to be removed.
+     * @param qty Quantity to be removed.
      * @return Returns true if ingredient is removed from the list (qty = 0)
      */
     public boolean removeIngredient(Ingredient ingredient, int qty) {
@@ -43,9 +44,24 @@ public class IngredientList {
         assert qty != 0 : "Quantity removed must not be 0!";
         if (ingredient.getQuantity() == qty) {
             ingredientList.remove(ingredient);
-            return true;
+            return !searchIngredientExist(ingredient);
         }
         ingredient.removeQuantity(qty);
+        return !searchIngredientExist(ingredient);
+    }
+
+    /**
+     * Checks if an item with the same name exists in the ingredient list.
+     *
+     * @param ingredient Ingredient to be searched.
+     * @return Boolean value of true if exist.
+     */
+    public boolean searchIngredientExist(Ingredient ingredient) {
+        for (Ingredient ingredient1 : ingredientList) {
+            if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())) {
+                return true;
+            }
+        }
         return false;
     }
 
