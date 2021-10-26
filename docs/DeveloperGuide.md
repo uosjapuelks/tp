@@ -228,14 +228,19 @@ The Ui returns a String as storedInput which is the user input.
 Step 4 & 5:
 
 The parseSearchTerm() method is called in Parser, with storedInput and Parser.CommandType.FIND as parameters.
-The Parser returns a String as searchTerm that.
+The Parser returns a String as searchTerm.
 
 Step 6 & 7:
 
-The printListMessage() method is called in Ui, with the listOfIngredient, and sortType as parameters.
+The findAllMatchingIngredients() method is called in IngredientList with searchTerm as a parameter.
+The IngredientList returns an ArrayList<Ingredient> as matchingIngredients for the user.
+
+Step 8 & 9:
+
+The printListMessage() method is called in Ui, with the matchingIngredients.
 The Ui prints out the list of Ingredients for the user.
 
-Step 8:
+Step 10:
 
 The execution of the execute() method ends.
 
