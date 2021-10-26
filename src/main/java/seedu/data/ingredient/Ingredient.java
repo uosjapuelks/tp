@@ -151,6 +151,12 @@ public class Ingredient {
         return (daysRemaining < 7);
     }
 
+    public boolean isExpired() {
+        LocalDate today = LocalDate.now();
+        long daysRemaining = today.until(expiryDate, ChronoUnit.DAYS);
+        return (daysRemaining < 0);
+    }
+
     /**
      * Check if Ingredient has already expired.
      *
