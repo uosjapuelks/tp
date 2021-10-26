@@ -318,7 +318,7 @@ The execution of the execute() method ends.
 
 #### Main Objectives:
 
-The functionality to find items is bound by two main objectives:
+The functionality to find items is bound by one main objective:
 * Allow users to easily find the list of items in Fridget that has similarities to search term.
 
 As a result, the current iteration requires an info from the user:
@@ -357,6 +357,20 @@ The Ui prints out the list of Ingredients for the user.
 Step 10:
 
 The execution of the execute() method ends.
+
+
+### Updating Item Quantity In Fridget
+
+#### Main Objectives:
+
+The functionality to update item quantity is bound by one main objective:
+* Allow users to directly modify the quantity of items in Fridget by overwriting the quantity to a new amount.
+
+As a result, the current iteration requires an info from the user:
+* The name of the item to update quantity.
+
+This additional info is to be used to help determine which item the user wants to update quantity.
+
 
 
 ### Listing Items In Shopping List
