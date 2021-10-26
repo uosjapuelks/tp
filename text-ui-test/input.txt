@@ -47,6 +47,10 @@ remove fish Cake
 list
 remove yoghurt cake
 675
+Y
+5
 remove fish Cake
+N
 list
+shoplist
 exit
