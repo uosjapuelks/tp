@@ -184,8 +184,6 @@ Format: `help`
 ```
 USER INPUT: help
 __________________________________________
-Generating command list...
-__________________________________________
 List of commands available:
 
 add INGREDIENT_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
@@ -207,7 +205,10 @@ list
 -> List out all the ingredients in alphabetical order.
 
 expiring
--> Prints out ingredients expiring within a week
+-> Prints out ingredients that have expired or are expiring within a week.
+
+update INGREDIENT_NAME [eg. update egg]
+-> Prompts a quantity change for the specified item name.
 
 notifs
 -> Toggle the notification on or off depending on previous state. Default mode is on.
@@ -217,6 +218,9 @@ reset
 
 exit
 -> Exits the program.
+
+For more information about each command please visit our User Guide.
+Link: https://ay2122s1-cs2113t-w12-4.github.io/tp/UserGuide.html
 __________________________________________
 ```
 
@@ -368,11 +372,14 @@ __________________________________________
 
 ### See notifications: `notifs`
 
-Use this command to turn notifications on or off.
+Use this command to turn notifications on or off. There are a total of 2 reminders, health and expiry.
+
+* Health: To remind you to eat healthier.
+* Expiry: To remind you that items are expiring and/or expired.
 
 <div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
 :bulb: <b>Tip:</b>
-Notifications are scheduled by default to be turned on every 6 hours.
+Notifications are scheduled by default to be turned on every 4 hours.
 </div>
 
 Format: notifs
@@ -388,14 +395,16 @@ __________________________________________
 Turning notification on!
 __________________________________________
 ````
+**Example of reminder notice:**
 ````
  ___________________________________________________
-|                                                |X||
+|                      HEALTH!                      |
+|===================================================|
 |      ___            _         __        ______    |
 |     / _ \___ __ _  (_)__  ___/ /__ ____/ / / /    |
 |    / , _/ -_)  ' \/ / _ \/ _  / -_) __/_/_/_/     |
 |   /_/|_|\__/_/_/_/_/_//_/\_,_/\__/_/ (_|_|_)      |
-|   =============================================   |
+|   ---------------------------------------------   |
 |                                                   |
 |    "If you don't take time to take care of your   |
 |    health now, you're gonna have to make time     |
