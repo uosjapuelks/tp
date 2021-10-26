@@ -487,21 +487,29 @@ public class Ui {
      * @return Boolean representing reconfirm status (y: confirm, n: abort)
      */
     public boolean getResetReconfirm() {
-        printLine("Are you sure you want to reset everything in the ingredient list? (Y/N)");
+        printLine("Are you sure you want to reset everything in the fridge? (Y/N)");
         printSeparatorLine();
         String confirm = readUserInput();
         if (!confirm.equalsIgnoreCase("y")) {
             printSeparatorLine();
-            printLine("Abort reset command.");
+            printLine("Shutting down the command...");
         }
         return confirm.equalsIgnoreCase("y");
     }
 
     /**
-     * Prints the reset message.
+     * Prints the ingredient list reset message.
      */
     public void printResetMessage() {
         printSeparatorLine();
         printLine("Ingredient list has been reset successfully.");
+    }
+
+    /**
+     * Prints the shopping list reset message.
+     */
+    public void printShopResetMessage() {
+        printSeparatorLine();
+        printLine("Shopping list has been reset successfully.");
     }
 }
