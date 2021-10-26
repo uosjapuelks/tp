@@ -16,13 +16,14 @@ public class ShoppingList {
 
     /**
      * Adds an ingredient into shoppingList.
+     *
      * @param ingredient The ingredient to be added.
      */
-    public void addIngredient(Ingredient ingredient) {
+    public void addIngredient(Ingredient ingredient, int quantity) {
         assert  ingredient != null : "Ingredient must not be null!";
         for (Ingredient ingredient1 : shoppingList) {
             if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())) {
-                ingredient1.addQuantity(1);
+                ingredient1.addQuantity(quantity);
                 return;
             }
         }
@@ -30,6 +31,11 @@ public class ShoppingList {
         shoppingList.add(ingredient);
     }
 
+    /**
+     * Returns the current shopping list.
+     *
+     * @return List of ingredients in the shopping list.
+     */
     public ArrayList<Ingredient> getShoppingList() {
         return shoppingList;
     }
