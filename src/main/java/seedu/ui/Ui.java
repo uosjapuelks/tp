@@ -507,7 +507,7 @@ public class Ui {
      * @return String containing the reset question.
      */
     public String getResetQuestion(CommandType commandType) {
-        switch(commandType) {
+        switch (commandType) {
         case RESET:
             return "Are you sure you want to reset everything in the fridge? (Y/N)";
         case SHOPRESET:
