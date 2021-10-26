@@ -239,7 +239,7 @@ The execution of the execute() method ends.
 #### Main Objectives:
 
 The functionality to list items is bound by two main objectives:
-* Allow users to easily view the contents of Fidget.
+* Allow users to easily view the contents of Fridget.
 * Allow users to choose their preferred sort type.
 
 As a result, the current iteration optionally requires an additional info from the user:
@@ -271,6 +271,85 @@ The printListMessage() method is called in Ui, with the listOfIngredient, and so
 The Ui prints out the list of Ingredients for the user.
 
 Step 8:
+
+The execution of the execute() method ends.
+
+### Listing Expiring Items In Fridget
+#### Main Objectives:
+
+The functionality to list items is bound by one objective:
+* Allow users to easily view all expired or expiring items in Fridget.
+
+The current iteration always lists according to the expiry dates of the items.
+
+The purpose of listing according to expiry date as the item closer to expiry or most expired will be listed first.
+
+#### Overall Sequence:
+![image info](./umlDiagrams/ExpiringSequence.png)
+
+Step 1:
+
+This step is initiated by Fridget to initialise ExpiringCommand class.
+
+Step 2:
+
+String "e" is assigned to sortByExpiry.
+
+Step 3 & 4:
+
+The getIngredientList() method is called in IngredientList, with sortByExpiry as a fixed parameter.
+The IngredientList returns an ArrayList<Ingredient> as listOfIngredients that are sorted according to expiry dates.
+
+Step 5 & 6:
+
+The printListMessage() method is called in UI, with the listOfIngredient as parameter.
+The Ui prints out the list of Expiring Ingredients for the user.
+
+Step 8:
+
+The execution of the execute() method ends.
+
+### Finding Items In Fridget
+
+#### Main Objectives:
+
+The functionality to find items is bound by two main objectives:
+* Allow users to easily find the list of items in Fridget that has similarities to search term.
+
+As a result, the current iteration requires an info from the user:
+* The name of the item sought.
+
+This additional info is to be used to be compared to every item in the list.
+
+#### Overall Sequence:
+
+![image info](./umlDiagrams/FindSequence.png)
+
+Step 1:
+
+This step is initiated by Fridget to initialise FindCommand class.
+
+Step 2 & 3:
+
+The getCurrentUserInput() method is called in Ui.
+The Ui returns a String as storedInput which is the user input.
+
+Step 4 & 5:
+
+The parseSearchTerm() method is called in Parser, with storedInput and Parser.CommandType.FIND as parameters.
+The Parser returns a String as searchTerm.
+
+Step 6 & 7:
+
+The findAllMatchingIngredients() method is called in IngredientList with searchTerm as a parameter.
+The IngredientList returns an ArrayList<Ingredient> as matchingIngredients for the user.
+
+Step 8 & 9:
+
+The printListMessage() method is called in Ui, with the matchingIngredients.
+The Ui prints out the list of Ingredients for the user.
+
+Step 10:
 
 The execution of the execute() method ends.
 

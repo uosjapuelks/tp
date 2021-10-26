@@ -28,7 +28,8 @@ public class FindCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
             throws FridgetException {
-        String searchTerm = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.FIND);
+        String storedInput = ui.getCurrentUserInput();
+        String searchTerm = parser.parseSearchTerm(storedInput, Parser.CommandType.FIND);
         ArrayList<Ingredient> matchingIngredients = ingredientList.findAllMatchingIngredients(searchTerm);
         ui.printListOfMatchingIngredients(matchingIngredients);
     }
