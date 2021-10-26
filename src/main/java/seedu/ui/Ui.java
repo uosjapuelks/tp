@@ -531,6 +531,7 @@ public class Ui {
     public void printUserInputMessage() {
         System.out.print(USER_INPUT);
     }
+    
     /**
      * Prints the shopping list reset message.
      */

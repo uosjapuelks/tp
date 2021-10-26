@@ -102,7 +102,7 @@ public class Notification {
         if (expiringList.size() - i > 0) {
             int index = 1;
             printMessage(NOTIFICATION_SEPARATOR + EXPIRING_MESSAGE);
-            while(i < expiringList.size()) {
+            while (i < expiringList.size()) {
                 String beforeIngredient = FIVE_SPACE_INDENTATION + index + ". ";
                 printMessage(beforeIngredient + expiringList.get(i));
                 index++;
@@ -122,7 +122,7 @@ public class Notification {
         if (expiringList.get(i).isExpired()) {
             printMessage(EXPIRING_NOTIFICATION + EXPIRED_MESSAGE);
             int index = 1;
-            while((expiringList.size() - i > 0) && expiringList.get(i).isExpired()) {
+            while ((expiringList.size() - i > 0) && expiringList.get(i).isExpired()) {
                 String beforeIngredient = FIVE_SPACE_INDENTATION + index + ". ";
                 printMessage(beforeIngredient + expiringList.get(i));
                 index++;
