@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+autonumber
+
+-> "ExpiringCommand:Command": execute()
+activate "ExpiringCommand:Command"
+
+"ExpiringCommand:Command" -> ":Ui": printExitMessage()
+activate ":Ui"
+"ExpiringCommand:Command" <-- ":Ui"
+deactivate ":Ui"
+
+<-- "ExpiringCommand:Command"
+deactivate "ExpiringCommand:Command"
+
+@enduml

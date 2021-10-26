@@ -166,6 +166,7 @@ Step 11:
 
 The execution of the execute() method ends.
 
+
 ### Removing Items From Fridget
 
 ### Getting Help Manual 
@@ -198,6 +199,7 @@ in this case it is the help manual.
 Step 4:
 
 The execution of the execute() method ends.
+
 
 ### Resetting Item List In Fridget
 
@@ -233,6 +235,7 @@ The printResetMessage() method is called in the Ui, and prints a String stating 
 Step 9:
 
 The execution of the execute() method ends.
+
 
 ### Listing Items In Fridget
 
@@ -274,6 +277,7 @@ Step 8:
 
 The execution of the execute() method ends.
 
+
 ### Listing Expiring Items In Fridget
 #### Main Objectives:
 
@@ -308,6 +312,7 @@ The Ui prints out the list of Expiring Ingredients for the user.
 Step 8:
 
 The execution of the execute() method ends.
+
 
 ### Finding Items In Fridget
 
@@ -353,6 +358,7 @@ Step 10:
 
 The execution of the execute() method ends.
 
+
 ### Listing Items In Shopping List
 
 #### Main Objectives:
@@ -381,6 +387,7 @@ The printListMessage() method is called in Ui, and prints out the list of ingred
 Step 7:
 
 The execution of the execute() method ends.
+
 
 ### Configuring Notifications 
 
@@ -437,7 +444,28 @@ Step 12:
 
 The execution of the execute() method ends, while notification continues to run until program termination.
 
+
 ### Exiting From Fridget
+
+#### Main Objectives:
+
+The objective of the exit is to allow users to stop the app safely.
+
+#### Sequence of execution:
+![image info](./umlDiagrams/ExitSequence.png)
+
+Step 1:
+
+This step is initiated by Fridget to initialise ExitCommand class.
+
+Step 2 & 3:
+
+The printExitMessage() method is called in the Ui, to print a message to reassure user that all data is safely stored.
+
+Step 4:
+
+The execution of the execute() method ends.
+
 
 ## Product scope
 ### Target user profile
