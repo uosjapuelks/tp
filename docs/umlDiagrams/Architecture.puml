@@ -1,0 +1,34 @@
+@startuml
+
+:Our\nFridget\nUser:  as user
+
+rectangle Fridget
+
+package Core #A9DCDF {
+    rectangle Command
+    rectangle Parser
+    rectangle IngredientList
+    rectangle ShoppingList
+}
+
+package Database #DDDDDD {
+    rectangle Storage
+}
+
+package Front\nEnd #ADD1B2 {
+        rectangle Ui
+    }
+
+user <-r-> Ui
+
+Ui <-> Fridget
+Fridget --> Parser
+Parser <-u-> Command
+Command <-> Fridget
+Command <-l-> Ui
+Command --> IngredientList
+Command --> ShoppingList
+
+Fridget -u-> Storage
+
+@enduml
