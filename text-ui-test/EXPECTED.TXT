@@ -13,12 +13,13 @@ Hello!
 What would you like to do?
 __________________________________________
  ___________________________________________________
-|                                                |X||
+|                      HEALTH!                      |
+|===================================================|
 |      ___            _         __        ______    |
 |     / _ \___ __ _  (_)__  ___/ /__ ____/ / / /    |
 |    / , _/ -_)  ' \/ / _ \/ _  / -_) __/_/_/_/     |
 |   /_/|_|\__/_/_/_/_/_//_/\_,_/\__/_/ (_|_|_)      |
-|   =============================================   |
+|   ---------------------------------------------   |
 |                                                   |
 |    "If you don't take time to take care of your   |
 |    health now, you're gonna have to make time     |
@@ -28,28 +29,28 @@ __________________________________________
 |              Fruits and Vegetables!               |
 |___________________________________________________|
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 No command found!
 Enter help if you need the list of available commands.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Turning notification off!
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Turning notification on!
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Generating command list...
 __________________________________________
 List of commands available:
 
-add <INGREDIENT_NAME> </EXPIRY_DATE(format: yyyy-mm-dd)> [eg. add bacon /2022-11-11]
+add INGREDIENT_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
 -> Adds an ingredient and its expiry date to the ingredient list.
 
-find <KEYWORD> [eg. find bacon]
+find KEYWORD [eg. find bacon]
 -> Find and print all ingredient associated with keyword.
 
-remove <INGREDIENT_NAME> [eg. delete bacon]
+remove INGREDIENT_NAME [eg. delete bacon]
 -> Removes the ingredient from the ingredient list.
 
 list -e
@@ -62,7 +63,10 @@ list
 -> List out all the ingredients in alphabetical order.
 
 expiring
--> Prints out ingredients that have expired or are expiring within a week
+-> Prints out ingredients that have expired or are expiring within a week.
+
+update INGREDIENT_NAME [eg. update egg]
+-> Prompts a quantity change for the specified item name.
 
 notifs
 -> Toggle the notification on or off depending on previous state. Default mode is on.
@@ -73,100 +77,106 @@ reset
 exit
 -> Exits the program.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully added:
     burger | Qty: 1 | 23 Sep 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully added:
     chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
+USER INPUT: __________________________________________
+How many of burger do you have left?
 __________________________________________
+__________________________________________
+Quantity of burger is now 20.
+__________________________________________
+USER INPUT: __________________________________________
 List sorted by item name:
-    1. burger | Qty: 1 | 23 Sep 2030
+    1. burger | Qty: 20 | 23 Sep 2030
     2. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 These are the matching ingredients:
-    1. burger | Qty: 1 | 23 Sep 2030
+    1. burger | Qty: 20 | 23 Sep 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 These are the matching ingredients:
-    1. burger | Qty: 1 | 23 Sep 2030
+    1. burger | Qty: 20 | 23 Sep 2030
     2. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 These are the matching ingredients:
     1. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
 __________________________________________
 __________________________________________
 Abort reset command.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 These are the matching ingredients:
-    1. burger | Qty: 1 | 23 Sep 2030
+    1. burger | Qty: 20 | 23 Sep 2030
     2. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
 __________________________________________
 __________________________________________
 Ingredient list has been reset successfully.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You currently have nothing in your fridge.
 Input "help" to get started!
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully added:
     yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully added:
     fish Cake | Qty: 1 | 12 Dec 2010
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully added:
     JimBeam | Qty: 1 | 03 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 List sorted by expiry date:
     1. fish Cake | Qty: 1 | 12 Dec 2010
     2. JimBeam | Qty: 1 | 03 Oct 2030
     3. yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 List sorted by earliest added:
     1. yoghurt cake | Qty: 1 | 15 Oct 2030
     2. fish Cake | Qty: 1 | 12 Dec 2010
     3. JimBeam | Qty: 1 | 03 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Expiring/Expired Items:
     1. fish Cake | Qty: 1 | 12 Dec 2010
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 List sorted by item name:
     1. fish Cake | Qty: 1 | 12 Dec 2010
     2. JimBeam | Qty: 1 | 03 Oct 2030
     3. yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully increased the quantity of:
     fish Cake | Qty: 1->2 | 12 Dec 2010
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully increased the quantity of:
     fish Cake | Qty: 2->3 | 12 Dec 2010
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully increased the quantity of:
     JimBeam | Qty: 1->2 | 03 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Which item would you like to remove? Type the index of the item below.
     1. fish Cake | Qty: 3 | 12 Dec 2010
     2. JimBeam | Qty: 2 | 03 Oct 2030
@@ -175,19 +185,19 @@ __________________________________________
 __________________________________________
 This index is not valid. The command has been shutdown.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 List sorted by item name:
     1. fish Cake | Qty: 3 | 12 Dec 2010
     2. JimBeam | Qty: 2 | 03 Oct 2030
     3. yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Did you mean: JimBeam? [Y/N]
 __________________________________________
 __________________________________________
 Understood, Command has been shutdown.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Did you mean: JimBeam? [Y/N]
 __________________________________________
 __________________________________________
@@ -197,7 +207,7 @@ __________________________________________
 You have successfully removed:
     JimBeam | Qty: 1 | 03 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Did you mean: JimBeam? [Y/N]
 __________________________________________
 __________________________________________
@@ -206,7 +216,7 @@ __________________________________________
 __________________________________________
 Quantity of JimBeam is now 2000.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Which item would you like to overwrite quantity? Type the index of the item below.
     1. yoghurt cake | Qty: 1 | 15 Oct 2030
     2. fish Cake | Qty: 3 | 12 Dec 2010
@@ -219,7 +229,7 @@ __________________________________________
 __________________________________________
 Quantity of yoghurt cake is now 675.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Which item would you like to remove? Type the index of the item below.
     1. fish Cake | Qty: 3 | 12 Dec 2010
     2. JimBeam | Qty: 2000 | 03 Oct 2030
@@ -232,41 +242,41 @@ __________________________________________
 You have successfully removed:
     JimBeam | Qty: 2 | 03 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 List sorted by item name:
     1. fish Cake | Qty: 3 | 12 Dec 2010
     2. JimBeam | Qty: 1998 | 03 Oct 2030
     3. yoghurt cake | Qty: 675 | 15 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 There are 3 items, how many would like to remove?
 __________________________________________
 __________________________________________
 You have successfully removed:
     fish Cake | Qty: 2 | 12 Dec 2010
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 List sorted by item name:
     1. fish Cake | Qty: 1 | 12 Dec 2010
     2. JimBeam | Qty: 1998 | 03 Oct 2030
     3. yoghurt cake | Qty: 675 | 15 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 There are 675 items, how many would like to remove?
 __________________________________________
 __________________________________________
 You have successfully removed:
     yoghurt cake | Qty: 675 | 15 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully removed:
     fish Cake | Qty: 1 | 12 Dec 2010
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 List sorted by item name:
     1. JimBeam | Qty: 1998 | 03 Oct 2030
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 We'll help you remember everything you told us :)
 See you again!~~
 __________________________________________
