@@ -165,27 +165,59 @@ Step 8:
 
 The execution of the execute() method ends.
 
-### Finding Items In Fridget
-
-### Listing Items Expiring In Fridget
-
 ### Configuring Notifications 
 
 #### Main Objectives:
 
 The objective of the notification based on current functionality is to print out a reminder notification 
-to remind users to eat healthily.
+to remind users to eat healthily and inform them of expiring or expired items.
 
-Current implementation allow users to toggle the notifications on or off, with reminders sent out at intervals of 6 hours.
+Current implementation allow users to toggle the notifications on or off, with reminders sent out at intervals of 4 hours.
 
-The purpose of implementing time interval and ability to toggle is to prevent excessive notification printing.
-
-Future uses include:
-* Notification on expired and expiring items printed.
-* Notification on items that are rarely used.
+The purpose of implementing time interval and ability to toggle is to prevent excessive notification printing. 
 
 #### Sequence of execution:
+![image info](./umlDiagrams/NotificationSequence.png)
 
+Step 1:
+
+This step is initiated by Fridget to initialise Notification class.
+
+Step 2 & 3:
+
+The printNotification() method is called which will run if notification is turned on and time interval from previous
+notification is longer than 4 hours. After satisfying the command, printHealthNotification() and printExpiryNotification()
+is executed to print out the notifications. All methods called in these steps are called in Notification.
+
+Step 4:
+
+Health and expiry notification is printed when method is called and a new date and time is recorded into the log file.
+
+Step 5:
+
+This step is initiated by Fridget to run execute() method.
+
+Step 6
+
+If isNotificationOn() is true, the method setNotificationStatus(false), called in Notification class, is executed to set notification status 
+to false in order to turn off printing of notification.
+
+Step 7 & 8:
+
+The printLine() method is called in the Ui, to print a message to notify user that notification has been switched off.
+
+Step 9:
+
+If isNotificationOn() is false, the method setNotificationStatus(true), called in Notification class, is executed to set notification status
+to true in order to turn on printing of notification.
+
+Step 10 & 11:
+
+The printLine() method is called in the Ui, to print a message to notify user that notification has been switched off.
+
+Step 12:
+
+The execution of the execute() method ends. While notification continues to run until program termination.
 
 ### Exiting From Fridget
 
@@ -253,6 +285,7 @@ This CLI based application hopes to automate a lot of the tasks users have relat
    2. Exiting by closing the window is permitted but not encouraged.
 
 ### Adding Items
+
 
 ### Deleting Items
 

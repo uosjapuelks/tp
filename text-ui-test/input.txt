@@ -4,6 +4,8 @@ notifs
 help
 add burger /2030-09-23
 add chicken /2000-10-10
+update burger
+20
 list
 find burger
 find e
