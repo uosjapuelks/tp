@@ -32,6 +32,27 @@ public class ShoppingList {
     }
 
     /**
+     * Removes an ingredient from the shopping list.
+     *
+     * @param ingredient Ingredient to be removed.
+     * @param quantity Quantity to be removed.
+     */
+    public void removeIngredient(Ingredient ingredient, int quantity) {
+        assert ingredient != null : "Ingredient must not be null!";
+        assert quantity != 0 : "Quantity removed must no be 0!";
+
+        for (Ingredient ingredient1 : shoppingList) {
+            if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())) {
+                if (quantity >= ingredient1.getQuantity()) {
+                    shoppingList.remove(ingredient1);
+                    return;
+                }
+                ingredient1.removeQuantity(quantity);
+            }
+        }
+    }
+
+    /**
      * Returns the current shopping list.
      *
      * @return List of ingredients in the shopping list.
