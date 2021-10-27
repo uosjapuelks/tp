@@ -94,8 +94,9 @@ The overall flow within Fridget occurs in three stages:
 1. The `main` method in Fridget creates a new instance of `Fridget`.
 2. This new instance creates new instances of `Ui`, `Parser`,`IngredientList`, `ShoppingList`, and `Storage`.
 3. `Fridget.run()` is called, which asks `Storage` to check stored files in the directory: `fridgetData`.
-4. `IngredientList` and `ShoppingList` is updated based on the info obtained.
-5. `Fridget.run()` initiates the user feedback loop, to obtain input from the user.
+4. If no such files exist, `Storage` creates the files in the directory `fridgetData` for future usage.
+5. If files have already been created, `IngredientList` and `ShoppingList` is updated based on the info obtained.
+6. `Fridget.run()` initiates the user feedback loop, to obtain input from the user.
 
 #### Execution
 
