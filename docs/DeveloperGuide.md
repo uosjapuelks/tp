@@ -10,13 +10,6 @@ Refer to User Guide section on [Quick Start](https://ay2122s1-cs2113t-w12-4.gith
 
 ## Architecture
 
-### Command
-![image info](./umlDiagrams/Command.png)
-The Command class is inherited by all other command class with their specific functionalities.
-
-The Command class contain an execute() method which is inherited by all other classes to execute the
-function specified by their names.
-
 ## Design & implementation
 
 ### Architecture Components
@@ -61,6 +54,12 @@ This class keeps track of all items the user may want to shop for, and can be ea
 
 There is a Command class for each possible command the user could execute.
 Each Command class controls the Ui, Parser, IngredientList, and ShoppingList so the User's intended outcome is achieved.
+
+![image info](./umlDiagrams/Command.png)
+The Command class is inherited by its respective subclasses, which have their own specific functionalities.
+
+The Command class contain an `execute()` method which is overridden by all other classes to execute the
+functionality specific to that class.
 
 #### **Database**
 
