@@ -33,7 +33,7 @@ A command like `add ITEM_NAME /EXPIRY DATE` would actually be typed by the user 
 1. Ensure that you have Java 11 or above installed on your computer.
 2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v1.0/fridget.jar).
 3. Copy the file into the folder you want to store Fridget's data.
-4. Launch the terminal on your computer. You can refer to [this website](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) on how to launch the terminal on your specific OS (Windows/Mac/Linux).
+4!. Launch the terminal on your computer. You can refer to [this website](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) on how to launch the terminal on your specific OS (Windows/Mac/Linux).
 5. Type in `java -jar Fridget.jar` into the terminal to launch the app.
 6. Type your command in the command box and press Enter to execute it.
     * Some example commands you can try:
@@ -41,7 +41,7 @@ A command like `add ITEM_NAME /EXPIRY DATE` would actually be typed by the user 
         - reset: prompts the user to confirm clearing all data.
         - exit: close the app.
 7. Congratulations! You should be good to go!
-<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
 :bulb: <b>Tip:</b>
 You can key in "<b>java -version</b>" into your terminal to check your version of java.
 </div>
@@ -73,12 +73,12 @@ Use this command to add your items into Fridget.
 
 Format: `add ITEM_NAME /EXPIRY_DATE`
 
-<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
 :exclamation:
 The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
 </div>
 
-<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
 :exclamation: 
 The <b>EXPIRY_DATE</b> must be in the <ins>YYYY-MM-DD</ins> format.  
 </div>
@@ -105,6 +105,22 @@ You have successfully increased the quantity of:
 __________________________________________
 ```
 
+<ins>For advanced users:</ins>
+
+If you want to add multiple items at the same time, separate each item with a semicolon: `;`.
+
+**For example:**
+
+```bash
+USER INPUT: add burger /2021-11-11; fries /2021-11-12
+__________________________________________
+You have successfully added:
+    burger | Qty: 1 | 11 Nov 2021
+You have successfully added:
+    fries | Qty: 1 | 12 Nov 2021
+__________________________________________
+```
+
 <hr/>
 
 ### Remove an item from Fridget: `remove`
@@ -112,17 +128,17 @@ Use this command to remove items from Fridget.
 
 Format: `remove ITEM_NAME`
 
-<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
 :exclamation:
 The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
 </div>
 
-<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
 :exclamation:
 The <b>ITEM_NAME</b> should be the <ins>same</ins> as the name of the item you are trying to remove. 
 </div>
 
-<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
 :exclamation:
 The <b>ITEM_NAME</b> can also be a <ins>part of the name</ins> of the item. 
 </div>
@@ -326,12 +342,12 @@ Use this command to easily find an item in Fridget by name.
 
 Format: `find KEYWORD`
 
-<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
 :exclamation:
 The <b>KEYWORD</b> should be the <ins>same</ins> as the name of the item you are trying to remove. 
 </div>
 
-<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
 :exclamation:
 The <b>KEYWORD</b> can also be a <ins>part of the name</ins> of the item. 
 </div>
@@ -356,7 +372,7 @@ __________________________________________
 
 Use this command to get a list of all expiring items.
 
-<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #d8eff3, #d1ecf1);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
 :bulb: <b>Tip:</b>
 Only items expiring within 7 days will be shown. Expired items will be shown too.
 </div>
@@ -383,7 +399,7 @@ Use this command to turn notifications on or off. There are a total of 2 reminde
 * Health: To remind you to eat healthier.
 * Expiry: To remind you that items are expiring and/or expired.
 
-<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); width:max-content; padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #d8eff3, #d1ecf1);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
 :bulb: <b>Tip:</b>
 Notifications are scheduled by default to be turned on every 4 hours.
 </div>
@@ -443,7 +459,7 @@ __________________________________________
 
 ## Things to note
 
-<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
 :exclamation: For commands help, expiring, reset and notifs, adding a space and random text behind will still trigger the command.
 </div>
 
@@ -458,7 +474,7 @@ __________________________________________
 Are you sure you want to reset everything in the ingredient list? (Y/N)
 __________________________________________
 ```
-<div style="background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
 :exclamation: If no item is recorded, Fridget will prompt you to get help.
 </div>
 

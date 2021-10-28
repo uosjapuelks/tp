@@ -107,10 +107,10 @@ public class Ui {
      */
     public void printReactionToRemovingIngredient(Ingredient ingredient, int qty) {
         String acknowledgeRemove = "You have successfully removed:\n";
-        String addReaction = acknowledgeRemove
+        String removeReaction = acknowledgeRemove
                 + FOUR_SPACE_INDENTATION + ingredient.getIngredientName() + " | Qty: " + qty
                 + " | " + ingredient.getColoredExpiryDate();
-        printLine(addReaction);
+        printLine(removeReaction);
     }
 
     /**
