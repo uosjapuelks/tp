@@ -1,6 +1,5 @@
 package seedu.ui;
 
-import seedu.commands.Command;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -33,7 +32,7 @@ public class Ui {
      * Prints introductory message when Fridget runs.
      */
     public void printIntroduction() {
-        String logo = "\n"
+        String logo = "\n\n\n\n"
                 + "   ad88              88           88\n"
                 + "  d8\"                \"\"           88                             ,d\n"
                 + "  88                              88                             88\n"
@@ -273,7 +272,7 @@ public class Ui {
         String listMessage = sortTypeMessage(sortType);
         printLine(listMessage);
         if (!isShop) {
-            printListOfIngredients(listOfIngredients, true);
+            printListOfIngredients(listOfIngredients, false);
         } else {
             printShopListOfIngredients(listOfIngredients, true);
         }

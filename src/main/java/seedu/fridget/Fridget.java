@@ -1,10 +1,12 @@
 package seedu.fridget;
 
+import org.fusesource.jansi.AnsiConsole;
+
 import seedu.commands.Command;
 import seedu.data.exception.FridgetException;
+import seedu.notification.Notification;
 import seedu.parser.Parser;
 import seedu.storage.IngredientList;
-import seedu.notification.Notification;
 import seedu.storage.ShoppingList;
 import seedu.storage.Storage;
 import seedu.ui.Ui;
@@ -36,6 +38,7 @@ public class Fridget {
     }
 
     public void run() {
+        AnsiConsole.systemInstall();
         ui.printIntroduction();
         Command command = new Command();
         do {
