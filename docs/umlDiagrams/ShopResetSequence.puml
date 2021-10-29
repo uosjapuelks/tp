@@ -11,11 +11,11 @@ activate ":ShoppingList"
 ":ShopResetCommand" <-- ":ShoppingList": shoppingList
 deactivate ":ShoppingList"
 
-alt Shopping List Empty
+opt Shopping List Empty
 <- ":ShopResetCommand": FridgetException()
 end
 
-alt Reconfirm Reset Command
+opt Reconfirm Reset Command
 
     ":ShopResetCommand" -> ":ShoppingList": resetList()
     activate ":ShoppingList"

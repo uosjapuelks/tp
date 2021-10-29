@@ -11,11 +11,11 @@ activate ":IngredientList"
 ":ResetCommand" <-- ":IngredientList": ingredientList
 deactivate ":IngredientList"
 
-alt Ingredient List Empty
+opt Ingredient List Empty
 <- ":ResetCommand": FridgetException()
 end
 
-alt Reconfirm Reset Command
+opt Reconfirm Reset Command
 
     ":ResetCommand" -> ":IngredientList": resetList()
     activate ":IngredientList"

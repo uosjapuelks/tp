@@ -5,7 +5,7 @@ import seedu.data.ingredient.Ingredient;
 import java.util.ArrayList;
 
 public class ShoppingList {
-    protected ArrayList<Ingredient> shoppingList;
+    private ArrayList<Ingredient> shoppingList;
 
     /**
      * Constructor for ShoppingList.
