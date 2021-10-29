@@ -234,6 +234,40 @@ Step 9:
 
 The execution of the execute() method ends.
 
+### Resetting Shopping List in Fridget
+
+#### Main Objective:
+
+The objective of the reset functionality is to provide users an easy way to removal all the items in the shopping list.
+
+#### Overall Sequence:
+
+![ResetShop Sequence](./umlDiagrams/ShopResetSequence.png)
+
+Step 1:
+
+The execution of this step is initaited by Fridget.
+
+Step 2 & 3:
+
+The getShoppingList() method is called in the ShoppingList, and the current shoppingList is returned.
+
+Step 4:
+
+If the shoppingList is empty, a FridgetException is thrown. Otherwise, it will continue to step 5.
+
+Step 5 & 6:
+
+The resetList() method is called in the ShoppingList, and resets the shoppingList by overwriting it with a new shoppingList.
+
+Step 7 & 8:
+
+The printShopResetMessage() is called in the Ui, and prints a String stating that the shoppingList had been reset.
+
+Step 9:
+
+The execution of the execute() method ends.
+
 ### Listing Items In Fridget
 
 #### Main Objectives:

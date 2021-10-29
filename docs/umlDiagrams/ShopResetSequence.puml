@@ -1,6 +1,8 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+autonumber
+
 -> ":ShopResetCommand": execute()
 activate ":ShopResetCommand"
 
