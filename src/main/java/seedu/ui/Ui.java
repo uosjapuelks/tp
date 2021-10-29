@@ -425,8 +425,8 @@ public class Ui {
      * @throws FridgetException if user inputs invalid input.
      */
     public boolean suggestRemove(Ingredient targetIngredient) throws FridgetException {
-        String suggestion = String.format("You have input \"0\". This will remove all %d %s from your list. \n" +
-                        "Do you still wish to proceed? [Y/N]",
+        String suggestion = String.format("You have input \"0\". This will remove all %d %s from your list. \n"
+                        + "Do you still wish to proceed? [Y/N]",
                 targetIngredient.getQuantity(), targetIngredient.getIngredientName());
         printLine(suggestion);
         return getYesNo();
