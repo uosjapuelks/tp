@@ -234,7 +234,7 @@ Step 9:
 
 The execution of the execute() method ends.
 
-### Reseting Shopping List in Fridget
+### Resetting Shopping List in Fridget
 
 #### Main Objective:
 
