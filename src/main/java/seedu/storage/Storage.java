@@ -31,8 +31,12 @@ public class Storage {
     /**
      * A constructor to save data into text file.
      *
-     * @param listFilePath pathway of ingredient list file storage.
-     * @param logFilePath pathway of user log file storage.
+     * @param ingredientList The IngredientList object.
+     * @param shoppingList The ShoppingList object.
+     * @param notification The notification object.
+     * @param listFilePath Pathway of ingredient list file storage.
+     * @param logFilePath Pathway of user log file storage.
+     * @param shopFilePath Pathway of shopping list file storage.
      */
     public Storage(IngredientList ingredientList, ShoppingList shoppingList, Notification notification,
             String listFilePath, String logFilePath,  String shopFilePath) {
