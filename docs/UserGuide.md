@@ -264,11 +264,11 @@ Format: `reset`
 ```
 USER INPUT: reset
 __________________________________________
-Are you sure you want to reset everything in the ingredient list? (Y/N)
+Are you sure you want to reset everything in the fridge? (Y/N)
 __________________________________________
 USER INPUT: N
 __________________________________________
-Abort reset command.
+Shutting down the command...
 __________________________________________
 ```
 
@@ -277,7 +277,7 @@ __________________________________________
 ```
 USER INPUT: reset
 __________________________________________
-Are you sure you want to reset everything in the ingredient list? (Y/N)
+Are you sure you want to reset everything in the fridge? (Y/N)
 __________________________________________
 USER INPUT: Y
 __________________________________________
@@ -302,7 +302,7 @@ USER INPUT: shopreset
 __________________________________________
 Are you sure you want to reset everything in the shopping list? (Y/N)
 __________________________________________
-N
+USER INPUT: N
 __________________________________________
 Shutting down the command...
 __________________________________________
@@ -315,7 +315,7 @@ USER INPUT: shopreset
 __________________________________________
 Are you sure you want to reset everything in the shopping list? (Y/N)
 __________________________________________
-Y
+USER INPUT: Y
 __________________________________________
 Shopping list has been reset successfully.
 __________________________________________
