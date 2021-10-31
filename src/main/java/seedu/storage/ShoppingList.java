@@ -106,6 +106,6 @@ public class ShoppingList {
      * Resets the shopping list.
      */
     public void resetList() {
-        shoppingList = new ArrayList<Ingredient>();
+        shoppingList = new ArrayList<>();
     }
 }

@@ -1,6 +1,5 @@
 package seedu.ui;
 
-import seedu.commands.Command;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -318,7 +317,7 @@ public class Ui {
      * @param listOfIngredients list of Ingredients nearing expiry only.
      */
     public void printExpiringMessage(ArrayList<Ingredient> listOfIngredients) {
-        ArrayList<Ingredient> expiringList = new ArrayList<Ingredient>();
+        ArrayList<Ingredient> expiringList = new ArrayList<>();
         for (Ingredient ingredient : listOfIngredients) {
             if (ingredient.isNearExpiry()) {
                 expiringList.add(ingredient);
@@ -356,8 +355,7 @@ public class Ui {
         printSeparatorLine();
 
         try {
-            int intOutput = Integer.parseInt(toIntInput);
-            return intOutput;
+            return Integer.parseInt(toIntInput);
         } catch (NumberFormatException e) {
             throw new FridgetException("No valid number was stated. The command has been shutdown");
         }
@@ -382,8 +380,7 @@ public class Ui {
         }
 
         try {
-            int intOutput = Integer.parseInt(toIntInput);
-            return intOutput;
+            return Integer.parseInt(toIntInput);
         } catch (NumberFormatException e) {
             throw new FridgetException("No valid number was stated. The command has been shutdown");
         }
