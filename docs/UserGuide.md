@@ -252,8 +252,7 @@ __________________________________________
 
 ### Reset all items: `reset`
 
-Use this command to reset Fridget
-- This erases all stored items in Fridget.
+Use this command to reset all the items in your fridge.
 
 Format: `reset`
 
@@ -289,7 +288,7 @@ __________________________________________
 
 ### Reset all items in shopping list: `shopreset`
 
-This command will help you reset all the items in your shopping list.
+Use this command to reset all the items in your shopping list.
 
 Format: `shopreset`
 
@@ -373,6 +372,25 @@ __________________________________________
 
 <hr/>
 
+### List all items in shopping list.
+
+Use this command to list all the items in your shopping list.
+
+Format: `shoplist`
+
+**Example of usage:**
+
+```
+USER INPUT: shoplist
+__________________________________________
+List sorted by item name:
+    1. Burger | Qty: 1
+    2. Chicken | Qty: 3
+    3. Fish | Qty: 2
+__________________________________________
+```
+
+<hr/>
 
 ### Find items stored in Fridget: `find`
 
