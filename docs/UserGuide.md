@@ -491,3 +491,8 @@ You currently have nothing in your fridge.
 Input "help" to get started!
 __________________________________________
 ```
+
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation: All numerical inputs are limited between "0" to "21474836467". Numbers outside this range are invalid inputs.
+</div>
+

@@ -235,7 +235,7 @@ public class Ui {
      * Prints a list of ingredients, indented by four spaces and preceded by an index.
      *
      * @param listOfIngredients The list of ingredients to be printed.
-     * @param hasIndex Boolean value to indicate printing with index.
+     * @param hasIndex          Boolean value to indicate printing with index.
      */
     public void printListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
         int index = 1;
@@ -250,7 +250,7 @@ public class Ui {
      * Prints a shop list of ingredients, indented by four spaces and preceded by an index.
      *
      * @param listOfIngredients The shop list of ingredients to be printed.
-     * @param hasIndex Boolean value to indicate printing with index.
+     * @param hasIndex          Boolean value to indicate printing with index.
      */
     public void printShopListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
         int index = 1;
@@ -265,8 +265,8 @@ public class Ui {
      * Prints a message informing user on list being printed.
      *
      * @param listOfIngredients The list of ingredients of all items in fridget.
-     * @param sortType The string indicating the sort type.
-     * @param isShop Boolean indicating if the message is used to print shopping list.
+     * @param sortType          The string indicating the sort type.
+     * @param isShop            Boolean indicating if the message is used to print shopping list.
      */
     public void printListMessage(ArrayList<Ingredient> listOfIngredients, String sortType, boolean isShop) {
         String listMessage = sortTypeMessage(sortType);
@@ -354,11 +354,8 @@ public class Ui {
         String toIntInput = readUserInput();
         printSeparatorLine();
 
-        try {
-            return Integer.parseInt(toIntInput);
-        } catch (NumberFormatException e) {
-            throw new FridgetException("No valid number was stated. The command has been shutdown");
-        }
+        int inputInt = checkInt(toIntInput, 0, 2147483647);
+        return inputInt;
     }
 
     /**
@@ -379,8 +376,28 @@ public class Ui {
             }
         }
 
+        int inputInt = checkInt(toIntInput, 0, 2147483647);
+        return inputInt;
+    }
+
+    /**
+     * Ensures integer is within upper and lower bound.
+     *
+     * @param toInt String to be changed to.
+     * @param min lower bound of integer.
+     * @param max upper bound of integer.
+     * @return Integer from input String after being checked.
+     * @throws FridgetException If String is not integer or integer is invalid.
+     */
+    private int checkInt(String toInt, int min, int max) throws FridgetException {
         try {
-            return Integer.parseInt(toIntInput);
+            int intOutput = Integer.parseInt(toInt);
+            if (intOutput < min) {
+                throw new FridgetException("Input number cannot be less than " + min);
+            } else if (intOutput > max) {
+                throw new FridgetException("Input number cannot be more than " + max);
+            }
+            return intOutput;
         } catch (NumberFormatException e) {
             throw new FridgetException("No valid number was stated. The command has been shutdown");
         }
@@ -398,6 +415,21 @@ public class Ui {
         printLine(message);
         printSeparatorLine();
         return getIntInput();
+    }
+
+    /**
+     * Suggests removing item if update amoount is zero. TODO: Impleement in next iteration.
+     *
+     * @param targetIngredient ingredient being updated.
+     * @return if user accepts the suggestion.
+     * @throws FridgetException if user inputs invalid input.
+     */
+    public boolean suggestRemove(Ingredient targetIngredient) throws FridgetException {
+        String suggestion = String.format("You have input \"0\". This will remove all %d %s from your list. \n"
+                        + "Do you still wish to proceed? [Y/N]",
+                targetIngredient.getQuantity(), targetIngredient.getIngredientName());
+        printLine(suggestion);
+        return getYesNo();
     }
 
     /**
@@ -534,7 +566,6 @@ public class Ui {
     }
 
     /**
-
      * Prints a prompt for user input.
      */
     public void printUserInputMessage() {
