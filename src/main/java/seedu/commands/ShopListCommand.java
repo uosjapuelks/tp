@@ -28,12 +28,7 @@ public class ShopListCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
             throws FridgetException {
-        ArrayList<Ingredient> listOfIngredients = shoppingList.getShoppingList();
-        if (listOfIngredients.isEmpty()) {
-            String errorMessage = "You currently have nothing in your shopping list.\n"
-                    + "Input \"help\" to get started!";
-            throw new FridgetException(errorMessage);
-        }
+        ArrayList<Ingredient> listOfIngredients = shoppingList.getShoppingList("default");
         ui.printListMessage(listOfIngredients, "", true);
     }
 }
