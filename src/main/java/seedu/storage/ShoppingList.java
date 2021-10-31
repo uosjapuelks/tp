@@ -1,5 +1,6 @@
 package seedu.storage;
 
+import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
 import java.util.ArrayList;
@@ -68,12 +69,29 @@ public class ShoppingList {
     }
 
     /**
+     * Sorts the ingredient in shoppingList by description.
+     *
+     * @return sorted ingredient ArrayList.
+     * @throws FridgetException Error thrown when there are no items in the shoppingList.
+     */
+    private ArrayList<Ingredient> sortIngredient() throws FridgetException {
+        if (shoppingList.isEmpty()) {
+            String emptyListMessage = "You currently have nothing in your fridge.\n"
+                    + "Input \"help\" to get started!";
+            throw new FridgetException(emptyListMessage);
+        }
+        ArrayList<Ingredient> sortedList = new ArrayList<>(shoppingList);
+        sortedList.sort(Ingredient.IngNameComparator);
+        return sortedList;
+    }
+
+    /**
      * Returns the current shopping list.
      *
      * @return List of ingredients in the shopping list.
      */
-    public ArrayList<Ingredient> getShoppingList() {
-        return shoppingList;
+    public ArrayList<Ingredient> getShoppingList() throws FridgetException {
+        return sortIngredient();
     }
 
     /**
