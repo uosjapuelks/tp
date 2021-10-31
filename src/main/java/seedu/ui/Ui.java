@@ -1,6 +1,5 @@
 package seedu.ui;
 
-import seedu.commands.Command;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
@@ -318,7 +317,7 @@ public class Ui {
      * @param listOfIngredients list of Ingredients nearing expiry only.
      */
     public void printExpiringMessage(ArrayList<Ingredient> listOfIngredients) {
-        ArrayList<Ingredient> expiringList = new ArrayList<Ingredient>();
+        ArrayList<Ingredient> expiringList = new ArrayList<>();
         for (Ingredient ingredient : listOfIngredients) {
             if (ingredient.isNearExpiry()) {
                 expiringList.add(ingredient);
@@ -356,8 +355,7 @@ public class Ui {
         printSeparatorLine();
 
         try {
-            int intOutput = Integer.parseInt(toIntInput);
-            return intOutput;
+            return Integer.parseInt(toIntInput);
         } catch (NumberFormatException e) {
             throw new FridgetException("No valid number was stated. The command has been shutdown");
         }
@@ -382,8 +380,7 @@ public class Ui {
         }
 
         try {
-            int intOutput = Integer.parseInt(toIntInput);
-            return intOutput;
+            return Integer.parseInt(toIntInput);
         } catch (NumberFormatException e) {
             throw new FridgetException("No valid number was stated. The command has been shutdown");
         }
@@ -444,10 +441,11 @@ public class Ui {
      * added into the shopping list.
      *
      * @param itemRemoved The ingredient removed.
-     * @return Quantity of item to be added into the shopping list.
+     * @param qtyInShop The quantity of removed ingredient already in the shoppingList.
+     * @return Quantity of ingredient to be added into the shopping list.
      * @throws FridgetException If the user types a wrong value (non-integer or 0 or outside limit of quantity)
      */
-    public int getShopQuantity(Ingredient itemRemoved) throws FridgetException {
+    public int getShopQuantity(Ingredient itemRemoved, int qtyInShop) throws FridgetException {
         String addConfirmMessage = "You have ran out of " + itemRemoved.getIngredientName()
                 + ". Would you like to add it to your shopping list? (Y/N)";
         printSeparatorLine();
@@ -456,6 +454,10 @@ public class Ui {
 
         if (getYesNo()) {
             String askQuantityMessage = "How many items would you like to buy?";
+            if (qtyInShop > 0) {
+                askQuantityMessage = "You have " + qtyInShop + " " + itemRemoved.getIngredientName()
+                        + " in the shopping list. " + askQuantityMessage;
+            }
             printLine(askQuantityMessage);
             printSeparatorLine();
             int qty = getIntInput();
@@ -475,10 +477,17 @@ public class Ui {
      * Prints the reaction after adding item into the shopping list.
      *
      * @param addedIngredient Ingredient added into the shopping list.
+     * @param qtyInShopBeforeAdd Quantity of ingredient that already existed in the shoppingList.
      */
-    public void printShopUpdateMessage(Ingredient addedIngredient) {
+    public void printShopUpdateMessage(Ingredient addedIngredient, int qtyInShopBeforeAdd) {
+        String addReaction;
         String acknowledgeAdd = "You have successfully added:\n";
-        String addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + addedIngredient.toShopFormat();
+        if (qtyInShopBeforeAdd == 0) {
+            addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + addedIngredient.toShopFormat();
+        } else {
+            addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION
+                    + addedIngredient.toAddExistingShopFormat(qtyInShopBeforeAdd);
+        }
         printLine(addReaction);
     }
 
