@@ -99,6 +99,16 @@ public class Ingredient {
     }
 
     /**
+     * String is represented as name + updated quantity.
+     *
+     * @param qtyBeforeAdding Quantity of ingredient before adding.
+     * @return Ingredient name and updated quantity.
+     */
+    public String toAddExistingShopFormat(int qtyBeforeAdding) {
+        return ingredientName + " | Qty: " + qtyBeforeAdding + "->" + (quantity + qtyBeforeAdding);
+    }
+
+    /**
      * String used when adding items already existing in the list.
      *
      * @param qty Total quantity of item in the list.
