@@ -54,18 +54,18 @@ public class ShoppingList {
     }
 
     /**
-     * Checks if an item with the same name exists in the shopping list.
+     * Checks if an item with the same name exists in the shopping list and returns its quantity.
      *
      * @param ingredient Ingredient to be searched.
-     * @return Boolean value of true if exist.
+     * @return Quantity of ingredient in the shoppingList if exist.
      */
-    public boolean searchIngredientNameExist(Ingredient ingredient) {
+    public int searchIngredientNameExist(Ingredient ingredient) {
         for (Ingredient ingredient1 : shoppingList) {
             if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())) {
-                return true;
+                return ingredient1.getQuantity();
             }
         }
-        return false;
+        return 0;
     }
 
     /**
