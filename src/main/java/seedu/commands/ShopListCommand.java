@@ -28,7 +28,7 @@ public class ShopListCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
             throws FridgetException {
-        ArrayList<Ingredient> listOfIngredients = shoppingList.getShoppingList();
+        ArrayList<Ingredient> listOfIngredients = shoppingList.getShoppingList("default");
         ui.printListMessage(listOfIngredients, "", true);
     }
 }
