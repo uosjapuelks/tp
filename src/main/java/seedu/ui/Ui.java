@@ -499,6 +499,7 @@ public class Ui {
     public boolean getResetReconfirm(CommandType commandType) {
         printLine(getResetQuestion(commandType));
         printSeparatorLine();
+        printUserInputMessage();
         String confirm = readUserInput();
         if (!confirm.equalsIgnoreCase("y")) {
             printSeparatorLine();
