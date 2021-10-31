@@ -60,7 +60,9 @@ Feature | Command Format |
 [Remove an item](#remove-an-item-from-fridget-remove) | `remove ITEM_NAME`
 [Get help](#get-help-help) | `help`
 [Reset all items](#reset-all-items-reset) | `reset`
+[Reset shopping list]() | `shopreset`
 [List all items](#list-all-items-in-fridget-list) | `list -OPTIONAL_SORT_TYPE`
+[List items in shopping list]() | `shoplist`
 [Find an item](#find-items-stored-in-fridget-find) | `find KEYWORD`
 [List expiring items](#lists-all-items-expiring-soon-expiring) | `expiring`  
 [See notifications](#see-notifications-notifs) | `notifs`
@@ -280,6 +282,42 @@ __________________________________________
 USER INPUT: Y
 __________________________________________
 Ingredient list has been reset successfully.
+__________________________________________
+```
+
+<hr/>
+
+### Reset all items in shopping list: `shopreset`
+
+This command will help you reset all the items in your shopping list.
+
+Format: `shopreset`
+
+**Example of usage:**
+
+<ins>If you decide to not reset in the end:</ins>
+
+```
+USER INPUT: shopreset
+__________________________________________
+Are you sure you want to reset everything in the shopping list? (Y/N)
+__________________________________________
+N
+__________________________________________
+Shutting down the command...
+__________________________________________
+```
+
+<ins>If you are sure you want to reset:</ins>
+
+```
+USER INPUT: shopreset
+__________________________________________
+Are you sure you want to reset everything in the shopping list? (Y/N)
+__________________________________________
+Y
+__________________________________________
+Shopping list has been reset successfully.
 __________________________________________
 ```
 
