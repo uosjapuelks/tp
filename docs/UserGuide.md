@@ -60,9 +60,9 @@ Feature | Command Format |
 [Remove an item](#remove-an-item-from-fridget-remove) | `remove ITEM_NAME`
 [Get help](#get-help-help) | `help`
 [Reset all items](#reset-all-items-reset) | `reset`
-[Reset shopping list]() | `shopreset`
+[Reset shopping list](#reset-all-items-in-shopping-list-shopreset) | `shopreset`
 [List all items](#list-all-items-in-fridget-list) | `list -OPTIONAL_SORT_TYPE`
-[List items in shopping list]() | `shoplist`
+[List items in shopping list](#list-items-in-shopping-list-shoplist) | `shoplist`
 [Find an item](#find-items-stored-in-fridget-find) | `find KEYWORD`
 [List expiring items](#lists-all-items-expiring-soon-expiring) | `expiring`  
 [See notifications](#see-notifications-notifs) | `notifs`
@@ -372,7 +372,7 @@ __________________________________________
 
 <hr/>
 
-### List all items in shopping list.
+### List items in shopping list: `shoplist`
 
 Use this command to list all the items in your shopping list.
 
