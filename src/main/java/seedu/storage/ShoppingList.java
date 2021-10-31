@@ -76,7 +76,7 @@ public class ShoppingList {
      */
     private ArrayList<Ingredient> sortIngredient() throws FridgetException {
         if (shoppingList.isEmpty()) {
-            String emptyListMessage = "You currently have nothing in your fridge.\n"
+            String emptyListMessage = "You currently have nothing in your shopping list.\n"
                     + "Input \"help\" to get started!";
             throw new FridgetException(emptyListMessage);
         }
@@ -90,8 +90,16 @@ public class ShoppingList {
      *
      * @return List of ingredients in the shopping list.
      */
-    public ArrayList<Ingredient> getShoppingList() throws FridgetException {
-        return sortIngredient();
+    public ArrayList<Ingredient> getShoppingList(String sortType) throws FridgetException {
+        assert sortType != null : "Sort type must not be null!";
+        switch (sortType.toLowerCase()) {
+        case "r":
+            return shoppingList;
+        case "default":
+            return sortIngredient();
+        default:
+            throw new FridgetException("Unrecognisable shoplist command. Try: <shoplist>");
+        }
     }
 
     /**
