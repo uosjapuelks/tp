@@ -391,13 +391,13 @@ public class Ui {
         try {
             long toIntOutput = Long.parseLong(toInt);
             if (toIntOutput < 0) {
-                throw new FridgetException("Input number cannot be less than " + 0);
+                throw new FridgetException("Input number cannot be less than 0.");
             } else if (toIntOutput > Integer.MAX_VALUE) {
                 throw new FridgetException("Input number cannot be more than " + Integer.MAX_VALUE);
             }
             return (int) toIntOutput;
         } catch (NumberFormatException e) {
-            throw new FridgetException("No valid number was stated. The command has been shutdown");
+            throw new FridgetException("No valid number was stated. The command has been shutdown.");
         }
     }
 
