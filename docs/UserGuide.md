@@ -190,6 +190,25 @@ You have successfully removed:
 __________________________________________
 ```
 
+<ins>Upon removing, if there are no items left with the same name in the fridge</ins>:
+```
+USER INPUT: remove burger
+__________________________________________
+You have successfully removed:
+    burger | Qty: 1 | 23 Sep 2021
+__________________________________________
+You have ran out of burger. Would you like to add it to your shopping list? (Y/N)
+__________________________________________
+USER INPUT: Y
+__________________________________________
+How many items would you like to buy?
+__________________________________________
+USER INPUT: 1
+__________________________________________
+You have successfully added:
+    burger | Qty: 1
+__________________________________________
+```
 <hr/>
 
 ### Get help: `help`
@@ -516,7 +535,7 @@ __________________________________________
 ## Things to note
 
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: For commands help, expiring, reset and notifs, adding a space and random text behind will still trigger the command.
+:exclamation: For commands help, expiring, reset, shopreset, shoplist, and notifs, adding a space and random text behind will still trigger the command.
 </div>
 
 Example:
@@ -547,3 +566,11 @@ You currently have nothing in your fridge.
 Input "help" to get started!
 __________________________________________
 ```
+
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation: You are not allowed to add items into the shopping list manually.
+</div>
+
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation: When adding items into the fridge with the add command, Fridget will automatically remove added items from the shopping list if they exist.
+</div>
