@@ -30,7 +30,7 @@ else
         ":AddCommand" <-- ":Ui"
         deactivate ":Ui"
 
-    else
+    else else
         ":AddCommand" -> ":Ui": printReactionToAddingIngredient()
         activate ":Ui"
         ":AddCommand" <-- ":Ui"

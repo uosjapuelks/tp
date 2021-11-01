@@ -10,13 +10,6 @@ Refer to User Guide section on [Quick Start](https://ay2122s1-cs2113t-w12-4.gith
 
 ## Architecture
 
-### Command
-![image info](./umlDiagrams/Command.png)
-The Command class is inherited by all other command class with their specific functionalities.
-
-The Command class contain an execute() method which is inherited by all other classes to execute the
-function specified by their names.
-
 ## Design & implementation
 
 ### Architecture Components
@@ -62,6 +55,12 @@ This class keeps track of all items the user may want to shop for, and can be ea
 There is a Command class for each possible command the user could execute.
 Each Command class controls the Ui, Parser, IngredientList, and ShoppingList so the User's intended outcome is achieved.
 
+![image info](./umlDiagrams/Command.png)
+The Command class is inherited by its respective subclasses, which have their own specific functionalities.
+
+The Command class contain an `execute()` method which is overridden by all other classes to execute the
+functionality specific to that class.
+
 #### **Database**
 
 The Database stores all info that is needed on a permanent basis. This may
@@ -95,8 +94,9 @@ The overall flow within Fridget occurs in three stages:
 1. The `main` method in Fridget creates a new instance of `Fridget`.
 2. This new instance creates new instances of `Ui`, `Parser`,`IngredientList`, `ShoppingList`, and `Storage`.
 3. `Fridget.run()` is called, which asks `Storage` to check stored files in the directory: `fridgetData`.
-4. `IngredientList` and `ShoppingList` is updated based on the info obtained.
-5. `Fridget.run()` initiates the user feedback loop, to obtain input from the user.
+4. If no such files exist, `Storage` creates the files in the directory `fridgetData` for future usage.
+5. If files have already been created, `IngredientList` and `ShoppingList` is updated based on the info obtained.
+6. `Fridget.run()` initiates the user feedback loop, to obtain input from the user.
 
 #### Execution
 
@@ -229,6 +229,40 @@ the ingredient list by overwriting it with a new ingredient list.
 Step 7 & 8:
 
 The printResetMessage() method is called in the Ui, and prints a String stating that the ingredient list has been reset.
+
+Step 9:
+
+The execution of the execute() method ends.
+
+### Resetting Shopping List in Fridget
+
+#### Main Objective:
+
+The objective of the reset functionality is to provide users an easy way to removal all the items in the shopping list.
+
+#### Overall Sequence:
+
+![ResetShop Sequence](./umlDiagrams/ShopResetSequence.png)
+
+Step 1:
+
+The execution of this step is initaited by Fridget.
+
+Step 2 & 3:
+
+The getShoppingList() method is called in the ShoppingList, and the current shoppingList is returned.
+
+Step 4:
+
+If the shoppingList is empty, a FridgetException is thrown. Otherwise, it will continue to step 5.
+
+Step 5 & 6:
+
+The resetList() method is called in the ShoppingList, and resets the shoppingList by overwriting it with a new shoppingList.
+
+Step 7 & 8:
+
+The printShopResetMessage() is called in the Ui, and prints a String stating that the shoppingList had been reset.
 
 Step 9:
 

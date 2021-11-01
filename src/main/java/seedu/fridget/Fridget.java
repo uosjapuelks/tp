@@ -49,8 +49,8 @@ public class Fridget {
                 ui.printSeparatorLine();
                 command = parser.parseCommand(userInput);
                 command.execute(ui, parser, ingredientList, shoppingList);
-                storage.updateFiles(ingredientList.getIngredientList("r"), shoppingList.getShoppingList(),
-                        notification);
+                storage.updateFiles(ingredientList.getIngredientList("r"),
+                        shoppingList.getShoppingList("r"), notification);
             } catch (FridgetException e) {
                 ui.printLine(e.getMessage());
             } catch (DateTimeParseException e) {

@@ -85,18 +85,19 @@ public class RemoveCommand extends Command {
         boolean isRemoved = ingredientList.removeIngredient(itemToBeRemoved, qty);
         ui.printReactionToRemovingIngredient(itemToBeRemoved, qty);
 
-        if (isRemoved && !shoppingList.searchIngredientNameExist(itemToBeRemoved)) {
-            updateShopList(ui,shoppingList, itemToBeRemoved);
+        int qtyInShop = shoppingList.searchIngredientNameExist(itemToBeRemoved);
+        if (isRemoved) {
+            updateShopList(ui, shoppingList, itemToBeRemoved, qtyInShop);
         }
     }
 
-    private void updateShopList(Ui ui, ShoppingList shoppingList, Ingredient itemRemoved)
+    private void updateShopList(Ui ui, ShoppingList shoppingList, Ingredient itemRemoved, int qtyInShop)
             throws FridgetException {
-        int qty = ui.getShopQuantity(itemRemoved);
+        int qty = ui.getShopQuantity(itemRemoved, qtyInShop);
         if (qty > 0) {
             Ingredient addedIngredient = new Ingredient(itemRemoved.getIngredientName(), qty);
             shoppingList.addIngredient(addedIngredient, qty);
-            ui.printShopUpdateMessage(addedIngredient);
+            ui.printShopUpdateMessage(addedIngredient, qtyInShop);
         }
     }
 }

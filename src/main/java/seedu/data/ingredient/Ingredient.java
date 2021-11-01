@@ -53,7 +53,7 @@ public class Ingredient {
      * @param qty Amount of items to be added.
      */
     public void addQuantity(int qty) {
-        quantity += qty;
+        quantity += (quantity ==  Integer.MAX_VALUE) ? 0 : qty;
     }
 
     /**
@@ -96,6 +96,16 @@ public class Ingredient {
      */
     public String toShopFormat() {
         return ingredientName + " | Qty: " + quantity;
+    }
+
+    /**
+     * String is represented as name + updated quantity.
+     *
+     * @param qtyBeforeAdding Quantity of ingredient before adding.
+     * @return Ingredient name and updated quantity.
+     */
+    public String toAddExistingShopFormat(int qtyBeforeAdding) {
+        return ingredientName + " | Qty: " + qtyBeforeAdding + "->" + (quantity + qtyBeforeAdding);
     }
 
     /**

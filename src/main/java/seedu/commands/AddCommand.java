@@ -40,12 +40,16 @@ public class AddCommand extends Command {
     }
 
     private void addIngredientToIngredientList(Ui ui, IngredientList ingredientList, Ingredient newIngredient,
-            ShoppingList shoppingList) throws FridgetException {
-        if (newIngredient.getIngredientName().contains("|")) {
+                                               ShoppingList shoppingList) throws FridgetException {
+        String itemName = newIngredient.getIngredientName();
+        if (itemName.contains("|")) {
             throw new FridgetException("Please do not use '|' in your ingredient name.");
         }
         int qty = ingredientList.addIngredient(newIngredient);
-        if (qty > 1) {
+        if (qty == Integer.MAX_VALUE) {
+            throw new FridgetException("You have reached the maximum possible amount of " + itemName
+                    + "\nMax: 2147483647");
+        } else if (qty > 1) {
             ui.printReactionToAddingExistingIngredient(newIngredient, qty);
         } else {
             ui.printReactionToAddingIngredient(newIngredient);

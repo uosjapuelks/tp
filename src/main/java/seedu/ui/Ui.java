@@ -106,10 +106,10 @@ public class Ui {
      */
     public void printReactionToRemovingIngredient(Ingredient ingredient, int qty) {
         String acknowledgeRemove = "You have successfully removed:\n";
-        String addReaction = acknowledgeRemove
+        String removeReaction = acknowledgeRemove
                 + FOUR_SPACE_INDENTATION + ingredient.getIngredientName() + " | Qty: " + qty
                 + " | " + ingredient.getColoredExpiryDate();
-        printLine(addReaction);
+        printLine(removeReaction);
     }
 
     /**
@@ -130,6 +130,7 @@ public class Ui {
      * @return true if "y", and false if "n".
      */
     private boolean getYesNo() throws FridgetException {
+        printUserInputMessage();
         String answer = readUserInput().toLowerCase().trim();
         printSeparatorLine();
         switch (answer) {
@@ -146,7 +147,7 @@ public class Ui {
     /**
      * Prints Question to ask user which item is the target item.
      *
-     * @param matchingItems The list of items which match the user's serach term.
+     * @param matchingItems The list of items which match the user's search term.
      * @param commandType   Type of command printing the message.
      */
     public void printConfirmItemMessage(ArrayList<Ingredient> matchingItems, CommandType commandType) {
@@ -235,7 +236,7 @@ public class Ui {
      * Prints a list of ingredients, indented by four spaces and preceded by an index.
      *
      * @param listOfIngredients The list of ingredients to be printed.
-     * @param hasIndex Boolean value to indicate printing with index.
+     * @param hasIndex          Boolean value to indicate printing with index.
      */
     public void printListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
         int index = 1;
@@ -250,7 +251,7 @@ public class Ui {
      * Prints a shop list of ingredients, indented by four spaces and preceded by an index.
      *
      * @param listOfIngredients The shop list of ingredients to be printed.
-     * @param hasIndex Boolean value to indicate printing with index.
+     * @param hasIndex          Boolean value to indicate printing with index.
      */
     public void printShopListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
         int index = 1;
@@ -265,8 +266,8 @@ public class Ui {
      * Prints a message informing user on list being printed.
      *
      * @param listOfIngredients The list of ingredients of all items in fridget.
-     * @param sortType The string indicating the sort type.
-     * @param isShop Boolean indicating if the message is used to print shopping list.
+     * @param sortType          The string indicating the sort type.
+     * @param isShop            Boolean indicating if the message is used to print shopping list.
      */
     public void printListMessage(ArrayList<Ingredient> listOfIngredients, String sortType, boolean isShop) {
         String listMessage = sortTypeMessage(sortType);
@@ -317,7 +318,7 @@ public class Ui {
      * @param listOfIngredients list of Ingredients nearing expiry only.
      */
     public void printExpiringMessage(ArrayList<Ingredient> listOfIngredients) {
-        ArrayList<Ingredient> expiringList = new ArrayList<Ingredient>();
+        ArrayList<Ingredient> expiringList = new ArrayList<>();
         for (Ingredient ingredient : listOfIngredients) {
             if (ingredient.isNearExpiry()) {
                 expiringList.add(ingredient);
@@ -351,15 +352,12 @@ public class Ui {
      * @throws FridgetException if userInput is not integer.
      */
     public int getIntInput() throws FridgetException {
+        printUserInputMessage();
         String toIntInput = readUserInput();
         printSeparatorLine();
 
-        try {
-            int intOutput = Integer.parseInt(toIntInput);
-            return intOutput;
-        } catch (NumberFormatException e) {
-            throw new FridgetException("No valid number was stated. The command has been shutdown");
-        }
+        int inputInt = checkInt(toIntInput);
+        return inputInt;
     }
 
     /**
@@ -369,6 +367,7 @@ public class Ui {
      * @throws FridgetException if userInput is not integer.
      */
     public int getIntInput(CommandType commandType) throws FridgetException {
+        printUserInputMessage();
         String toIntInput = readUserInput();
         printSeparatorLine();
 
@@ -380,11 +379,28 @@ public class Ui {
             }
         }
 
+        int inputInt = checkInt(toIntInput);
+        return inputInt;
+    }
+
+    /**
+     * Ensures integer is within upper bound and 0.
+     *
+     * @param toInt String to be changed to.
+     * @return Integer from input String after being checked.
+     * @throws FridgetException If String is not integer or integer is invalid.
+     */
+    private int checkInt(String toInt) throws FridgetException {
         try {
-            int intOutput = Integer.parseInt(toIntInput);
-            return intOutput;
+            long toIntOutput = Long.parseLong(toInt);
+            if (toIntOutput < 0) {
+                throw new FridgetException("Input number cannot be less than 0.");
+            } else if (toIntOutput > Integer.MAX_VALUE) {
+                throw new FridgetException("Input number cannot be more than " + Integer.MAX_VALUE);
+            }
+            return (int) toIntOutput;
         } catch (NumberFormatException e) {
-            throw new FridgetException("No valid number was stated. The command has been shutdown");
+            throw new FridgetException("No valid number was stated. The command has been shutdown.");
         }
     }
 
@@ -400,6 +416,21 @@ public class Ui {
         printLine(message);
         printSeparatorLine();
         return getIntInput();
+    }
+
+    /**
+     * Suggests removing item if update amoount is zero. TODO: Impleement in next iteration.
+     *
+     * @param targetIngredient ingredient being updated.
+     * @return if user accepts the suggestion.
+     * @throws FridgetException if user inputs invalid input.
+     */
+    public boolean suggestRemove(Ingredient targetIngredient) throws FridgetException {
+        String suggestion = String.format("You have input \"0\". This will remove all %d %s from your list. \n"
+                        + "Do you still wish to proceed? [Y/N]",
+                targetIngredient.getQuantity(), targetIngredient.getIngredientName());
+        printLine(suggestion);
+        return getYesNo();
     }
 
     /**
@@ -443,10 +474,11 @@ public class Ui {
      * added into the shopping list.
      *
      * @param itemRemoved The ingredient removed.
-     * @return Quantity of item to be added into the shopping list.
+     * @param qtyInShop The quantity of removed ingredient already in the shoppingList.
+     * @return Quantity of ingredient to be added into the shopping list.
      * @throws FridgetException If the user types a wrong value (non-integer or 0 or outside limit of quantity)
      */
-    public int getShopQuantity(Ingredient itemRemoved) throws FridgetException {
+    public int getShopQuantity(Ingredient itemRemoved, int qtyInShop) throws FridgetException {
         String addConfirmMessage = "You have ran out of " + itemRemoved.getIngredientName()
                 + ". Would you like to add it to your shopping list? (Y/N)";
         printSeparatorLine();
@@ -455,6 +487,10 @@ public class Ui {
 
         if (getYesNo()) {
             String askQuantityMessage = "How many items would you like to buy?";
+            if (qtyInShop > 0) {
+                askQuantityMessage = "You have " + qtyInShop + " " + itemRemoved.getIngredientName()
+                        + " in the shopping list. " + askQuantityMessage;
+            }
             printLine(askQuantityMessage);
             printSeparatorLine();
             int qty = getIntInput();
@@ -474,10 +510,17 @@ public class Ui {
      * Prints the reaction after adding item into the shopping list.
      *
      * @param addedIngredient Ingredient added into the shopping list.
+     * @param qtyInShopBeforeAdd Quantity of ingredient that already existed in the shoppingList.
      */
-    public void printShopUpdateMessage(Ingredient addedIngredient) {
+    public void printShopUpdateMessage(Ingredient addedIngredient, int qtyInShopBeforeAdd) {
+        String addReaction;
         String acknowledgeAdd = "You have successfully added:\n";
-        String addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + addedIngredient.toShopFormat();
+        if (qtyInShopBeforeAdd == 0) {
+            addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + addedIngredient.toShopFormat();
+        } else {
+            addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION
+                    + addedIngredient.toAddExistingShopFormat(qtyInShopBeforeAdd);
+        }
         printLine(addReaction);
     }
 
@@ -489,6 +532,7 @@ public class Ui {
     public boolean getResetReconfirm(CommandType commandType) {
         printLine(getResetQuestion(commandType));
         printSeparatorLine();
+        printUserInputMessage();
         String confirm = readUserInput();
         if (!confirm.equalsIgnoreCase("y")) {
             printSeparatorLine();
@@ -524,7 +568,6 @@ public class Ui {
     }
 
     /**
-
      * Prints a prompt for user input.
      */
     public void printUserInputMessage() {

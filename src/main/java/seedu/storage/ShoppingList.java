@@ -1,11 +1,12 @@
 package seedu.storage;
 
+import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
 import java.util.ArrayList;
 
 public class ShoppingList {
-    protected ArrayList<Ingredient> shoppingList;
+    private ArrayList<Ingredient> shoppingList;
 
     /**
      * Constructor for ShoppingList.
@@ -53,18 +54,35 @@ public class ShoppingList {
     }
 
     /**
-     * Checks if an item with the same name exists in the shopping list.
+     * Checks if an item with the same name exists in the shopping list and returns its quantity.
      *
      * @param ingredient Ingredient to be searched.
-     * @return Boolean value of true if exist.
+     * @return Quantity of ingredient in the shoppingList if exist.
      */
-    public boolean searchIngredientNameExist(Ingredient ingredient) {
+    public int searchIngredientNameExist(Ingredient ingredient) {
         for (Ingredient ingredient1 : shoppingList) {
             if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())) {
-                return true;
+                return ingredient1.getQuantity();
             }
         }
-        return false;
+        return 0;
+    }
+
+    /**
+     * Sorts the ingredient in shoppingList by description.
+     *
+     * @return sorted ingredient ArrayList.
+     * @throws FridgetException Error thrown when there are no items in the shoppingList.
+     */
+    private ArrayList<Ingredient> sortIngredient() throws FridgetException {
+        if (shoppingList.isEmpty()) {
+            String emptyListMessage = "You currently have nothing in your shopping list.\n"
+                    + "Input \"help\" to get started!";
+            throw new FridgetException(emptyListMessage);
+        }
+        ArrayList<Ingredient> sortedList = new ArrayList<>(shoppingList);
+        sortedList.sort(Ingredient.IngNameComparator);
+        return sortedList;
     }
 
     /**
@@ -72,14 +90,22 @@ public class ShoppingList {
      *
      * @return List of ingredients in the shopping list.
      */
-    public ArrayList<Ingredient> getShoppingList() {
-        return shoppingList;
+    public ArrayList<Ingredient> getShoppingList(String sortType) throws FridgetException {
+        assert sortType != null : "Sort type must not be null!";
+        switch (sortType.toLowerCase()) {
+        case "r":
+            return shoppingList;
+        case "default":
+            return sortIngredient();
+        default:
+            throw new FridgetException("Unrecognisable shoplist command. Try: <shoplist>");
+        }
     }
 
     /**
      * Resets the shopping list.
      */
     public void resetList() {
-        shoppingList = new ArrayList<Ingredient>();
+        shoppingList = new ArrayList<>();
     }
 }
