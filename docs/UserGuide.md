@@ -60,7 +60,9 @@ Feature | Command Format |
 [Remove an item](#remove-an-item-from-fridget-remove) | `remove ITEM_NAME`
 [Get help](#get-help-help) | `help`
 [Reset all items](#reset-all-items-reset) | `reset`
+[Reset shopping list](#reset-all-items-in-shopping-list-shopreset) | `shopreset`
 [List all items](#list-all-items-in-fridget-list) | `list -OPTIONAL_SORT_TYPE`
+[List items in shopping list](#list-items-in-shopping-list-shoplist) | `shoplist`
 [Find an item](#find-items-stored-in-fridget-find) | `find KEYWORD`
 [List expiring items](#lists-all-items-expiring-soon-expiring) | `expiring`  
 [See notifications](#see-notifications-notifs) | `notifs`
@@ -188,6 +190,25 @@ You have successfully removed:
 __________________________________________
 ```
 
+<ins>Upon removing, if there are no items left with the same name in the fridge</ins>:
+```
+USER INPUT: remove burger
+__________________________________________
+You have successfully removed:
+    burger | Qty: 1 | 23 Sep 2021
+__________________________________________
+You have ran out of burger. Would you like to add it to your shopping list? (Y/N)
+__________________________________________
+USER INPUT: Y
+__________________________________________
+How many items would you like to buy?
+__________________________________________
+USER INPUT: 1
+__________________________________________
+You have successfully added:
+    burger | Qty: 1
+__________________________________________
+```
 <hr/>
 
 ### Get help: `help`
@@ -250,8 +271,7 @@ __________________________________________
 
 ### Reset all items: `reset`
 
-Use this command to reset Fridget
-- This erases all stored items in Fridget.
+Use this command to reset all the items in your fridge.
 
 Format: `reset`
 
@@ -262,11 +282,11 @@ Format: `reset`
 ```
 USER INPUT: reset
 __________________________________________
-Are you sure you want to reset everything in the ingredient list? (Y/N)
+Are you sure you want to reset everything in the fridge? (Y/N)
 __________________________________________
 USER INPUT: N
 __________________________________________
-Abort reset command.
+Shutting down the command...
 __________________________________________
 ```
 
@@ -275,11 +295,47 @@ __________________________________________
 ```
 USER INPUT: reset
 __________________________________________
-Are you sure you want to reset everything in the ingredient list? (Y/N)
+Are you sure you want to reset everything in the fridge? (Y/N)
 __________________________________________
 USER INPUT: Y
 __________________________________________
 Ingredient list has been reset successfully.
+__________________________________________
+```
+
+<hr/>
+
+### Reset all items in shopping list: `shopreset`
+
+Use this command to reset all the items in your shopping list.
+
+Format: `shopreset`
+
+**Example of usage:**
+
+<ins>If you decide to not reset in the end:</ins>
+
+```
+USER INPUT: shopreset
+__________________________________________
+Are you sure you want to reset everything in the shopping list? (Y/N)
+__________________________________________
+USER INPUT: N
+__________________________________________
+Shutting down the command...
+__________________________________________
+```
+
+<ins>If you are sure you want to reset:</ins>
+
+```
+USER INPUT: shopreset
+__________________________________________
+Are you sure you want to reset everything in the shopping list? (Y/N)
+__________________________________________
+USER INPUT: Y
+__________________________________________
+Shopping list has been reset successfully.
 __________________________________________
 ```
 
@@ -335,6 +391,25 @@ __________________________________________
 
 <hr/>
 
+### List items in shopping list: `shoplist`
+
+Use this command to list all the items in your shopping list.
+
+Format: `shoplist`
+
+**Example of usage:**
+
+```
+USER INPUT: shoplist
+__________________________________________
+List sorted by item name:
+    1. Burger | Qty: 1
+    2. Chicken | Qty: 3
+    3. Fish | Qty: 2
+__________________________________________
+```
+
+<hr/>
 
 ### Find items stored in Fridget: `find`
 
@@ -460,7 +535,7 @@ __________________________________________
 ## Things to note
 
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: For commands help, expiring, reset and notifs, adding a space and random text behind will still trigger the command.
+:exclamation: For commands help, expiring, reset, shopreset, shoplist, and notifs, adding a space and random text behind will still trigger the command.
 </div>
 
 Example:
@@ -493,6 +568,13 @@ __________________________________________
 ```
 
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: All numerical inputs are limited between "0" to "21474836467". Numbers outside this range are invalid inputs.
+:exclamation: You are not allowed to add items into the shopping list manually.
 </div>
 
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation: When adding items into the fridge with the add command, Fridget will automatically remove added items from the shopping list if they exist.
+</div>
+
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation: All numerical inputs are limited between "0" to "21474836467". Numbers outside this range are invalid inputs.
+</div>

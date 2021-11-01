@@ -130,6 +130,7 @@ public class Ui {
      * @return true if "y", and false if "n".
      */
     private boolean getYesNo() throws FridgetException {
+        printUserInputMessage();
         String answer = readUserInput().toLowerCase().trim();
         printSeparatorLine();
         switch (answer) {
@@ -146,7 +147,7 @@ public class Ui {
     /**
      * Prints Question to ask user which item is the target item.
      *
-     * @param matchingItems The list of items which match the user's serach term.
+     * @param matchingItems The list of items which match the user's search term.
      * @param commandType   Type of command printing the message.
      */
     public void printConfirmItemMessage(ArrayList<Ingredient> matchingItems, CommandType commandType) {
@@ -351,6 +352,7 @@ public class Ui {
      * @throws FridgetException if userInput is not integer.
      */
     public int getIntInput() throws FridgetException {
+        printUserInputMessage();
         String toIntInput = readUserInput();
         printSeparatorLine();
 
@@ -365,6 +367,7 @@ public class Ui {
      * @throws FridgetException if userInput is not integer.
      */
     public int getIntInput(CommandType commandType) throws FridgetException {
+        printUserInputMessage();
         String toIntInput = readUserInput();
         printSeparatorLine();
 
@@ -531,6 +534,7 @@ public class Ui {
     public boolean getResetReconfirm(CommandType commandType) {
         printLine(getResetQuestion(commandType));
         printSeparatorLine();
+        printUserInputMessage();
         String confirm = readUserInput();
         if (!confirm.equalsIgnoreCase("y")) {
             printSeparatorLine();
