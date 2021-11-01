@@ -356,7 +356,7 @@ public class Ui {
         String toIntInput = readUserInput();
         printSeparatorLine();
 
-        int inputInt = checkInt(toIntInput, 0, 2147483647);
+        int inputInt = checkInt(toIntInput);
         return inputInt;
     }
 
@@ -379,30 +379,28 @@ public class Ui {
             }
         }
 
-        int inputInt = checkInt(toIntInput, 0, 2147483647);
+        int inputInt = checkInt(toIntInput);
         return inputInt;
     }
 
     /**
-     * Ensures integer is within upper and lower bound.
+     * Ensures integer is within upper bound and 0.
      *
      * @param toInt String to be changed to.
-     * @param min lower bound of integer.
-     * @param max upper bound of integer.
      * @return Integer from input String after being checked.
      * @throws FridgetException If String is not integer or integer is invalid.
      */
-    private int checkInt(String toInt, int min, int max) throws FridgetException {
+    private int checkInt(String toInt) throws FridgetException {
         try {
-            int intOutput = Integer.parseInt(toInt);
-            if (intOutput < min) {
-                throw new FridgetException("Input number cannot be less than " + min);
-            } else if (intOutput > max) {
-                throw new FridgetException("Input number cannot be more than " + max);
+            long toIntOutput = Long.parseLong(toInt);
+            if (toIntOutput < 0) {
+                throw new FridgetException("Input number cannot be less than 0.");
+            } else if (toIntOutput > Integer.MAX_VALUE) {
+                throw new FridgetException("Input number cannot be more than " + Integer.MAX_VALUE);
             }
-            return intOutput;
+            return (int) toIntOutput;
         } catch (NumberFormatException e) {
-            throw new FridgetException("No valid number was stated. The command has been shutdown");
+            throw new FridgetException("No valid number was stated. The command has been shutdown.");
         }
     }
 
