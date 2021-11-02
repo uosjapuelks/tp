@@ -10,7 +10,7 @@ public class HelpCommand extends Command {
             + "add ITEM_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]\n"
             + "-> Adds an item and its expiry date to the item list.\n\n"
             + "find KEYWORD [eg. find bacon]\n"
-            + "-> Find and print all item associated with keyword.\n\n"
+            + "-> Find and print all items associated with keyword.\n\n"
             + "remove ITEM_NAME [eg. delete bacon]\n"
             + "-> Removes the item from the item list.\n\n"
             + "list -e\n"
