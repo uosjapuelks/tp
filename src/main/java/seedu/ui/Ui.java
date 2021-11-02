@@ -3,7 +3,6 @@ package seedu.ui;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -530,7 +529,7 @@ public class Ui {
     }
 
     /**
-     * Prints a reconfirm message and gets the reconfirm result.
+     * Prints a reconfirmation message and gets the reconfirmation result.
      *
      * @return Boolean representing reconfirm status (y: confirm, n: abort)
      */
