@@ -19,10 +19,10 @@ public class RemoveCommand extends Command {
     /**
      * Executes the command.
      *
-     * @param ui             The ui object to interact with user.
-     * @param parser         The parser object to parse user inputs.
-     * @param itemList The itemList object.
-     * @param shoppingList   The shoppingList object.
+     * @param ui           The ui object to interact with user.
+     * @param parser       The parser object to parse user inputs.
+     * @param itemList     The itemList object.
+     * @param shoppingList The shoppingList object.
      * @throws FridgetException The error object thrown.
      */
     @Override
@@ -39,10 +39,10 @@ public class RemoveCommand extends Command {
     /**
      * Handles all cases when user wants to remove an item based on the name of item to be removed.
      *
-     * @param ui                    The Ui which will send output and collect input from the user.
-     * @param itemList        The itemList where items are stored.
-     * @param itemToRemove The name of the item to be removed.
-     * @param matchingItems         The list of items in itemList which match the itemToRemove.
+     * @param ui            The Ui which will send output and collect input from the user.
+     * @param itemList      The itemList where items are stored.
+     * @param itemToRemove  The name of the item to be removed.
+     * @param matchingItems The list of items in itemList which match the itemToRemove.
      * @throws FridgetException if the user types an invalid index to remove from itemsList.
      */
     private void handleRemovalOfItem(Ui ui, ItemList itemList, ShoppingList shoppingList,
@@ -74,7 +74,7 @@ public class RemoveCommand extends Command {
      * Handles the quantity to remove when user wants to remove an item.
      *
      * @param ui              The Ui which will send output and collect input from the user.
-     * @param itemList  The itemList where items are stored.
+     * @param itemList        The itemList where items are stored.
      * @param itemToBeRemoved The item to be removed.
      * @throws FridgetException if the user types an invalid quantity to remove from itemsList.
      */
