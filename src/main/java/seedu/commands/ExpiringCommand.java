@@ -1,9 +1,9 @@
 package seedu.commands;
 
 import seedu.data.exception.FridgetException;
-import seedu.data.ingredient.Ingredient;
+import seedu.data.item.Item;
 import seedu.parser.Parser;
-import seedu.storage.IngredientList;
+import seedu.storage.ItemList;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
@@ -19,17 +19,17 @@ public class ExpiringCommand extends Command {
     /**
      * Executes the "expiring" command.
      *
-     * @param ui The ui object to interact with user.
-     * @param parser The parser object to parse user inputs.
-     * @param ingredientList The ingredientList object.
+     * @param ui           The ui object to interact with user.
+     * @param parser       The parser object to parse user inputs.
+     * @param itemList     The ItemList object.
      * @param shoppingList The shoppingList object.
      * @throws FridgetException The error object thrown.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
+    public void execute(Ui ui, Parser parser, ItemList itemList, ShoppingList shoppingList)
             throws FridgetException {
         String sortByExpiry = "e";
-        ArrayList<Ingredient> listOfIngredients = ingredientList.getIngredientList(sortByExpiry);
-        ui.printExpiringMessage(listOfIngredients);
+        ArrayList<Item> listOfItems = itemList.getItemList(sortByExpiry);
+        ui.printExpiringMessage(listOfItems);
     }
 }

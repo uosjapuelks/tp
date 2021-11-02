@@ -1,4 +1,7 @@
 
+
+
+
    ad88              88           88
   d8"                ""           88                             ,d
   88                              88                             88
@@ -42,41 +45,41 @@ __________________________________________
 USER INPUT: __________________________________________
 List of commands available:
 
-add INGREDIENT_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
--> Adds an ingredient and its expiry date to the ingredient list.
+add ITEM_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
+-> Adds an item and its expiry date to the item list.
 
 find KEYWORD [eg. find bacon]
--> Find and print all ingredient associated with keyword.
+-> Find and print all items associated with keyword.
 
-remove INGREDIENT_NAME [eg. delete bacon]
--> Removes the ingredient from the ingredient list.
+remove ITEM_NAME [eg. delete bacon]
+-> Removes the item from the item list.
 
 list -e
--> List out all the ingredients starting with earliest expiry date.
+-> List out all the items starting with earliest expiry date.
 
 list -r
--> List out all the ingredients based on the order added.
+-> List out all the items based on the order added.
 
 list
--> List out all the ingredients in alphabetical order.
+-> List out all the items in alphabetical order.
 
 shoplist
--> List out all the ingredients in the shopping list in alphabetical order.
+-> List out all the items in the shopping list in alphabetical order.
 
 expiring
--> Prints out ingredients that have expired or are expiring within a week.
+-> Prints out items that have expired or are expiring within a week.
 
-update INGREDIENT_NAME [eg. update egg]
+update ITEMS_NAME [eg. update egg]
 -> Prompts a quantity change for the specified item name.
 
 notifs
 -> Toggle the notification on or off depending on previous state. Default mode is on.
 
 reset
--> Deletes all the previous ingredient entries from the reader.
+-> Deletes all the previous items entries from the reader.
 
 shopreset
--> Deletes all the previous ingredient entries in the shopping list.
+-> Deletes all the previous items entries in the shopping list.
 
 exit
 -> Exits the program.
@@ -100,20 +103,20 @@ Quantity of burger is now 20.
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by item name:
+    burger | Qty: 20 | 23 Sep 2030
+    chicken | Qty: 1 | 10 Oct 2000
+__________________________________________
+USER INPUT: __________________________________________
+These are the matching items:
+    1. burger | Qty: 20 | 23 Sep 2030
+__________________________________________
+USER INPUT: __________________________________________
+These are the matching items:
     1. burger | Qty: 20 | 23 Sep 2030
     2. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
 USER INPUT: __________________________________________
-These are the matching ingredients:
-    1. burger | Qty: 20 | 23 Sep 2030
-__________________________________________
-USER INPUT: __________________________________________
-These are the matching ingredients:
-    1. burger | Qty: 20 | 23 Sep 2030
-    2. chicken | Qty: 1 | 10 Oct 2000
-__________________________________________
-USER INPUT: __________________________________________
-These are the matching ingredients:
+These are the matching items:
     1. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
 USER INPUT: __________________________________________
@@ -123,7 +126,7 @@ USER INPUT: __________________________________________
 Shutting down the command...
 __________________________________________
 USER INPUT: __________________________________________
-These are the matching ingredients:
+These are the matching items:
     1. burger | Qty: 20 | 23 Sep 2030
     2. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
@@ -131,7 +134,7 @@ USER INPUT: __________________________________________
 Are you sure you want to reset everything in the fridge? (Y/N)
 __________________________________________
 USER INPUT: __________________________________________
-Ingredient list has been reset successfully.
+Item list has been reset successfully.
 __________________________________________
 USER INPUT: __________________________________________
 You currently have nothing in your fridge.
@@ -151,15 +154,15 @@ You have successfully added:
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by expiry date:
-    1. fish Cake | Qty: 1 | 12 Dec 2010
-    2. JimBeam | Qty: 1 | 03 Oct 2030
-    3. yoghurt cake | Qty: 1 | 15 Oct 2030
+    fish Cake | Qty: 1 | 12 Dec 2010
+    JimBeam | Qty: 1 | 03 Oct 2030
+    yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by earliest added:
-    1. yoghurt cake | Qty: 1 | 15 Oct 2030
-    2. fish Cake | Qty: 1 | 12 Dec 2010
-    3. JimBeam | Qty: 1 | 03 Oct 2030
+    yoghurt cake | Qty: 1 | 15 Oct 2030
+    fish Cake | Qty: 1 | 12 Dec 2010
+    JimBeam | Qty: 1 | 03 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
 Expiring/Expired Items:
@@ -167,9 +170,9 @@ Expiring/Expired Items:
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by item name:
-    1. fish Cake | Qty: 1 | 12 Dec 2010
-    2. JimBeam | Qty: 1 | 03 Oct 2030
-    3. yoghurt cake | Qty: 1 | 15 Oct 2030
+    fish Cake | Qty: 1 | 12 Dec 2010
+    JimBeam | Qty: 1 | 03 Oct 2030
+    yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
 You have successfully increased the quantity of:
@@ -194,9 +197,9 @@ This index is not valid. The command has been shutdown.
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by item name:
-    1. fish Cake | Qty: 3 | 12 Dec 2010
-    2. JimBeam | Qty: 2 | 03 Oct 2030
-    3. yoghurt cake | Qty: 1 | 15 Oct 2030
+    fish Cake | Qty: 3 | 12 Dec 2010
+    JimBeam | Qty: 2 | 03 Oct 2030
+    yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
 Did you mean: JimBeam? [Y/N]
@@ -251,9 +254,9 @@ You have successfully removed:
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by item name:
-    1. fish Cake | Qty: 3 | 12 Dec 2010
-    2. JimBeam | Qty: 1998 | 03 Oct 2030
-    3. yoghurt cake | Qty: 675 | 15 Oct 2030
+    fish Cake | Qty: 3 | 12 Dec 2010
+    JimBeam | Qty: 1998 | 03 Oct 2030
+    yoghurt cake | Qty: 675 | 15 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
 There are 3 items, how many would like to remove?
@@ -264,9 +267,9 @@ You have successfully removed:
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by item name:
-    1. fish Cake | Qty: 1 | 12 Dec 2010
-    2. JimBeam | Qty: 1998 | 03 Oct 2030
-    3. yoghurt cake | Qty: 675 | 15 Oct 2030
+    fish Cake | Qty: 1 | 12 Dec 2010
+    JimBeam | Qty: 1998 | 03 Oct 2030
+    yoghurt cake | Qty: 675 | 15 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
 There are 675 items, how many would like to remove?
@@ -295,7 +298,7 @@ Understood, Command has been shutdown.
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by item name:
-    1. JimBeam | Qty: 1998 | 03 Oct 2030
+    JimBeam | Qty: 1998 | 03 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by item name:

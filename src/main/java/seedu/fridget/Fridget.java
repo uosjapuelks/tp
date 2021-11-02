@@ -2,9 +2,9 @@ package seedu.fridget;
 
 import seedu.commands.Command;
 import seedu.data.exception.FridgetException;
-import seedu.parser.Parser;
-import seedu.storage.IngredientList;
 import seedu.notification.Notification;
+import seedu.parser.Parser;
+import seedu.storage.ItemList;
 import seedu.storage.ShoppingList;
 import seedu.storage.Storage;
 import seedu.ui.Ui;
@@ -18,7 +18,7 @@ public class Fridget {
 
     private final Ui ui;
     private final Parser parser;
-    private final IngredientList ingredientList;
+    private final ItemList itemList;
     private final ShoppingList shoppingList;
     private final Notification notification;
     private final Storage storage;
@@ -29,10 +29,10 @@ public class Fridget {
     public Fridget(String listFilePath, String logFilePath, String shopFilePath) {
         ui = new Ui();
         parser = new Parser();
-        ingredientList = new IngredientList();
+        itemList = new ItemList();
         shoppingList = new ShoppingList();
         notification = new Notification();
-        storage = new Storage(ingredientList, shoppingList, notification, listFilePath, logFilePath, shopFilePath);
+        storage = new Storage(itemList, shoppingList, notification, listFilePath, logFilePath, shopFilePath);
     }
 
     public void run() {
@@ -40,13 +40,13 @@ public class Fridget {
         Command command = new Command();
         do {
             try {
-                notification.printNotification(ingredientList.getIngredientList("r"));
+                notification.printNotification(itemList.getItemList("r"));
                 ui.printUserInputMessage();
                 String userInput = ui.readUserInput();
                 ui.printSeparatorLine();
                 command = parser.parseCommand(userInput);
-                command.execute(ui, parser, ingredientList, shoppingList);
-                storage.updateFiles(ingredientList.getIngredientList("r"),
+                command.execute(ui, parser, itemList, shoppingList);
+                storage.updateFiles(itemList.getItemList("r"),
                         shoppingList.getShoppingList("r"), notification);
             } catch (FridgetException e) {
                 ui.printLine(e.getMessage());

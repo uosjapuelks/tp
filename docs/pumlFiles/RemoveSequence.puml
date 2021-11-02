@@ -18,15 +18,15 @@ alt nameOfItemToBeRemoved contains "|" or "/"
 
 else else
 
-":RemoveCommand" -> ":IngredientList"++: findAllMatchingIngredients(nameOfItemToBeRemoved)
-":RemoveCommand" <-- ":IngredientList"--: matchingIngredients
+":RemoveCommand" -> ":ItemList"++: findAllMatchingItems(nameOfItemToBeRemoved)
+":RemoveCommand" <-- ":ItemList"--: matchingItems
 
     group handleRemovalOfItem
 
-        ":RemoveCommand" -> ":Ui"++: printIfNotFoundMessage(matchingIngredients)
+        ":RemoveCommand" -> ":Ui"++: printIfNotFoundMessage(matchingItems)
         ":RemoveCommand" <-- ":Ui"--
 
-        alt Number of Matching Ingredient is 1
+        alt Number of Matching Item is 1
 
             alt Name of itemToBeRemoved != Name of matchingItem
                 ":RemoveCommand" -> ":Ui"++: giveSuggestion(itemToBeRemoved)
@@ -40,10 +40,10 @@ else else
                     ":RemoveCommand" -> ":Ui"++: getQuantityToBeRemoved(itemToBeRemoved)
                     ":RemoveCommand" <-- ":Ui"--: quantity
 
-                    ":RemoveCommand" -> ":IngredientList"++: removeIngredient(itemToBeRemoved, quantity)
-                    ":RemoveCommand" <-- ":IngredientList"--: isRemoved
+                    ":RemoveCommand" -> ":ItemList"++: removeItem(itemToBeRemoved, quantity)
+                    ":RemoveCommand" <-- ":ItemList"--: isRemoved
 
-                    ":RemoveCommand" -> ":Ui"++: printReactionToRemovingIngredient(itemToBeRemoved, quantity)
+                    ":RemoveCommand" -> ":Ui"++: printReactionToRemovingItem(itemToBeRemoved, quantity)
                     ":RemoveCommand" <-- ":Ui"--
 
                     alt isRemoved == true && Name of itemToBeRemoved not in shopping list
@@ -54,13 +54,13 @@ else else
                             ":RemoveCommand" <-- ":Ui"--: quantity
 
                             alt quantity > 0
-                                ":RemoveCommand" -> ":Ingredient"++: <<create>>
-                                ":RemoveCommand" <-- ":Ingredient"--: addedIngredient
+                                ":RemoveCommand" -> ":Item"++: <<create>>
+                                ":RemoveCommand" <-- ":Item"--: addedItem
 
-                                ":RemoveCommand" -> ":ShoppingList"++: addIngredient(addedIngredient, quantity)
+                                ":RemoveCommand" -> ":ShoppingList"++: addItem(addedItem, quantity)
                                 ":RemoveCommand" <-- ":ShoppingList"--
 
-                                ":RemoveCommand" -> ":Ui"++: printShopUpdateMessage(addedIngredient)
+                                ":RemoveCommand" -> ":Ui"++: printShopUpdateMessage(addedItem)
                                 ":RemoveCommand" <-- ":Ui"--
                             end
 
@@ -74,9 +74,9 @@ else else
 
             end
 
-        else Number of Matching Ingredients > 1
+        else Number of Matching Items > 1
 
-            ":RemoveCommand" -> ":Ui"++: matchItem(matchingIngredients)
+            ":RemoveCommand" -> ":Ui"++: matchItem(matchingItems)
             ":RemoveCommand" <-- ":Ui"--: itemToBeRemoved
 
             group handleRemovalOfMultipleQuantity

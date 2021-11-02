@@ -1,7 +1,7 @@
 package seedu.ui;
 
 import seedu.data.exception.FridgetException;
-import seedu.data.ingredient.Ingredient;
+import seedu.data.item.Item;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -32,7 +32,7 @@ public class Ui {
      * Prints introductory message when Fridget runs.
      */
     public void printIntroduction() {
-        String logo = "\n"
+        String logo = "\n\n\n\n"
                 + "   ad88              88           88\n"
                 + "  d8\"                \"\"           88                             ,d\n"
                 + "  88                              88                             88\n"
@@ -60,6 +60,7 @@ public class Ui {
 
     /**
      * Print out the content that is reads.
+     *
      * @param content String to be printed.
      */
     public void printLine(String content) {
@@ -67,26 +68,26 @@ public class Ui {
     }
 
     /**
-     * Prints a reaction to user after successfully adding an ingredient.
+     * Prints a reaction to user after successfully adding an item.
      *
-     * @param ingredient The ingredient the user has added.
+     * @param item The item the user has added.
      */
-    public void printReactionToAddingIngredient(Ingredient ingredient) {
+    public void printReactionToAddingItem(Item item) {
         String acknowledgeAdd = "You have successfully added:\n";
         String addReaction = acknowledgeAdd
-                + FOUR_SPACE_INDENTATION + ingredient;
+                + FOUR_SPACE_INDENTATION + item;
         printLine(addReaction);
     }
 
     /**
-     * Prints a reaction to user after successfully adding an ingredient that has existed in the list.
+     * Prints a reaction to user after successfully adding an item that has existed in the list.
      *
-     * @param ingredient The ingredient the user had added.
+     * @param item The item the user had added.
      */
-    public void printReactionToAddingExistingIngredient(Ingredient ingredient, int qty) {
+    public void printReactionToAddingExistingItem(Item item, int qty) {
         String acknowledgeAdd = "You have successfully increased the quantity of:\n";
-        String ingredientString = ingredient.addExistingToString(qty);
-        String addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + ingredientString;
+        String itemString = item.addExistingToString(qty);
+        String addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + itemString;
         printLine(addReaction);
     }
 
@@ -104,25 +105,25 @@ public class Ui {
     }
 
     /**
-     * Prints a reaction to user successfully removing an ingredient.
+     * Prints a reaction to user successfully removing an item.
      *
-     * @param ingredient The ingredient the user has added.
+     * @param item The item the user has added.
      */
-    public void printReactionToRemovingIngredient(Ingredient ingredient, int qty) {
+    public void printReactionToRemovingItem(Item item, int qty) {
         String acknowledgeRemove = "You have successfully removed:\n";
         String removeReaction = acknowledgeRemove
-                + FOUR_SPACE_INDENTATION + ingredient.getIngredientName() + " | Qty: " + qty
-                + " | " + ingredient.getColoredExpiryDate();
+                + FOUR_SPACE_INDENTATION + item.getItemName() + " | Qty: " + qty
+                + " | " + item.expiryToString();
         printLine(removeReaction);
     }
 
     /**
      * Suggests the correct item name if input is incomplete.
      *
-     * @param predictedIngredient Only item available containing search term but is not exactly the same.
+     * @param predictedItem Only item available containing search term but is not exactly the same.
      */
-    public boolean giveSuggestion(Ingredient predictedIngredient) throws FridgetException {
-        String message = String.format("Did you mean: %s? [Y/N]", predictedIngredient.getIngredientName());
+    public boolean giveSuggestion(Item predictedItem) throws FridgetException {
+        String message = String.format("Did you mean: %s? [Y/N]", predictedItem.getItemName());
         printLine(message);
         printSeparatorLine();
         return getYesNo();
@@ -154,7 +155,7 @@ public class Ui {
      * @param matchingItems The list of items which match the user's search term.
      * @param commandType   Type of command printing the message.
      */
-    public void printConfirmItemMessage(ArrayList<Ingredient> matchingItems, CommandType commandType) {
+    public void printConfirmItemMessage(ArrayList<Item> matchingItems, CommandType commandType) {
         String question = "Which item would you like to %s? Type the index of the item below.";
         String correctText;
         switch (commandType) {
@@ -168,7 +169,7 @@ public class Ui {
             correctText = "";
         }
         printLine(String.format(question, correctText));
-        printListOfIngredients(matchingItems, true);
+        printListOfItems(matchingItems, true);
         printLine("If you've changed your mind, simply type 'quit'.");
         printSeparatorLine();
     }
@@ -178,10 +179,10 @@ public class Ui {
      *
      * @param matchingItems List of items that matches the search term.
      * @param commandType   Whether it is UPDATE or REMOVE.
-     * @return The ingredient selected by the user.
+     * @return The item selected by the user.
      * @throws FridgetException If input is out of bounds.
      */
-    public Ingredient matchItem(ArrayList<Ingredient> matchingItems, CommandType commandType) throws FridgetException {
+    public Item matchItem(ArrayList<Item> matchingItems, CommandType commandType) throws FridgetException {
         if (matchingItems.size() == 1) {
             return matchingItems.get(0);
         }
@@ -201,7 +202,7 @@ public class Ui {
      * @return The input integer if input is within bounds.
      * @throws FridgetException if input Integer is out of Bounds.
      */
-    private int checkAndGetIndex(ArrayList<Ingredient> matchingItems, int intInput) throws FridgetException {
+    private int checkAndGetIndex(ArrayList<Item> matchingItems, int intInput) throws FridgetException {
         if (intInput <= 0 | intInput > matchingItems.size()) {
             throw new FridgetException("This index is not valid. The command has been shutdown.");
         }
@@ -237,31 +238,31 @@ public class Ui {
     }
 
     /**
-     * Prints a list of ingredients, indented by four spaces and preceded by an index.
+     * Prints a list of items, indented by four spaces and preceded by an index.
      *
-     * @param listOfIngredients The list of ingredients to be printed.
-     * @param hasIndex          Boolean value to indicate printing with index.
+     * @param listOfItems The list of items to be printed.
+     * @param hasIndex    Boolean value to indicate printing with index.
      */
-    public void printListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
+    public void printListOfItems(ArrayList<Item> listOfItems, boolean hasIndex) {
         int index = 1;
-        for (Ingredient ingredient : listOfIngredients) {
-            String beforeIngredient = FOUR_SPACE_INDENTATION + (hasIndex ? index + ". " : "");
-            printLine(beforeIngredient + ingredient);
+        for (Item item : listOfItems) {
+            String beforeItem = FOUR_SPACE_INDENTATION + (hasIndex ? index + ". " : "");
+            printLine(beforeItem + item);
             index++;
         }
     }
 
     /**
-     * Prints a shop list of ingredients, indented by four spaces and preceded by an index.
+     * Prints a shop list of items, indented by four spaces and preceded by an index.
      *
-     * @param listOfIngredients The shop list of ingredients to be printed.
-     * @param hasIndex          Boolean value to indicate printing with index.
+     * @param listOfItems The shop list of items to be printed.
+     * @param hasIndex    Boolean value to indicate printing with index.
      */
-    public void printShopListOfIngredients(ArrayList<Ingredient> listOfIngredients, boolean hasIndex) {
+    public void printShopListOfItems(ArrayList<Item> listOfItems, boolean hasIndex) {
         int index = 1;
-        for (Ingredient ingredient : listOfIngredients) {
-            String beforeIngredient = FOUR_SPACE_INDENTATION + (hasIndex ? index + ". " : "");
-            printLine(beforeIngredient + ingredient.toShopFormat());
+        for (Item item : listOfItems) {
+            String beforeItem = FOUR_SPACE_INDENTATION + (hasIndex ? index + ". " : "");
+            printLine(beforeItem + item.toShopFormat());
             index++;
         }
     }
@@ -269,17 +270,17 @@ public class Ui {
     /**
      * Prints a message informing user on list being printed.
      *
-     * @param listOfIngredients The list of ingredients of all items in fridget.
-     * @param sortType          The string indicating the sort type.
-     * @param isShop            Boolean indicating if the message is used to print shopping list.
+     * @param listOfItems The list of items of all items in fridget.
+     * @param sortType    The string indicating the sort type.
+     * @param isShop      Boolean indicating if the message is used to print shopping list.
      */
-    public void printListMessage(ArrayList<Ingredient> listOfIngredients, String sortType, boolean isShop) {
+    public void printListMessage(ArrayList<Item> listOfItems, String sortType, boolean isShop) {
         String listMessage = sortTypeMessage(sortType);
         printLine(listMessage);
         if (!isShop) {
-            printListOfIngredients(listOfIngredients, true);
+            printListOfItems(listOfItems, false);
         } else {
-            printShopListOfIngredients(listOfIngredients, true);
+            printShopListOfItems(listOfItems, true);
         }
     }
 
@@ -301,31 +302,31 @@ public class Ui {
     }
 
     /**
-     * Prints a list of matching ingredient for the find command.
+     * Prints a list of matching item for the find command.
      *
-     * @param listOfIngredients The list of matching ingredients to print.
+     * @param listOfItems The list of matching items to print.
      */
-    public void printListOfMatchingIngredients(ArrayList<Ingredient> listOfIngredients) {
-        if (listOfIngredients.isEmpty()) {
-            String noMatchingIngredient = "No matching ingredient found!";
-            printLine(noMatchingIngredient);
+    public void printListOfMatchingItems(ArrayList<Item> listOfItems) {
+        if (listOfItems.isEmpty()) {
+            String noMatchingItem = "No matching item found!";
+            printLine(noMatchingItem);
         } else {
-            String resultsHeader = "These are the matching ingredients:";
+            String resultsHeader = "These are the matching items:";
             printLine(resultsHeader);
-            printListOfIngredients(listOfIngredients, true);
+            printListOfItems(listOfItems, true);
         }
     }
 
     /**
-     * Prints only list of items/ingredient away from group.
+     * Prints only list of items/item away from group.
      *
-     * @param listOfIngredients list of Ingredients nearing expiry only.
+     * @param listOfItems list of Items nearing expiry only.
      */
-    public void printExpiringMessage(ArrayList<Ingredient> listOfIngredients) {
-        ArrayList<Ingredient> expiringList = new ArrayList<>();
-        for (Ingredient ingredient : listOfIngredients) {
-            if (ingredient.isNearExpiry()) {
-                expiringList.add(ingredient);
+    public void printExpiringMessage(ArrayList<Item> listOfItems) {
+        ArrayList<Item> expiringList = new ArrayList<>();
+        for (Item item : listOfItems) {
+            if (item.isNearExpiry()) {
+                expiringList.add(item);
             }
         }
 
@@ -334,7 +335,7 @@ public class Ui {
         } else {
             String expiringMessage = "Expiring/Expired Items:";
             printLine(expiringMessage);
-            printListOfIngredients(expiringList, true);
+            printListOfItems(expiringList, true);
         }
     }
 
@@ -343,7 +344,7 @@ public class Ui {
      *
      * @param matchingItems List of matching items after parseSearchTerm.
      */
-    public void printIfNotFoundMessage(ArrayList<Ingredient> matchingItems) {
+    public void printIfNotFoundMessage(ArrayList<Item> matchingItems) {
         if (matchingItems.size() == 0) {
             printLine("No such item exists.");
         }
@@ -411,12 +412,12 @@ public class Ui {
     /**
      * Get the integer to update item quantity to.
      *
-     * @param targetIngredient Item to update quantity.
+     * @param targetItem Item to update quantity.
      * @return Int input from user.
      * @throws FridgetException if input is invalid.
      */
-    public int getUpdate(Ingredient targetIngredient) throws FridgetException {
-        String message = String.format("How many of %s do you have left?", targetIngredient.getIngredientName());
+    public int getUpdate(Item targetItem) throws FridgetException {
+        String message = String.format("How many of %s do you have left?", targetItem.getItemName());
         printLine(message);
         printSeparatorLine();
         return getIntInput();
@@ -425,14 +426,14 @@ public class Ui {
     /**
      * Suggests removing item if update amoount is zero. TODO: Impleement in next iteration.
      *
-     * @param targetIngredient ingredient being updated.
+     * @param targetItem item being updated.
      * @return if user accepts the suggestion.
      * @throws FridgetException if user inputs invalid input.
      */
-    public boolean suggestRemove(Ingredient targetIngredient) throws FridgetException {
+    public boolean suggestRemove(Item targetItem) throws FridgetException {
         String suggestion = String.format("You have input \"0\". This will remove all %d %s from your list. \n"
                         + "Do you still wish to proceed? [Y/N]",
-                targetIngredient.getQuantity(), targetIngredient.getIngredientName());
+                targetItem.getQuantity(), targetItem.getItemName());
         printLine(suggestion);
         return getYesNo();
     }
@@ -440,22 +441,22 @@ public class Ui {
     /**
      * Prints message to inform on successful change.
      *
-     * @param updated Latest update on ingredient.
+     * @param updated Lastest update on item.
      */
-    public void acknowledgeUpdate(Ingredient updated) {
-        String msg = String.format("Quantity of %s is now %d.", updated.getIngredientName(), updated.getQuantity());
+    public void acknowledgeUpdate(Item updated) {
+        String msg = String.format("Quantity of %s is now %d.", updated.getItemName(), updated.getQuantity());
         printLine(msg);
     }
 
     /**
      * Gets the quantity of items to be removed from the user.
      *
-     * @param ingredient Ingredient to be removed.
+     * @param item Item to be removed.
      * @return Amount of items to be removed.
      * @throws FridgetException If the user types a wrong value (non-integer or 0 or outside limit of quantity)
      */
-    public int getQuantityToBeRemoved(Ingredient ingredient) throws FridgetException {
-        int limit = ingredient.getQuantity();
+    public int getQuantityToBeRemoved(Item item) throws FridgetException {
+        int limit = item.getQuantity();
         if (limit == 1) {
             return 1;
         }
@@ -477,13 +478,13 @@ public class Ui {
      * Prints a confirmation message to add a removed item into the shopping list and returns the quantity to be
      * added into the shopping list.
      *
-     * @param itemRemoved The ingredient removed.
-     * @param qtyInShop The quantity of removed ingredient already in the shoppingList.
-     * @return Quantity of ingredient to be added into the shopping list.
+     * @param itemRemoved The item removed.
+     * @param qtyInShop   The quantity of removed item already in the shoppingList.
+     * @return Quantity of item to be added into the shopping list.
      * @throws FridgetException If the user types a wrong value (non-integer or 0 or outside limit of quantity)
      */
-    public int getShopQuantity(Ingredient itemRemoved, int qtyInShop) throws FridgetException {
-        String addConfirmMessage = "You have ran out of " + itemRemoved.getIngredientName()
+    public int getShopQuantity(Item itemRemoved, int qtyInShop) throws FridgetException {
+        String addConfirmMessage = "You have ran out of " + itemRemoved.getItemName()
                 + ". Would you like to add it to your shopping list? (Y/N)";
         printSeparatorLine();
         printLine(addConfirmMessage);
@@ -492,7 +493,7 @@ public class Ui {
         if (getYesNo()) {
             String askQuantityMessage = "How many items would you like to buy?";
             if (qtyInShop > 0) {
-                askQuantityMessage = "You have " + qtyInShop + " " + itemRemoved.getIngredientName()
+                askQuantityMessage = "You have " + qtyInShop + " " + itemRemoved.getItemName()
                         + " in the shopping list. " + askQuantityMessage;
             }
             printLine(askQuantityMessage);
@@ -513,17 +514,17 @@ public class Ui {
     /**
      * Prints the reaction after adding item into the shopping list.
      *
-     * @param addedIngredient Ingredient added into the shopping list.
-     * @param qtyInShopBeforeAdd Quantity of ingredient that already existed in the shoppingList.
+     * @param addedItem          Item added into the shopping list.
+     * @param qtyInShopBeforeAdd Quantity of item that already existed in the shoppingList.
      */
-    public void printShopUpdateMessage(Ingredient addedIngredient, int qtyInShopBeforeAdd) {
+    public void printShopUpdateMessage(Item addedItem, int qtyInShopBeforeAdd) {
         String addReaction;
         String acknowledgeAdd = "You have successfully added:\n";
         if (qtyInShopBeforeAdd == 0) {
-            addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + addedIngredient.toShopFormat();
+            addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + addedItem.toShopFormat();
         } else {
             addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION
-                    + addedIngredient.toAddExistingShopFormat(qtyInShopBeforeAdd);
+                    + addedItem.toAddExistingShopFormat(qtyInShopBeforeAdd);
         }
         printLine(addReaction);
     }
@@ -571,11 +572,11 @@ public class Ui {
 
 
     /**
-     * Prints the ingredient list reset message.
+     * Prints the item list reset message.
      */
     public void printResetMessage() {
         printSeparatorLine();
-        printLine("Ingredient list has been reset successfully.");
+        printLine("Item list has been reset successfully.");
     }
 
     /**

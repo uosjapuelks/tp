@@ -1,9 +1,9 @@
 package seedu.commands;
 
 import seedu.data.exception.FridgetException;
-import seedu.data.ingredient.Ingredient;
+import seedu.data.item.Item;
 import seedu.parser.Parser;
-import seedu.storage.IngredientList;
+import seedu.storage.ItemList;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
@@ -19,42 +19,42 @@ public class AddCommand extends Command {
     /**
      * Executes the "add" command.
      *
-     * @param ui             The ui object to interact with user.
-     * @param parser         The parser object to parse user inputs.
-     * @param ingredientList The ingredientList object.
-     * @param shoppingList   The shoppingList object.
+     * @param ui           The ui object to interact with user.
+     * @param parser       The parser object to parse user inputs.
+     * @param itemList     The itemList object.
+     * @param shoppingList The shoppingList object.
      * @throws FridgetException The error object thrown.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
+    public void execute(Ui ui, Parser parser, ItemList itemList, ShoppingList shoppingList)
             throws FridgetException {
         if (ui.getCurrentUserInput().contains(";")) {
-            ArrayList<Ingredient> newIngredients = parser.parseMultipleIngredientsForAdding(ui.getCurrentUserInput());
-            for (Ingredient newIngredient : newIngredients) {
-                addIngredientToIngredientList(ui, ingredientList, newIngredient, shoppingList);
+            ArrayList<Item> newItems = parser.parseMultipleItemsForAdding(ui.getCurrentUserInput());
+            for (Item newItem : newItems) {
+                addItemToItemList(ui, itemList, newItem, shoppingList);
             }
         } else {
-            Ingredient newIngredient = parser.parseIngredientForAdding(ui.getCurrentUserInput());
-            addIngredientToIngredientList(ui, ingredientList, newIngredient, shoppingList);
+            Item newItem = parser.parseItemForAdding(ui.getCurrentUserInput());
+            addItemToItemList(ui, itemList, newItem, shoppingList);
         }
     }
 
-    private void addIngredientToIngredientList(Ui ui, IngredientList ingredientList, Ingredient newIngredient,
-                                               ShoppingList shoppingList) throws FridgetException {
-        String itemName = newIngredient.getIngredientName();
+    private void addItemToItemList(Ui ui, ItemList itemList, Item newItem,
+                                   ShoppingList shoppingList) throws FridgetException {
+        String itemName = newItem.getItemName();
         if (itemName.contains("|")) {
-            throw new FridgetException("Please do not use '|' in your ingredient name.");
+            throw new FridgetException("Please do not use '|' in your item name.");
         }
-        int qty = ingredientList.addIngredient(newIngredient);
+        int qty = itemList.addItem(newItem);
         if (qty == Integer.MAX_VALUE) {
             throw new FridgetException("You have reached the maximum possible amount of " + itemName
                     + "\nMax: 2147483647");
         } else if (qty > 1) {
-            ui.printReactionToAddingExistingIngredient(newIngredient, qty);
+            ui.printReactionToAddingExistingItem(newItem, qty);
         } else {
-            ui.printReactionToAddingIngredient(newIngredient);
+            ui.printReactionToAddingItem(newItem);
         }
-        shoppingList.removeIngredient(newIngredient, newIngredient.getQuantity());
+        shoppingList.removeItem(newItem, newItem.getQuantity());
     }
 }
 

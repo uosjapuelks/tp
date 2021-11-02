@@ -223,41 +223,41 @@ USER INPUT: help
 __________________________________________
 List of commands available:
 
-add INGREDIENT_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
--> Adds an ingredient and its expiry date to the ingredient list.
+add ITEM_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
+-> Adds an item and its expiry date to the item list.
 
 find KEYWORD [eg. find bacon]
--> Find and print all ingredient associated with keyword.
+-> Find and print all item associated with keyword.
 
-remove INGREDIENT_NAME [eg. delete bacon]
--> Removes the ingredient from the ingredient list.
+remove ITEM_NAME [eg. delete bacon]
+-> Removes the item from the item list.
 
 list -e
--> List out all the ingredients starting with earliest expiry date.
+-> List out all the items starting with earliest expiry date.
 
 list -r
--> List out all the ingredients based on the order added.
+-> List out all the items based on the order added.
 
 list
--> List out all the ingredients in alphabetical order.
+-> List out all the items in alphabetical order.
 
 shoplist
--> List out all the ingredients in the shopping list in alphabetical order.
+-> List out all the items in the shopping list in alphabetical order.
 
 expiring
--> Prints out ingredients that have expired or are expiring within a week.
+-> Prints out items that have expired or are expiring within a week.
 
-update INGREDIENT_NAME [eg. update egg]
+update ITEM_NAME [eg. update egg]
 -> Prompts a quantity change for the specified item name.
 
 notifs
 -> Toggle the notification on or off depending on previous state. Default mode is on.
 
 reset
--> Deletes all the previous ingredient entries from the reader.
+-> Deletes all the previous item entries from the reader.
 
 shopreset
--> Deletes all the previous ingredient entries in the shopping list.
+-> Deletes all the previous item entries in the shopping list.
 
 exit
 -> Exits the program.
@@ -299,7 +299,7 @@ Are you sure you want to reset everything in the fridge? (Y/N)
 __________________________________________
 USER INPUT: Y
 __________________________________________
-Ingredient list has been reset successfully.
+Item list has been reset successfully.
 __________________________________________
 ```
 
@@ -432,12 +432,12 @@ The <b>KEYWORD</b> can also be a <ins>part of the name</ins> of the item.
 ```
 USER INPUT: find burger
 __________________________________________
-These are the matching ingredients:
+These are the matching items:
     1. burger | Qty: 1 | 23 Sep 2030
 __________________________________________
 USER INPUT: find apple
 __________________________________________
-No matching ingredient found!
+No matching item found!
 __________________________________________
 ```
 
@@ -546,7 +546,7 @@ Turning notification off!
 ____________________________________________
 USER INPUT: reset jadfgasgdka
 __________________________________________
-Are you sure you want to reset everything in the ingredient list? (Y/N)
+Are you sure you want to reset everything in the item list? (Y/N)
 __________________________________________
 ```
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">

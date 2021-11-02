@@ -1,9 +1,9 @@
 package seedu.commands;
 
 import seedu.data.exception.FridgetException;
-import seedu.data.ingredient.Ingredient;
+import seedu.data.item.Item;
 import seedu.parser.Parser;
-import seedu.storage.IngredientList;
+import seedu.storage.ItemList;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
@@ -19,16 +19,16 @@ public class ShopListCommand extends Command {
     /**
      * Executes the command.
      *
-     * @param ui The ui object to interact with user.
-     * @param parser The parser object to parse user inputs.
-     * @param ingredientList The ingredientList object.
+     * @param ui           The ui object to interact with user.
+     * @param parser       The parser object to parse user inputs.
+     * @param itemList     The itemList object.
      * @param shoppingList The shoppingList object.
      * @throws FridgetException The error object thrown.
      */
     @Override
-    public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
+    public void execute(Ui ui, Parser parser, ItemList itemList, ShoppingList shoppingList)
             throws FridgetException {
-        ArrayList<Ingredient> listOfIngredients = shoppingList.getShoppingList("default");
-        ui.printListMessage(listOfIngredients, "", true);
+        ArrayList<Item> listOfItems = shoppingList.getShoppingList("default");
+        ui.printListMessage(listOfItems, "", true);
     }
 }

@@ -10,11 +10,11 @@ activate "ListCommand:Command"
 activate ":Parser"
 "ListCommand:Command" <-- ":Parser": sortType :String
 deactivate ":Parser"
-"ListCommand:Command" -> ":IngredientList": getIngredientList(sortType)
-activate ":IngredientList"
-"ListCommand:Command" <--":IngredientList": listOfIngredients :ArrayList<Ingredient>
-deactivate ":IngredientList"
-"ListCommand:Command" -> ":Ui": printListMessage(listOfIngredients, sortType)
+"ListCommand:Command" -> ":ItemList": getItemList(sortType)
+activate ":ItemList"
+"ListCommand:Command" <--":ItemList": listOfItems :ArrayList<Item>
+deactivate ":ItemList"
+"ListCommand:Command" -> ":Ui": printListMessage(listOfItems, sortType)
 activate ":Ui"
 "ListCommand:Command" <-- ":Ui"
 deactivate ":Ui"

@@ -12,7 +12,7 @@ class AddCommand {
 isBye = false
 +AddCommand()
 +execute(Ui ui, Parser parser,
-IngredientList ingredientList)
+ItemList itemList)
 +exitNotRequired()
 }
 
@@ -20,16 +20,16 @@ class RemoveCommand {
 isBye = false
 +AddCommand()
 +execute(Ui ui, Parser parser,
-IngredientList ingredientList)
+ItemList itemList)
 +exitNotRequired()
-+handleRemovalOfItem(Ui ui, IngredientList ingredientList,
-String nameOfItemToBeRemoved, ArrayList<Ingredient> matchingItems)
++handleRemovalOfItem(Ui ui, ItemList itemList,
+String nameOfItemToBeRemoved, ArrayList<Item> matchingItems)
 }
 
 abstract class Command {
 isBye = false
 +Command()
-+execute(Ui ui, Parser parser, IngredientList ingredientList)
++execute(Ui ui, Parser parser, ItemList itemList)
 +exitNotRequired()
 }
 

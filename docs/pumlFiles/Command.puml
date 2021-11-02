@@ -34,87 +34,87 @@ class Command {
 +isExit: boolean
 +Command()
 +exitNotRequired(): boolean
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
 shoppingList: ShoppingList): void
 }
 
 class AddCommand {
 +AddCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
 }
 
 class ExitCommand {
 +ExitCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
 }
 
 class FindCommand {
 +FindCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
 }
 
 class HelpCommand {
 - {static} COMMAND_LIST: String
 +HelpCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
 }
 
 class ListCommand {
 +ListCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
 shoppingList: ShoppingList): void
 }
 
 class ResetCommand {
 +ResetCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
 }
 
 class RemoveCommand {
 +RemoveCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
--handleRemovalOfItem(ui: Ui, ingredientList: IngredientList, shoppingList: ShoppingList,
- nameOfItemToBeRemoved: String, matchingItems: ArrayList<Ingredient>): void
--handleRemovalOfMultipleQuantity(ui: Ui, ingredientList: IngredientList,
- shoppingList: ShoppingList, itemToBeRemoved: Ingredient): void
--updateShopList(ui: Ui, shoppingList: ShoppingList, itemRemoved: Ingredient)
+-handleRemovalOfItem(ui: Ui, itemList: ItemList, shoppingList: ShoppingList,
+ nameOfItemToBeRemoved: String, matchingItems: ArrayList<Item>): void
+-handleRemovalOfMultipleQuantity(ui: Ui, itemList: ItemList,
+ shoppingList: ShoppingList, itemToBeRemoved: Item): void
+-updateShopList(ui: Ui, shoppingList: ShoppingList, itemRemoved: Item)
 }
 
 class ExpiringCommand {
 +ExpiringCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
 }
 
 class NotificationCommand {
 +NotificationCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
 }
 
 class ShopListCommand {
 +ShopListCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
 }
 
 class ShopResetCommand {
 +ShopResetCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
 }
 
 class UpdateCommand {
 +UpdateCommand()
-+execute(ui: Ui, parser: Parser, ingredientList: IngredientList,
++execute(ui: Ui, parser: Parser, itemList: ItemList,
  shoppingList: ShoppingList): void
--updateShopList(shoppingList: ShoppingList, updatedIngredient: Ingredient,
+-updateShopList(shoppingList: ShoppingList, updatedItem: Item,
  qty: int): void
 }
 

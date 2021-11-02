@@ -55,7 +55,7 @@ The core aims to understand and execute the user's commands.
 
 The Parser collects information from the user's input in a way that is usable by other classes within Fridget.
 
-#### `IngredientList`
+#### `ItemList`
 
 This class keeps track of all items currently stored within Fridget, and can be easily manipulated.
 
@@ -66,7 +66,7 @@ This class keeps track of all items the user may want to shop for, and can be ea
 #### `Command`
 
 There is a Command class for each possible command the user could execute.
-Each Command class controls the Ui, Parser, IngredientList, and ShoppingList so the User's intended outcome is achieved.
+Each Command class controls the Ui, Parser, ItemList, and ShoppingList so the User's intended outcome is achieved.
 
 ![image info](./umlDiagrams/Command.png)
 The Command class is inherited by its respective subclasses, which have their own specific functionalities.
@@ -77,7 +77,7 @@ functionality specific to that class.
 #### **Database**
 
 The Database stores all info that is needed on a permanent basis. This may
-include info such as the contents of IngredientList. Most info in the Database
+include info such as the contents of ItemList. Most info in the Database
 is stored after any changes, and is usually retrieved when Fridget is turned
 on.
 
@@ -105,17 +105,17 @@ The overall flow within Fridget occurs in three stages:
 #### Startup
 
 1. The `main` method in Fridget creates a new instance of `Fridget`.
-2. This new instance creates new instances of `Ui`, `Parser`,`IngredientList`, `ShoppingList`, and `Storage`.
+2. This new instance creates new instances of `Ui`, `Parser`,`ItemList`, `ShoppingList`, and `Storage`.
 3. `Fridget.run()` is called, which asks `Storage` to check stored files in the directory: `fridgetData`.
 4. If no such files exist, `Storage` creates the files in the directory `fridgetData` for future usage.
-5. If files have already been created, `IngredientList` and `ShoppingList` is updated based on the info obtained.
+5. If files have already been created, `ItemList` and `ShoppingList` is updated based on the info obtained.
 6. `Fridget.run()` initiates the user feedback loop, to obtain input from the user.
 
 #### Execution
 
 1. The user types in an input into the `Ui`. `Parser` is used to extract a `Command` from the user's input.
 2. `Command.execute()` is called to execute the command.
-3. The `Command` takes control of the `Ui`, `IngredientList`, and `ShoppingList` to achieve the intended outcome the user requires.
+3. The `Command` takes control of the `Ui`, `ItemList`, and `ShoppingList` to achieve the intended outcome the user requires.
 4. Once `Command.execute()` has ceased, the `Ui` awaits further input from the user.
 
 #### Shutdown
@@ -130,19 +130,19 @@ The overall flow within Fridget occurs in three stages:
 
 The functionality to add items is bound by two main objectives:
 * Make adding items convenient for the user
-* Parse enough information about the ingredient to benefit the user in the future
+* Parse enough information about the item to benefit the user in the future
 
 As a result, the current iteration requires two pieces of info from the user:
-* The name of the ingredient
-* The expiry date of the ingredient
+* The name of the item
+* The expiry date of the item
 
 This is done to minimize the input required from the user per entry, while maximising future uses with the data.
 
 Future uses include:
-* Finding if an ingredient exists by searching for its name
-* Combining ingredients with similar names and expiry together
-* Sort all ingredients by expiry date
-* Remind users of expiring ingredients by name
+* Finding if an item exists by searching for its name
+* Combining items with similar names and expiry together
+* Sort all items by expiry date
+* Remind users of expiring items by name
 
 #### Overall Sequence:
 
@@ -154,26 +154,26 @@ This step is almost always initiated by Fridget, but could potentially be done b
 
 Step 2 & 3:
 
-The parseIngredientForAdding() method is called in Parser, with the currentUserInput as a parameter.
-The parser returns an Ingredient with the name and expiry date specified in the user input. 
+The parseItemForAdding() method is called in Parser, with the currentUserInput as a parameter.
+The parser returns an Item with the name and expiry date specified in the user input. 
 
 Step 4:
 
-If the user uses the ' | ' character in the ingredient's name, an exception is thrown.
+If the user uses the ' | ' character in the item's name, an exception is thrown.
 This is done as the ' | ' may confuse the Storage class.
 
 Step 5 & 6:
 
-The Ingredient is added to IngredientList.
-IngredientList returns a value signifying the current quantity of Ingredient in IngredientList.
+The Item is added to ItemList.
+ItemList returns a value signifying the current quantity of Item in ItemList.
 
 Step 7 & 8:
 
-If the Ingredient already exists in Fridget's IngredientList, print a message with the Ui to signify that the quantity of the existing item has increased to the user.
+If the Item already exists in Fridget's ItemList, print a message with the Ui to signify that the quantity of the existing item has increased to the user.
 
 Step 9 & 10:
 
-If the ingredient does not exist, print a message using Ui to signify to the user that a new Ingredient has been added into Fridget.
+If the item does not exist, print a message using Ui to signify to the user that a new Item has been added into Fridget.
 
 Step 11:
 
@@ -228,20 +228,20 @@ The execution of this step is initiated by Fridget.
 
 Step 2 & 3:
 
-The getIngredientList() method is called in the IngredientList, and the current ingredientList is returned.
+The getItemList() method is called in the ItemList, and the current itemList is returned.
 
 Step 4:
 
-If returned ingredientList is empty, a FridgetException is thrown and the command exits. Else, it will continue to step 5.
+If returned itemList is empty, a FridgetException is thrown and the command exits. Else, it will continue to step 5.
 
 Step 5 & 6: 
 
-If the user double confirms the reset command, the resetList() method is called in the IngredientList and resets 
-the ingredient list by overwriting it with a new ingredient list.
+If the user double confirms the reset command, the resetList() method is called in the ItemList and resets 
+the item list by overwriting it with a new item list.
 
 Step 7 & 8:
 
-The printResetMessage() method is called in the Ui, and prints a String stating that the ingredient list has been reset.
+The printResetMessage() method is called in the Ui, and prints a String stating that the item list has been reset.
 
 Step 9:
 
@@ -292,7 +292,7 @@ The functionality to list items is bound by two main objectives:
 As a result, the current iteration optionally requires an additional info from the user:
 * The sort type of the list.
 
-This additional is optional as the default settings sorts the list by ingredient name.
+This additional is optional as the default settings sorts the list by item name.
 
 #### Overall Sequence:
 
@@ -309,13 +309,13 @@ The parser returns a String as sortType with the detected sort type in the user 
 
 Step 4 & 5:
 
-The getIngredientList() method is called in IngredientList, with the sortType as a parameter.
-The IngredientList returns an ArrayList<Ingredient> as listOfIngredients that are sorted according to the sort type.
+The getItemList() method is called in ItemList, with the sortType as a parameter.
+The ItemList returns an ArrayList<Item> as listOfItems that are sorted according to the sort type.
 
 Step 6 & 7:
 
-The printListMessage() method is called in Ui, with the listOfIngredient, and sortType as parameters.
-The Ui prints out the list of Ingredients for the user.
+The printListMessage() method is called in Ui, with the listOfItem, and sortType as parameters.
+The Ui prints out the list of Items for the user.
 
 Step 8:
 
@@ -344,13 +344,13 @@ String "e" is assigned to sortByExpiry.
 
 Step 3 & 4:
 
-The getIngredientList() method is called in IngredientList, with sortByExpiry as a fixed parameter.
-The IngredientList returns an ArrayList<Ingredient> as listOfIngredients that are sorted according to expiry dates.
+The getItemList() method is called in ItemList, with sortByExpiry as a fixed parameter.
+The ItemList returns an ArrayList<Item> as listOfItems that are sorted according to expiry dates.
 
 Step 5 & 6:
 
-The printListMessage() method is called in UI, with the listOfIngredient as parameter.
-The Ui prints out the list of Expiring Ingredients for the user.
+The printListMessage() method is called in UI, with the listOfItem as parameter.
+The Ui prints out the list of Expiring Items for the user.
 
 Step 8:
 
@@ -388,13 +388,13 @@ The Parser returns a String as searchTerm.
 
 Step 6 & 7:
 
-The findAllMatchingIngredients() method is called in IngredientList with searchTerm as a parameter.
-The IngredientList returns an ArrayList<Ingredient> as matchingIngredients for the user.
+The findAllMatchingItems() method is called in ItemList with searchTerm as a parameter.
+The ItemList returns an ArrayList<Item> as matchingItems for the user.
 
 Step 8 & 9:
 
-The printListMessage() method is called in Ui, with the matchingIngredients.
-The Ui prints out the list of Ingredients for the user.
+The printListMessage() method is called in Ui, with the matchingItems.
+The Ui prints out the list of Items for the user.
 
 Step 10:
 
@@ -423,7 +423,7 @@ If the shoppingList returned in step 3 is empty, a FridgetException is thrown an
 
 Step 5 & 6:
 
-The printListMessage() method is called in Ui, and prints out the list of ingredients in the shoppingList.
+The printListMessage() method is called in Ui, and prints out the list of items in the shoppingList.
 
 Step 7:
 
@@ -495,15 +495,15 @@ The execution of the execute() method ends, while notification continues to run 
 
 Nowadays, fridges are operated manually. Hence, users need to go through item by item manually to perform any function related to their fridge, for example:
 * Figuring out what food is close to expiring 
-* Figuring out if they have enough ingredients for a certain recipe 
-* Figuring out if they are any recipes that they can make with their ingredients 
+* Figuring out if they have enough items for a certain recipe 
+* Figuring out if they are any recipes that they can make with their items 
 * Adding/removing items into/from the fridge and storing it in a ledger
 * Find out items that need to be bought soon
 
 This CLI based application hopes to automate a lot of the tasks users have relating to the fridge, for example:
 * Automated reminder for items nearing expiry or items requiring replenishment 
 * Automated housekeeping: Storing items that are added/removed in a central ledger 
-* Automated shopping list: Listing out missing ingredients for meals that users want to cook
+* Automated shopping list: Listing out missing items for meals that users want to cook
 
 
 ## User Stories
@@ -512,12 +512,12 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 |--------|----------|---------------|------------------|
 |v1.0|busy house-husband|easily find out if I have a certain item in the fridge|spend less time checking through my Fridge|
 |v1.0|busy house-husband|easily add or remove an item into the Fridget|spend less time writing down and scratching out items on a written ledger|
-|v1.0|busy house-husband|easily find out expiry date of ingredient|spend less time going through every ingredient.|
+|v1.0|busy house-husband|easily find out expiry date of item|spend less time going through every item.|
 |v1.0|frugal house-husband|know what foods are about to expire|quickly use them before they become inedible|
 |v1.0|perfectionist house-husband|reset the list of items in Fridget|start using Fridget after not using it for a while, or after initial testing with fake items|
 |v1.0|new user|have a manual instructions|easily navigate through the cli app|
 |v1.0|fitness fanatic|have health-focused reminders for family members to eat more fruits and healthy snacks|my family can be healthy together|
-|v2.0|busy house-husband|check if any ingredient requires me to replenish|easily curate my shopping list|
+|v2.0|busy house-husband|check if any item requires me to replenish|easily curate my shopping list|
 |v2.0|lazy house-husband|update the amount that is left of the item|know if it is very urgent to consume when it nears expiry|
 |v2.0|lazy house-husband|be able to add multiple items at once|type lesser commands to add them in|
 |v2.1|forgetful house-husband|be reminded on items nearing expiry|use it before its too late|
