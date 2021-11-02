@@ -12,23 +12,6 @@ MM88MMM  8b,dPPYba,  88   ,adPPYb,88   ,adPPYb,d8   ,adPPYba,  MM88MMM
 Hello!
 What would you like to do?
 __________________________________________
- ___________________________________________________
-|                      HEALTH!                      |
-|===================================================|
-|      ___            _         __        ______    |
-|     / _ \___ __ _  (_)__  ___/ /__ ____/ / / /    |
-|    / , _/ -_)  ' \/ / _ \/ _  / -_) __/_/_/_/     |
-|   /_/|_|\__/_/_/_/_/_//_/\_,_/\__/_/ (_|_|_)      |
-|   ---------------------------------------------   |
-|                                                   |
-|    "If you don't take time to take care of your   |
-|    health now, you're gonna have to make time     |
-|    for feeling sick and tired later."             |
-|                                                   |
-|            Always remember to eat more            |
-|              Fruits and Vegetables!               |
-|___________________________________________________|
-__________________________________________
 USER INPUT: __________________________________________
 No command found!
 Enter help if you need the list of available commands.
@@ -102,6 +85,7 @@ USER INPUT: __________________________________________
 List sorted by item name:
     burger | Qty: 20 | 23 Sep 2030
     chicken | Qty: 1 | 10 Oct 2000
+    JimBeam | Qty: 1998 | 03 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
 These are the matching ingredients:
@@ -109,8 +93,9 @@ These are the matching ingredients:
 __________________________________________
 USER INPUT: __________________________________________
 These are the matching ingredients:
-    1. burger | Qty: 20 | 23 Sep 2030
-    2. chicken | Qty: 1 | 10 Oct 2000
+    1. JimBeam | Qty: 1998 | 03 Oct 2030
+    2. burger | Qty: 20 | 23 Sep 2030
+    3. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
 USER INPUT: __________________________________________
 These are the matching ingredients:
@@ -124,8 +109,9 @@ Shutting down the command...
 __________________________________________
 USER INPUT: __________________________________________
 These are the matching ingredients:
-    1. burger | Qty: 20 | 23 Sep 2030
-    2. chicken | Qty: 1 | 10 Oct 2000
+    1. JimBeam | Qty: 1998 | 03 Oct 2030
+    2. burger | Qty: 20 | 23 Sep 2030
+    3. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
 USER INPUT: __________________________________________
 Are you sure you want to reset everything in the fridge? (Y/N)
