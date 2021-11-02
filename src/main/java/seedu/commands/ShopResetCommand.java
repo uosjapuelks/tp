@@ -25,7 +25,7 @@ public class ShopResetCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, IngredientList ingredientList, ShoppingList shoppingList)
             throws FridgetException {
-        if (shoppingList.getShoppingList().isEmpty()) {
+        if (shoppingList.getShoppingList("r").isEmpty()) {
             throw new FridgetException("You currently have nothing in your shopping list.");
         }
 

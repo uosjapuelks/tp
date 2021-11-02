@@ -6,7 +6,16 @@ autonumber
 -> ":ResetCommand": execute()
 activate ":ResetCommand"
 
-alt Reconfirm Reset Command
+":ResetCommand" -> ":IngredientList": getIngredientList()
+activate ":IngredientList"
+":ResetCommand" <-- ":IngredientList": ingredientList
+deactivate ":IngredientList"
+
+opt Ingredient List Empty
+<- ":ResetCommand": FridgetException()
+end
+
+opt Reconfirm Reset Command
 
     ":ResetCommand" -> ":IngredientList": resetList()
     activate ":IngredientList"

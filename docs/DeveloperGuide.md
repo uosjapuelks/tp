@@ -10,14 +10,106 @@ Refer to User Guide section on [Quick Start](https://ay2122s1-cs2113t-w12-4.gith
 
 ## Architecture
 
-### Command
-![image info](./umlDiagrams/Command.png)
-The Command class is inherited by all other command class with their specific functionalities.
-
-The Command class contain an execute() method which is inherited by all other classes to execute the
-function specified by their names.
-
 ## Design & implementation
+
+### Architecture Components
+
+![image info](./umlDiagrams/Architecture.png)
+
+This diagram illustrates the basic concept that underlies Fridget.
+
+Each rectangle above represents a class that exists to make Fridget work. 
+The larger folders represent the main purpose of the classes inside it.
+Their functions are as follows:
+
+#### **Front End**
+
+The front end aims to handle:
+- Reading <ins>inputs</ins> from the user
+- Sending <ins>outputs</ins> to the user
+
+##### `Ui`
+
+The Ui manages the entirety of the front end. 
+- It collects user input and stores it.
+- It also prints any necessary output to the terminal.
+
+#### **Core**
+
+The core aims to understand and execute the user's commands.
+
+#### `Parser`
+
+The Parser collects information from the user's input in a way that is usable by other classes within Fridget.
+
+#### `IngredientList`
+
+This class keeps track of all items currently stored within Fridget, and can be easily manipulated.
+
+#### `ShoppingList`
+
+This class keeps track of all items the user may want to shop for, and can be easily manipulated.
+
+#### `Command`
+
+There is a Command class for each possible command the user could execute.
+Each Command class controls the Ui, Parser, IngredientList, and ShoppingList so the User's intended outcome is achieved.
+
+![image info](./umlDiagrams/Command.png)
+The Command class is inherited by its respective subclasses, which have their own specific functionalities.
+
+The Command class contain an `execute()` method which is overridden by all other classes to execute the
+functionality specific to that class.
+
+#### **Database**
+
+The Database stores all info that is needed on a permanent basis. This may
+include info such as the contents of IngredientList. Most info in the Database
+is stored after any changes, and is usually retrieved when Fridget is turned
+on.
+
+#### `Storage`
+
+The Storage class takes charge of storing items after every command, and
+retrieving them upon startup.
+
+#### Fridget
+
+#### `Fridget`
+
+Fridget initialises all classes upon startup, and initiates the user feedback loop as shown below.
+
+![image info](./umlDiagrams/UserFeedbackLoop.png)
+
+### Architecture Logic
+
+The overall flow within Fridget occurs in three stages:
+
+- Startup
+- Execution
+- Shutdown
+
+#### Startup
+
+1. The `main` method in Fridget creates a new instance of `Fridget`.
+2. This new instance creates new instances of `Ui`, `Parser`,`IngredientList`, `ShoppingList`, and `Storage`.
+3. `Fridget.run()` is called, which asks `Storage` to check stored files in the directory: `fridgetData`.
+4. If no such files exist, `Storage` creates the files in the directory `fridgetData` for future usage.
+5. If files have already been created, `IngredientList` and `ShoppingList` is updated based on the info obtained.
+6. `Fridget.run()` initiates the user feedback loop, to obtain input from the user.
+
+#### Execution
+
+1. The user types in an input into the `Ui`. `Parser` is used to extract a `Command` from the user's input.
+2. `Command.execute()` is called to execute the command.
+3. The `Command` takes control of the `Ui`, `IngredientList`, and `ShoppingList` to achieve the intended outcome the user requires.
+4. Once `Command.execute()` has ceased, the `Ui` awaits further input from the user.
+
+#### Shutdown
+
+1. When the `Ui` receives an input containing `exit`, `Parser` extracts an `ExitCommand`.
+2. This `ExitCommand` prints a message to let the user know Fridget is shutting down.
+3. `Fridget` recognises that `ExitCommand.exitNotRequired()` is not false, and shuts down Fridget safely.
 
 ### Adding Items Into Fridget
 
@@ -121,16 +213,58 @@ Step 1:
 
 The execution of this step is initiated by Fridget.
 
-Step 2 & 3: 
+Step 2 & 3:
+
+The getIngredientList() method is called in the IngredientList, and the current ingredientList is returned.
+
+Step 4:
+
+If returned ingredientList is empty, a FridgetException is thrown and the command exits. Else, it will continue to step 5.
+
+Step 5 & 6: 
 
 If the user double confirms the reset command, the resetList() method is called in the IngredientList and resets 
 the ingredient list by overwriting it with a new ingredient list.
 
-Step 4 & 5:
+Step 7 & 8:
 
-The printResetMessage() method is called in the Ui which prints a String stating that the ingredient list has been reset.
+The printResetMessage() method is called in the Ui, and prints a String stating that the ingredient list has been reset.
 
-Step 6:
+Step 9:
+
+The execution of the execute() method ends.
+
+### Resetting Shopping List in Fridget
+
+#### Main Objective:
+
+The objective of the reset functionality is to provide users an easy way to removal all the items in the shopping list.
+
+#### Overall Sequence:
+
+![ResetShop Sequence](./umlDiagrams/ShopResetSequence.png)
+
+Step 1:
+
+The execution of this step is initaited by Fridget.
+
+Step 2 & 3:
+
+The getShoppingList() method is called in the ShoppingList, and the current shoppingList is returned.
+
+Step 4:
+
+If the shoppingList is empty, a FridgetException is thrown. Otherwise, it will continue to step 5.
+
+Step 5 & 6:
+
+The resetList() method is called in the ShoppingList, and resets the shoppingList by overwriting it with a new shoppingList.
+
+Step 7 & 8:
+
+The printShopResetMessage() is called in the Ui, and prints a String stating that the shoppingList had been reset.
+
+Step 9:
 
 The execution of the execute() method ends.
 
@@ -139,7 +273,7 @@ The execution of the execute() method ends.
 #### Main Objectives:
 
 The functionality to list items is bound by two main objectives:
-* Allow users to easily view the contents of Fidget.
+* Allow users to easily view the contents of Fridget.
 * Allow users to choose their preferred sort type.
 
 As a result, the current iteration optionally requires an additional info from the user:
@@ -174,6 +308,114 @@ Step 8:
 
 The execution of the execute() method ends.
 
+### Listing Expiring Items In Fridget
+#### Main Objectives:
+
+The functionality to list items is bound by one objective:
+* Allow users to easily view all expired or expiring items in Fridget.
+
+The current iteration always lists according to the expiry dates of the items.
+
+The purpose of listing according to expiry date as the item closer to expiry or most expired will be listed first.
+
+#### Overall Sequence:
+![image info](./umlDiagrams/ExpiringSequence.png)
+
+Step 1:
+
+This step is initiated by Fridget to initialise ExpiringCommand class.
+
+Step 2:
+
+String "e" is assigned to sortByExpiry.
+
+Step 3 & 4:
+
+The getIngredientList() method is called in IngredientList, with sortByExpiry as a fixed parameter.
+The IngredientList returns an ArrayList<Ingredient> as listOfIngredients that are sorted according to expiry dates.
+
+Step 5 & 6:
+
+The printListMessage() method is called in UI, with the listOfIngredient as parameter.
+The Ui prints out the list of Expiring Ingredients for the user.
+
+Step 8:
+
+The execution of the execute() method ends.
+
+### Finding Items In Fridget
+
+#### Main Objectives:
+
+The functionality to find items is bound by two main objectives:
+* Allow users to easily find the list of items in Fridget that has similarities to search term.
+
+As a result, the current iteration requires an info from the user:
+* The name of the item sought.
+
+This additional info is to be used to be compared to every item in the list.
+
+#### Overall Sequence:
+
+![image info](./umlDiagrams/FindSequence.png)
+
+Step 1:
+
+This step is initiated by Fridget to initialise FindCommand class.
+
+Step 2 & 3:
+
+The getCurrentUserInput() method is called in Ui.
+The Ui returns a String as storedInput which is the user input.
+
+Step 4 & 5:
+
+The parseSearchTerm() method is called in Parser, with storedInput and Parser.CommandType.FIND as parameters.
+The Parser returns a String as searchTerm.
+
+Step 6 & 7:
+
+The findAllMatchingIngredients() method is called in IngredientList with searchTerm as a parameter.
+The IngredientList returns an ArrayList<Ingredient> as matchingIngredients for the user.
+
+Step 8 & 9:
+
+The printListMessage() method is called in Ui, with the matchingIngredients.
+The Ui prints out the list of Ingredients for the user.
+
+Step 10:
+
+The execution of the execute() method ends.
+
+### Listing Items In Shopping List
+
+#### Main Objectives:
+The objective of this functionality is to allow users to easily view the contents of the shopping list.
+
+#### Sequence of execution:
+
+![ShopListSequence](./umlDiagrams/ShopListSequence.png)
+
+Step 1:
+
+The execution of this step is initiated by Fridget.
+
+Step 2 & 3:
+
+The getShoppingList() method is called in ShoppingList, and returns the current shoppingList.
+
+Step 4:
+
+If the shoppingList returned in step 3 is empty, a FridgetException is thrown and the command will stop. Else, it will continue to step 5.
+
+Step 5 & 6:
+
+The printListMessage() method is called in Ui, and prints out the list of ingredients in the shoppingList.
+
+Step 7:
+
+The execution of the execute() method ends.
+
 ### Configuring Notifications 
 
 #### Main Objectives:
@@ -186,6 +428,7 @@ Current implementation allow users to toggle the notifications on or off, with r
 The purpose of implementing time interval and ability to toggle is to prevent excessive notification printing. 
 
 #### Sequence of execution:
+
 ![image info](./umlDiagrams/NotificationSequence.png)
 
 Step 1:

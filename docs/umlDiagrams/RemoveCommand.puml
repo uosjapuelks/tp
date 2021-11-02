@@ -1,0 +1,70 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+-> ":RemoveCommand": execute()
+
+activate ":RemoveCommand"
+
+":RemoveCommand" -> ":Parser" : parseSearchTerm(currentUserInput, Command.Type REMOVE)
+activate ":Parser"
+":RemoveCommand" <-- ":Parser": String nameOfItemToBeRemoved
+deactivate ":Parser"
+
+alt nameOfItemToBeRemoved contains ' | ' or ' / '
+
+    <-- ":RemoveCommand" : Tell user name is invalid
+
+else
+
+    ":RemoveCommand" -> ":IngredientList" : findAllMatchingIngredients (nameOfItemToBeRemoved)
+    activate ":IngredientList"
+    ":RemoveCommand" <-- ":IngredientList" : ArrayList<Ingredient> matchingItems
+    deactivate ":IngredientList"
+
+":RemoveCommand" -> ":RemoveCommand": handleRemovalOfItem(nameOfItemToBeRemoved, matchingItems)
+activate ":RemoveCommand"
+
+":RemoveCommand" -> ":Ui": printIfNotFoundMessage(matchingItems)
+activate ":Ui"
+
+alt matchingItems.size() == 0
+
+<-- ":Ui": Tell user no matching item exists
+
+else
+
+":RemoveCommand" <-- ":Ui"
+deactivate ":Ui"
+
+end
+
+alt matchingItems.size() == 1
+
+alt matchingItem.getIngredientName() != nameOfItemToBeRemoved
+
+":RemoveCommand" -> ":Ui": giveSuggestion(itemToBeRemoved)
+":RemoveCommand" <-- ":Ui": boolean acceptDefault
+
+end
+
+alt acceptDefault
+
+":RemoveCommand" -> ":RemoveCommand": handleRemovalOfMultipleQuantity(itemToBeRemoved)
+activate ":RemoveCommand"
+
+":RemoveCommand" -> ":Ui": getQuantityToBeRemoved(itemToBeRemoved)
+":RemoveCommand" <-- ":Ui": int qty
+
+end
+
+
+end
+
+
+":RemoveCommand" --> ":RemoveCommand"
+deactivate ":RemoveCommand"
+end
+
+@enduml

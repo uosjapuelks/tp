@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+autonumber
+
+-> "FindCommand:Command": execute()
+activate "FindCommand:Command"
+
+"FindCommand:Command" -> ":Ui": getCurrentUserInput()
+activate ":Ui"
+"FindCommand:Command" <-- ":Ui": storedInput :String
+deactivate ":Ui"
+
+"FindCommand:Command" -> ":Parser": parseSearchTerm(storedInput, Parser.CommandType.FIND)
+activate ":Parser"
+"FindCommand:Command" <-- ":Parser": searchTerm :String
+deactivate ":Parser"
+"FindCommand:Command" -> ":IngredientList": findAllMatchingIngredients(searchTerm)
+activate ":IngredientList"
+"FindCommand:Command" <--":IngredientList": matchingIngredients :ArrayList<Ingredient>
+deactivate ":IngredientList"
+"FindCommand:Command" -> ":Ui": printListMessage(matchingIngredients)
+activate ":Ui"
+"FindCommand:Command" <-- ":Ui"
+deactivate ":Ui"
+
+<-- "FindCommand:Command"
+deactivate "FindCommand:Command"
+
+@enduml
