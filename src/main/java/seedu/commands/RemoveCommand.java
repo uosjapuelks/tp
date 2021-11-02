@@ -39,14 +39,14 @@ public class RemoveCommand extends Command {
     /**
      * Handles all cases when user wants to remove an item based on the name of item to be removed.
      *
-     * @param ui            The Ui which will send output and collect input from the user.
-     * @param itemList      The itemList where items are stored.
-     * @param itemToRemove  The name of the item to be removed.
-     * @param matchingItems The list of items in itemList which match the itemToRemove.
+     * @param ui                 The Ui which will send output and collect input from the user.
+     * @param itemList           The itemList where items are stored.
+     * @param nameOfItemToRemove The name of the item to be removed.
+     * @param matchingItems      The list of items in itemList which match the nameOfItemToRemove.
      * @throws FridgetException if the user types an invalid index to remove from itemsList.
      */
     private void handleRemovalOfItem(Ui ui, ItemList itemList, ShoppingList shoppingList,
-                                     String itemToRemove, ArrayList<Item> matchingItems) throws FridgetException {
+                                     String nameOfItemToRemove, ArrayList<Item> matchingItems) throws FridgetException {
         // If there are no matching items, let the user know
         ui.printIfNotFoundMessage(matchingItems);
 
@@ -54,7 +54,7 @@ public class RemoveCommand extends Command {
         if (matchingItems.size() == 1) {
             boolean acceptDefault = true;
             Item itemToBeRemoved = matchingItems.get(0);
-            if (!itemToBeRemoved.getItemName().equals(itemToRemove)) {
+            if (!itemToBeRemoved.getItemName().equals(nameOfItemToRemove)) {
                 acceptDefault = ui.giveSuggestion(itemToBeRemoved);
             }
             if (acceptDefault) {
