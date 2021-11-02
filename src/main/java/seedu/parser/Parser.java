@@ -194,6 +194,7 @@ public class Parser {
 
     /**
      * Returns an Ingredient based on user input.
+     *
      * @param userInput The input from the user in this manner - "add burger /2021-09-23".
      * @return An ingredient.
      * @throws FridgetException thrown when date formatting is wrong.
@@ -227,7 +228,7 @@ public class Parser {
         String[] ingredientsInfo = processedInput[1].split(";");
 
         ArrayList<Ingredient> allIngredientsToBeAdded = new ArrayList<>();
-        for (String ingredientInfo: ingredientsInfo) {
+        for (String ingredientInfo : ingredientsInfo) {
             Ingredient newIngredient = parseIngredientForAdding(processedInput[0] + " " + ingredientInfo);
             allIngredientsToBeAdded.add(newIngredient);
         }
