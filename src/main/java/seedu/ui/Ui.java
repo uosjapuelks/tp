@@ -60,6 +60,7 @@ public class Ui {
 
     /**
      * Print out the content that is reads.
+     *
      * @param content String to be printed.
      */
     public void printLine(String content) {
@@ -240,7 +241,7 @@ public class Ui {
      * Prints a list of items, indented by four spaces and preceded by an index.
      *
      * @param listOfItems The list of items to be printed.
-     * @param hasIndex          Boolean value to indicate printing with index.
+     * @param hasIndex    Boolean value to indicate printing with index.
      */
     public void printListOfItems(ArrayList<Item> listOfItems, boolean hasIndex) {
         int index = 1;
@@ -255,7 +256,7 @@ public class Ui {
      * Prints a shop list of items, indented by four spaces and preceded by an index.
      *
      * @param listOfItems The shop list of items to be printed.
-     * @param hasIndex          Boolean value to indicate printing with index.
+     * @param hasIndex    Boolean value to indicate printing with index.
      */
     public void printShopListOfItems(ArrayList<Item> listOfItems, boolean hasIndex) {
         int index = 1;
@@ -270,8 +271,8 @@ public class Ui {
      * Prints a message informing user on list being printed.
      *
      * @param listOfItems The list of items of all items in fridget.
-     * @param sortType          The string indicating the sort type.
-     * @param isShop            Boolean indicating if the message is used to print shopping list.
+     * @param sortType    The string indicating the sort type.
+     * @param isShop      Boolean indicating if the message is used to print shopping list.
      */
     public void printListMessage(ArrayList<Item> listOfItems, String sortType, boolean isShop) {
         String listMessage = sortTypeMessage(sortType);
@@ -478,7 +479,7 @@ public class Ui {
      * added into the shopping list.
      *
      * @param itemRemoved The item removed.
-     * @param qtyInShop The quantity of removed item already in the shoppingList.
+     * @param qtyInShop   The quantity of removed item already in the shoppingList.
      * @return Quantity of item to be added into the shopping list.
      * @throws FridgetException If the user types a wrong value (non-integer or 0 or outside limit of quantity)
      */
@@ -513,7 +514,7 @@ public class Ui {
     /**
      * Prints the reaction after adding item into the shopping list.
      *
-     * @param addedItem Item added into the shopping list.
+     * @param addedItem          Item added into the shopping list.
      * @param qtyInShopBeforeAdd Quantity of item that already existed in the shoppingList.
      */
     public void printShopUpdateMessage(Item addedItem, int qtyInShopBeforeAdd) {

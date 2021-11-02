@@ -17,9 +17,9 @@ public class ExitCommand extends Command {
     /**
      * Executes the CloseCommand.
      *
-     * @param ui The ui object to interact with user.
-     * @param parser The parser object to parse user inputs.
-     * @param itemList The itemList object.
+     * @param ui           The ui object to interact with user.
+     * @param parser       The parser object to parse user inputs.
+     * @param itemList     The itemList object.
      * @param shoppingList The shoppingList object.
      */
     @Override

@@ -19,10 +19,10 @@ public class AddCommand extends Command {
     /**
      * Executes the "add" command.
      *
-     * @param ui             The ui object to interact with user.
-     * @param parser         The parser object to parse user inputs.
-     * @param itemList The itemList object.
-     * @param shoppingList   The shoppingList object.
+     * @param ui           The ui object to interact with user.
+     * @param parser       The parser object to parse user inputs.
+     * @param itemList     The itemList object.
+     * @param shoppingList The shoppingList object.
      * @throws FridgetException The error object thrown.
      */
     @Override
@@ -40,7 +40,7 @@ public class AddCommand extends Command {
     }
 
     private void addItemToItemList(Ui ui, ItemList itemList, Item newItem,
-                                         ShoppingList shoppingList) throws FridgetException {
+                                   ShoppingList shoppingList) throws FridgetException {
         String itemName = newItem.getItemName();
         if (itemName.contains("|")) {
             throw new FridgetException("Please do not use '|' in your item name.");

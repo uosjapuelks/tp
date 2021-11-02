@@ -151,7 +151,7 @@ public class Parser {
      * Extracts name or item description from processed input.
      *
      * @param processedInput userInput after processInput().
-     * @param commandType an enum that represent a commandType.
+     * @param commandType    an enum that represent a commandType.
      * @return name or item description.
      * @throws FridgetException thrown when there are missing inputs, name or expiry date.
      */
@@ -194,6 +194,7 @@ public class Parser {
 
     /**
      * Returns an Item based on user input.
+     *
      * @param userInput The input from the user in this manner - "add burger /2021-09-23".
      * @return An item.
      * @throws FridgetException thrown when date formatting is wrong.
@@ -218,6 +219,7 @@ public class Parser {
 
     /**
      * Extract multiple items to be added using an ArrayList.
+     *
      * @param userInput raw userInput of format "add ITEM_NAME /2021-11-11 ; ITEM_NAME /2021-10-10"
      * @return an ArrayList containing all items to be added based on user input.
      * @throws FridgetException thrown when date formatting is wrong.
@@ -227,7 +229,7 @@ public class Parser {
         String[] itemsInfo = processedInput[1].split(";");
 
         ArrayList<Item> allItemsToBeAdded = new ArrayList<>();
-        for (String itemInfo: itemsInfo) {
+        for (String itemInfo : itemsInfo) {
             Item newItem = parseItemForAdding(processedInput[0] + " " + itemInfo);
             allItemsToBeAdded.add(newItem);
         }

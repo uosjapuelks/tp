@@ -27,9 +27,9 @@ public class Command {
     /**
      * Executes the command.
      *
-     * @param ui The ui object to interact with user.
-     * @param parser The parser object to parse user inputs.
-     * @param itemList The ItemList object.
+     * @param ui           The ui object to interact with user.
+     * @param parser       The parser object to parse user inputs.
+     * @param itemList     The ItemList object.
      * @param shoppingList The shoppingList object.
      * @throws FridgetException The error object thrown.
      */

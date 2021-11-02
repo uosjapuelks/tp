@@ -19,9 +19,9 @@ public class UpdateCommand extends Command {
     /**
      * Executes the command.
      *
-     * @param ui The ui object to interact with user.
-     * @param parser The parser object to parse user inputs.
-     * @param itemList The itemList object.
+     * @param ui           The ui object to interact with user.
+     * @param parser       The parser object to parse user inputs.
+     * @param itemList     The itemList object.
      * @param shoppingList The shoppingList object.
      * @throws FridgetException The error object thrown.
      */
@@ -55,8 +55,8 @@ public class UpdateCommand extends Command {
      * Updates the shopping list.
      *
      * @param shoppingList The shoppingList object.
-     * @param updatedItem The item updated.
-     * @param qty The difference in quantity of the update.
+     * @param updatedItem  The item updated.
+     * @param qty          The difference in quantity of the update.
      */
     private void updateShopList(ShoppingList shoppingList, Item updatedItem, int qty) {
         if (qty <= 0) {

@@ -19,9 +19,9 @@ public class FindCommand extends Command {
     /**
      * Executes the Find command.
      *
-     * @param ui The ui object to interact with user.
-     * @param parser The parser object to parse user inputs.
-     * @param itemList The itemList object.
+     * @param ui           The ui object to interact with user.
+     * @param parser       The parser object to parse user inputs.
+     * @param itemList     The itemList object.
      * @param shoppingList The shoppingList object.
      * @throws FridgetException The error object thrown.
      */

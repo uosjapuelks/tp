@@ -36,7 +36,7 @@ public class ItemList {
      * Removes an item from the item list.
      *
      * @param item Item to be removed.
-     * @param qty Quantity to be removed.
+     * @param qty  Quantity to be removed.
      * @return Returns true if item is removed from the list (qty = 0)
      */
     public boolean removeItem(Item item, int qty) {

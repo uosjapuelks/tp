@@ -96,7 +96,7 @@ public class Notification {
      * Print out items that are expiring.
      *
      * @param expiringList an ArrayList of items that are expiring within a week or expired.
-     * @param i variable to traverse the list.
+     * @param i            variable to traverse the list.
      */
     private void printExpiringItems(ArrayList<Item> expiringList, int i) {
         if (expiringList.size() - i > 0) {
@@ -115,7 +115,7 @@ public class Notification {
      * Print out items that are expired from a list of expiring items and return the last index it traverse.
      *
      * @param expiringList an ArrayList of items that are expiring within a week or expired.
-     * @param i variable to traverse the list.
+     * @param i            variable to traverse the list.
      * @return int value of i of the last item traversed.
      */
     private int printExpiredItemsAndGetLastIndex(ArrayList<Item> expiringList, int i) {
@@ -174,7 +174,7 @@ public class Notification {
      * @return String containing date, time and status.
      */
     public String toString() {
-        String dateTimeAndStatus =  dateAndTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
+        String dateTimeAndStatus = dateAndTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
                 + " | " + (isNotificationOn ? "yes" : "no");
         assert dateTimeAndStatus.contains(" | ");
         return dateTimeAndStatus;

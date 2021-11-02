@@ -21,7 +21,7 @@ public class ShoppingList {
      * @param item The item to be added.
      */
     public void addItem(Item item, int quantity) {
-        assert  item != null : "Item must not be null!";
+        assert item != null : "Item must not be null!";
         for (Item item1 : shoppingList) {
             if (item1.getItemName().equalsIgnoreCase(item.getItemName())) {
                 item1.addQuantity(quantity);
@@ -35,7 +35,7 @@ public class ShoppingList {
     /**
      * Removes an item from the shopping list.
      *
-     * @param item Item to be removed.
+     * @param item     Item to be removed.
      * @param quantity Quantity to be removed.
      */
     public void removeItem(Item item, int quantity) {
