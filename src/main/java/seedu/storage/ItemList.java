@@ -75,6 +75,12 @@ public class ItemList {
         targetItem.setQuantity(toQuantity);
     }
 
+    /**
+     * Checks if the itemList contains an item.
+     *
+     * @param item Item we want to check if it exists in the itemList.
+     * @return true when itemList contains item and false when itemList does not contain item.
+     */
     public boolean containsItem(Item item) {
         assert item != null : "Item must not be null!";
         return itemList.contains(item);
