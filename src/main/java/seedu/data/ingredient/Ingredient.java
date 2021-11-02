@@ -6,9 +6,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 
 public class Ingredient {
-    protected String ingredientName;
-    protected LocalDate expiryDate;
-    protected int quantity;
+    private final String ingredientName;
+    private final LocalDate expiryDate;
+    private int quantity;
 
     /**
      * Constructor for Ingredient.
@@ -165,6 +165,7 @@ public class Ingredient {
      * @return String containing coloured expiry date.
      */
     public String getColoredExpiryDate() {
+        assert expiryDate != null;
         String expiry = expiryDate.format((DateTimeFormatter.ofPattern("dd MMM yyyy")));
         // TODO: implement in Milestone 2.0
         // String decidedColor = decideColor();
@@ -178,12 +179,14 @@ public class Ingredient {
      */
     public boolean isNearExpiry() {
         LocalDate today = LocalDate.now();
+        assert expiryDate != null;
         long daysRemaining = today.until(expiryDate, ChronoUnit.DAYS);
         return (daysRemaining < 7);
     }
 
     public boolean isExpired() {
         LocalDate today = LocalDate.now();
+        assert expiryDate != null;
         long daysRemaining = today.until(expiryDate, ChronoUnit.DAYS);
         return (daysRemaining < 0);
     }
@@ -195,6 +198,7 @@ public class Ingredient {
      */
     public boolean isPastExpiry() {
         LocalDate today = LocalDate.now();
+        assert expiryDate != null;
         return today.isAfter(expiryDate);
     }
 
