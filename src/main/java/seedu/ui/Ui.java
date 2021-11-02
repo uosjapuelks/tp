@@ -441,7 +441,7 @@ public class Ui {
     /**
      * Prints message to inform on successful change.
      *
-     * @param updated Lastest update on ingredient.
+     * @param updated Latest update on ingredient.
      */
     public void acknowledgeUpdate(Ingredient updated) {
         String msg = String.format("Quantity of %s is now %d.", updated.getIngredientName(), updated.getQuantity());
@@ -475,7 +475,7 @@ public class Ui {
     }
 
     /**
-     * Prints a confirm message to add a removed item into the shopping list and returns the quantity to be
+     * Prints a confirmation message to add a removed item into the shopping list and returns the quantity to be
      * added into the shopping list.
      *
      * @param itemRemoved The ingredient removed.
