@@ -537,11 +537,13 @@ public class Ui {
         if (confirm.equalsIgnoreCase("y")) {
             return true;
         }
-        printSeparatorLine();
-        String errorMessage = "Shutting down the command...";
+
+        String errorMessage = "";
         if (!confirm.equalsIgnoreCase("n")) {
-            errorMessage = "Input is not valid. " + errorMessage;
+            errorMessage = "Input is not valid. ";
         }
+        errorMessage += "Shutting down the command...";
+        printSeparatorLine();
         printLine(errorMessage);
         return false;
     }
