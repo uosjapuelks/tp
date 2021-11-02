@@ -18,10 +18,10 @@ alt nameOfItemToBeRemoved contains ' | ' or ' / '
 
 else
 
-    ":RemoveCommand" -> ":IngredientList" : findAllMatchingIngredients (nameOfItemToBeRemoved)
-    activate ":IngredientList"
-    ":RemoveCommand" <-- ":IngredientList" : ArrayList<Ingredient> matchingItems
-    deactivate ":IngredientList"
+    ":RemoveCommand" -> ":ItemList" : findAllMatchingItems (nameOfItemToBeRemoved)
+    activate ":ItemList"
+    ":RemoveCommand" <-- ":ItemList" : ArrayList<Item> matchingItems
+    deactivate ":ItemList"
 
 ":RemoveCommand" -> ":RemoveCommand": handleRemovalOfItem(nameOfItemToBeRemoved, matchingItems)
 activate ":RemoveCommand"
@@ -42,7 +42,7 @@ end
 
 alt matchingItems.size() == 1
 
-alt matchingItem.getIngredientName() != nameOfItemToBeRemoved
+alt matchingItem.getItemName() != nameOfItemToBeRemoved
 
 ":RemoveCommand" -> ":Ui": giveSuggestion(itemToBeRemoved)
 ":RemoveCommand" <-- ":Ui": boolean acceptDefault

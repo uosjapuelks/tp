@@ -6,32 +6,32 @@ autonumber
 -> ":AddCommand": execute()
 activate ":AddCommand"
 
-":AddCommand" -> ":Parser": parseIngredientForAdding(currentUserInput)
+":AddCommand" -> ":Parser": parseItemForAdding(currentUserInput)
 activate ":Parser"
-":AddCommand" <-- ":Parser": Ingredient
+":AddCommand" <-- ":Parser": Item
 deactivate ":Parser"
 
-alt ingredientName contains ' | '
+alt itemName contains ' | '
 
     <-- ":AddCommand": Tell user not to use ' | '
 
 else
 
-    ":AddCommand" -> ":IngredientList": addIngredient(Ingredient)
-    activate ":IngredientList"
+    ":AddCommand" -> ":ItemList": addItem(Item)
+    activate ":ItemList"
 
-    ":AddCommand" <-- ":IngredientList": qtyOfIngredient
-    deactivate ":IngredientList"
+    ":AddCommand" <-- ":ItemList": qtyOfItem
+    deactivate ":ItemList"
 
-    alt qtyOfIngredient > 1
+    alt qtyOfItem > 1
 
-        ":AddCommand" -> ":Ui": printReactionToAddingExistingIngredient()
+        ":AddCommand" -> ":Ui": printReactionToAddingExistingItem()
         activate ":Ui"
         ":AddCommand" <-- ":Ui"
         deactivate ":Ui"
 
     else else
-        ":AddCommand" -> ":Ui": printReactionToAddingIngredient()
+        ":AddCommand" -> ":Ui": printReactionToAddingItem()
         activate ":Ui"
         ":AddCommand" <-- ":Ui"
         deactivate ":Ui"

@@ -15,11 +15,11 @@ deactivate ":Ui"
 activate ":Parser"
 "FindCommand:Command" <-- ":Parser": searchTerm :String
 deactivate ":Parser"
-"FindCommand:Command" -> ":IngredientList": findAllMatchingIngredients(searchTerm)
-activate ":IngredientList"
-"FindCommand:Command" <--":IngredientList": matchingIngredients :ArrayList<Ingredient>
-deactivate ":IngredientList"
-"FindCommand:Command" -> ":Ui": printListMessage(matchingIngredients)
+"FindCommand:Command" -> ":ItemList": findAllMatchingItems(searchTerm)
+activate ":ItemList"
+"FindCommand:Command" <--":ItemList": matchingItems :ArrayList<Item>
+deactivate ":ItemList"
+"FindCommand:Command" -> ":Ui": printListMessage(matchingItems)
 activate ":Ui"
 "FindCommand:Command" <-- ":Ui"
 deactivate ":Ui"

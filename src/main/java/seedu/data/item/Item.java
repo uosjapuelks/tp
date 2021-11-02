@@ -1,23 +1,53 @@
-package seedu.data.ingredient;
+package seedu.data.item;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 
-public class Ingredient {
-    protected String ingredientName;
+public class Item {
+    protected String itemName;
     protected LocalDate expiryDate;
     protected int quantity;
 
     /**
-     * Constructor for Ingredient.
-     *
-     * @param ingredientName name of the ingredient.
-     * @param expiryDate     date of expiry for ingredient.
+     * Comparator that compares Strings of description of items.
      */
-    public Ingredient(String ingredientName, LocalDate expiryDate) {
-        this.ingredientName = ingredientName;
+    public static Comparator<Item> IngNameComparator = new Comparator<Item>() {
+        @Override
+        public int compare(Item i1, Item i2) {
+
+            String item1 = i1.getItemName().toLowerCase();
+            String item2 = i2.getItemName().toLowerCase();
+
+            //ascending order
+            return item1.compareTo(item2);
+        }
+    };
+
+    /**
+     * Comparator that compares LocalDates of the items.
+     */
+    public static Comparator<Item> IngExpiryComparator = new Comparator<Item>() {
+        @Override
+        public int compare(Item i1, Item i2) {
+
+            LocalDate itemExpiry1 = i1.getExpiryDate();
+            LocalDate itemExpiry2 = i2.getExpiryDate();
+
+            //Ascending order
+            return itemExpiry1.compareTo(itemExpiry2);
+        }
+    };
+
+    /**
+     * Constructor for Item.
+     *
+     * @param itemName   name of the item.
+     * @param expiryDate date of expiry for item.
+     */
+    public Item(String itemName, LocalDate expiryDate) {
+        this.itemName = itemName;
         this.expiryDate = expiryDate;
         this.quantity = 1;
     }
@@ -25,12 +55,12 @@ public class Ingredient {
     /**
      * Overloads constructor to start quantity from more than 1.
      *
-     * @param ingredientName name of the ingredient.
-     * @param expiryDate date of expiry for ingredient.
-     * @param quantity quantity to start from.
+     * @param itemName   name of the item.
+     * @param expiryDate date of expiry for item.
+     * @param quantity   quantity to start from.
      */
-    public Ingredient(String ingredientName, LocalDate expiryDate, int quantity) {
-        this.ingredientName = ingredientName;
+    public Item(String itemName, LocalDate expiryDate, int quantity) {
+        this.itemName = itemName;
         this.expiryDate = expiryDate;
         this.quantity = quantity;
     }
@@ -38,11 +68,11 @@ public class Ingredient {
     /**
      * Overloads constructor to ignore expiry date and start quantity from more than 1.
      *
-     * @param ingredientName name of the ingredient.
+     * @param itemName name of the item.
      * @param quantity quantity to start from.
      */
-    public Ingredient(String ingredientName, int quantity) {
-        this.ingredientName = ingredientName;
+    public Item(String itemName, int quantity) {
+        this.itemName = itemName;
         this.expiryDate = null;
         this.quantity = quantity;
     }
@@ -53,7 +83,7 @@ public class Ingredient {
      * @param qty Amount of items to be added.
      */
     public void addQuantity(int qty) {
-        quantity += (quantity ==  Integer.MAX_VALUE) ? 0 : qty;
+        quantity += (quantity == Integer.MAX_VALUE) ? 0 : qty;
     }
 
     /**
@@ -66,9 +96,9 @@ public class Ingredient {
     }
 
     /**
-     * Gets the Ingredient's quantity.
+     * Gets the Item's quantity.
      *
-     * @return Ingredient's quantity.
+     * @return Item's quantity.
      */
     public int getQuantity() {
         return quantity;
@@ -81,42 +111,42 @@ public class Ingredient {
     /**
      * String is represented as name + quantity + Expiry date that is colored depending on expiry status.
      *
-     * @return Ingredient name, quantity and Expiry that is colored.
+     * @return Item name, quantity and Expiry that is colored.
      */
     @Override
     public String toString() {
         String coloredExpiry = getColoredExpiryDate();
-        return ingredientName + " | Qty: " + quantity + " | " + coloredExpiry;
+        return itemName + " | Qty: " + quantity + " | " + coloredExpiry;
     }
 
     /**
      * String is represented as name + quantity.
      *
-     * @return Ingredient name and quantity.
+     * @return Item name and quantity.
      */
     public String toShopFormat() {
-        return ingredientName + " | Qty: " + quantity;
+        return itemName + " | Qty: " + quantity;
     }
 
     /**
      * String is represented as name + updated quantity.
      *
-     * @param qtyBeforeAdding Quantity of ingredient before adding.
-     * @return Ingredient name and updated quantity.
+     * @param qtyBeforeAdding Quantity of item before adding.
+     * @return Item name and updated quantity.
      */
     public String toAddExistingShopFormat(int qtyBeforeAdding) {
-        return ingredientName + " | Qty: " + qtyBeforeAdding + "->" + (quantity + qtyBeforeAdding);
+        return itemName + " | Qty: " + qtyBeforeAdding + "->" + (quantity + qtyBeforeAdding);
     }
 
     /**
      * String used when adding items already existing in the list.
      *
      * @param qty Total quantity of item in the list.
-     * @return Ingredient Name, change in quantity and Expiry that is colored.
+     * @return Item Name, change in quantity and Expiry that is colored.
      */
     public String addExistingToString(int qty) {
         assert qty > 1 : "Unable to perform this operation as quantity is less than or equal to 1";
-        return ingredientName + " | Qty: " + (qty - 1) + "->" + qty + " | " + getColoredExpiryDate();
+        return itemName + " | Qty: " + (qty - 1) + "->" + qty + " | " + getColoredExpiryDate();
     }
 
     /**
@@ -142,18 +172,18 @@ public class Ingredient {
     }
 
     /**
-     * Gets the Ingredient's name.
+     * Gets the Item's name.
      *
-     * @return Ingredient's name.
+     * @return Item's name.
      */
-    public String getIngredientName() {
-        return ingredientName;
+    public String getItemName() {
+        return itemName;
     }
 
     /**
-     * Gets the Ingredient's Expiry date.
+     * Gets the Item's Expiry date.
      *
-     * @return Ingredient's Expiry date.
+     * @return Item's Expiry date.
      */
     public LocalDate getExpiryDate() {
         return expiryDate;
@@ -172,7 +202,7 @@ public class Ingredient {
     }
 
     /**
-     * Check if Ingredient nearing expiry by 7 DAYS.
+     * Check if Item nearing expiry by 7 DAYS.
      *
      * @return true if item is nearing expiry.
      */
@@ -189,7 +219,7 @@ public class Ingredient {
     }
 
     /**
-     * Check if Ingredient has already expired.
+     * Check if Item has already expired.
      *
      * @return true if item has expired.
      */
@@ -199,36 +229,6 @@ public class Ingredient {
     }
 
     public String saveFormat() {
-        return ingredientName + " | Qty: " + quantity + " | " + expiryDate;
+        return itemName + " | Qty: " + quantity + " | " + expiryDate;
     }
-
-    /**
-     * Comparator that compares Strings of description of ingredients.
-     */
-    public static Comparator<Ingredient> IngNameComparator = new Comparator<Ingredient>() {
-        @Override
-        public int compare(Ingredient i1, Ingredient i2) {
-
-            String ingredient1 = i1.getIngredientName().toLowerCase();
-            String ingredient2 = i2.getIngredientName().toLowerCase();
-
-            //ascending order
-            return ingredient1.compareTo(ingredient2);
-        }
-    };
-
-    /**
-     * Comparator that compares LocalDates of the ingredients.
-     */
-    public static Comparator<Ingredient> IngExpiryComparator = new Comparator<Ingredient>() {
-        @Override
-        public int compare(Ingredient i1, Ingredient i2) {
-
-            LocalDate ingredientExpiry1 = i1.getExpiryDate();
-            LocalDate ingredientExpiry2 = i2.getExpiryDate();
-
-            //Ascending order
-            return ingredientExpiry1.compareTo(ingredientExpiry2);
-        }
-    };
 }

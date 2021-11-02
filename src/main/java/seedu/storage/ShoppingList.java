@@ -1,12 +1,12 @@
 package seedu.storage;
 
 import seedu.data.exception.FridgetException;
-import seedu.data.ingredient.Ingredient;
+import seedu.data.item.Item;
 
 import java.util.ArrayList;
 
 public class ShoppingList {
-    private ArrayList<Ingredient> shoppingList;
+    private ArrayList<Item> shoppingList;
 
     /**
      * Constructor for ShoppingList.
@@ -16,39 +16,39 @@ public class ShoppingList {
     }
 
     /**
-     * Adds an ingredient into shoppingList.
+     * Adds an item into shoppingList.
      *
-     * @param ingredient The ingredient to be added.
+     * @param item The item to be added.
      */
-    public void addIngredient(Ingredient ingredient, int quantity) {
-        assert  ingredient != null : "Ingredient must not be null!";
-        for (Ingredient ingredient1 : shoppingList) {
-            if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())) {
-                ingredient1.addQuantity(quantity);
+    public void addItem(Item item, int quantity) {
+        assert  item != null : "Item must not be null!";
+        for (Item item1 : shoppingList) {
+            if (item1.getItemName().equalsIgnoreCase(item.getItemName())) {
+                item1.addQuantity(quantity);
                 return;
             }
         }
 
-        shoppingList.add(ingredient);
+        shoppingList.add(item);
     }
 
     /**
-     * Removes an ingredient from the shopping list.
+     * Removes an item from the shopping list.
      *
-     * @param ingredient Ingredient to be removed.
+     * @param item Item to be removed.
      * @param quantity Quantity to be removed.
      */
-    public void removeIngredient(Ingredient ingredient, int quantity) {
-        assert ingredient != null : "Ingredient must not be null!";
+    public void removeItem(Item item, int quantity) {
+        assert item != null : "Item must not be null!";
         assert quantity != 0 : "Quantity removed must no be 0!";
 
-        for (Ingredient ingredient1 : shoppingList) {
-            if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())) {
-                if (quantity >= ingredient1.getQuantity()) {
-                    shoppingList.remove(ingredient1);
+        for (Item item1 : shoppingList) {
+            if (item1.getItemName().equalsIgnoreCase(item.getItemName())) {
+                if (quantity >= item1.getQuantity()) {
+                    shoppingList.remove(item1);
                     return;
                 }
-                ingredient1.removeQuantity(quantity);
+                item1.removeQuantity(quantity);
             }
         }
     }
@@ -56,47 +56,47 @@ public class ShoppingList {
     /**
      * Checks if an item with the same name exists in the shopping list and returns its quantity.
      *
-     * @param ingredient Ingredient to be searched.
-     * @return Quantity of ingredient in the shoppingList if exist.
+     * @param item Item to be searched.
+     * @return Quantity of item in the shoppingList if exist.
      */
-    public int searchIngredientNameExist(Ingredient ingredient) {
-        for (Ingredient ingredient1 : shoppingList) {
-            if (ingredient1.getIngredientName().equalsIgnoreCase(ingredient.getIngredientName())) {
-                return ingredient1.getQuantity();
+    public int searchItemNameExist(Item item) {
+        for (Item item1 : shoppingList) {
+            if (item1.getItemName().equalsIgnoreCase(item.getItemName())) {
+                return item1.getQuantity();
             }
         }
         return 0;
     }
 
     /**
-     * Sorts the ingredient in shoppingList by description.
+     * Sorts the item in shoppingList by description.
      *
-     * @return sorted ingredient ArrayList.
+     * @return sorted item ArrayList.
      * @throws FridgetException Error thrown when there are no items in the shoppingList.
      */
-    private ArrayList<Ingredient> sortIngredient() throws FridgetException {
+    private ArrayList<Item> sortItem() throws FridgetException {
         if (shoppingList.isEmpty()) {
             String emptyListMessage = "You currently have nothing in your shopping list.\n"
                     + "Input \"help\" to get started!";
             throw new FridgetException(emptyListMessage);
         }
-        ArrayList<Ingredient> sortedList = new ArrayList<>(shoppingList);
-        sortedList.sort(Ingredient.IngNameComparator);
+        ArrayList<Item> sortedList = new ArrayList<>(shoppingList);
+        sortedList.sort(Item.IngNameComparator);
         return sortedList;
     }
 
     /**
      * Returns the current shopping list.
      *
-     * @return List of ingredients in the shopping list.
+     * @return List of items in the shopping list.
      */
-    public ArrayList<Ingredient> getShoppingList(String sortType) throws FridgetException {
+    public ArrayList<Item> getShoppingList(String sortType) throws FridgetException {
         assert sortType != null : "Sort type must not be null!";
         switch (sortType.toLowerCase()) {
         case "r":
             return shoppingList;
         case "default":
-            return sortIngredient();
+            return sortItem();
         default:
             throw new FridgetException("Unrecognisable shoplist command. Try: <shoplist>");
         }

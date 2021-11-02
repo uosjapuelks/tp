@@ -7,11 +7,11 @@ autonumber
 activate "ExpiringCommand:Command"
 
 "ExpiringCommand:Command" -> "ExpiringCommand:Command" : sortByExpiry :String
-"ExpiringCommand:Command" -> ":IngredientList": getIngredientList(sortByExpiry)
-activate ":IngredientList"
-"ExpiringCommand:Command" <--":IngredientList": listOfIngredients :ArrayList<Ingredient>
-deactivate ":IngredientList"
-"ExpiringCommand:Command" -> ":Ui": printExpiringMessage(listOfIngredients)
+"ExpiringCommand:Command" -> ":ItemList": getItemList(sortByExpiry)
+activate ":ItemList"
+"ExpiringCommand:Command" <--":ItemList": listOfItems :ArrayList<Item>
+deactivate ":ItemList"
+"ExpiringCommand:Command" -> ":Ui": printExpiringMessage(listOfItems)
 activate ":Ui"
 "ExpiringCommand:Command" <-- ":Ui"
 deactivate ":Ui"

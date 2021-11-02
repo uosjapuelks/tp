@@ -15,7 +15,7 @@ import seedu.commands.ShopResetCommand;
 import seedu.commands.ShopListCommand;
 import seedu.commands.UpdateCommand;
 import seedu.data.exception.FridgetException;
-import seedu.data.ingredient.Ingredient;
+import seedu.data.item.Item;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -192,20 +192,20 @@ public class Parser {
     }
 
     /**
-     * Returns an Ingredient based on user input.
+     * Returns an Item based on user input.
      * @param userInput The input from the user in this manner - "add burger /2021-09-23".
-     * @return An ingredient.
+     * @return An item.
      */
-    public Ingredient parseIngredientForAdding(String userInput) throws FridgetException {
+    public Item parseItemForAdding(String userInput) throws FridgetException {
         String[] processedInput = processInput(userInput);
-        String ingredientName = extractDescription(processedInput, CommandType.ADD);
-        assert !ingredientName.isEmpty();
+        String itemName = extractDescription(processedInput, CommandType.ADD);
+        assert !itemName.isEmpty();
 
         String expiryString = extractExpiry(processedInput);
         assert !expiryString.isEmpty();
         try {
             LocalDate expiryDate = LocalDate.parse(expiryString);
-            return new Ingredient(ingredientName, expiryDate);
+            return new Item(itemName, expiryDate);
         } catch (DateTimeParseException e) {
             throw new FridgetException(expiryString + " is not formatted properly.\n"
                     + "Please try this format for the date:\n\n"
@@ -214,17 +214,17 @@ public class Parser {
         }
     }
 
-    public ArrayList<Ingredient> parseMultipleIngredientsForAdding(String userInput) throws FridgetException {
+    public ArrayList<Item> parseMultipleItemsForAdding(String userInput) throws FridgetException {
         String[] processedInput = processInput(userInput);
-        String[] ingredientsInfo = processedInput[1].split(";");
+        String[] itemsInfo = processedInput[1].split(";");
 
-        ArrayList<Ingredient> allIngredientsToBeAdded = new ArrayList<>();
-        for (String ingredientInfo: ingredientsInfo) {
-            Ingredient newIngredient = parseIngredientForAdding(processedInput[0] + " " + ingredientInfo);
-            allIngredientsToBeAdded.add(newIngredient);
+        ArrayList<Item> allItemsToBeAdded = new ArrayList<>();
+        for (String itemInfo: itemsInfo) {
+            Item newItem = parseItemForAdding(processedInput[0] + " " + itemInfo);
+            allItemsToBeAdded.add(newItem);
         }
 
-        return allIngredientsToBeAdded;
+        return allItemsToBeAdded;
     }
 
     /**

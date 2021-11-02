@@ -15,7 +15,7 @@ import seedu.commands.ShopListCommand;
 import seedu.commands.ShopResetCommand;
 import seedu.commands.UpdateCommand;
 import seedu.data.exception.FridgetException;
-import seedu.data.ingredient.Ingredient;
+import seedu.data.item.Item;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -127,17 +127,17 @@ class ParserTest {
     }
 
     @Test
-    void parseIngredientForAdding_addingIngredientInput_expectReturnIngredient() throws FridgetException {
+    void parseItemForAdding_addingItemInput_expectReturnItem() throws FridgetException {
         String inputString = "add chicken /2021-10-15";
-        Ingredient parsedResult = parser.parseIngredientForAdding(inputString);
-        assertTrue(parsedResult.getClass().isAssignableFrom(Ingredient.class));
+        Item parsedResult = parser.parseItemForAdding(inputString);
+        assertTrue(parsedResult.getClass().isAssignableFrom(Item.class));
     }
 
     @Test
-    void parseIngredientForAdding_addingIngredientInput_exceptionThrown() {
+    void parseItemForAdding_addingItemInput_exceptionThrown() {
         String inputString = "add chicken";
         assertThrows(FridgetException.class, () -> {
-            parser.parseIngredientForAdding(inputString);
+            parser.parseItemForAdding(inputString);
         });
     }
 

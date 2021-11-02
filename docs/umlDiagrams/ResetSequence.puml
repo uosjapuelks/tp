@@ -6,21 +6,21 @@ autonumber
 -> ":ResetCommand": execute()
 activate ":ResetCommand"
 
-":ResetCommand" -> ":IngredientList": getIngredientList()
-activate ":IngredientList"
-":ResetCommand" <-- ":IngredientList": ingredientList
-deactivate ":IngredientList"
+":ResetCommand" -> ":ItemList": getItemList()
+activate ":ItemList"
+":ResetCommand" <-- ":ItemList": itemList
+deactivate ":ItemList"
 
-opt Ingredient List Empty
+opt Item List Empty
 <- ":ResetCommand": FridgetException()
 end
 
 opt Reconfirm Reset Command
 
-    ":ResetCommand" -> ":IngredientList": resetList()
-    activate ":IngredientList"
-    ":ResetCommand" <-- ":IngredientList":
-    deactivate ":IngredientList"
+    ":ResetCommand" -> ":ItemList": resetList()
+    activate ":ItemList"
+    ":ResetCommand" <-- ":ItemList":
+    deactivate ":ItemList"
 
     ":ResetCommand" -> ":Ui": printResetMessage()
     activate ":Ui"

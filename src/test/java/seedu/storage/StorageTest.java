@@ -14,20 +14,20 @@ public class StorageTest {
     private static final String FILE_PATH_SHOP = "fridgetTestData/testSavedShop.txt";
     private static final String REGEX_DATA_SEPARATOR = " \\| ";
 
-    IngredientList ingredientList = new IngredientList();
+    ItemList itemList = new ItemList();
     ShoppingList shoppingList = new ShoppingList();
     Notification notification = new Notification();
-    Storage storage = new Storage(ingredientList, shoppingList, notification, FILE_PATH_LIST,
+    Storage storage = new Storage(itemList, shoppingList, notification, FILE_PATH_LIST,
             FILE_PATH_LOGS, FILE_PATH_SHOP);
 
     @Test
-    void addSavedIngredient_correctSavedIngredientFormat_expectCorrectFormatInIngredientList() {
-        String savedIngredient = "chicken | Qty: 1 | 2021-10-15";
-        String[] dataComponents = savedIngredient.split(REGEX_DATA_SEPARATOR);
-        storage.addSavedIngredient(dataComponents);
+    void addSavedItem_correctSavedItemFormat_expectCorrectFormatInItemList() {
+        String savedItem = "chicken | Qty: 1 | 2021-10-15";
+        String[] dataComponents = savedItem.split(REGEX_DATA_SEPARATOR);
+        storage.addSavedItem(dataComponents);
         try {
-            String actualSaveFormat = ingredientList.getIngredientList("default").get(0).saveFormat();
-            assertEquals(actualSaveFormat, savedIngredient);
+            String actualSaveFormat = itemList.getItemList("default").get(0).saveFormat();
+            assertEquals(actualSaveFormat, savedItem);
         } catch (FridgetException e) {
             fail();
         }

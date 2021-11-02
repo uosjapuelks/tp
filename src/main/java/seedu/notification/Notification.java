@@ -1,6 +1,6 @@
 package seedu.notification;
 
-import seedu.data.ingredient.Ingredient;
+import seedu.data.item.Item;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -53,12 +53,12 @@ public class Notification {
     /**
      * Prints out all notifications.
      *
-     * @param listOfIngredients list of ingredients stored in ingredientList.
+     * @param listOfItems list of items stored in itemList.
      */
-    public void printNotification(ArrayList<Ingredient> listOfIngredients) {
+    public void printNotification(ArrayList<Item> listOfItems) {
         if (isNotificationOn() && isMoreThan4Hours()) {
             printHealthNotification();
-            printExpiringNotification(listOfIngredients);
+            printExpiringNotification(listOfItems);
         }
     }
 
@@ -74,14 +74,14 @@ public class Notification {
     /**
      * Print out expiring notification for items expiring and/or expired if any.
      *
-     * @param listOfIngredients list of ingredients stored in ingredientList.
+     * @param listOfItems list of items stored in itemList.
      */
-    public void printExpiringNotification(ArrayList<Ingredient> listOfIngredients) {
-        listOfIngredients.sort(Ingredient.IngExpiryComparator);
-        ArrayList<Ingredient> expiringList = new ArrayList<Ingredient>();
-        for (Ingredient ingredient : listOfIngredients) {
-            if (ingredient.isNearExpiry()) {
-                expiringList.add(ingredient);
+    public void printExpiringNotification(ArrayList<Item> listOfItems) {
+        listOfItems.sort(Item.IngExpiryComparator);
+        ArrayList<Item> expiringList = new ArrayList<Item>();
+        for (Item item : listOfItems) {
+            if (item.isNearExpiry()) {
+                expiringList.add(item);
             }
         }
         if (expiringList.size() > 0) {
@@ -98,13 +98,13 @@ public class Notification {
      * @param expiringList an ArrayList of items that are expiring within a week or expired.
      * @param i variable to traverse the list.
      */
-    private void printExpiringItems(ArrayList<Ingredient> expiringList, int i) {
+    private void printExpiringItems(ArrayList<Item> expiringList, int i) {
         if (expiringList.size() - i > 0) {
             int index = 1;
             printMessage(NOTIFICATION_SEPARATOR + EXPIRING_MESSAGE);
             while (i < expiringList.size()) {
-                String beforeIngredient = FIVE_SPACE_INDENTATION + index + ". ";
-                printMessage(beforeIngredient + expiringList.get(i));
+                String beforeItem = FIVE_SPACE_INDENTATION + index + ". ";
+                printMessage(beforeItem + expiringList.get(i));
                 index++;
                 i++;
             }
@@ -118,13 +118,13 @@ public class Notification {
      * @param i variable to traverse the list.
      * @return int value of i of the last item traversed.
      */
-    private int printExpiredItemsAndGetLastIndex(ArrayList<Ingredient> expiringList, int i) {
+    private int printExpiredItemsAndGetLastIndex(ArrayList<Item> expiringList, int i) {
         if (expiringList.get(i).isExpired()) {
             printMessage(EXPIRING_NOTIFICATION + EXPIRED_MESSAGE);
             int index = 1;
             while ((expiringList.size() - i > 0) && expiringList.get(i).isExpired()) {
-                String beforeIngredient = FIVE_SPACE_INDENTATION + index + ". ";
-                printMessage(beforeIngredient + expiringList.get(i));
+                String beforeItem = FIVE_SPACE_INDENTATION + index + ". ";
+                printMessage(beforeItem + expiringList.get(i));
                 index++;
                 i++;
             }
