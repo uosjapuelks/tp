@@ -9,6 +9,36 @@ public class Ingredient {
     protected String ingredientName;
     protected LocalDate expiryDate;
     protected int quantity;
+    
+    /**
+     * Comparator that compares Strings of description of ingredients.
+     */
+    public static Comparator<Ingredient> IngNameComparator = new Comparator<Ingredient>() {
+        @Override
+        public int compare(Ingredient i1, Ingredient i2) {
+
+            String ingredient1 = i1.getIngredientName().toLowerCase();
+            String ingredient2 = i2.getIngredientName().toLowerCase();
+
+            //ascending order
+            return ingredient1.compareTo(ingredient2);
+        }
+    };
+
+    /**
+     * Comparator that compares LocalDates of the ingredients.
+     */
+    public static Comparator<Ingredient> IngExpiryComparator = new Comparator<Ingredient>() {
+        @Override
+        public int compare(Ingredient i1, Ingredient i2) {
+
+            LocalDate ingredientExpiry1 = i1.getExpiryDate();
+            LocalDate ingredientExpiry2 = i2.getExpiryDate();
+
+            //Ascending order
+            return ingredientExpiry1.compareTo(ingredientExpiry2);
+        }
+    };
 
     /**
      * Constructor for Ingredient.
@@ -26,8 +56,8 @@ public class Ingredient {
      * Overloads constructor to start quantity from more than 1.
      *
      * @param ingredientName name of the ingredient.
-     * @param expiryDate date of expiry for ingredient.
-     * @param quantity quantity to start from.
+     * @param expiryDate     date of expiry for ingredient.
+     * @param quantity       quantity to start from.
      */
     public Ingredient(String ingredientName, LocalDate expiryDate, int quantity) {
         this.ingredientName = ingredientName;
@@ -39,7 +69,7 @@ public class Ingredient {
      * Overloads constructor to ignore expiry date and start quantity from more than 1.
      *
      * @param ingredientName name of the ingredient.
-     * @param quantity quantity to start from.
+     * @param quantity       quantity to start from.
      */
     public Ingredient(String ingredientName, int quantity) {
         this.ingredientName = ingredientName;
@@ -53,7 +83,7 @@ public class Ingredient {
      * @param qty Amount of items to be added.
      */
     public void addQuantity(int qty) {
-        quantity += (quantity ==  Integer.MAX_VALUE) ? 0 : qty;
+        quantity += (quantity == Integer.MAX_VALUE) ? 0 : qty;
     }
 
     /**
@@ -201,34 +231,4 @@ public class Ingredient {
     public String saveFormat() {
         return ingredientName + " | Qty: " + quantity + " | " + expiryDate;
     }
-
-    /**
-     * Comparator that compares Strings of description of ingredients.
-     */
-    public static Comparator<Ingredient> IngNameComparator = new Comparator<Ingredient>() {
-        @Override
-        public int compare(Ingredient i1, Ingredient i2) {
-
-            String ingredient1 = i1.getIngredientName().toLowerCase();
-            String ingredient2 = i2.getIngredientName().toLowerCase();
-
-            //ascending order
-            return ingredient1.compareTo(ingredient2);
-        }
-    };
-
-    /**
-     * Comparator that compares LocalDates of the ingredients.
-     */
-    public static Comparator<Ingredient> IngExpiryComparator = new Comparator<Ingredient>() {
-        @Override
-        public int compare(Ingredient i1, Ingredient i2) {
-
-            LocalDate ingredientExpiry1 = i1.getExpiryDate();
-            LocalDate ingredientExpiry2 = i2.getExpiryDate();
-
-            //Ascending order
-            return ingredientExpiry1.compareTo(ingredientExpiry2);
-        }
-    };
 }
