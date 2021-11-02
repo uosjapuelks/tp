@@ -47,7 +47,7 @@ class ItemTest {
         String date = TOMORROW.format(DateTimeFormatter.ofPattern("dd MMM yyyy"));
         // String expected = String.format("\u001B[33m%s\u001B[0m", date);
         String expected = date;
-        assertEquals(expected, expiringDummy.getColoredExpiryDate());
+        assertEquals(expected, expiringDummy.expiryToString());
     }
 
     @Test

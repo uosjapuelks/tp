@@ -113,7 +113,7 @@ public class Ui {
         String acknowledgeRemove = "You have successfully removed:\n";
         String removeReaction = acknowledgeRemove
                 + FOUR_SPACE_INDENTATION + item.getItemName() + " | Qty: " + qty
-                + " | " + item.getColoredExpiryDate();
+                + " | " + item.expiryToString();
         printLine(removeReaction);
     }
 

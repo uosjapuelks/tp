@@ -115,7 +115,7 @@ public class Item {
      */
     @Override
     public String toString() {
-        String coloredExpiry = getColoredExpiryDate();
+        String coloredExpiry = expiryToString();
         return itemName + " | Qty: " + quantity + " | " + coloredExpiry;
     }
 
@@ -146,29 +146,7 @@ public class Item {
      */
     public String addExistingToString(int qty) {
         assert qty > 1 : "Unable to perform this operation as quantity is less than or equal to 1";
-        return itemName + " | Qty: " + (qty - 1) + "->" + qty + " | " + getColoredExpiryDate();
-    }
-
-    /**
-     * Choose color depending on expiry status.
-     *
-     * @return Red for expired, orange for nearing expiry, and green otherwise.
-     */
-    private String decideColor() {
-        String red = "\u001B[31m%s\u001B[0m";
-        String orange = "\u001B[33m%s\u001B[0m";
-        String green = "\u001B[32m%s\u001B[0m";
-
-        String decidedColor;
-        if (isPastExpiry()) {
-            decidedColor = red;
-        } else if (isNearExpiry()) {
-            decidedColor = orange;
-        } else {
-            decidedColor = green;
-        }
-
-        return decidedColor;
+        return itemName + " | Qty: " + (qty - 1) + "->" + qty + " | " + expiryToString();
     }
 
     /**
@@ -194,11 +172,9 @@ public class Item {
      *
      * @return String containing coloured expiry date.
      */
-    public String getColoredExpiryDate() {
+    public String expiryToString() {
         assert expiryDate != null;
         String expiry = expiryDate.format((DateTimeFormatter.ofPattern("dd MMM yyyy")));
-        // TODO: implement in Milestone 2.0
-        // String decidedColor = decideColor();
         return expiry;
     }
 
