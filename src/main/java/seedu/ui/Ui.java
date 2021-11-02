@@ -539,11 +539,18 @@ public class Ui {
         printSeparatorLine();
         printUserInputMessage();
         String confirm = readUserInput();
-        if (!confirm.equalsIgnoreCase("y")) {
-            printSeparatorLine();
-            printLine("Shutting down the command...");
+        if (confirm.equalsIgnoreCase("y")) {
+            return true;
         }
-        return confirm.equalsIgnoreCase("y");
+
+        String errorMessage = "";
+        if (!confirm.equalsIgnoreCase("n")) {
+            errorMessage = "Input is not valid. ";
+        }
+        errorMessage += "Shutting down the command...";
+        printSeparatorLine();
+        printLine(errorMessage);
+        return false;
     }
 
     /**
