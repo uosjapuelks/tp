@@ -11,8 +11,8 @@ import seedu.commands.ListCommand;
 import seedu.commands.NotificationCommand;
 import seedu.commands.RemoveCommand;
 import seedu.commands.ResetCommand;
-import seedu.commands.ShopResetCommand;
 import seedu.commands.ShopListCommand;
+import seedu.commands.ShopResetCommand;
 import seedu.commands.UpdateCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
@@ -151,7 +151,7 @@ public class Parser {
      * Extracts name or item description from processed input.
      *
      * @param processedInput userInput after processInput().
-     * @param commandType    The CommandType calling the function.
+     * @param commandType an enum that represent a commandType.
      * @return name or item description.
      * @throws FridgetException thrown when there are missing inputs, name or expiry date.
      */
@@ -197,6 +197,7 @@ public class Parser {
      *
      * @param userInput The input from the user in this manner - "add burger /2021-09-23".
      * @return An ingredient.
+     * @throws FridgetException thrown when date formatting is wrong.
      */
     public Ingredient parseIngredientForAdding(String userInput) throws FridgetException {
         String[] processedInput = processInput(userInput);
@@ -216,6 +217,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Extract multiple ingredients to be added using an ArrayList.
+     * @param userInput raw userInput of format "add INGREDIENT_NAME /2021-11-11 ; INGREDIENT_NAME /2021-10-10"
+     * @return an ArrayList containing all ingredients to be added based on user input.
+     * @throws FridgetException thrown when date formatting is wrong.
+     */
     public ArrayList<Ingredient> parseMultipleIngredientsForAdding(String userInput) throws FridgetException {
         String[] processedInput = processInput(userInput);
         String[] ingredientsInfo = processedInput[1].split(";");

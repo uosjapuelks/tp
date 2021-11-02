@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
-    private final Scanner in;
+    private final Scanner input;
     private static final String SEPARATOR_LINE = "__________________________________________";
     private static final String FOUR_SPACE_INDENTATION = "    ";
     private static final String USER_INPUT = "USER INPUT: ";
@@ -25,7 +25,7 @@ public class Ui {
      * A constructor to initialise ui.
      */
     public Ui() {
-        this.in = new Scanner(System.in);
+        this.input = new Scanner(System.in);
     }
 
     /**
@@ -58,6 +58,10 @@ public class Ui {
         System.out.println(SEPARATOR_LINE);
     }
 
+    /**
+     * Print out the content that is reads.
+     * @param content String to be printed.
+     */
     public void printLine(String content) {
         System.out.println(content);
     }
@@ -210,7 +214,7 @@ public class Ui {
      * @return A String containing user input.
      */
     public String readUserInput() {
-        currentUserInput = in.nextLine();
+        currentUserInput = input.nextLine();
         return currentUserInput;
     }
 
@@ -436,7 +440,7 @@ public class Ui {
     /**
      * Prints message to inform on successful change.
      *
-     * @param updated Lastest update on ingredient.
+     * @param updated Latest update on ingredient.
      */
     public void acknowledgeUpdate(Ingredient updated) {
         String msg = String.format("Quantity of %s is now %d.", updated.getIngredientName(), updated.getQuantity());
@@ -470,7 +474,7 @@ public class Ui {
     }
 
     /**
-     * Prints a confirm message to add a removed item into the shopping list and returns the quantity to be
+     * Prints a confirmation message to add a removed item into the shopping list and returns the quantity to be
      * added into the shopping list.
      *
      * @param itemRemoved The ingredient removed.
@@ -525,7 +529,7 @@ public class Ui {
     }
 
     /**
-     * Prints a reconfirm message and gets the reconfirm result.
+     * Prints a reconfirmation message and gets the reconfirmation result.
      *
      * @return Boolean representing reconfirm status (y: confirm, n: abort)
      */
