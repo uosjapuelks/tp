@@ -81,7 +81,7 @@ public class ShoppingList {
             throw new FridgetException(emptyListMessage);
         }
         ArrayList<Item> sortedList = new ArrayList<>(shoppingList);
-        sortedList.sort(Item.IngNameComparator);
+        sortedList.sort(Item.ItemNameComparator);
         return sortedList;
     }
 

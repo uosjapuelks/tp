@@ -77,7 +77,7 @@ public class Notification {
      * @param listOfItems list of items stored in itemList.
      */
     public void printExpiringNotification(ArrayList<Item> listOfItems) {
-        listOfItems.sort(Item.IngExpiryComparator);
+        listOfItems.sort(Item.ItemExpiryComparator);
         ArrayList<Item> expiringList = new ArrayList<Item>();
         for (Item item : listOfItems) {
             if (item.isNearExpiry()) {

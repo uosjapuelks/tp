@@ -94,7 +94,7 @@ public class ItemList {
             throw new FridgetException(emptyListMessage);
         }
         ArrayList<Item> sortedList = new ArrayList<Item>(itemList);
-        sortedList.sort((byDate ? Item.IngExpiryComparator : Item.IngNameComparator));
+        sortedList.sort((byDate ? Item.ItemExpiryComparator : Item.ItemNameComparator));
         return sortedList;
     }
 

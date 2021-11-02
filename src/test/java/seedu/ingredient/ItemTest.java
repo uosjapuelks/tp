@@ -70,7 +70,7 @@ class ItemTest {
         Item a = new Item("A", TOMORROW);
         Item b = new Item("B", YESTERDAY);
         int expected = "A".compareTo("B");
-        int actual = Item.IngNameComparator.compare(a, b);
+        int actual = Item.ItemNameComparator.compare(a, b);
         assertEquals(expected, actual);
     }
 
@@ -79,7 +79,7 @@ class ItemTest {
         Item a = new Item("A", TOMORROW);
         Item b = new Item("B", YESTERDAY);
         int expected = TOMORROW.compareTo(YESTERDAY);
-        int actual = Item.IngExpiryComparator.compare(a, b);
+        int actual = Item.ItemExpiryComparator.compare(a, b);
         assertEquals(expected, actual);
     }
 }

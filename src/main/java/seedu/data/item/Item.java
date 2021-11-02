@@ -13,7 +13,7 @@ public class Item {
     /**
      * Comparator that compares Strings of description of items.
      */
-    public static Comparator<Item> IngNameComparator = new Comparator<Item>() {
+    public static Comparator<Item> ItemNameComparator = new Comparator<Item>() {
         @Override
         public int compare(Item i1, Item i2) {
 
@@ -28,7 +28,7 @@ public class Item {
     /**
      * Comparator that compares LocalDates of the items.
      */
-    public static Comparator<Item> IngExpiryComparator = new Comparator<Item>() {
+    public static Comparator<Item> ItemExpiryComparator = new Comparator<Item>() {
         @Override
         public int compare(Item i1, Item i2) {
 
