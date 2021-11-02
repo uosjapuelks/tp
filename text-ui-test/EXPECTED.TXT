@@ -1,4 +1,7 @@
 
+
+
+
    ad88              88           88
   d8"                ""           88                             ,d
   88                              88                             88
@@ -11,6 +14,23 @@ MM88MMM  8b,dPPYba,  88   ,adPPYb,88   ,adPPYb,d8   ,adPPYba,  MM88MMM
                                         "Y8bbdP"
 Hello!
 What would you like to do?
+__________________________________________
+ ___________________________________________________
+|                      HEALTH!                      |
+|===================================================|
+|      ___            _         __        ______    |
+|     / _ \___ __ _  (_)__  ___/ /__ ____/ / / /    |
+|    / , _/ -_)  ' \/ / _ \/ _  / -_) __/_/_/_/     |
+|   /_/|_|\__/_/_/_/_/_//_/\_,_/\__/_/ (_|_|_)      |
+|   ---------------------------------------------   |
+|                                                   |
+|    "If you don't take time to take care of your   |
+|    health now, you're gonna have to make time     |
+|    for feeling sick and tired later."             |
+|                                                   |
+|            Always remember to eat more            |
+|              Fruits and Vegetables!               |
+|___________________________________________________|
 __________________________________________
 USER INPUT: __________________________________________
 No command found!
@@ -25,41 +45,41 @@ __________________________________________
 USER INPUT: __________________________________________
 List of commands available:
 
-add INGREDIENT_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
--> Adds an ingredient and its expiry date to the ingredient list.
+add ITEM_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
+-> Adds an item and its expiry date to the item list.
 
 find KEYWORD [eg. find bacon]
--> Find and print all ingredient associated with keyword.
+-> Find and print all item associated with keyword.
 
-remove INGREDIENT_NAME [eg. delete bacon]
--> Removes the ingredient from the ingredient list.
+remove ITEM_NAME [eg. delete bacon]
+-> Removes the item from the item list.
 
 list -e
--> List out all the ingredients starting with earliest expiry date.
+-> List out all the items starting with earliest expiry date.
 
 list -r
--> List out all the ingredients based on the order added.
+-> List out all the items based on the order added.
 
 list
--> List out all the ingredients in alphabetical order.
+-> List out all the items in alphabetical order.
 
 shoplist
--> List out all the ingredients in the shopping list in alphabetical order.
+-> List out all the items in the shopping list in alphabetical order.
 
 expiring
--> Prints out ingredients that have expired or are expiring within a week.
+-> Prints out items that have expired or are expiring within a week.
 
-update INGREDIENT_NAME [eg. update egg]
+update ITEMS_NAME [eg. update egg]
 -> Prompts a quantity change for the specified item name.
 
 notifs
 -> Toggle the notification on or off depending on previous state. Default mode is on.
 
 reset
--> Deletes all the previous ingredient entries from the reader.
+-> Deletes all the previous item entries from the reader.
 
 shopreset
--> Deletes all the previous ingredient entries in the shopping list.
+-> Deletes all the previous item entries in the shopping list.
 
 exit
 -> Exits the program.
@@ -78,46 +98,43 @@ __________________________________________
 USER INPUT: __________________________________________
 How many of burger do you have left?
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Quantity of burger is now 20.
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by item name:
     burger | Qty: 20 | 23 Sep 2030
     chicken | Qty: 1 | 10 Oct 2000
-    JimBeam | Qty: 1998 | 03 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
-These are the matching ingredients:
+These are the matching items:
     1. burger | Qty: 20 | 23 Sep 2030
 __________________________________________
 USER INPUT: __________________________________________
-These are the matching ingredients:
-    1. JimBeam | Qty: 1998 | 03 Oct 2030
-    2. burger | Qty: 20 | 23 Sep 2030
-    3. chicken | Qty: 1 | 10 Oct 2000
+These are the matching items:
+    1. burger | Qty: 20 | 23 Sep 2030
+    2. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
 USER INPUT: __________________________________________
-These are the matching ingredients:
+These are the matching items:
     1. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
 USER INPUT: __________________________________________
 Are you sure you want to reset everything in the fridge? (Y/N)
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Shutting down the command...
 __________________________________________
 USER INPUT: __________________________________________
-These are the matching ingredients:
-    1. JimBeam | Qty: 1998 | 03 Oct 2030
-    2. burger | Qty: 20 | 23 Sep 2030
-    3. chicken | Qty: 1 | 10 Oct 2000
+These are the matching items:
+    1. burger | Qty: 20 | 23 Sep 2030
+    2. chicken | Qty: 1 | 10 Oct 2000
 __________________________________________
 USER INPUT: __________________________________________
 Are you sure you want to reset everything in the fridge? (Y/N)
 __________________________________________
-__________________________________________
-Ingredient list has been reset successfully.
+USER INPUT: __________________________________________
+Item list has been reset successfully.
 __________________________________________
 USER INPUT: __________________________________________
 You currently have nothing in your fridge.
@@ -175,7 +192,7 @@ Which item would you like to remove? Type the index of the item below.
     2. JimBeam | Qty: 2 | 03 Oct 2030
 If you've changed your mind, simply type 'quit'.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 This index is not valid. The command has been shutdown.
 __________________________________________
 USER INPUT: __________________________________________
@@ -187,26 +204,26 @@ __________________________________________
 USER INPUT: __________________________________________
 Did you mean: JimBeam? [Y/N]
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Understood, Command has been shutdown.
 __________________________________________
 USER INPUT: __________________________________________
 Did you mean: JimBeam? [Y/N]
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 There are 2 items, how many would like to remove?
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully removed:
     JimBeam | Qty: 1 | 03 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
 Did you mean: JimBeam? [Y/N]
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 How many of JimBeam do you have left?
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Quantity of JimBeam is now 2000.
 __________________________________________
 USER INPUT: __________________________________________
@@ -216,10 +233,10 @@ Which item would you like to overwrite quantity? Type the index of the item belo
     3. JimBeam | Qty: 2000 | 03 Oct 2030
 If you've changed your mind, simply type 'quit'.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 How many of yoghurt cake do you have left?
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Quantity of yoghurt cake is now 675.
 __________________________________________
 USER INPUT: __________________________________________
@@ -228,10 +245,10 @@ Which item would you like to remove? Type the index of the item below.
     2. JimBeam | Qty: 2000 | 03 Oct 2030
 If you've changed your mind, simply type 'quit'.
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 There are 2000 items, how many would like to remove?
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully removed:
     JimBeam | Qty: 2 | 03 Oct 2030
 __________________________________________
@@ -244,7 +261,7 @@ __________________________________________
 USER INPUT: __________________________________________
 There are 3 items, how many would like to remove?
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully removed:
     fish Cake | Qty: 2 | 12 Dec 2010
 __________________________________________
@@ -257,16 +274,16 @@ __________________________________________
 USER INPUT: __________________________________________
 There are 675 items, how many would like to remove?
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully removed:
     yoghurt cake | Qty: 675 | 15 Oct 2030
 __________________________________________
 You have ran out of yoghurt cake. Would you like to add it to your shopping list? (Y/N)
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 How many items would you like to buy?
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 You have successfully added:
     yoghurt cake | Qty: 5
 __________________________________________
@@ -276,7 +293,7 @@ You have successfully removed:
 __________________________________________
 You have ran out of fish Cake. Would you like to add it to your shopping list? (Y/N)
 __________________________________________
-__________________________________________
+USER INPUT: __________________________________________
 Understood, Command has been shutdown.
 __________________________________________
 USER INPUT: __________________________________________
