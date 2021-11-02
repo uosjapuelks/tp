@@ -1,14 +1,14 @@
 package seedu.ui;
 
-import seedu.commands.Command;
 import seedu.data.exception.FridgetException;
 import seedu.data.ingredient.Ingredient;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
-    private final Scanner in;
+    private final Scanner input;
     private static final String SEPARATOR_LINE = "__________________________________________";
     private static final String FOUR_SPACE_INDENTATION = "    ";
     private static final String USER_INPUT = "USER INPUT: ";
@@ -26,7 +26,7 @@ public class Ui {
      * A constructor to initialise ui.
      */
     public Ui() {
-        this.in = new Scanner(System.in);
+        this.input = new Scanner(System.in);
     }
 
     /**
@@ -59,6 +59,10 @@ public class Ui {
         System.out.println(SEPARATOR_LINE);
     }
 
+    /**
+     * Print out the content that is reads.
+     * @param content String to be printed.
+     */
     public void printLine(String content) {
         System.out.println(content);
     }
@@ -210,7 +214,7 @@ public class Ui {
      * @return A String containing user input.
      */
     public String readUserInput() {
-        currentUserInput = in.nextLine();
+        currentUserInput = input.nextLine();
         return currentUserInput;
     }
 
