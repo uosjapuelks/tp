@@ -3,10 +3,23 @@
 ## Acknowledgements
 
 * Inspired by [AddressBook-Level3 (AB3) DG](https://se-education.org/addressbook-level3/DeveloperGuide.html#architecture).
-* Additional library used include [JANSI](https://github.com/fusesource/jansi).
 
 ## Setting Up Fridget
-Refer to User Guide section on [Quick Start](https://ay2122s1-cs2113t-w12-4.github.io/tp/UserGuide.html#:~:text=be%20more%20efficient.-,Quick%20Start,-Ensure%20that%20you).
+1. Ensure that you have Java 11 or above installed on your computer.
+2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v1.0/fridget.jar).
+3. Copy the file into the folder you want to store Fridget's data.
+   4!. Launch the terminal on your computer. You can refer to [this website](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) on how to launch the terminal on your specific OS (Windows/Mac/Linux).
+5. Type in `java -jar Fridget.jar` into the terminal to launch the app.
+6. Type your command in the command box and press Enter to execute it.
+   * Some example commands you can try:
+      - help: lists all commands and input format.
+      - reset: prompts the user to confirm clearing all data.
+      - exit: close the app.
+7. Congratulations! You should be good to go!
+<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+:bulb: <b>Tip:</b>
+You can key in "<b>java -version</b>" into your terminal to check your version of java.
+</div>
 
 ## Architecture
 
@@ -180,7 +193,7 @@ the User Guide.
 
 Future uses include:
 * More in-depth coverage of all basic functions.
-* Interactive component to explore capabilities of each commands.
+* Interactive component to explore capabilities of each command.
 
 #### Sequence of execution:
 
@@ -246,7 +259,7 @@ The objective of the reset functionality is to provide users an easy way to remo
 
 Step 1:
 
-The execution of this step is initaited by Fridget.
+The execution of this step is initiated by Fridget.
 
 Step 2 & 3:
 
@@ -506,7 +519,7 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 |v1.0|fitness fanatic|have health-focused reminders for family members to eat more fruits and healthy snacks|my family can be healthy together|
 |v2.0|busy house-husband|check if any ingredient requires me to replenish|easily curate my shopping list|
 |v2.0|lazy house-husband|update the amount that is left of the item|know if it is very urgent to consume when it nears expiry|
-|v2.0|lazy house-husband|I want to be able to add multiple items at once|type lesser commands to add them in|
+|v2.0|lazy house-husband|be able to add multiple items at once|type lesser commands to add them in|
 |v2.1|forgetful house-husband|be reminded on items nearing expiry|use it before its too late|
 
 
@@ -521,8 +534,6 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 * **OS**: Windows, Linux, OS X
 
 ## Instructions For Manual Testing
-
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
 
 ### Launch And Shutdown
 1. Initial launch
@@ -555,8 +566,8 @@ This CLI based application hopes to automate a lot of the tasks users have relat
    2. ITEM_NAME is the parameter for the name.
    3. If there are multiple item with same name, Fridget prompts you to choose the index of item to remove.
    4. If there are multiple quantity of an item, Fridget prompts you to input quantity to remove.
-2. Prerequisites: There should be a prepare list of items in Fridget.
-   1. Add 3 bacon of different dates. (eg. 2021-11-11, 2021-12-12)
+2. Prerequisites: There should be a prepared list of items in Fridget.
+   1. Add 3 bacon of different dates. (e.g. 2021-11-11, 2021-12-12)
    2. Add 3 egg of same date.
 3. Test Cases:
    1. `remove bacon`

@@ -6,8 +6,11 @@ import seedu.data.ingredient.Ingredient;
 import java.util.ArrayList;
 
 public class IngredientList {
-    protected ArrayList<Ingredient> ingredientList;
+    private ArrayList<Ingredient> ingredientList;
 
+    /**
+     * Constructor for IngredientList.
+     */
     public IngredientList() {
         this.ingredientList = new ArrayList<Ingredient>();
     }
@@ -75,6 +78,12 @@ public class IngredientList {
         targetIngredient.setQuantity(toQuantity);
     }
 
+    /**
+     * Checks if ingredientList contains an Ingredient.
+     *
+     * @param ingredient an ingredient of type Ingredient.
+     * @return true if ingredient is in the ingredientList.
+     */
     public boolean containsIngredient(Ingredient ingredient) {
         assert ingredient != null : "Ingredient must not be null!";
         return ingredientList.contains(ingredient);
