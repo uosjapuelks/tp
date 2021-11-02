@@ -151,6 +151,7 @@ public class Parser {
      * Extracts name or item description from processed input.
      *
      * @param processedInput userInput after processInput().
+     * @param commandType    The CommandType calling the function.
      * @return name or item description.
      * @throws FridgetException thrown when there are missing inputs, name or expiry date.
      */
@@ -193,6 +194,7 @@ public class Parser {
 
     /**
      * Returns an Ingredient based on user input.
+     *
      * @param userInput The input from the user in this manner - "add burger /2021-09-23".
      * @return An ingredient.
      */
@@ -219,7 +221,7 @@ public class Parser {
         String[] ingredientsInfo = processedInput[1].split(";");
 
         ArrayList<Ingredient> allIngredientsToBeAdded = new ArrayList<>();
-        for (String ingredientInfo: ingredientsInfo) {
+        for (String ingredientInfo : ingredientsInfo) {
             Ingredient newIngredient = parseIngredientForAdding(processedInput[0] + " " + ingredientInfo);
             allIngredientsToBeAdded.add(newIngredient);
         }
