@@ -23,7 +23,7 @@ activate ":NotificationCommand"
         ":NotificationCommand" <-- ":Ui"
         deactivate ":Ui"
 
-    else
+    else else
             ":NotificationCommand" -> ":Notification": setNotificationStatus(true)
             ":NotificationCommand" -> ":Ui": printLine()
             activate ":Ui"
