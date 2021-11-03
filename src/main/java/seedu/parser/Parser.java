@@ -214,7 +214,10 @@ public class Parser {
         if (expiryDate.isBefore(LocalDate.now())) {
             long daysPast = ChronoUnit.DAYS.between(expiryDate, LocalDate.now());
             throw new FridgetException(itemName + " expired " + daysPast + " days ago.");
+        } else if (ChronoUnit.CENTURIES.between(expiryDate,LocalDate.now()) > 1) {
+            throw new FridgetException(itemName + " expires more than a century later.");
         }
+
         return new Item(itemName, expiryDate);
     }
 
