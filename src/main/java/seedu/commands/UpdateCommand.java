@@ -40,7 +40,7 @@ public class UpdateCommand extends Command {
             parser.parseSuggestion(reply);
 
             itemList.removeItem(itemToUpdate, itemToUpdate.getQuantity());
-            ui.printUpdateRemovedItem(itemToUpdate, itemToUpdate.getQuantity());
+            ui.printReactionToRemovingItem(itemToUpdate, itemToUpdate.getQuantity());
             updateShopList(ui, shoppingList, itemToUpdate, qtyDiff);
         } else {
             itemList.updateQuantity(itemToUpdate, newQty);

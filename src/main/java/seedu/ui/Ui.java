@@ -117,11 +117,6 @@ public class Ui {
         printLine(removeReaction);
     }
 
-    public void printUpdateRemovedItem(Item item, int qty) {
-        printReactionToRemovingItem(item, qty);
-        printSeparatorLine();
-    }
-
     /**
      * Suggests the correct item name if input is incomplete.
      *
@@ -494,6 +489,7 @@ public class Ui {
     public int getShopQuantity(Item itemRemoved, int qtyInShop) throws FridgetException {
         String addConfirmMessage = "You have ran out of " + itemRemoved.getItemName()
                 + ". Would you like to add it to your shopping list? (Y/N)";
+        printSeparatorLine();
         printLine(addConfirmMessage);
         printSeparatorLine();
         boolean userConfirmation = getYesNo();
