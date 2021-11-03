@@ -1,7 +1,19 @@
 package seedu.parser;
 
 
-import seedu.commands.*;
+import seedu.commands.AddCommand;
+import seedu.commands.Command;
+import seedu.commands.ExitCommand;
+import seedu.commands.ExpiringCommand;
+import seedu.commands.FindCommand;
+import seedu.commands.HelpCommand;
+import seedu.commands.ListCommand;
+import seedu.commands.NotificationCommand;
+import seedu.commands.RemoveCommand;
+import seedu.commands.ResetCommand;
+import seedu.commands.ShopListCommand;
+import seedu.commands.ShopResetCommand;
+import seedu.commands.UpdateCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.item.Item;
 
