@@ -23,6 +23,11 @@ import java.util.ArrayList;
 
 public class Parser {
 
+    public static final String ADD_FORMAT = " Try: [add] <ITEM_NAME> /<YYYY-MM-DD>";
+    public static final String REMOVE_FORMAT = " Try: [remove] <ITEM_NAME>";
+    public static final String FIND_FORMAT = " Try: [find] <ITEM_NAME>";
+    public static final String UPDATE_FORMAT = " Try: [update] <ITEM_NAME>";
+
     public enum CommandType {
         ADD,
         REMOVE,
@@ -141,8 +146,9 @@ public class Parser {
             expiry = (str.contains("/")) ? str.substring(str.indexOf("/") + 1).trim() : expiry;
         }
         if (expiry.equals("")) {
-            String addFormat = " Try: [add] <ITEM_NAME> /<YYYY-MM-DD>";
-            throw new FridgetException("Missing expiry date." + addFormat);
+            throw new FridgetException("Missing expiry date." + ADD_FORMAT);
+        } else if (expiry.startsWith("-")) {
+            throw new FridgetException("Extra \"-\" detected before date input." + ADD_FORMAT);
         }
         return expiry;
     }
@@ -159,16 +165,16 @@ public class Parser {
         String correctFormat;
         switch (commandType) {
         case ADD:
-            correctFormat = " Try: [add] <ITEM_NAME> /<YYYY-MM-DD>";
+            correctFormat = ADD_FORMAT;
             break;
         case REMOVE:
-            correctFormat = " Try: [remove] <ITEM_NAME>";
+            correctFormat = REMOVE_FORMAT;
             break;
         case FIND:
-            correctFormat = " Try: [find] <ITEM_NAME>";
+            correctFormat = FIND_FORMAT;
             break;
         case UPDATE:
-            correctFormat = " Try: [update] <ITEM_NAME>";
+            correctFormat = UPDATE_FORMAT;
             break;
         default:
             correctFormat = "";
