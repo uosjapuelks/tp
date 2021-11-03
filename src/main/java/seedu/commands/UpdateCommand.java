@@ -32,23 +32,40 @@ public class UpdateCommand extends Command {
 
         Item itemToUpdate = ui.matchItem(matchingItems, targetItem, Ui.CommandType.UPDATE);
         int newQty = ui.getUpdate(itemToUpdate);
+        boolean requireRemoval = parser.parseQuantity(newQty);
+
         int qtyDiff = newQty - itemToUpdate.getQuantity();
-        itemList.updateQuantity(itemToUpdate, newQty);
-        updateShopList(shoppingList, itemToUpdate, qtyDiff);
-        ui.acknowledgeUpdate(itemToUpdate);
+        if (requireRemoval) {
+            boolean reply = ui.suggestRemove(itemToUpdate);
+            parser.parseSuggestion(reply);
+
+            itemList.removeItem(itemToUpdate, itemToUpdate.getQuantity());
+            ui.printUpdateRemovedItem(itemToUpdate, itemToUpdate.getQuantity());
+            updateShopList(ui, shoppingList, itemToUpdate, qtyDiff);
+        } else {
+            itemList.updateQuantity(itemToUpdate, newQty);
+            updateShopList(ui, shoppingList, itemToUpdate, qtyDiff);
+            ui.acknowledgeUpdate(itemToUpdate);
+        }
     }
 
     /**
      * Updates the shopping list.
      *
+     * @param ui           The ui object.
      * @param shoppingList The shoppingList object.
      * @param updatedItem  The item updated.
      * @param qty          The difference in quantity of the update.
      */
-    private void updateShopList(ShoppingList shoppingList, Item updatedItem, int qty) {
-        if (qty <= 0) {
-            return;
+    private void updateShopList(Ui ui, ShoppingList shoppingList, Item updatedItem, int qty) throws FridgetException {
+        if (qty > 0) {
+            shoppingList.removeItem(updatedItem, qty);
+        } else if (qty == -updatedItem.getQuantity()) {
+            int qtyInShop = shoppingList.searchItemNameExist(updatedItem);
+            int qtyToShop = ui.getShopQuantity(updatedItem, qtyInShop);
+            Item addedItem = new Item(updatedItem.getItemName(), qtyToShop);
+            shoppingList.addItem(addedItem, qtyToShop);
+            ui.printShopUpdateMessage(addedItem, qtyInShop);
         }
-        shoppingList.removeItem(updatedItem, qty);
     }
 }

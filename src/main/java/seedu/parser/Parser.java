@@ -1,6 +1,5 @@
 package seedu.parser;
 
-
 import seedu.commands.AddCommand;
 import seedu.commands.Command;
 import seedu.commands.ExitCommand;
@@ -195,7 +194,7 @@ public class Parser {
         if (commandType == CommandType.ADD) {
             description = processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
             if (description.contains("|")) {
-                throw new FridgetException("Please do not use '|' in your item name.");
+                throw new FridgetException("Please do not use '|' in your item name. Found in: [" + description + "]");
             } else if (!description.equals("")) {
                 return description;
             }
@@ -280,7 +279,7 @@ public class Parser {
      * Returns a search term provided by the "find" command.
      *
      * @param userInput   The input from the user in this manner - "find burger".
-     * @param commandType The commandType calling the fucntion.
+     * @param commandType The commandType calling the function.
      * @return The search term.
      */
     public String parseSearchTerm(String userInput, CommandType commandType) throws FridgetException {
@@ -288,5 +287,30 @@ public class Parser {
         String searchTerm = extractDescription(processedInput, commandType);
         assert !searchTerm.isEmpty();
         return searchTerm;
+    }
+
+    /**
+     * Verify if quantity is valid.
+     *
+     * @param newQty new quantity to be updated.
+     * @return Boolean of true if new quantity is equal to 0.
+     * @throws FridgetException When new quantity is less than 0.
+     */
+    public boolean parseQuantity(int newQty) throws FridgetException {
+        if (newQty < 0) {
+            throw new FridgetException("Update quantity cannot be set to negative values.");
+        } else return newQty == 0;
+    }
+
+    /**
+     * Check suggestion.
+     *
+     * @param acceptSuggestion If suggestion was accepted with "y".
+     * @throws FridgetException If Suggestion was rejected.
+     */
+    public void parseSuggestion(boolean acceptSuggestion) throws FridgetException {
+        if (!acceptSuggestion) {
+            throw new FridgetException("You have opted to abort. Command has been shutdown.");
+        }
     }
 }

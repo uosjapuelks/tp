@@ -117,6 +117,11 @@ public class Ui {
         printLine(removeReaction);
     }
 
+    public void printUpdateRemovedItem(Item item, int qty) {
+        printReactionToRemovingItem(item, qty);
+        printSeparatorLine();
+    }
+
     /**
      * Suggests the correct item name if input is incomplete.
      *
@@ -127,11 +132,6 @@ public class Ui {
         printLine(message);
         printSeparatorLine();
         return getYesNo();
-    }
-
-    public void printDoesNotExist(String searchTerm) {
-        printLine("There are no other items that matches the search term: [" + searchTerm + "]");
-        printLine("Command has been shutdown.");
     }
 
     /**
@@ -358,17 +358,6 @@ public class Ui {
     }
 
     /**
-     * Prints message if there are no matching items.
-     *
-     * @param matchingItems List of matching items after parseSearchTerm.
-     */
-    public void printIfNotFoundMessage(ArrayList<Item> matchingItems) {
-        if (matchingItems.size() == 0) {
-            printLine("No such item exists.");
-        }
-    }
-
-    /**
      * Asks user for input and expect only Integer input.
      *
      * @return The integer of the input.
@@ -442,7 +431,7 @@ public class Ui {
     }
 
     /**
-     * Suggests removing item if update amoount is zero. TODO: Impleement in next iteration.
+     * Suggests removing item if update amount is zero.
      *
      * @param targetItem item being updated.
      * @return if user accepts the suggestion.
@@ -453,6 +442,7 @@ public class Ui {
                         + "Do you still wish to proceed? [Y/N]",
                 targetItem.getQuantity(), targetItem.getItemName());
         printLine(suggestion);
+        printSeparatorLine();
         return getYesNo();
     }
 
@@ -504,7 +494,6 @@ public class Ui {
     public int getShopQuantity(Item itemRemoved, int qtyInShop) throws FridgetException {
         String addConfirmMessage = "You have ran out of " + itemRemoved.getItemName()
                 + ". Would you like to add it to your shopping list? (Y/N)";
-        printSeparatorLine();
         printLine(addConfirmMessage);
         printSeparatorLine();
         boolean userConfirmation = getYesNo();
@@ -527,10 +516,8 @@ public class Ui {
             }
             return qty;
         } else {
-            printLine("Understood, we will not add [" + itemRemoved.getItemName() + "] to the shopping list.");
+            throw new FridgetException("Understood, we will not add [" + itemRemoved.getItemName() + "] to the shopping list.");
         }
-
-        return 0;
     }
 
     /**
