@@ -299,7 +299,9 @@ public class Parser {
     public boolean parseQuantity(int newQty) throws FridgetException {
         if (newQty < 0) {
             throw new FridgetException("Update quantity cannot be set to negative values.");
-        } else return newQty == 0;
+        } else {
+            return newQty == 0;
+        }
     }
 
     /**

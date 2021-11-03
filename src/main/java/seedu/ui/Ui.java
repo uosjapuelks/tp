@@ -516,7 +516,8 @@ public class Ui {
             }
             return qty;
         } else {
-            throw new FridgetException("Understood, we will not add [" + itemRemoved.getItemName() + "] to the shopping list.");
+            throw new FridgetException("Understood, we will not add ["
+                    + itemRemoved.getItemName() + "] to the shopping list.");
         }
     }
 
