@@ -182,12 +182,26 @@ public class Ui {
      * Prints list of matching items to prompt user to pick the correct match.
      *
      * @param matchingItems List of items that matches the search term.
+     * @param targetItem    Item to be updated or removed.
      * @param commandType   Whether it is UPDATE or REMOVE.
      * @return The item selected by the user.
-     * @throws FridgetException If input is out of bounds.
+     * @throws FridgetException No matching items matches input  from the very start or after user rejects suggestion.
      */
-    public Item matchItem(ArrayList<Item> matchingItems, CommandType commandType) throws FridgetException {
-        if (matchingItems.size() == 1) {
+    public Item matchItem(ArrayList<Item> matchingItems, String targetItem, CommandType commandType)
+            throws FridgetException {
+        if (matchingItems.size() == 1 && !matchingItems.get(0).getItemName().equals(targetItem)) {
+            boolean confirmedWithUser = giveSuggestion(matchingItems.get(0));
+
+            if (confirmedWithUser) {
+                return matchingItems.get(0);
+            } else {
+                String noOtherMatch = "No other item matches : [" + targetItem + "]\nCommand has been shutdown.";
+                throw new FridgetException(noOtherMatch);
+            }
+        } else if (matchingItems.size() == 0) {
+            String noMatchFound = "No item matching [" + targetItem + "] was found.";
+            throw new FridgetException(noMatchFound);
+        } else if (matchingItems.size() == 1) {
             return matchingItems.get(0);
         }
 

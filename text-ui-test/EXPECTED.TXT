@@ -203,7 +203,7 @@ USER INPUT: __________________________________________
 Did you mean: JimBeam? [Y/N]
 __________________________________________
 USER INPUT: __________________________________________
-There are no other items that matches the search term: [beam]
+No other item matches : [beam]
 Command has been shutdown.
 __________________________________________
 USER INPUT: __________________________________________

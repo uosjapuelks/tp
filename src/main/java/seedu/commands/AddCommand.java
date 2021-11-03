@@ -42,9 +42,6 @@ public class AddCommand extends Command {
     private void addItemToItemList(Ui ui, ItemList itemList, Item newItem,
                                    ShoppingList shoppingList) throws FridgetException {
         String itemName = newItem.getItemName();
-        if (itemName.contains("|")) {
-            throw new FridgetException("Please do not use '|' in your item name.");
-        }
         int qty = itemList.addItem(newItem);
         if (qty == Integer.MAX_VALUE) {
             throw new FridgetException("You have reached the maximum possible amount of " + itemName

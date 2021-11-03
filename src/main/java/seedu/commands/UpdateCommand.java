@@ -28,29 +28,14 @@ public class UpdateCommand extends Command {
     public void execute(Ui ui, Parser parser, ItemList itemList, ShoppingList shoppingList)
             throws FridgetException {
         String targetItem = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.UPDATE);
-        if (targetItem.contains(" | ") | targetItem.contains("/")) {
-            throw new FridgetException("You are not able to use '/' and ' | ' in item name.");
-        }
         ArrayList<Item> matchingItems = itemList.findAllMatchingItems(targetItem);
 
-        ui.printIfNotFoundMessage(matchingItems);
-
-        if (matchingItems.size() > 0) {
-            boolean correctTargetItem = true;
-            if (matchingItems.size() == 1 && !matchingItems.get(0).getItemName().equals(targetItem)) {
-                correctTargetItem = ui.giveSuggestion(matchingItems.get(0));
-            }
-            if (correctTargetItem) {
-                Item itemToUpdate = ui.matchItem(matchingItems, Ui.CommandType.UPDATE);
-                int newQty = ui.getUpdate(itemToUpdate);
-                int qtyDiff = newQty - itemToUpdate.getQuantity();
-                itemList.updateQuantity(itemToUpdate, newQty);
-                updateShopList(shoppingList, itemToUpdate, qtyDiff);
-                ui.acknowledgeUpdate(itemToUpdate);
-            } else {
-                ui.printDoesNotExist(targetItem);
-            }
-        }
+        Item itemToUpdate = ui.matchItem(matchingItems, targetItem, Ui.CommandType.UPDATE);
+        int newQty = ui.getUpdate(itemToUpdate);
+        int qtyDiff = newQty - itemToUpdate.getQuantity();
+        itemList.updateQuantity(itemToUpdate, newQty);
+        updateShopList(shoppingList, itemToUpdate, qtyDiff);
+        ui.acknowledgeUpdate(itemToUpdate);
     }
 
     /**
