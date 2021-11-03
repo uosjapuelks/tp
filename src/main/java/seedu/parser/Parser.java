@@ -19,9 +19,18 @@ import seedu.data.item.Item;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Parser {
+
+    private static final String ADD_FORMAT = " Try: [add] <ITEM_NAME> /<YYYY-MM-DD>";
+    private static final String REMOVE_FORMAT = " Try: [remove] <ITEM_NAME>";
+    private static final String FIND_FORMAT = " Try: [find] <ITEM_NAME>";
+    private static final String UPDATE_FORMAT = " Try: [update] <ITEM_NAME>";
+    private static final String DATE_FORMAT = "Please try this format for the date:\n\n"
+            + "    /YYYY-MM-DD\n"
+            + "    Example: '... /2022-08-03";
 
     public enum CommandType {
         ADD,
@@ -141,8 +150,9 @@ public class Parser {
             expiry = (str.contains("/")) ? str.substring(str.indexOf("/") + 1).trim() : expiry;
         }
         if (expiry.equals("")) {
-            String addFormat = " Try: [add] <ITEM_NAME> /<YYYY-MM-DD>";
-            throw new FridgetException("Missing expiry date." + addFormat);
+            throw new FridgetException("Missing expiry date." + ADD_FORMAT);
+        } else if (expiry.startsWith("-")) {
+            throw new FridgetException("Extra \"-\" detected before date input.\n" + DATE_FORMAT);
         }
         return expiry;
     }
@@ -159,16 +169,16 @@ public class Parser {
         String correctFormat;
         switch (commandType) {
         case ADD:
-            correctFormat = " Try: [add] <ITEM_NAME> /<YYYY-MM-DD>";
+            correctFormat = ADD_FORMAT;
             break;
         case REMOVE:
-            correctFormat = " Try: [remove] <ITEM_NAME>";
+            correctFormat = REMOVE_FORMAT;
             break;
         case FIND:
-            correctFormat = " Try: [find] <ITEM_NAME>";
+            correctFormat = FIND_FORMAT;
             break;
         case UPDATE:
-            correctFormat = " Try: [update] <ITEM_NAME>";
+            correctFormat = UPDATE_FORMAT;
             break;
         default:
             correctFormat = "";
@@ -202,19 +212,27 @@ public class Parser {
     public Item parseItemForAdding(String userInput) throws FridgetException {
         String[] processedInput = processInput(userInput);
         String itemName = extractDescription(processedInput, CommandType.ADD);
+        LocalDate expiryDate;
+        String errorMessage;
         assert !itemName.isEmpty();
 
         String expiryString = extractExpiry(processedInput);
         assert !expiryString.isEmpty();
         try {
-            LocalDate expiryDate = LocalDate.parse(expiryString);
-            return new Item(itemName, expiryDate);
+            expiryDate = LocalDate.parse(expiryString);
         } catch (DateTimeParseException e) {
-            throw new FridgetException(expiryString + " is not formatted properly.\n"
-                    + "Please try this format for the date:\n\n"
-                    + "    /YYYY-MM-DD\n"
-                    + "    Example: '... /2022-08-03");
+            throw new FridgetException(expiryString + " is not formatted properly.\n" + DATE_FORMAT);
         }
+
+        if (expiryDate.isBefore(LocalDate.now())) {
+            long daysPast = ChronoUnit.DAYS.between(expiryDate, LocalDate.now());
+            errorMessage = "[" + itemName + "]" + " expired " + daysPast + " days ago.";
+            throw new FridgetException(errorMessage);
+        } else if (ChronoUnit.CENTURIES.between(expiryDate,LocalDate.now()) > 1) {
+            throw new FridgetException(itemName + " expires more than a century later.");
+        }
+
+        return new Item(itemName, expiryDate);
     }
 
     /**

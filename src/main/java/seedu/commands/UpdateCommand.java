@@ -47,6 +47,8 @@ public class UpdateCommand extends Command {
                 itemList.updateQuantity(itemToUpdate, newQty);
                 updateShopList(shoppingList, itemToUpdate, qtyDiff);
                 ui.acknowledgeUpdate(itemToUpdate);
+            } else {
+                ui.printDoesNotExist(targetItem);
             }
         }
     }

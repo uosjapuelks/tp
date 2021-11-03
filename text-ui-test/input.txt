@@ -3,7 +3,7 @@ notifs
 notifs
 help
 add burger /2030-09-23
-add chicken /2000-10-10
+add chicken /2023-10-10
 update burger
 20
 list
@@ -17,20 +17,23 @@ reset
 y
 find e
 add yoghurt cake /2030-10-15
-add fish Cake /2010-12-12
+add fish Cake /2022-12-12
 add JimBeam /2030-10-03
 list -e
 list -r
 expiring
 list
-add fish Cake /2010-12-12
-add fish Cake /2010-12-12
-add JimBeam /2030-10-03
+add fish Cake /2022-12-12
+add fish Cake /2022-12-12
+add JimBeam /2020-10-03
 remove i
 0
 list
 remove beam
 n
+update beam
+y
+2
 remove beam
 y
 1

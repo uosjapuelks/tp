@@ -60,6 +60,8 @@ public class RemoveCommand extends Command {
             if (acceptDefault) {
                 handleRemovalOfMultipleQuantity(ui, itemList, shoppingList, itemToBeRemoved);
                 return;
+            } else {
+                ui.printDoesNotExist(nameOfItemToRemove);
             }
         }
 

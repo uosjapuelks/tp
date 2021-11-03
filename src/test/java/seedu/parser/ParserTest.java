@@ -128,7 +128,7 @@ class ParserTest {
 
     @Test
     void parseItemForAdding_addingItemInput_expectReturnItem() throws FridgetException {
-        String inputString = "add chicken /2021-10-15";
+        String inputString = "add chicken /2023-10-15";
         Item parsedResult = parser.parseItemForAdding(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(Item.class));
     }

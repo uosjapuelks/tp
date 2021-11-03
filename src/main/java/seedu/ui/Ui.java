@@ -129,6 +129,11 @@ public class Ui {
         return getYesNo();
     }
 
+    public void printDoesNotExist(String searchTerm) {
+        printLine("There are no other items that matches the search term: [" + searchTerm + "]");
+        printLine("Command has been shutdown.");
+    }
+
     /**
      * Gets user to input "y" or "n".
      *
@@ -142,7 +147,6 @@ public class Ui {
         case "y":
             return true;
         case "n":
-            printLine("Understood, Command has been shutdown.");
             return false;
         default:
             throw new FridgetException("Invalid Confirmation. The Command has been shutdown.");
@@ -489,8 +493,9 @@ public class Ui {
         printSeparatorLine();
         printLine(addConfirmMessage);
         printSeparatorLine();
+        boolean userConfirmation = getYesNo();
 
-        if (getYesNo()) {
+        if (userConfirmation) {
             String askQuantityMessage = "How many items would you like to buy?";
             if (qtyInShop > 0) {
                 askQuantityMessage = "You have " + qtyInShop + " " + itemRemoved.getItemName()
@@ -507,7 +512,10 @@ public class Ui {
                 throw new FridgetException("This quantity is not valid. Shutting down the command...");
             }
             return qty;
+        } else {
+            printLine("Understood, we will not add [" + itemRemoved.getItemName() + "] to the shopping list.");
         }
+
         return 0;
     }
 
