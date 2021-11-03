@@ -201,6 +201,7 @@ public class Parser {
         String[] processedInput = processInput(userInput);
         String itemName = extractDescription(processedInput, CommandType.ADD);
         LocalDate expiryDate;
+        String errorMessage;
         assert !itemName.isEmpty();
 
         String expiryString = extractExpiry(processedInput);
@@ -213,7 +214,8 @@ public class Parser {
 
         if (expiryDate.isBefore(LocalDate.now())) {
             long daysPast = ChronoUnit.DAYS.between(expiryDate, LocalDate.now());
-            throw new FridgetException(itemName + " expired " + daysPast + " days ago.");
+            errorMessage = "[" + itemName + "]" + " expired " + daysPast + " days ago.";
+            throw new FridgetException(errorMessage);
         } else if (ChronoUnit.CENTURIES.between(expiryDate,LocalDate.now()) > 1) {
             throw new FridgetException(itemName + " expires more than a century later.");
         }
