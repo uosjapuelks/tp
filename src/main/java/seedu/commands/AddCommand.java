@@ -32,9 +32,7 @@ public class AddCommand extends Command {
         // If the user input contains ;, the user wants to add multiple items at once
         if (ui.getCurrentUserInput().contains(";")) {
             ArrayList<Item> newItems = parser.parseMultipleItemsForAdding(ui.getCurrentUserInput());
-            for (Item newItem : newItems) {
-                addItemToItemList(ui, itemList, newItem, shoppingList);
-            }
+            addMultipleItemsToItemList(ui, itemList, shoppingList, newItems);
         } else {
             // Otherwise, add only one item
             Item newItem = parser.parseItemForAdding(ui.getCurrentUserInput());
@@ -42,15 +40,38 @@ public class AddCommand extends Command {
         }
     }
 
+    /**
+     * Adds multiple items to the Item List.
+     *
+     * @param ui           The ui object to interact with user.
+     * @param itemList     The itemList object.
+     * @param shoppingList The shoppingList object.
+     * @param newItems     The ArrayList of Items to be added.
+     * @throws FridgetException
+     */
+    private void addMultipleItemsToItemList(Ui ui, ItemList itemList, ShoppingList shoppingList,
+                                            ArrayList<Item> newItems) throws FridgetException {
+        int indexOfItemInList = 0;
+        int maxIndex = newItems.size() - 1;
+
+        for (Item newItem : newItems) {
+            addItemToItemList(ui, itemList, newItem, shoppingList);
+            if (indexOfItemInList < maxIndex) {
+                ui.printSeparatorLine();
+            }
+            indexOfItemInList++;
+        }
+    }
+
     private void addItemToItemList(Ui ui, ItemList itemList, Item newItem,
                                    ShoppingList shoppingList) throws FridgetException {
-        String itemName = newItem.getItemName();
-        int qty = itemList.addItem(newItem);
-        if (qty == Integer.MAX_VALUE) {
-            throw new FridgetException("You have reached the maximum possible amount of " + itemName
-                    + "\nMax: 2147483647");
-        } else if (qty > 1) {
-            ui.printReactionToAddingExistingItem(newItem, qty);
+        int qtyToBeAdded = ui.getQuantityToBeAdded(newItem);
+        newItem.setQuantity(qtyToBeAdded);
+        int finalQty = itemList.addItem(newItem);
+
+        if (finalQty > 1) {
+            int originalQty = finalQty - qtyToBeAdded;
+            ui.printReactionToAddingExistingItem(newItem, finalQty, originalQty);
         } else {
             ui.printReactionToAddingItem(newItem);
         }

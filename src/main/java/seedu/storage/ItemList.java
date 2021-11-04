@@ -19,7 +19,7 @@ public class ItemList {
      * @param item The Item to be added.
      * @return Updated quantity of the item added in the list.
      */
-    public int addItem(Item item) {
+    public int addItem(Item item) throws FridgetException {
         assert item != null : "Item must not be null!";
         for (Item itemInList : itemList) {
             String itemInListName = itemInList.getItemName();
@@ -27,9 +27,18 @@ public class ItemList {
             LocalDate itemInListExpiry = itemInList.getExpiryDate();
             LocalDate itemExpiry = item.getExpiryDate();
 
-            if (itemInListName.equalsIgnoreCase(itemName)
-                    && itemInListExpiry.equals(itemExpiry)) {
-                itemInList.addQuantity(1);
+            boolean isItemInListAndItemSame = itemInListName.equalsIgnoreCase(itemName)
+                    && itemInListExpiry.equals(itemExpiry);
+
+            if (isItemInListAndItemSame) {
+                long finalQty = itemInList.getQuantity() + item.getQuantity();
+
+                if (finalQty >= Integer.MAX_VALUE) {
+                    throw new FridgetException("You have reached the maximum possible amount of " + itemName
+                            + "\nMax: 2147483647");
+                }
+
+                itemInList.addQuantity(item.getQuantity());
                 return itemInList.getQuantity();
             }
         }

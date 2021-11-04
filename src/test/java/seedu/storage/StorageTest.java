@@ -21,7 +21,7 @@ public class StorageTest {
             FILE_PATH_LOGS, FILE_PATH_SHOP);
 
     @Test
-    void addSavedItem_correctSavedItemFormat_expectCorrectFormatInItemList() {
+    void addSavedItem_correctSavedItemFormat_expectCorrectFormatInItemList() throws FridgetException {
         String savedItem = "chicken | Qty: 1 | 2021-10-15";
         String[] dataComponents = savedItem.split(REGEX_DATA_SEPARATOR);
         storage.addSavedItem(dataComponents);
