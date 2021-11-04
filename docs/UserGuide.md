@@ -75,6 +75,12 @@ Use this command to add your items into Fridget.
 
 Format: `add ITEM_NAME /EXPIRY_DATE`
 
+Constraints:
+- Do not use `/`, `|`, or `;` in the `ITEM_NAME`.
+  - `/` is used to demarcate the `EXPIRY_DATE`.
+  - `|` is used for Fridget's own secret purposes.
+  - `;` is used for adding multiple items at once. More instructions can be found below.
+
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
 :exclamation:
 The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
