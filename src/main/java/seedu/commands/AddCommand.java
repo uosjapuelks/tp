@@ -28,12 +28,15 @@ public class AddCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, ItemList itemList, ShoppingList shoppingList)
             throws FridgetException {
+
+        // If the user input contains ;, the user wants to add multiple items at once
         if (ui.getCurrentUserInput().contains(";")) {
             ArrayList<Item> newItems = parser.parseMultipleItemsForAdding(ui.getCurrentUserInput());
             for (Item newItem : newItems) {
                 addItemToItemList(ui, itemList, newItem, shoppingList);
             }
         } else {
+            // Otherwise, add only one item
             Item newItem = parser.parseItemForAdding(ui.getCurrentUserInput());
             addItemToItemList(ui, itemList, newItem, shoppingList);
         }
