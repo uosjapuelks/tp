@@ -45,7 +45,7 @@ public class ItemList {
         }
 
         itemList.add(item);
-        return 1;
+        return item.getQuantity();
     }
 
     /**

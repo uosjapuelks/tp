@@ -69,8 +69,8 @@ public class AddCommand extends Command {
         newItem.setQuantity(qtyToBeAdded);
         int finalQty = itemList.addItem(newItem);
 
-        if (finalQty > 1) {
-            int originalQty = finalQty - qtyToBeAdded;
+        int originalQty = finalQty - qtyToBeAdded;
+        if (originalQty > 0) {
             ui.printReactionToAddingExistingItem(newItem, finalQty, originalQty);
         } else {
             ui.printReactionToAddingItem(newItem);
