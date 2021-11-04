@@ -28,42 +28,44 @@ public class UpdateCommand extends Command {
     public void execute(Ui ui, Parser parser, ItemList itemList, ShoppingList shoppingList)
             throws FridgetException {
         String targetItem = parser.parseSearchTerm(ui.getCurrentUserInput(), Parser.CommandType.UPDATE);
-        if (targetItem.contains(" | ") | targetItem.contains("/")) {
-            throw new FridgetException("You are not able to use '/' and ' | ' in item name.");
-        }
         ArrayList<Item> matchingItems = itemList.findAllMatchingItems(targetItem);
 
-        ui.printIfNotFoundMessage(matchingItems);
+        Item itemToUpdate = ui.matchItem(matchingItems, targetItem, Ui.CommandType.UPDATE);
+        int newQty = ui.getUpdate(itemToUpdate);
+        boolean requireRemoval = parser.parseQuantity(newQty);
 
-        if (matchingItems.size() > 0) {
-            boolean correctTargetItem = true;
-            if (matchingItems.size() == 1 && !matchingItems.get(0).getItemName().equals(targetItem)) {
-                correctTargetItem = ui.giveSuggestion(matchingItems.get(0));
-            }
-            if (correctTargetItem) {
-                Item itemToUpdate = ui.matchItem(matchingItems, Ui.CommandType.UPDATE);
-                int newQty = ui.getUpdate(itemToUpdate);
-                int qtyDiff = newQty - itemToUpdate.getQuantity();
-                itemList.updateQuantity(itemToUpdate, newQty);
-                updateShopList(shoppingList, itemToUpdate, qtyDiff);
-                ui.acknowledgeUpdate(itemToUpdate);
-            } else {
-                ui.printDoesNotExist(targetItem);
-            }
+        int qtyDiff = newQty - itemToUpdate.getQuantity();
+        if (requireRemoval) {
+            boolean reply = ui.suggestRemove(itemToUpdate);
+            parser.parseSuggestion(reply);
+
+            itemList.removeItem(itemToUpdate, itemToUpdate.getQuantity());
+            ui.printReactionToRemovingItem(itemToUpdate, itemToUpdate.getQuantity());
+            updateShopList(ui, shoppingList, itemToUpdate, qtyDiff);
+        } else {
+            itemList.updateQuantity(itemToUpdate, newQty);
+            updateShopList(ui, shoppingList, itemToUpdate, qtyDiff);
+            ui.acknowledgeUpdate(itemToUpdate);
         }
     }
 
     /**
      * Updates the shopping list.
      *
+     * @param ui           The ui object.
      * @param shoppingList The shoppingList object.
      * @param updatedItem  The item updated.
      * @param qty          The difference in quantity of the update.
      */
-    private void updateShopList(ShoppingList shoppingList, Item updatedItem, int qty) {
-        if (qty <= 0) {
-            return;
+    private void updateShopList(Ui ui, ShoppingList shoppingList, Item updatedItem, int qty) throws FridgetException {
+        if (qty > 0) {
+            shoppingList.removeItem(updatedItem, qty);
+        } else if (qty == -updatedItem.getQuantity()) {
+            int qtyInShop = shoppingList.searchItemNameExist(updatedItem);
+            int qtyToShop = ui.getShopQuantity(updatedItem, qtyInShop);
+            Item addedItem = new Item(updatedItem.getItemName(), qtyToShop);
+            shoppingList.addItem(addedItem, qtyToShop);
+            ui.printShopUpdateMessage(addedItem, qtyInShop);
         }
-        shoppingList.removeItem(updatedItem, qty);
     }
 }

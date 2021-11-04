@@ -129,11 +129,6 @@ public class Ui {
         return getYesNo();
     }
 
-    public void printDoesNotExist(String searchTerm) {
-        printLine("There are no other items that matches the search term: [" + searchTerm + "]");
-        printLine("Command has been shutdown.");
-    }
-
     /**
      * Gets user to input "y" or "n".
      *
@@ -182,12 +177,26 @@ public class Ui {
      * Prints list of matching items to prompt user to pick the correct match.
      *
      * @param matchingItems List of items that matches the search term.
+     * @param targetItem    Item to be updated or removed.
      * @param commandType   Whether it is UPDATE or REMOVE.
      * @return The item selected by the user.
-     * @throws FridgetException If input is out of bounds.
+     * @throws FridgetException No matching items matches input  from the very start or after user rejects suggestion.
      */
-    public Item matchItem(ArrayList<Item> matchingItems, CommandType commandType) throws FridgetException {
-        if (matchingItems.size() == 1) {
+    public Item matchItem(ArrayList<Item> matchingItems, String targetItem, CommandType commandType)
+            throws FridgetException {
+        if (matchingItems.size() == 1 && !matchingItems.get(0).getItemName().equals(targetItem)) {
+            boolean confirmedWithUser = giveSuggestion(matchingItems.get(0));
+
+            if (confirmedWithUser) {
+                return matchingItems.get(0);
+            } else {
+                String noOtherMatch = "No other item matches : [" + targetItem + "]\nCommand has been shutdown.";
+                throw new FridgetException(noOtherMatch);
+            }
+        } else if (matchingItems.size() == 0) {
+            String noMatchFound = "No item matching [" + targetItem + "] was found.";
+            throw new FridgetException(noMatchFound);
+        } else if (matchingItems.size() == 1) {
             return matchingItems.get(0);
         }
 
@@ -344,17 +353,6 @@ public class Ui {
     }
 
     /**
-     * Prints message if there are no matching items.
-     *
-     * @param matchingItems List of matching items after parseSearchTerm.
-     */
-    public void printIfNotFoundMessage(ArrayList<Item> matchingItems) {
-        if (matchingItems.size() == 0) {
-            printLine("No such item exists.");
-        }
-    }
-
-    /**
      * Asks user for input and expect only Integer input.
      *
      * @return The integer of the input.
@@ -428,7 +426,7 @@ public class Ui {
     }
 
     /**
-     * Suggests removing item if update amoount is zero. TODO: Impleement in next iteration.
+     * Suggests removing item if update amount is zero.
      *
      * @param targetItem item being updated.
      * @return if user accepts the suggestion.
@@ -439,6 +437,7 @@ public class Ui {
                         + "Do you still wish to proceed? [Y/N]",
                 targetItem.getQuantity(), targetItem.getItemName());
         printLine(suggestion);
+        printSeparatorLine();
         return getYesNo();
     }
 
@@ -513,10 +512,9 @@ public class Ui {
             }
             return qty;
         } else {
-            printLine("Understood, we will not add [" + itemRemoved.getItemName() + "] to the shopping list.");
+            throw new FridgetException("Understood, we will not add ["
+                    + itemRemoved.getItemName() + "] to the shopping list.");
         }
-
-        return 0;
     }
 
     /**
