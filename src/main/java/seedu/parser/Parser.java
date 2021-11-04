@@ -132,8 +132,7 @@ public class Parser {
      */
     private String[] processInput(String userInput) {
         String[] splitInput = splitUserInputByWhitespace(userInput);
-        String[] trimmedInput = trimContents(splitInput);
-        return trimmedInput;
+        return trimContents(splitInput);
     }
 
     /**

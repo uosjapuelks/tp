@@ -13,7 +13,7 @@ public class ItemList {
     }
 
     /**
-     * Adds an item into itemList.
+     * Adds an item into itemList, and returns the final quantity of the item in itemList.
      *
      * @param item The Item to be added.
      * @return Updated quantity of the item added in the list.
@@ -99,7 +99,7 @@ public class ItemList {
                     + "Input \"help\" to get started!";
             throw new FridgetException(emptyListMessage);
         }
-        ArrayList<Item> sortedList = new ArrayList<Item>(itemList);
+        ArrayList<Item> sortedList = new ArrayList<>(itemList);
         sortedList.sort((byDate ? Item.ItemExpiryComparator : Item.ItemNameComparator));
         return sortedList;
     }
