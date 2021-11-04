@@ -101,6 +101,11 @@ Constraints:
 The <b>EXPIRY_DATE</b> must be in the <ins>YYYY-MM-DD</ins> format.  
 </div>
 
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+:exclamation: 
+The <b>EXPIRY_DATE</b> should not be earlier than the current day.  
+</div>
+
 **Example of usage:**
 
 <ins>If you are adding an item not in Fridget:</ins>
@@ -108,8 +113,12 @@ The <b>EXPIRY_DATE</b> must be in the <ins>YYYY-MM-DD</ins> format.
 ```markdown
 USER INPUT: add burger /2021-11-11
 __________________________________________
+What quantity of [burger | 2021-11-11] would you like to add?
+__________________________________________
+USER INPUT: 1
+__________________________________________
 You have successfully added:
-    burger | Qty: 1 | 11 Nov 2021
+burger | Qty: 1 | 11 Nov 2021
 __________________________________________
 ```
 
@@ -118,8 +127,12 @@ __________________________________________
 ```markdown
 USER INPUT: add burger /2021-11-11
 __________________________________________
+What quantity of [burger | 2021-11-11] would you like to add?
+__________________________________________
+USER INPUT: 9
+__________________________________________
 You have successfully increased the quantity of:
-    burger | Qty: 1->2 | 11 Nov 2021
+burger | Qty: 1->10 | 11 Nov 2021
 __________________________________________
 ```
 
@@ -130,12 +143,21 @@ If you want to add multiple items at the same time, separate each item with a se
 **For example:**
 
 ```bash
-USER INPUT: add burger /2021-11-11; fries /2021-11-12
+USER INPUT: add burger /2021-11-11; chicken /2023-11-11
+__________________________________________
+What quantity of [burger | 2021-11-11] would you like to add?
+__________________________________________
+USER INPUT: 1
+__________________________________________
+You have successfully increased the quantity of:
+    burger | Qty: 10->11 | 11 Nov 2021
+__________________________________________
+What quantity of [chicken | 2023-11-11] would you like to add?
+__________________________________________
+USER INPUT: 1
 __________________________________________
 You have successfully added:
-    burger | Qty: 1 | 11 Nov 2021
-You have successfully added:
-    fries | Qty: 1 | 12 Nov 2021
+    chicken | Qty: 1 | 11 Nov 2023
 __________________________________________
 ```
 
