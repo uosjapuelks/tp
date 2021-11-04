@@ -47,29 +47,8 @@ public class RemoveCommand extends Command {
      */
     private void handleRemovalOfItem(Ui ui, ItemList itemList, ShoppingList shoppingList,
                                      String nameOfItemToRemove, ArrayList<Item> matchingItems) throws FridgetException {
-        // If there are no matching items, let the user know
-        ui.printIfNotFoundMessage(matchingItems);
-
-        // Remove item automatically if matching item is unique
-        if (matchingItems.size() == 1) {
-            boolean acceptDefault = true;
-            Item itemToBeRemoved = matchingItems.get(0);
-            if (!itemToBeRemoved.getItemName().equals(nameOfItemToRemove)) {
-                acceptDefault = ui.giveSuggestion(itemToBeRemoved);
-            }
-            if (acceptDefault) {
-                handleRemovalOfMultipleQuantity(ui, itemList, shoppingList, itemToBeRemoved);
-                return;
-            } else {
-                ui.printDoesNotExist(nameOfItemToRemove);
-            }
-        }
-
-        if (matchingItems.size() > 1) {
-            Item itemToBeRemoved = ui.matchItem(matchingItems, Ui.CommandType.REMOVE);
-            assert itemList.containsItem(itemToBeRemoved);
-            handleRemovalOfMultipleQuantity(ui, itemList, shoppingList, itemToBeRemoved);
-        }
+        Item itemToBeRemoved = ui.matchItem(matchingItems, nameOfItemToRemove, Ui.CommandType.REMOVE);
+        handleRemovalOfMultipleQuantity(ui, itemList, shoppingList, itemToBeRemoved);
     }
 
     /**

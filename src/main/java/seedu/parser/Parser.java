@@ -1,6 +1,5 @@
 package seedu.parser;
 
-
 import seedu.commands.AddCommand;
 import seedu.commands.Command;
 import seedu.commands.ExitCommand;
@@ -163,7 +162,7 @@ public class Parser {
      * @param processedInput userInput after processInput().
      * @param commandType    an enum that represent a commandType.
      * @return name or item description.
-     * @throws FridgetException thrown when there are missing inputs, name or expiry date.
+     * @throws FridgetException thrown when there are missing inputs or have '|' or '/' in description.
      */
     private String extractDescription(String[] processedInput, CommandType commandType) throws FridgetException {
         String correctFormat;
@@ -191,14 +190,21 @@ public class Parser {
             throw new FridgetException("Missing expiry date." + correctFormat);
         }
 
+        String description = "";
         if (commandType == CommandType.ADD) {
-            String description = processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
-            if (!description.equals("")) {
+            description = processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
+            if (description.contains("|")) {
+                throw new FridgetException("Please do not use '|' in your item name. Found in: [" + description + "]");
+            } else if (!description.equals("")) {
                 return description;
             }
             throw new FridgetException("Missing item name." + correctFormat);
         } else {
-            return processedInput[1].trim();
+            description = processedInput[1].trim();
+            if (description.contains("|") | description.contains("/")) {
+                throw new FridgetException("You are not able to use '/' and '|' in item name.");
+            }
+            return description;
         }
     }
 
@@ -228,8 +234,6 @@ public class Parser {
             long daysPast = ChronoUnit.DAYS.between(expiryDate, LocalDate.now());
             errorMessage = "[" + itemName + "]" + " expired " + daysPast + " days ago.";
             throw new FridgetException(errorMessage);
-        } else if (ChronoUnit.CENTURIES.between(expiryDate,LocalDate.now()) > 1) {
-            throw new FridgetException(itemName + " expires more than a century later.");
         }
 
         return new Item(itemName, expiryDate);
@@ -274,7 +278,8 @@ public class Parser {
     /**
      * Returns a search term provided by the "find" command.
      *
-     * @param userInput The input from the user in this manner - "find burger".
+     * @param userInput   The input from the user in this manner - "find burger".
+     * @param commandType The commandType calling the function.
      * @return The search term.
      */
     public String parseSearchTerm(String userInput, CommandType commandType) throws FridgetException {
@@ -282,5 +287,32 @@ public class Parser {
         String searchTerm = extractDescription(processedInput, commandType);
         assert !searchTerm.isEmpty();
         return searchTerm;
+    }
+
+    /**
+     * Verify if quantity is valid.
+     *
+     * @param newQty new quantity to be updated.
+     * @return Boolean of true if new quantity is equal to 0.
+     * @throws FridgetException When new quantity is less than 0.
+     */
+    public boolean parseQuantity(int newQty) throws FridgetException {
+        if (newQty < 0) {
+            throw new FridgetException("Update quantity cannot be set to negative values.");
+        } else {
+            return newQty == 0;
+        }
+    }
+
+    /**
+     * Check suggestion.
+     *
+     * @param acceptSuggestion If suggestion was accepted with "y".
+     * @throws FridgetException If Suggestion was rejected.
+     */
+    public void parseSuggestion(boolean acceptSuggestion) throws FridgetException {
+        if (!acceptSuggestion) {
+            throw new FridgetException("You have opted to abort. Command has been shutdown.");
+        }
     }
 }
