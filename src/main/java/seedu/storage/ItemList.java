@@ -9,7 +9,7 @@ public class ItemList {
     protected ArrayList<Item> itemList;
 
     public ItemList() {
-        this.itemList = new ArrayList<Item>();
+        this.itemList = new ArrayList<>();
     }
 
     /**
@@ -20,11 +20,11 @@ public class ItemList {
      */
     public int addItem(Item item) {
         assert item != null : "Item must not be null!";
-        for (Item item1 : itemList) {
-            if (item1.getItemName().equalsIgnoreCase(item.getItemName())
-                    && item1.getExpiryDate().equals(item.getExpiryDate())) {
-                item1.addQuantity(1);
-                return item1.getQuantity();
+        for (Item itemInList : itemList) {
+            if (itemInList.getItemName().equalsIgnoreCase(item.getItemName())
+                    && itemInList.getExpiryDate().equals(item.getExpiryDate())) {
+                itemInList.addQuantity(1);
+                return itemInList.getQuantity();
             }
         }
 
@@ -57,8 +57,8 @@ public class ItemList {
      * @return Boolean value of true if exist.
      */
     public boolean searchItemNameExist(Item item) {
-        for (Item item1 : itemList) {
-            if (item1.getItemName().equalsIgnoreCase(item.getItemName())) {
+        for (Item itemInList : itemList) {
+            if (itemInList.getItemName().equalsIgnoreCase(item.getItemName())) {
                 return true;
             }
         }
@@ -150,6 +150,6 @@ public class ItemList {
      * Resets the Array List of items.
      */
     public void resetList() {
-        itemList = new ArrayList<Item>();
+        itemList = new ArrayList<>();
     }
 }
