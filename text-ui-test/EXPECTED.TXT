@@ -46,7 +46,7 @@ USER INPUT: __________________________________________
 List of commands available:
 
 add ITEM_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
--> Adds an item and its expiry date to the item list.
+-> Adds an item and its expiry date to the item list. Input quantity after being prompt.
 
 find KEYWORD [eg. find bacon]
 -> Find and print all items associated with keyword.
@@ -182,7 +182,7 @@ You have successfully increased the quantity of:
     fish Cake | Qty: 2->3 | 12 Dec 2022
 __________________________________________
 USER INPUT: __________________________________________
-[JimBeam] expired 396 days ago.
+[JimBeam] expired 398 days ago.
 __________________________________________
 USER INPUT: __________________________________________
 Which item would you like to remove? Type the index of the item below.
