@@ -42,6 +42,7 @@ class ParserTest {
         });
     }
 
+    //@@author zonglun99
     @Test
     void parseCommand_addCommandInput_expectReturnAddCommand() throws FridgetException {
         String inputString = "add";
@@ -132,6 +133,7 @@ class ParserTest {
         Item parsedResult = parser.parseItemForAdding(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(Item.class));
     }
+    //@@author zonglun99
 
     @Test
     void parseItemForAdding_addingItemInput_exceptionThrown() {
@@ -141,6 +143,7 @@ class ParserTest {
         });
     }
 
+    //@@author zonglun99
     @Test
     void parseSortTypeForList_sortTypeE_expectSortTypeEqualsE() {
         String inputString = "list -e";
@@ -161,4 +164,5 @@ class ParserTest {
         String parsedResult = parser.parseSortTypeForList(inputString);
         assertEquals(parsedResult, "default");
     }
+    //@@author zonglun99
 }
