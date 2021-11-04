@@ -6,41 +6,39 @@ autonumber
 -> ":AddCommand": execute()
 activate ":AddCommand"
 
-":AddCommand" -> ":Parser": parseItemForAdding(currentUserInput)
+":AddCommand" -> ":Ui": getCurrentUserInput()
+activate ":Ui"
+":AddCommand" <-- ":Ui": String currentUserInput
+deactivate ":Ui"
+
+alt currentUserInput.contains(";")
+
+":AddCommand" -> ":Parser": parseMultipleItemsForAdding(currentUserInput)
 activate ":Parser"
-":AddCommand" <-- ":Parser": Item
+":AddCommand" <-- ":Parser": ArrayList<Item> newItems
 deactivate ":Parser"
 
-alt itemName contains ' | '
+":AddCommand" -> ":AddCommand": addMultipleItemsToItemList(newItems)
+activate ":AddCommand"
+":AddCommand" <-- ":AddCommand"
+deactivate ":AddCommand"
 
-    <-- ":AddCommand": Tell user not to use ' | '
 
 else
 
-    ":AddCommand" -> ":ItemList": addItem(Item)
-    activate ":ItemList"
+":AddCommand" -> ":Parser": parseItemForAdding(currentUserInput)
+activate ":Parser"
+":AddCommand" <-- ":Parser": Item newItem
+deactivate ":Parser"
 
-    ":AddCommand" <-- ":ItemList": qtyOfItem
-    deactivate ":ItemList"
+":AddCommand" -> ":AddCommand": addItemToItemList(newItem)
+activate ":AddCommand"
+":AddCommand" <-- ":AddCommand"
+deactivate ":AddCommand"
 
-    alt qtyOfItem > 1
-
-        ":AddCommand" -> ":Ui": printReactionToAddingExistingItem()
-        activate ":Ui"
-        ":AddCommand" <-- ":Ui"
-        deactivate ":Ui"
-
-    else else
-        ":AddCommand" -> ":Ui": printReactionToAddingItem()
-        activate ":Ui"
-        ":AddCommand" <-- ":Ui"
-        deactivate ":Ui"
-
-    end
-
-    <-- ":AddCommand"
-    deactivate ":AddCommand"
 end
 
+<-- ":AddCommand"
+deactivate ":AddCommand"
 
 @enduml

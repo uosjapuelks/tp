@@ -3,42 +3,43 @@
 
 autonumber
 
--> ":AddCommand": execute()
 activate ":AddCommand"
 
-":AddCommand" -> ":Ui": getCurrentUserInput()
+":AddCommand"-> ":AddCommand": addItemToItemList(newItem)
+activate ":AddCommand"
+
+":AddCommand" -> ":Ui": getQuantityToBeAdded(newItem)
 activate ":Ui"
-":AddCommand" <-- ":Ui": String currentUserInput
+":AddCommand" <-- ":Ui": int qtyToBeAdded
 deactivate ":Ui"
 
-alt currentUserInput.contains(";")
+":AddCommand" -> ":ItemList": addItem(newItem)
+activate ":ItemList"
+":AddCommand" <-- ":ItemList": int finalQty
+deactivate ":ItemList"
 
-":AddCommand" -> ":Parser": parseMultipleItemsForAdding(currentUserInput)
-activate ":Parser"
-":AddCommand" <-- ":Parser": ArrayList<Item> newItems
-deactivate ":Parser"
+alt originalQty > 0
 
-":AddCommand" -> ":AddCommand": addMultipleItemsToItemList(newItems)
-activate ":AddCommand"
-":AddCommand" <-- ":AddCommand"
-deactivate ":AddCommand"
-
+":AddCommand" -> ":Ui": printReactionToAddingExistingItem()
+activate ":Ui"
+":AddCommand" <-- ":Ui"
+deactivate ":Ui"
 
 else
 
-":AddCommand" -> ":Parser": parseItemForAdding(currentUserInput)
-activate ":Parser"
-":AddCommand" <-- ":Parser": Item newItem
-deactivate ":Parser"
-
-":AddCommand" -> ":AddCommand": addItemToItemList(newItem)
-activate ":AddCommand"
-":AddCommand" <-- ":AddCommand"
-deactivate ":AddCommand"
+":AddCommand" -> ":Ui": printReactionToAddingItem()
+activate ":Ui"
+":AddCommand" <-- ":Ui"
+deactivate ":Ui"
 
 end
 
-<-- ":AddCommand"
+":AddCommand" -> ":ShoppingList": removeItem(newItem, newItemQty)
+":AddCommand" <-- ":ShoppingList"
+
+":AddCommand" <-- ":AddCommand"
+
 deactivate ":AddCommand"
+
 
 @enduml
