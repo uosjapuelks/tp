@@ -47,7 +47,7 @@ public class AddCommand extends Command {
      * @param itemList     The itemList object.
      * @param shoppingList The shoppingList object.
      * @param newItems     The ArrayList of Items to be added.
-     * @throws FridgetException
+     * @throws FridgetException if adding an Item causes an error.
      */
     private void addMultipleItemsToItemList(Ui ui, ItemList itemList, ShoppingList shoppingList,
                                             ArrayList<Item> newItems) throws FridgetException {

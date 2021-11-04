@@ -18,6 +18,7 @@ public class ItemList {
      *
      * @param item The Item to be added.
      * @return Updated quantity of the item added in the list.
+     * @throws FridgetException if the quantity of the item exceeds INT_MAX
      */
     public int addItem(Item item) throws FridgetException {
         assert item != null : "Item must not be null!";
