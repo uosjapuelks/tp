@@ -3,6 +3,7 @@ package seedu.storage;
 import seedu.data.exception.FridgetException;
 import seedu.data.item.Item;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ItemList {
@@ -21,8 +22,13 @@ public class ItemList {
     public int addItem(Item item) {
         assert item != null : "Item must not be null!";
         for (Item itemInList : itemList) {
-            if (itemInList.getItemName().equalsIgnoreCase(item.getItemName())
-                    && itemInList.getExpiryDate().equals(item.getExpiryDate())) {
+            String itemInListName = itemInList.getItemName();
+            String itemName = item.getItemName();
+            LocalDate itemInListExpiry = itemInList.getExpiryDate();
+            LocalDate itemExpiry = item.getExpiryDate();
+
+            if (itemInListName.equalsIgnoreCase(itemName)
+                    && itemInListExpiry.equals(itemExpiry)) {
                 itemInList.addQuantity(1);
                 return itemInList.getQuantity();
             }
@@ -139,7 +145,10 @@ public class ItemList {
         }
         ArrayList<Item> matchingItems = new ArrayList<>();
         for (Item item : itemList) {
-            if (item.getItemName().toLowerCase().contains(searchTerm.toLowerCase())) {
+            String lowerCaseItemName = item.getItemName().toLowerCase();
+            String lowerCaseSearchTerm = searchTerm.toLowerCase();
+
+            if (lowerCaseItemName.contains(lowerCaseSearchTerm)) {
                 matchingItems.add(item);
             }
         }
