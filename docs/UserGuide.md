@@ -70,6 +70,21 @@ Feature | Command Format |
 
 <hr/>
 
+### Command Syntax
+
+As you use this guide, you may see some commands with specific punctuation or parameters. This guide explains what they mean, and how you should use them.
+
+For simplicity's sake, the number `2147483647` shall be referred to henceforth as `INT_MAX`.
+
+Command Option | Description |
+-----------|-----------------
+`ITEM_NAME` | The `ITEM_NAME` can be any series of characters or digits of less than length `INT_MAX`. Additionally, `ITEM_NAME` should not include the following terms: `;`,`/`, or <code>&#124;</code>. <br/><br/> More explanation can be found [here](#add-an-item-into-fridget-add).
+`EXPIRY_DATE` | The `EXPIRY_DATE` must be of the format `YYYY-MM-DD`.
+`OPTIONAL_SORT_TYPE` | The `OPTIONAL_SORT_TYPE` must be in lowercase format to be recognised properly. Hence, you should use `r` or `e`, <b>NOT </b> `R` or `E`.
+`KEYWORD` | This `KEYWORD` can be the exact same as the name of the item you are trying to remove. You can also input a `KEYWORD` that is contained within the item you are trying to delete.
+
+<hr/>
+
 ### Add an item into Fridget: `add`
 Use this command to add your items into Fridget.
 
@@ -80,11 +95,6 @@ Constraints:
   - `/` is used to demarcate the `EXPIRY_DATE`.
   - `|` is used for Fridget's own secret purposes.
   - `;` is used for adding multiple items at once. More instructions can be found below.
-
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
-:exclamation:
-The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
-</div>
 
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
 :exclamation: 
