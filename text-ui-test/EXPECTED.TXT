@@ -15,23 +15,6 @@ MM88MMM  8b,dPPYba,  88   ,adPPYb,88   ,adPPYb,d8   ,adPPYba,  MM88MMM
 Hello!
 What would you like to do?
 __________________________________________
- ___________________________________________________
-|                      HEALTH!                      |
-|===================================================|
-|      ___            _         __        ______    |
-|     / _ \___ __ _  (_)__  ___/ /__ ____/ / / /    |
-|    / , _/ -_)  ' \/ / _ \/ _  / -_) __/_/_/_/     |
-|   /_/|_|\__/_/_/_/_/_//_/\_,_/\__/_/ (_|_|_)      |
-|   ---------------------------------------------   |
-|                                                   |
-|    "If you don't take time to take care of your   |
-|    health now, you're gonna have to make time     |
-|    for feeling sick and tired later."             |
-|                                                   |
-|            Always remember to eat more            |
-|              Fruits and Vegetables!               |
-|___________________________________________________|
-__________________________________________
 USER INPUT: __________________________________________
 No command found!
 Enter help if you need the list of available commands.
@@ -88,8 +71,14 @@ For more information about each command please visit our User Guide.
 Link: https://ay2122s1-cs2113t-w12-4.github.io/tp/UserGuide.html
 __________________________________________
 USER INPUT: __________________________________________
+What quantity of [burger | 2030-09-23] would you like to add?
+__________________________________________
+USER INPUT: __________________________________________
 You have successfully added:
     burger | Qty: 1 | 23 Sep 2030
+__________________________________________
+USER INPUT: __________________________________________
+What quantity of [chicken | 2023-10-10] would you like to add?
 __________________________________________
 USER INPUT: __________________________________________
 You have successfully added:
@@ -105,6 +94,7 @@ USER INPUT: __________________________________________
 List sorted by item name:
     burger | Qty: 20 | 23 Sep 2030
     chicken | Qty: 1 | 10 Oct 2023
+    JimBeam | Qty: 1998 | 03 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
 These are the matching items:
@@ -112,8 +102,9 @@ These are the matching items:
 __________________________________________
 USER INPUT: __________________________________________
 These are the matching items:
-    1. burger | Qty: 20 | 23 Sep 2030
-    2. chicken | Qty: 1 | 10 Oct 2023
+    1. JimBeam | Qty: 1998 | 03 Oct 2030
+    2. burger | Qty: 20 | 23 Sep 2030
+    3. chicken | Qty: 1 | 10 Oct 2023
 __________________________________________
 USER INPUT: __________________________________________
 These are the matching items:
@@ -127,8 +118,9 @@ Shutting down the command...
 __________________________________________
 USER INPUT: __________________________________________
 These are the matching items:
-    1. burger | Qty: 20 | 23 Sep 2030
-    2. chicken | Qty: 1 | 10 Oct 2023
+    1. JimBeam | Qty: 1998 | 03 Oct 2030
+    2. burger | Qty: 20 | 23 Sep 2030
+    3. chicken | Qty: 1 | 10 Oct 2023
 __________________________________________
 USER INPUT: __________________________________________
 Are you sure you want to reset everything in the fridge? (Y/N)
@@ -141,12 +133,21 @@ You currently have nothing in your fridge.
 Input "help" to get started!
 __________________________________________
 USER INPUT: __________________________________________
+What quantity of [yoghurt cake | 2030-10-15] would you like to add?
+__________________________________________
+USER INPUT: __________________________________________
 You have successfully added:
     yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
+What quantity of [fish Cake | 2022-12-12] would you like to add?
+__________________________________________
+USER INPUT: __________________________________________
 You have successfully added:
     fish Cake | Qty: 1 | 12 Dec 2022
+__________________________________________
+USER INPUT: __________________________________________
+What quantity of [JimBeam | 2030-10-03] would you like to add?
 __________________________________________
 USER INPUT: __________________________________________
 You have successfully added:
@@ -174,15 +175,25 @@ List sorted by item name:
     yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
+What quantity of [fish Cake | 2022-12-12] would you like to add?
+__________________________________________
+USER INPUT: __________________________________________
 You have successfully increased the quantity of:
     fish Cake | Qty: 1->2 | 12 Dec 2022
+__________________________________________
+USER INPUT: __________________________________________
+What quantity of [fish Cake | 2022-12-12] would you like to add?
 __________________________________________
 USER INPUT: __________________________________________
 You have successfully increased the quantity of:
     fish Cake | Qty: 2->3 | 12 Dec 2022
 __________________________________________
 USER INPUT: __________________________________________
-[JimBeam] expired 396 days ago.
+[JimBeam] expired 398 days ago.
+__________________________________________
+USER INPUT: __________________________________________
+No command found!
+Enter help if you need the list of available commands.
 __________________________________________
 USER INPUT: __________________________________________
 Which item would you like to remove? Type the index of the item below.
