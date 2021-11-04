@@ -224,7 +224,7 @@ __________________________________________
 List of commands available:
 
 add ITEM_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
--> Adds an item and its expiry date to the item list.
+-> Adds an item and its expiry date to the item list. Input quantity after being prompt.
 
 find KEYWORD [eg. find bacon]
 -> Find and print all item associated with keyword.
