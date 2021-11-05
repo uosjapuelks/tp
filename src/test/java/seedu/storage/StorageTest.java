@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+//@author BryanElmer
 public class StorageTest {
     private static final String FILE_PATH_LIST = "fridgetTestData/testSavedList.txt";
     private static final String FILE_PATH_LOGS = "fridgetTestData/testSavedLogs.txt";
@@ -41,3 +42,4 @@ public class StorageTest {
         assertTrue(Notification.isNotificationOn());
     }
 }
+//@author BryanElmer
