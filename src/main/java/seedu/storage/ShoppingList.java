@@ -5,6 +5,7 @@ import seedu.data.item.Item;
 
 import java.util.ArrayList;
 
+//@@author BryanElmer
 public class ShoppingList {
     private ArrayList<Item> shoppingList;
 
@@ -22,9 +23,11 @@ public class ShoppingList {
      */
     public void addItem(Item item, int quantity) {
         assert item != null : "Item must not be null!";
-        for (Item item1 : shoppingList) {
-            if (item1.getItemName().equalsIgnoreCase(item.getItemName())) {
-                item1.addQuantity(quantity);
+        for (Item itemInList : shoppingList) {
+            boolean isItemInListAndItemSame = itemInList.hasSameNameAs(item);
+
+            if (isItemInListAndItemSame) {
+                itemInList.addQuantity(quantity);
                 return;
             }
         }
@@ -42,13 +45,15 @@ public class ShoppingList {
         assert item != null : "Item must not be null!";
         assert quantity != 0 : "Quantity removed must no be 0!";
 
-        for (Item item1 : shoppingList) {
-            if (item1.getItemName().equalsIgnoreCase(item.getItemName())) {
-                if (quantity >= item1.getQuantity()) {
-                    shoppingList.remove(item1);
+        for (Item itemInList : shoppingList) {
+            boolean isItemInListAndItemSame = itemInList.hasSameNameAs(item);
+
+            if (isItemInListAndItemSame) {
+                if (quantity >= itemInList.getQuantity()) {
+                    shoppingList.remove(itemInList);
                     return;
                 }
-                item1.removeQuantity(quantity);
+                itemInList.removeQuantity(quantity);
             }
         }
     }
@@ -60,9 +65,11 @@ public class ShoppingList {
      * @return Quantity of item in the shoppingList if exist.
      */
     public int searchItemNameExist(Item item) {
-        for (Item item1 : shoppingList) {
-            if (item1.getItemName().equalsIgnoreCase(item.getItemName())) {
-                return item1.getQuantity();
+        for (Item itemInList : shoppingList) {
+            boolean isItemInListAndItemSame = itemInList.hasSameNameAs(item);
+
+            if (isItemInListAndItemSame) {
+                return itemInList.getQuantity();
             }
         }
         return 0;
@@ -74,7 +81,7 @@ public class ShoppingList {
      * @return sorted item ArrayList.
      * @throws FridgetException Error thrown when there are no items in the shoppingList.
      */
-    private ArrayList<Item> sortItem() throws FridgetException {
+    protected ArrayList<Item> sortItem() throws FridgetException {
         if (shoppingList.isEmpty()) {
             String emptyListMessage = "You currently have nothing in your shopping list.\n"
                     + "Input \"help\" to get started!";
@@ -109,3 +116,4 @@ public class ShoppingList {
         shoppingList = new ArrayList<>();
     }
 }
+//@@author BryanElmer
