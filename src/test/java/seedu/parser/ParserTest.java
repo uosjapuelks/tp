@@ -17,6 +17,9 @@ import seedu.commands.UpdateCommand;
 import seedu.data.exception.FridgetException;
 import seedu.data.item.Item;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -25,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 class ParserTest {
     Parser parser = new Parser();
 
+    //@@ author alvynben
     @Test
     void parseCommand_correctAddCommandFormat_success() {
         try {
@@ -141,6 +145,60 @@ class ParserTest {
         assertThrows(FridgetException.class, () -> {
             parser.parseItemForAdding(inputString);
         });
+    }
+
+    //@@author alvynben
+    @Test
+    void parseItemForAdding_addingIncorrectDate_exceptionThrown() {
+        String inputString = "add chicken /2021-15-15";
+        assertThrows(FridgetException.class, () -> {
+            parser.parseItemForAdding(inputString);
+        });
+    }
+
+    @Test
+    void parseItemForAdding_addingExpiredDate_exceptionThrown() {
+        String inputString = "add chicken /1111-11-11";
+        assertThrows(FridgetException.class, () -> {
+            parser.parseItemForAdding(inputString);
+        });
+    }
+
+    @Test
+    void parseMultipleItemsForAdding_multipleItemInput_expectArrayList() {
+        String inputString = "add chicken /2022-11-11; burger /2023-11-11";
+        ArrayList<Item> expectedList = new ArrayList<>();
+        expectedList.add(new Item("chicken", LocalDate.parse("2022-11-11")));
+        expectedList.add(new Item("burger", LocalDate.parse("2023-11-11")));
+
+        try {
+            ArrayList<Item> actualList = parser.parseMultipleItemsForAdding(inputString);
+            for (int i = 0; i < 2; i++) {
+                Item expectedItem = expectedList.get(i);
+                Item actualItem = actualList.get(i);
+
+                if (!expectedItem.hasSameNameAs(actualItem)) {
+                    fail();
+                }
+
+                if (!expectedItem.hasSameExpiryAs(actualItem)) {
+                    fail();
+                }
+            }
+        } catch (FridgetException e) {
+            fail();
+        }
+    }
+
+    @Test
+     void parseSearchTerm_oneSearchTerm_expectString() {
+        String inputString = "find burger";
+        try {
+            String actualOutput = parser.parseSearchTerm(inputString, Parser.CommandType.FIND);
+            assertEquals("burger",actualOutput);
+        } catch (FridgetException e) {
+            fail();
+        }
     }
 
     //@@author zonglun99
