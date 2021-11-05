@@ -30,6 +30,12 @@ public class Parser {
     private static final String DATE_FORMAT = "Please try this format for the date:\n\n"
             + "    /YYYY-MM-DD\n"
             + "    Example: '... /2022-08-03";
+    private static final String INVALID_COMMAND_MESSAGE = "No command found!\n"
+            + "Enter help if you need the list of available commands.";
+    private static final String NAME_ERROR_MESSAGE = "You are not able to use '/' and '|' in item name.";
+    private static final String UPDATE_ERROR_MESSAGE = "Update quantity cannot be set to negative values.\n"
+            + "Command has been shutdown.";
+    private static final String ABORT_MESSAGE = "You have opted to abort. Command has been shutdown.";
 
     public enum CommandType {
         ADD,
@@ -93,8 +99,7 @@ public class Parser {
             assert !userCommand.equalsIgnoreCase("reset");
             assert !userCommand.equalsIgnoreCase("shopreset");
             assert !userCommand.equalsIgnoreCase("update");
-            throw new FridgetException("No command found!\n"
-                    + "Enter help if you need the list of available commands.");
+            throw new FridgetException(INVALID_COMMAND_MESSAGE);
         }
     }
 
@@ -202,7 +207,7 @@ public class Parser {
         } else {
             description = processedInput[1].trim();
             if (description.contains("|") | description.contains("/")) {
-                throw new FridgetException("You are not able to use '/' and '|' in item name.");
+                throw new FridgetException(NAME_ERROR_MESSAGE);
             }
             return description;
         }
@@ -298,7 +303,7 @@ public class Parser {
      */
     public boolean parseQuantity(int newQty) throws FridgetException {
         if (newQty < 0) {
-            throw new FridgetException("Update quantity cannot be set to negative values.");
+            throw new FridgetException(UPDATE_ERROR_MESSAGE);
         } else {
             return newQty == 0;
         }
@@ -312,7 +317,7 @@ public class Parser {
      */
     public void parseSuggestion(boolean acceptSuggestion) throws FridgetException {
         if (!acceptSuggestion) {
-            throw new FridgetException("You have opted to abort. Command has been shutdown.");
+            throw new FridgetException(ABORT_MESSAGE);
         }
     }
 }

@@ -31,9 +31,6 @@ list
 add fish Cake /2022-12-12
 1
 add fish Cake /2022-12-12
-1
-add JimBeam /2020-10-03
-1
 remove i
 0
 list

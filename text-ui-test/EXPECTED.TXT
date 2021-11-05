@@ -29,7 +29,7 @@ USER INPUT: __________________________________________
 List of commands available:
 
 add ITEM_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
--> Adds an item and its expiry date to the item list.
+-> Adds an item and its expiry date to the item list. Input quantity after being prompt.
 
 find KEYWORD [eg. find bacon]
 -> Find and print all items associated with keyword.
@@ -185,28 +185,15 @@ USER INPUT: __________________________________________
 What quantity of [fish Cake | 2022-12-12] would you like to add?
 __________________________________________
 USER INPUT: __________________________________________
-You have successfully increased the quantity of:
-    fish Cake | Qty: 2->3 | 12 Dec 2022
-__________________________________________
-USER INPUT: __________________________________________
-[JimBeam] expired 398 days ago.
+No valid number was stated. The command has been shutdown.
 __________________________________________
 USER INPUT: __________________________________________
 No command found!
 Enter help if you need the list of available commands.
 __________________________________________
 USER INPUT: __________________________________________
-Which item would you like to remove? Type the index of the item below.
-    1. fish Cake | Qty: 3 | 12 Dec 2022
-    2. JimBeam | Qty: 1 | 03 Oct 2030
-If you've changed your mind, simply type 'quit'.
-__________________________________________
-USER INPUT: __________________________________________
-This index is not valid. The command has been shutdown.
-__________________________________________
-USER INPUT: __________________________________________
 List sorted by item name:
-    fish Cake | Qty: 3 | 12 Dec 2022
+    fish Cake | Qty: 2 | 12 Dec 2022
     JimBeam | Qty: 1 | 03 Oct 2030
     yoghurt cake | Qty: 1 | 15 Oct 2030
 __________________________________________
@@ -248,7 +235,7 @@ __________________________________________
 USER INPUT: __________________________________________
 Which item would you like to overwrite quantity? Type the index of the item below.
     1. yoghurt cake | Qty: 1 | 15 Oct 2030
-    2. fish Cake | Qty: 3 | 12 Dec 2022
+    2. fish Cake | Qty: 2 | 12 Dec 2022
     3. JimBeam | Qty: 2000 | 03 Oct 2030
 If you've changed your mind, simply type 'quit'.
 __________________________________________
@@ -260,7 +247,7 @@ Quantity of yoghurt cake is now 675.
 __________________________________________
 USER INPUT: __________________________________________
 Which item would you like to remove? Type the index of the item below.
-    1. fish Cake | Qty: 3 | 12 Dec 2022
+    1. fish Cake | Qty: 2 | 12 Dec 2022
     2. JimBeam | Qty: 2000 | 03 Oct 2030
 If you've changed your mind, simply type 'quit'.
 __________________________________________
@@ -273,22 +260,21 @@ You have successfully removed:
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by item name:
-    fish Cake | Qty: 3 | 12 Dec 2022
+    fish Cake | Qty: 2 | 12 Dec 2022
     JimBeam | Qty: 1998 | 03 Oct 2030
     yoghurt cake | Qty: 675 | 15 Oct 2030
 __________________________________________
 USER INPUT: __________________________________________
-There are 3 items, how many would like to remove?
+There are 2 items, how many would like to remove?
 __________________________________________
 USER INPUT: __________________________________________
 You have successfully removed:
     fish Cake | Qty: 2 | 12 Dec 2022
 __________________________________________
+You have ran out of fish Cake. Would you like to add it to your shopping list? (Y/N)
+__________________________________________
 USER INPUT: __________________________________________
-List sorted by item name:
-    fish Cake | Qty: 1 | 12 Dec 2022
-    JimBeam | Qty: 1998 | 03 Oct 2030
-    yoghurt cake | Qty: 675 | 15 Oct 2030
+Invalid Confirmation. The Command has been shutdown.
 __________________________________________
 USER INPUT: __________________________________________
 There are 675 items, how many would like to remove?
@@ -307,13 +293,11 @@ You have successfully added:
     yoghurt cake | Qty: 5
 __________________________________________
 USER INPUT: __________________________________________
-You have successfully removed:
-    fish Cake | Qty: 1 | 12 Dec 2022
-__________________________________________
-You have ran out of fish Cake. Would you like to add it to your shopping list? (Y/N)
+No item matching [fish Cake] was found.
 __________________________________________
 USER INPUT: __________________________________________
-Understood, we will not add [fish Cake] to the shopping list.
+No command found!
+Enter help if you need the list of available commands.
 __________________________________________
 USER INPUT: __________________________________________
 List sorted by item name:

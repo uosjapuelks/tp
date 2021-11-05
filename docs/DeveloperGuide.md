@@ -568,13 +568,13 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 
 ## Non-Functional Requirements
 
-1. Fridget should operate on most OS with Java `11` installed.
+1. Fridget should operate on common OS with Java `11` installed.
 2. A user with a fast typing speed should be able to fully optimize the usage of Fridget.
-3. Coloured dates should be able to display on most OS.
 
 ## Glossary
 
-* **OS**: Windows, Linux, OS X
+* **Common OS**: Windows, Linux, OS X
+* **CAPITALISE_WORDS**: Represents the description of the required item.
 
 ## Instructions For Manual Testing
 
@@ -592,15 +592,19 @@ This CLI based application hopes to automate a lot of the tasks users have relat
    1. Adding format to follow would be, `add ITEM_NAME /EXPIRY_DATE`.
    2. ITEM_NAME is the parameter for the name and EXPIRY_DATE will be in the format of /yyyy-mm-dd
 2. Test cases: 
-   1. `add bacon /2021-12-12`
+   1. `add bacon /2021-12-12` followed by `1`
       Expected: Message will be printed to inform you item is added. Type command `list` to view the item added to Fridget.
-   2. `add bacon`
+   2. `add bacon /2021-12-12` followed by `5`
+      Expected: Message will be printed to inform you the increase in number of items added from 1 to 6 quantity.
+   3. `add burger /2021-12-12 ; chicken /2021-12-12` followed by `1` and `1`
+      Expected: Message will be printed to inform you that both items are added.
+   4. `add bacon`
       Expected: Error message printed to prompt that there is lack of expiry date. No item added.
-   3. `add /2021-11-11`
+   5. `add /2021-11-11`
       Expected: Error message printed to indicate the lack of item name. No item will be added.
-   4. `add bacon /2021-13-13`
+   6. `add bacon /2021-13-13`
       Expected: Error message to inform that date is in the wrong format. No item will be added.
-   5. `add | /2021-12-12`
+   7. `add | /2021-12-12`
       Expected: Error message to inform user to not input '|' in item name. No item will be added.
 
 ### Deleting Items
