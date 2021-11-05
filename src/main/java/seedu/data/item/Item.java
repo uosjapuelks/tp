@@ -215,4 +215,8 @@ public class Item {
     public String toAddFormat() {
         return itemName + " | " + expiryDate;
     }
+
+    public boolean hasSameNameAs(Item item) {
+        return itemName.equalsIgnoreCase(item.getItemName());
+    }
 }
