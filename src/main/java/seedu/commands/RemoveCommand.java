@@ -52,6 +52,7 @@ public class RemoveCommand extends Command {
         handleRemovalOfMultipleQuantity(ui, itemList, shoppingList, itemToBeRemoved);
     }
 
+    //@@author BryanElmer
     /**
      * Handles the quantity to remove when user wants to remove an item.
      *
@@ -92,4 +93,5 @@ public class RemoveCommand extends Command {
             ui.printShopUpdateMessage(addedItem, qtyInShop);
         }
     }
+    //@@author BryanElmer
 }

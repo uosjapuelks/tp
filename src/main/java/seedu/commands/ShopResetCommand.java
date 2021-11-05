@@ -6,6 +6,7 @@ import seedu.storage.ItemList;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
+//@@author BryanElmer
 public class ShopResetCommand extends Command {
     /**
      * Constructor for ShopResetCommand.
@@ -35,3 +36,4 @@ public class ShopResetCommand extends Command {
         }
     }
 }
+//@@author BryanElmer

@@ -49,6 +49,7 @@ public class UpdateCommand extends Command {
         }
     }
 
+    //@@author BryanElmer
     /**
      * Updates the shopping list.
      *
@@ -68,4 +69,5 @@ public class UpdateCommand extends Command {
             ui.printShopUpdateMessage(addedItem, qtyInShop);
         }
     }
+    //@@author BryanElmer
 }

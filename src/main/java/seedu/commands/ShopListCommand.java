@@ -9,6 +9,7 @@ import seedu.ui.Ui;
 
 import java.util.ArrayList;
 
+//@@author BryanElmer
 public class ShopListCommand extends Command {
     /**
      * Constructor for ShopListCommand.
@@ -32,3 +33,4 @@ public class ShopListCommand extends Command {
         ui.printListMessage(listOfItems, "", true);
     }
 }
+//@@author BryanElmer
