@@ -25,7 +25,6 @@ expiring
 list
 add fish Cake /2022-12-12
 add fish Cake /2022-12-12
-add JimBeam /2020-10-03
 remove i
 0
 list
