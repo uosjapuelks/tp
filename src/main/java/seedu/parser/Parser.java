@@ -137,8 +137,7 @@ public class Parser {
      */
     private String[] processInput(String userInput) {
         String[] splitInput = splitUserInputByWhitespace(userInput);
-        String[] trimmedInput = trimContents(splitInput);
-        return trimmedInput;
+        return trimContents(splitInput);
     }
 
     /**
@@ -192,7 +191,8 @@ public class Parser {
         if (processedInput.length < 2) {
             throw new FridgetException("Missing item name." + correctFormat);
         } else if (!processedInput[1].contains("/") && commandType == CommandType.ADD) {
-            throw new FridgetException("Missing expiry date." + correctFormat);
+            throw new FridgetException("This description has an error: ["
+                    + processedInput[1] + "]\nMissing expiry date." + correctFormat);
         }
 
         String description = "";
