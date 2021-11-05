@@ -35,7 +35,7 @@ Each rectangle above represents a class that exists to make Fridget work.
 The larger folders represent the main purpose of the classes inside it.
 Their functions are as follows:
 
-#### **Front End**
+#### <ins>**Front End**</ins>
 
 The front end aims to handle:
 - Reading <ins>inputs</ins> from the user
@@ -47,7 +47,7 @@ The Ui manages the entirety of the front end.
 - It collects user input and stores it.
 - It also prints any necessary output to the terminal.
 
-#### **Core**
+#### <ins>**Core**</ins>
 
 The core aims to understand and execute the user's commands.
 
@@ -69,12 +69,13 @@ There is a Command class for each possible command the user could execute.
 Each Command class controls the Ui, Parser, ItemList, and ShoppingList so the User's intended outcome is achieved.
 
 ![image info](./umlDiagrams/Command.png)
+
 The Command class is inherited by its respective subclasses, which have their own specific functionalities.
 
 The Command class contain an `execute()` method which is overridden by all other classes to execute the
 functionality specific to that class.
 
-#### **Database**
+#### <ins>**Database**</ins>
 
 The Database stores all info that is needed on a permanent basis. This may
 include info such as the contents of ItemList. Most info in the Database
@@ -86,13 +87,15 @@ on.
 The Storage class takes charge of storing items after every command, and
 retrieving them upon startup.
 
-#### Fridget
+#### <ins>**Fridget**</ins>
 
 #### `Fridget`
 
 Fridget initialises all classes upon startup, and initiates the user feedback loop as shown below.
 
 ![image info](./umlDiagrams/UserFeedbackLoop.png)
+
+<hr/>
 
 ### Architecture Logic
 
@@ -124,6 +127,8 @@ The overall flow within Fridget occurs in three stages:
 2. This `ExitCommand` prints a message to let the user know Fridget is shutting down.
 3. `Fridget` recognises that `ExitCommand.exitNotRequired()` is not false, and shuts down Fridget safely.
 
+<hr/>
+
 ### Adding Items Into Fridget
 
 #### Main Objectives:
@@ -135,6 +140,7 @@ The functionality to add items is bound by two main objectives:
 As a result, the current iteration requires two pieces of info from the user:
 * The name of the item
 * The expiry date of the item
+* The quantity of the item to be added
 
 This is done to minimize the input required from the user per entry, while maximising future uses with the data.
 
@@ -143,6 +149,7 @@ Future uses include:
 * Combining items with similar names and expiry together
 * Sort all items by expiry date
 * Remind users of expiring items by name
+* Update quantity of items already in itemList
 
 #### Overall Sequence:
 
@@ -154,30 +161,66 @@ This step is almost always initiated by Fridget, but could potentially be done b
 
 Step 2 & 3:
 
-The parseItemForAdding() method is called in Parser, with the currentUserInput as a parameter.
-The parser returns an Item with the name and expiry date specified in the user input. 
+The currentUserInput is retrieved from the Ui using the method getCurrentUserInput()
 
-Step 4:
+Step 4 & 5:
 
-If the user uses the ' | ' character in the item's name, an exception is thrown.
-This is done as the ' | ' may confuse the Storage class.
+If the user input contains `;`, it means that the user wants to add multiple items. Hence, the parser is called to parse the user input and return an ArrayList of Items the user wants to add called newItems.
 
-Step 5 & 6:
+Steps 6 & 7:
 
-The Item is added to ItemList.
-ItemList returns a value signifying the current quantity of Item in ItemList.
+The addMultipleItemsToItem method is called to add all items in newItems. More information can be found [below](#addmultipleitemstoitemlist).
 
-Step 7 & 8:
+Steps 8 & 9:
 
-If the Item already exists in Fridget's ItemList, print a message with the Ui to signify that the quantity of the existing item has increased to the user.
+If there is no `;` in the currentUserInput, the user only wants to add one item. A new Item is parsed using the parser method: parseItemForAdding.
 
-Step 9 & 10:
+Step 10 & 11:
 
-If the item does not exist, print a message using Ui to signify to the user that a new Item has been added into Fridget.
+The addItemToItemList method is called to add the newItem to the ItemList.
 
-Step 11:
+#### addMultipleItemsToItemList
 
-The execution of the execute() method ends.
+![image info](./umlDiagrams/addMultipleItemsToItemListSequence.png)
+
+Step 1:
+
+The addMultipleItemsToItemList is called by AddCommand, with the ArrayList of Items to add(newItem) as a parameter.
+
+Step 2 & 3:
+
+The addItemToItemList method is called on each item in the list. More information can be found [below](#additemtoitemlist).
+
+Step 4 & 5:
+
+The printSeparatorLine method in Ui is called to separate the output created by the addition of one item from the next. It is only not called for the last Item in newItems.
+
+#### addItemToItemList
+
+![image info](./umlDiagrams/addItemToItemListSequence.png)
+
+Step 1:
+
+The addItemToItemList method is called from within AddCommand.
+
+Step 2 & 3:
+
+AddCommand calls getQuantityToBeAdded in Ui to read the input from the user to determine the quantity of the item to be added (qtyToBeAdded).
+
+Step 4 & 5:
+
+AddCommand calls addItem(newItem) in ItemList to add the newItem into the ItemList. This method returns the final quantity of the item left.
+
+Step 6 & 7:
+
+If the original quantity of the item was greater than 0, printReactionToAddingExistingIngredient is called in Ui to acknowledge to the user that the item had already existed in the fridge.
+
+Step 8 & 9:
+
+If the original quantity of the item was 0, printReactionToAddingItem is called in Ui to acknowledge to the user that the item had not existed in the fridge previously.
+
+
+
 
 ### Removing Items From Fridget
 
@@ -525,13 +568,13 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 
 ## Non-Functional Requirements
 
-1. Fridget should operate on most OS with Java `11` installed.
+1. Fridget should operate on common OS with Java `11` installed.
 2. A user with a fast typing speed should be able to fully optimize the usage of Fridget.
-3. Coloured dates should be able to display on most OS.
 
 ## Glossary
 
-* **OS**: Windows, Linux, OS X
+* **Common OS**: Windows, Linux, OS X
+* **CAPITALISE_WORDS**: Represents the description of the required item.
 
 ## Instructions For Manual Testing
 
@@ -549,15 +592,19 @@ This CLI based application hopes to automate a lot of the tasks users have relat
    1. Adding format to follow would be, `add ITEM_NAME /EXPIRY_DATE`.
    2. ITEM_NAME is the parameter for the name and EXPIRY_DATE will be in the format of /yyyy-mm-dd
 2. Test cases: 
-   1. `add bacon /2021-12-12`
+   1. `add bacon /2021-12-12` followed by `1`
       Expected: Message will be printed to inform you item is added. Type command `list` to view the item added to Fridget.
-   2. `add bacon`
+   2. `add bacon /2021-12-12` followed by `5`
+      Expected: Message will be printed to inform you the increase in number of items added from 1 to 6 quantity.
+   3. `add burger /2021-12-12 ; chicken /2021-12-12` followed by `1` and `1`
+      Expected: Message will be printed to inform you that both items are added.
+   4. `add bacon`
       Expected: Error message printed to prompt that there is lack of expiry date. No item added.
-   3. `add /2021-11-11`
+   5. `add /2021-11-11`
       Expected: Error message printed to indicate the lack of item name. No item will be added.
-   4. `add bacon /2021-13-13`
+   6. `add bacon /2021-13-13`
       Expected: Error message to inform that date is in the wrong format. No item will be added.
-   5. `add | /2021-12-12`
+   7. `add | /2021-12-12`
       Expected: Error message to inform user to not input '|' in item name. No item will be added.
 
 ### Deleting Items

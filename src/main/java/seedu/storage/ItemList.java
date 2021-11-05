@@ -3,33 +3,49 @@ package seedu.storage;
 import seedu.data.exception.FridgetException;
 import seedu.data.item.Item;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ItemList {
     protected ArrayList<Item> itemList;
 
     public ItemList() {
-        this.itemList = new ArrayList<Item>();
+        this.itemList = new ArrayList<>();
     }
 
     /**
-     * Adds an item into itemList.
+     * Adds an item into itemList, and returns the final quantity of the item in itemList.
      *
      * @param item The Item to be added.
      * @return Updated quantity of the item added in the list.
+     * @throws FridgetException if the quantity of the item exceeds INT_MAX
      */
-    public int addItem(Item item) {
+    public int addItem(Item item) throws FridgetException {
         assert item != null : "Item must not be null!";
-        for (Item item1 : itemList) {
-            if (item1.getItemName().equalsIgnoreCase(item.getItemName())
-                    && item1.getExpiryDate().equals(item.getExpiryDate())) {
-                item1.addQuantity(1);
-                return item1.getQuantity();
+        for (Item itemInList : itemList) {
+            String itemInListName = itemInList.getItemName();
+            String itemName = item.getItemName();
+            LocalDate itemInListExpiry = itemInList.getExpiryDate();
+            LocalDate itemExpiry = item.getExpiryDate();
+
+            boolean isItemInListAndItemSame = itemInListName.equalsIgnoreCase(itemName)
+                    && itemInListExpiry.equals(itemExpiry);
+
+            if (isItemInListAndItemSame) {
+                long finalQty = itemInList.getQuantity() + item.getQuantity();
+
+                if (finalQty >= Integer.MAX_VALUE) {
+                    throw new FridgetException("You have reached the maximum possible amount of " + itemName
+                            + "\nMax: 2147483647");
+                }
+
+                itemInList.addQuantity(item.getQuantity());
+                return itemInList.getQuantity();
             }
         }
 
         itemList.add(item);
-        return 1;
+        return item.getQuantity();
     }
 
     /**
@@ -57,8 +73,8 @@ public class ItemList {
      * @return Boolean value of true if exist.
      */
     public boolean searchItemNameExist(Item item) {
-        for (Item item1 : itemList) {
-            if (item1.getItemName().equalsIgnoreCase(item.getItemName())) {
+        for (Item itemInList : itemList) {
+            if (itemInList.getItemName().equalsIgnoreCase(item.getItemName())) {
                 return true;
             }
         }
@@ -99,7 +115,7 @@ public class ItemList {
                     + "Input \"help\" to get started!";
             throw new FridgetException(emptyListMessage);
         }
-        ArrayList<Item> sortedList = new ArrayList<Item>(itemList);
+        ArrayList<Item> sortedList = new ArrayList<>(itemList);
         sortedList.sort((byDate ? Item.ItemExpiryComparator : Item.ItemNameComparator));
         return sortedList;
     }
@@ -139,7 +155,10 @@ public class ItemList {
         }
         ArrayList<Item> matchingItems = new ArrayList<>();
         for (Item item : itemList) {
-            if (item.getItemName().toLowerCase().contains(searchTerm.toLowerCase())) {
+            String lowerCaseItemName = item.getItemName().toLowerCase();
+            String lowerCaseSearchTerm = searchTerm.toLowerCase();
+
+            if (lowerCaseItemName.contains(lowerCaseSearchTerm)) {
                 matchingItems.add(item);
             }
         }
@@ -150,6 +169,6 @@ public class ItemList {
      * Resets the Array List of items.
      */
     public void resetList() {
-        itemList = new ArrayList<Item>();
+        itemList = new ArrayList<>();
     }
 }

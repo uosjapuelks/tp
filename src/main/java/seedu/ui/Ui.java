@@ -83,10 +83,12 @@ public class Ui {
      * Prints a reaction to user after successfully adding an item that has existed in the list.
      *
      * @param item The item the user had added.
+     * @param finalQty The final quantity of the item.
+     * @param originalQty The original quantity of the item, before addition.
      */
-    public void printReactionToAddingExistingItem(Item item, int qty) {
+    public void printReactionToAddingExistingItem(Item item, int finalQty, int originalQty) {
         String acknowledgeAdd = "You have successfully increased the quantity of:\n";
-        String itemString = item.addExistingToString(qty);
+        String itemString = item.addExistingToString(finalQty, originalQty);
         String addReaction = acknowledgeAdd + FOUR_SPACE_INDENTATION + itemString;
         printLine(addReaction);
     }
@@ -403,7 +405,8 @@ public class Ui {
             if (toIntOutput < 0) {
                 throw new FridgetException("Input number cannot be less than 0.");
             } else if (toIntOutput > Integer.MAX_VALUE) {
-                throw new FridgetException("Input number cannot be more than " + Integer.MAX_VALUE);
+                throw new FridgetException("Input number cannot be more than " + Integer.MAX_VALUE
+                        + ". The command has been shutdown.");
             }
             return (int) toIntOutput;
         } catch (NumberFormatException e) {
@@ -449,6 +452,14 @@ public class Ui {
     public void acknowledgeUpdate(Item updated) {
         String msg = String.format("Quantity of %s is now %d.", updated.getItemName(), updated.getQuantity());
         printLine(msg);
+    }
+
+
+    public int getQuantityToBeAdded(Item newItem) throws FridgetException {
+
+        printLine("What quantity of [" + newItem.toAddFormat() + "] would you like to add?");
+        printSeparatorLine();
+        return getIntInput();
     }
 
     /**

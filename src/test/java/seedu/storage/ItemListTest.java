@@ -28,30 +28,47 @@ class ItemListTest {
     }
 
     private ItemList filledTestList() {
-        testList.addItem(itemCExpireYesterday);
-        testList.addItem(itemAExpireTomorrow);
-        testList.addItem(itemBExpireToday);
+        try {
+            testList.addItem(itemCExpireYesterday);
+            testList.addItem(itemAExpireTomorrow);
+            testList.addItem(itemBExpireToday);
+        } catch (Exception e) {
+            fail();
+        }
+
         return testList;
     }
 
     @Test
     void containsItem_aInTestList_expectedResultTrue() {
-        testList.addItem(itemAExpireTomorrow);
-        assertTrue(testList.containsItem(itemAExpireTomorrow));
+        try {
+            testList.addItem(itemAExpireTomorrow);
+            assertTrue(testList.containsItem(itemAExpireTomorrow));
+        } catch (Exception e) {
+            fail();
+        }
     }
 
     @Test
     void containsItem_aNotInTestList_expectedResultTrue() {
-        testList.addItem(itemCExpireYesterday);
-        assertFalse(testList.containsItem(itemAExpireTomorrow));
+        try {
+            testList.addItem(itemCExpireYesterday);
+            assertFalse(testList.containsItem(itemAExpireTomorrow));
+        } catch (Exception e) {
+            fail();
+        }
     }
 
     @Test
     void searchItemNameExist_itemInTestList_expectedResultTrue() {
-        Item itemA = new Item("burger", today.plusDays(1));
-        Item itemB = new Item("Burger", today.minusDays(1));
-        itemList.addItem(itemA);
-        assertTrue(itemList.searchItemNameExist(itemB));
+        try {
+            Item itemA = new Item("burger", today.plusDays(1));
+            Item itemB = new Item("Burger", today.minusDays(1));
+            itemList.addItem(itemA);
+            assertTrue(itemList.searchItemNameExist(itemB));
+        } catch (Exception e) {
+            fail();
+        }
     }
 
     @Test
