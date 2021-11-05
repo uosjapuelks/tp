@@ -132,6 +132,7 @@ public class Storage {
         itemList.addItem(savedItem);
     }
 
+    //@@author zonglun99
     /**
      * Adds the log date and time, and notification on/off status.
      *
@@ -143,6 +144,20 @@ public class Storage {
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         Notification.setNotificationStatus(!splitString[1].equals("no"));
     }
+
+    /**
+     * Updates the log text file.
+     *
+     * @param notification Notification object.
+     * @throws IOException The error thrown from file IO operations.
+     */
+    public void updateLogFile(Notification notification) throws IOException {
+        FileWriter fileWriter = new FileWriter(logFilePath);
+        assert notification != null : "Notification must not be null!";
+        fileWriter.write(notification.toString());
+        fileWriter.close();
+    }
+    //@@author zonglun99
 
     /**
      * Adds the saved items in shopping list file into the shopping list.
@@ -168,19 +183,6 @@ public class Storage {
             fileWriter.write(item.saveFormat());
             fileWriter.write(System.lineSeparator());
         }
-        fileWriter.close();
-    }
-
-    /**
-     * Updates the log text file.
-     *
-     * @param notification Notification object.
-     * @throws IOException The error thrown from file IO operations.
-     */
-    public void updateLogFile(Notification notification) throws IOException {
-        FileWriter fileWriter = new FileWriter(logFilePath);
-        assert notification != null : "Notification must not be null!";
-        fileWriter.write(notification.toString());
         fileWriter.close();
     }
 
