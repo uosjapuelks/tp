@@ -141,12 +141,12 @@ public class Item {
     /**
      * String used when adding items already existing in the list.
      *
-     * @param qty Total quantity of item in the list.
+     * @param finalQty Total quantity of item in the list.
      * @return Item Name, change in quantity and Expiry that is colored.
      */
-    public String addExistingToString(int qty) {
-        assert qty > 1 : "Unable to perform this operation as quantity is less than or equal to 1";
-        return itemName + " | Qty: " + (qty - 1) + "->" + qty + " | " + expiryToString();
+    public String addExistingToString(int finalQty, int originalQty) {
+        assert finalQty > 1 : "Unable to perform this operation as quantity is less than or equal to 1";
+        return itemName + " | Qty: " + (originalQty) + "->" + finalQty + " | " + expiryToString();
     }
 
     /**
@@ -210,5 +210,9 @@ public class Item {
 
     public String saveFormat() {
         return itemName + " | Qty: " + quantity + " | " + expiryDate;
+    }
+
+    public String toAddFormat() {
+        return itemName + " | " + expiryDate;
     }
 }

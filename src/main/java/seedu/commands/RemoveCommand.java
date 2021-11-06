@@ -41,6 +41,7 @@ public class RemoveCommand extends Command {
      *
      * @param ui                 The Ui which will send output and collect input from the user.
      * @param itemList           The itemList where items are stored.
+     * @param shoppingList       The shoppingList to be updated if item is depleted.
      * @param nameOfItemToRemove The name of the item to be removed.
      * @param matchingItems      The list of items in itemList which match the nameOfItemToRemove.
      * @throws FridgetException if the user types an invalid index to remove from itemsList.
@@ -56,6 +57,7 @@ public class RemoveCommand extends Command {
      *
      * @param ui              The Ui which will send output and collect input from the user.
      * @param itemList        The itemList where items are stored.
+     * @param shoppingList    The shoppingList to be updated if item is depleted.
      * @param itemToBeRemoved The item to be removed.
      * @throws FridgetException if the user types an invalid quantity to remove from itemsList.
      */
@@ -72,6 +74,15 @@ public class RemoveCommand extends Command {
         }
     }
 
+    /**
+     * This function updates the shopping list regarding a removed item based on the user's feedback.
+     *
+     * @param ui            The Ui which will send output and collect input from the user.
+     * @param shoppingList  The shoppingList to be updated based on user's input.
+     * @param itemRemoved   The item that has been removed.
+     * @param qtyInShop     The quantity of the item in the shoppingList.
+     * @throws FridgetException if the user types an incorrect input when asked for quantity.
+     */
     private void updateShopList(Ui ui, ShoppingList shoppingList, Item itemRemoved, int qtyInShop)
             throws FridgetException {
         int qty = ui.getShopQuantity(itemRemoved, qtyInShop);

@@ -70,19 +70,40 @@ Feature | Command Format |
 
 <hr/>
 
+### Command Syntax
+
+As you use this guide, you may see some commands with specific punctuation or parameters. This guide explains what they mean, and how you should use them.
+
+For simplicity's sake, the number `2147483647` shall be referred to henceforth as `INT_MAX`.
+
+Command Option | Description |
+-----------|-----------------
+`ITEM_NAME` | The `ITEM_NAME` can be any series of characters or digits of less than length `INT_MAX`. Additionally, `ITEM_NAME` should not include the following terms: `;`,`/`, or <code>&#124;</code>. <br/><br/> More explanation can be found [here](#add-an-item-into-fridget-add).
+`EXPIRY_DATE` | The `EXPIRY_DATE` must be of the format `YYYY-MM-DD`.
+`OPTIONAL_SORT_TYPE` | The `OPTIONAL_SORT_TYPE` must be in lowercase format to be recognised properly. Hence, you should use `r` or `e`, <b>NOT </b> `R` or `E`.
+`KEYWORD` | This `KEYWORD` can be the exact same as the name of the item you are trying to remove. You can also input a `KEYWORD` that is contained within the item you are trying to delete.
+
+<hr/>
+
 ### Add an item into Fridget: `add`
 Use this command to add your items into Fridget.
 
 Format: `add ITEM_NAME /EXPIRY_DATE`
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
-:exclamation:
-The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
-</div>
+Constraints:
+- Do not use `/`, `|`, or `;` in the `ITEM_NAME`.
+  - `/` is used to demarcate the `EXPIRY_DATE`.
+  - `|` is used for Fridget's own secret purposes.
+  - `;` is used for adding multiple items at once. More instructions can be found below.
 
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
 :exclamation: 
 The <b>EXPIRY_DATE</b> must be in the <ins>YYYY-MM-DD</ins> format.  
+</div>
+
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+:exclamation: 
+The <b>EXPIRY_DATE</b> should not be earlier than the current day.  
 </div>
 
 **Example of usage:**
@@ -92,8 +113,12 @@ The <b>EXPIRY_DATE</b> must be in the <ins>YYYY-MM-DD</ins> format.
 ```markdown
 USER INPUT: add burger /2021-11-11
 __________________________________________
+What quantity of [burger | 2021-11-11] would you like to add?
+__________________________________________
+USER INPUT: 1
+__________________________________________
 You have successfully added:
-    burger | Qty: 1 | 11 Nov 2021
+burger | Qty: 1 | 11 Nov 2021
 __________________________________________
 ```
 
@@ -102,8 +127,12 @@ __________________________________________
 ```markdown
 USER INPUT: add burger /2021-11-11
 __________________________________________
+What quantity of [burger | 2021-11-11] would you like to add?
+__________________________________________
+USER INPUT: 9
+__________________________________________
 You have successfully increased the quantity of:
-    burger | Qty: 1->2 | 11 Nov 2021
+burger | Qty: 1->10 | 11 Nov 2021
 __________________________________________
 ```
 
@@ -114,12 +143,21 @@ If you want to add multiple items at the same time, separate each item with a se
 **For example:**
 
 ```bash
-USER INPUT: add burger /2021-11-11; fries /2021-11-12
+USER INPUT: add burger /2021-11-11; chicken /2023-11-11
+__________________________________________
+What quantity of [burger | 2021-11-11] would you like to add?
+__________________________________________
+USER INPUT: 1
+__________________________________________
+You have successfully increased the quantity of:
+    burger | Qty: 10->11 | 11 Nov 2021
+__________________________________________
+What quantity of [chicken | 2023-11-11] would you like to add?
+__________________________________________
+USER INPUT: 1
 __________________________________________
 You have successfully added:
-    burger | Qty: 1 | 11 Nov 2021
-You have successfully added:
-    fries | Qty: 1 | 12 Nov 2021
+    chicken | Qty: 1 | 11 Nov 2023
 __________________________________________
 ```
 
@@ -224,7 +262,7 @@ __________________________________________
 List of commands available:
 
 add ITEM_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]
--> Adds an item and its expiry date to the item list.
+-> Adds an item and its expiry date to the item list. Input quantity after being prompt.
 
 find KEYWORD [eg. find bacon]
 -> Find and print all item associated with keyword.

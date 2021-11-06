@@ -1,5 +1,6 @@
 package seedu.data.exception;
 
+//@@author zonglun99
 public class FridgetException extends Exception {
     /**
      * A general exception in Fridget.

@@ -5,10 +5,11 @@ import seedu.storage.ItemList;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
+//@@author zonglun99
 public class HelpCommand extends Command {
     private static final String COMMAND_LIST = "List of commands available:\n\n"
             + "add ITEM_NAME /EXPIRY_DATE(format: yyyy-mm-dd) [eg. add bacon /2022-11-11]\n"
-            + "-> Adds an item and its expiry date to the item list.\n\n"
+            + "-> Adds an item and its expiry date to the item list. Input quantity after being prompt.\n\n"
             + "find KEYWORD [eg. find bacon]\n"
             + "-> Find and print all items associated with keyword.\n\n"
             + "remove ITEM_NAME [eg. delete bacon]\n"
