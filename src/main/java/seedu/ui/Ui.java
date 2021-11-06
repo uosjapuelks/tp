@@ -3,6 +3,8 @@ package seedu.ui;
 import seedu.data.exception.FridgetException;
 import seedu.data.item.Item;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -81,6 +83,12 @@ public class Ui {
         String addReaction = acknowledgeAdd
                 + FOUR_SPACE_INDENTATION + item;
         printLine(addReaction);
+
+        long centuriesPast = ChronoUnit.CENTURIES.between(LocalDate.now(), item.getExpiryDate());
+
+        if (centuriesPast > 1) {
+            printLine("\n[WARNING] This item's expiry lies more than one century from now.");
+        }
     }
 
     /**
