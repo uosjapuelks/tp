@@ -83,7 +83,13 @@ public class Item {
      * @param qty Amount of items to be added.
      */
     public void addQuantity(int qty) {
-        quantity += (quantity == Integer.MAX_VALUE) ? 0 : qty;
+        long finalQty = quantity + qty;
+
+        if (finalQty > Integer.MAX_VALUE) {
+            return;
+        }
+
+        quantity = (int) finalQty;
     }
 
     /**
