@@ -5,6 +5,7 @@ import seedu.storage.ItemList;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
+//@@author uosjapuelks
 public class ExitCommand extends Command {
 
     /**
