@@ -383,7 +383,7 @@ __________________________________________
 
 This commands lists all items in Fridget, in the order that you prefer.
 
-Format: `list -OPTIONAL_SORT_TYPE` or `list OPTIONAL_SORT_TYPE`
+Format: `list -OPTIONAL_SORT_TYPE`
 
 * `list` Lists items in alphabetical order.
 * `list -e` Lists items in ascending order of expiry dates.
@@ -530,7 +530,7 @@ __________________________________________
 Turning notification on!
 __________________________________________
 ````
-**Example of reminder notice:**
+**Example of health reminder notice:**
 ````
  ___________________________________________________
 |                      HEALTH!                      |
@@ -548,6 +548,26 @@ __________________________________________
 |            Always remember to eat more            |
 |              Fruits and Vegetables!               |
 |___________________________________________________|
+````
+**Example of expiry reminder notice:**
+````
+__________________________________________
+ ___________________________________________________
+|                      EXPIRY!                      |
+|===================================================|
+|      ___            _         __        ______    |
+|     / _ \___ __ _  (_)__  ___/ /__ ____/ / / /    |
+|    / , _/ -_)  ' \/ / _ \/ _  / -_) __/_/_/_/     |
+|   /_/|_|\__/_/_/_/_/_//_/\_,_/\__/_/ (_|_|_)      |
+|___________________________________________________|
+ >> Items expired! Please discard ASAP:
+     1. apple | Qty: 1 | 01 Nov 2021
+     2. chicken | Qty: 1 | 03 Nov 2021
+ --------------------------------------------------- 
+ >> Please use them before they expire:
+     1. bacon | Qty: 1 | 11 Nov 2021
+|___________________________________________________|
+__________________________________________
 ````
 
 <hr/>
@@ -573,7 +593,7 @@ __________________________________________
 ## Things to note
 
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: For commands help, expiring, reset, shopreset, shoplist, and notifs, adding a space and random text behind will still trigger the command.
+:exclamation: For commands help, expiring, reset, shopreset, shoplist, list, and notifs, adding a space and random text behind will still trigger the command.
 </div>
 
 Example:

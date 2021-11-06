@@ -131,13 +131,14 @@ class ParserTest {
         assertTrue(parsedResult.getClass().isAssignableFrom(ShopResetCommand.class));
     }
 
+    //@@author BryanElmer
     @Test
     void parseItemForAdding_addingItemInput_expectReturnItem() throws FridgetException {
         String inputString = "add chicken /2023-10-15";
         Item parsedResult = parser.parseItemForAdding(inputString);
         assertTrue(parsedResult.getClass().isAssignableFrom(Item.class));
     }
-    //@@author zonglun99
+
 
     @Test
     void parseItemForAdding_addingItemInput_exceptionThrown() {
@@ -222,5 +223,4 @@ class ParserTest {
         String parsedResult = parser.parseSortTypeForList(inputString);
         assertEquals(parsedResult, "default");
     }
-    //@@author zonglun99
 }
