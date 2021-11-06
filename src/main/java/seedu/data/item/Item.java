@@ -10,6 +10,7 @@ public class Item {
     private final LocalDate expiryDate;
     private int quantity;
 
+    //@@author uosjapuelks
     /**
      * Comparator that compares Strings of description of items.
      */
@@ -39,6 +40,7 @@ public class Item {
             return itemExpiry1.compareTo(itemExpiry2);
         }
     };
+    //@@author
 
     /**
      * Constructor for Item.
@@ -104,6 +106,7 @@ public class Item {
         return quantity;
     }
 
+    //@@author uosjapuelks
     public void setQuantity(int toQuantity) {
         this.quantity = toQuantity;
     }
@@ -115,9 +118,10 @@ public class Item {
      */
     @Override
     public String toString() {
-        String coloredExpiry = expiryToString();
-        return itemName + " | Qty: " + quantity + " | " + coloredExpiry;
+        String expiryInString = expiryToString();
+        return itemName + " | Qty: " + quantity + " | " + expiryInString;
     }
+    //@@author
 
     /**
      * String is represented as name + quantity.
@@ -167,6 +171,7 @@ public class Item {
         return expiryDate;
     }
 
+    //@@author uosjapuelks
     /**
      * Gets the coloured expiry date.
      *
@@ -211,6 +216,7 @@ public class Item {
     public String saveFormat() {
         return itemName + " | Qty: " + quantity + " | " + expiryDate;
     }
+    //@@author
 
     public String toAddFormat() {
         return itemName + " | " + expiryDate;
