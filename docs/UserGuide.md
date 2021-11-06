@@ -383,7 +383,7 @@ __________________________________________
 
 This commands lists all items in Fridget, in the order that you prefer.
 
-Format: `list -OPTIONAL_SORT_TYPE` or `list OPTIONAL_SORT_TYPE`
+Format: `list -OPTIONAL_SORT_TYPE`
 
 * `list` Lists items in alphabetical order.
 * `list -e` Lists items in ascending order of expiry dates.
@@ -593,7 +593,7 @@ __________________________________________
 ## Things to note
 
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: For commands help, expiring, reset, shopreset, shoplist, and notifs, adding a space and random text behind will still trigger the command.
+:exclamation: For commands help, expiring, reset, shopreset, shoplist, list, and notifs, adding a space and random text behind will still trigger the command.
 </div>
 
 Example:
