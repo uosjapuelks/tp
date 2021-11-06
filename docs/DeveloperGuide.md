@@ -137,7 +137,7 @@ The functionality to add items is bound by two main objectives:
 * Make adding items convenient for the user
 * Parse enough information about the item to benefit the user in the future
 
-As a result, the current iteration requires two pieces of info from the user:
+As a result, the current iteration requires three pieces of info from the user:
 * The name of the item
 * The expiry date of the item
 * The quantity of the item to be added
