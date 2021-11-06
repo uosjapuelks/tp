@@ -191,7 +191,7 @@ public class Item {
     }
 
     /**
-     * Check if Item is expired
+     * Check if Item is expired.
      *
      * @return true if item is expired
      */
