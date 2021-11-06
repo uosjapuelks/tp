@@ -41,5 +41,19 @@ public class StorageTest {
 
         assertTrue(Notification.isNotificationOn());
     }
+
+    //@@ author zonglun99
+    @Test
+    void addSavedShopItem_correctSavedShopItemInput_expectCorrectFormatInShopList() {
+        String savedItem = "bacon | Qty: 1";
+        String[] dataComponents = savedItem.split(REGEX_DATA_SEPARATOR);
+        storage.addSavedShopItem(dataComponents);
+        try {
+            String actualSaveFormat = shoppingList.getShoppingList("default").get(0).toShopFormat();
+            assertEquals(actualSaveFormat, savedItem);
+        } catch (FridgetException e) {
+            fail();
+        }
+    }
 }
 //@author BryanElmer
