@@ -5,6 +5,7 @@ import seedu.data.item.Item;
 import seedu.notification.Notification;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -92,24 +93,18 @@ public class Storage {
             return;
         }
 
-        Scanner listScanner = new Scanner(listFile);
-        if (listScanner == null) {
-            logger.log(Level.WARNING, "Please restart the program! Data storage has been corrupted.");
-        }
-        while (listScanner.hasNext()) {
-            String line = listScanner.nextLine();
-            String[] listDataComponents = line.split(REGEX_DATA_SEPARATOR);
-            addSavedItem(listDataComponents);
-        }
+        readFromListFile(listFile);
+        readFromLogFile(logFile);
+        readFromShopFile(shopFile);
+    }
 
-        Scanner logScanner = new Scanner(logFile);
-        if (logScanner == null) {
-            logger.log(Level.WARNING, "Please restart the program! Data storage has been corrupted.");
-        }
-        if (logScanner.hasNext()) {
-            addSavedNotification(logScanner.nextLine());
-        }
-
+    /**
+     * Read saved items list from savedShop.txt to update item list.
+     *
+     * @param shopFile savedShop.txt used to store all the items from user input.
+     * @throws FileNotFoundException thrown when file is not found.
+     */
+    private void readFromShopFile(File shopFile) throws FileNotFoundException {
         Scanner shopScanner = new Scanner(shopFile);
         if (shopScanner == null) {
             logger.log(Level.WARNING, "Please restart the program! Data storage has been corrupted.");
@@ -118,6 +113,25 @@ public class Storage {
             String line = shopScanner.nextLine();
             String[] shopDataComponents = line.split(REGEX_DATA_SEPARATOR);
             addSavedShopItem(shopDataComponents);
+        }
+    }
+
+    /**
+     * Read saved items list from savedList.txt to update item list.
+     *
+     * @param listFile savedList.txt used to store all the items from user input.
+     * @throws FileNotFoundException thrown when file is not found.
+     * @throws FridgetException thrown when item quantity exceed INT_MAX.
+     */
+    private void readFromListFile(File listFile) throws FileNotFoundException, FridgetException {
+        Scanner listScanner = new Scanner(listFile);
+        if (listScanner == null) {
+            logger.log(Level.WARNING, "Please restart the program! Data storage has been corrupted.");
+        }
+        while (listScanner.hasNext()) {
+            String line = listScanner.nextLine();
+            String[] listDataComponents = line.split(REGEX_DATA_SEPARATOR);
+            addSavedItem(listDataComponents);
         }
     }
 
@@ -157,6 +171,22 @@ public class Storage {
         assert notification != null : "Notification must not be null!";
         fileWriter.write(notification.toString());
         fileWriter.close();
+    }
+
+    /**
+     * Read saved logs from savedLogs.txt file to update notification status.
+     *
+     * @param logFile savedLogs.txt file used to store the logging.
+     * @throws FileNotFoundException thrown if file is not found.
+     */
+    private void readFromLogFile(File logFile) throws FileNotFoundException {
+        Scanner logScanner = new Scanner(logFile);
+        if (logScanner == null) {
+            logger.log(Level.WARNING, "Please restart the program! Data storage has been corrupted.");
+        }
+        if (logScanner.hasNext()) {
+            addSavedNotification(logScanner.nextLine());
+        }
     }
     //@@author zonglun99
 
