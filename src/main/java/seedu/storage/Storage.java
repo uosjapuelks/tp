@@ -188,7 +188,7 @@ public class Storage {
             addSavedNotification(logScanner.nextLine());
         }
     }
-    //@@author zonglun99
+    //@@author BryanElmer
 
     /**
      * Adds the saved items in shopping list file into the shopping list.
