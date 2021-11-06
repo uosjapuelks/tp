@@ -30,7 +30,7 @@ class UiTest {
         assertEquals("List sorted by expiry date:", ui.sortTypeMessage(sortTypeString));
     }
 
-    //@@ zonglun99
+    //@@ author zonglun99
     @Test
     void matchItem_itemNotInMatchingListInput_exceptionThrown() {
         ArrayList<Item> matchingItems = new ArrayList<>();
@@ -47,7 +47,7 @@ class UiTest {
     }
 
     @Test
-    void getShopResetQuestion_shopResetCommandType_expectShopResetConfirmationMessage() {
+    void getResetQuestion_shopResetCommandType_expectShopResetConfirmationMessage() {
         assertEquals("Are you sure you want to reset everything in the shopping list? (Y/N)",
                 ui.getResetQuestion(Ui.CommandType.SHOPRESET));
     }
