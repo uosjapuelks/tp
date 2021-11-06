@@ -148,6 +148,7 @@ public class Storage {
         itemList.addItem(savedItem);
     }
     //@@author BryanElmer
+
     //@@author zonglun99
     /**
      * Adds the log date and time, and notification on/off status.
@@ -191,6 +192,7 @@ public class Storage {
         }
     }
     //@@author zonglun99
+
     //@@author BryanElmer
     /**
      * Adds the saved items in shopping list file into the shopping list.
