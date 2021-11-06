@@ -36,6 +36,7 @@ public class Parser {
     private static final String UPDATE_ERROR_MESSAGE = "Update quantity cannot be set to negative values.\n"
             + "Command has been shutdown.";
     private static final String ABORT_MESSAGE = "You have opted to abort. Command has been shutdown.";
+    private static final String ADD_ERROR_MESSAGE = "No items have been added. Command has been shutdown.";
 
     public enum CommandType {
         ADD,
@@ -232,12 +233,16 @@ public class Parser {
         try {
             expiryDate = LocalDate.parse(expiryString);
         } catch (DateTimeParseException e) {
-            throw new FridgetException(expiryString + " is not formatted properly.\n" + DATE_FORMAT);
+            errorMessage = expiryString + " is not formatted properly.\n"
+                    + DATE_FORMAT + "\n"
+                    + ADD_ERROR_MESSAGE;
+            throw new FridgetException(errorMessage);
         }
 
         if (expiryDate.isBefore(LocalDate.now())) {
             long daysPast = ChronoUnit.DAYS.between(expiryDate, LocalDate.now());
-            errorMessage = "[" + itemName + "]" + " expired " + daysPast + " days ago.";
+            errorMessage = "[" + itemName + "]" + " expired " + daysPast + " days ago."
+                    + "\n" + ADD_ERROR_MESSAGE;
             throw new FridgetException(errorMessage);
         }
 

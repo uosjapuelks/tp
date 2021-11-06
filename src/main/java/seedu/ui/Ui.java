@@ -407,7 +407,7 @@ public class Ui {
         try {
             long toIntOutput = Long.parseLong(toInt);
             if (toIntOutput < 0) {
-                throw new FridgetException("Input number cannot be less than 0.");
+                throw new FridgetException("Input number cannot be less than 0. The command has been shutdown.");
             } else if (toIntOutput > Integer.MAX_VALUE) {
                 throw new FridgetException("Input number cannot be more than " + Integer.MAX_VALUE
                         + ". The command has been shutdown.");
@@ -460,10 +460,21 @@ public class Ui {
 
 
     public int getQuantityToBeAdded(Item newItem) throws FridgetException {
-
         printLine("What quantity of [" + newItem.toAddFormat() + "] would you like to add?");
         printSeparatorLine();
-        return getIntInput();
+
+        int qtyToBeAdded;
+
+        while (true) {
+            qtyToBeAdded = getIntInput();
+
+            if (qtyToBeAdded == 0) {
+                throw new FridgetException("The quantity cannot be 0. The command has been shutdown.");
+            }
+
+            return qtyToBeAdded;
+        }
+
     }
 
     /**
