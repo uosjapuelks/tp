@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 import seedu.data.exception.FridgetException;
 import seedu.data.item.Item;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class UiTest {
     Ui ui = new Ui();
