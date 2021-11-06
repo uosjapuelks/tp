@@ -3,11 +3,11 @@ package seedu.ui;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class UiTest {
     Ui ui = new Ui();
 
+    //@@author uosjapuelks
     @Test
     void sortTypeMessage_emptySortTypeInput_expectReturnDefault() {
         String sortTypeString = "";
