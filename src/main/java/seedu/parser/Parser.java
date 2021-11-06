@@ -103,6 +103,7 @@ public class Parser {
         }
     }
 
+    //@@author uosjapuelks
     /**
      * Splits user inputs by " ".
      *
@@ -159,6 +160,7 @@ public class Parser {
         }
         return expiry;
     }
+    //@@author
 
     /**
      * Extracts name or item description from processed input.
@@ -188,6 +190,7 @@ public class Parser {
             break;
         }
 
+        //@@author uosjapuelks
         if (processedInput.length < 2) {
             throw new FridgetException("Missing item name." + correctFormat);
         } else if (!processedInput[1].contains("/") && commandType == CommandType.ADD) {
@@ -211,6 +214,7 @@ public class Parser {
             }
             return description;
         }
+        //@@author
     }
 
     /**
@@ -235,11 +239,13 @@ public class Parser {
             throw new FridgetException(expiryString + " is not formatted properly.\n" + DATE_FORMAT);
         }
 
+        //@@author uosjapuelks
         if (expiryDate.isBefore(LocalDate.now())) {
             long daysPast = ChronoUnit.DAYS.between(expiryDate, LocalDate.now());
             errorMessage = "[" + itemName + "]" + " expired " + daysPast + " days ago.";
             throw new FridgetException(errorMessage);
         }
+        //@@author
 
         return new Item(itemName, expiryDate);
     }
@@ -264,6 +270,7 @@ public class Parser {
         return allItemsToBeAdded;
     }
 
+    //@@author uosjapuelks
     /**
      * Extracts the sortType from the list command.
      *
@@ -279,6 +286,7 @@ public class Parser {
         assert !sortType.isEmpty();
         return sortType;
     }
+    //@@author
 
     /**
      * Returns a search term provided by the "find" command.
@@ -294,6 +302,7 @@ public class Parser {
         return searchTerm;
     }
 
+    //@@author uosjapuelks
     /**
      * Verify if quantity is valid.
      *
@@ -320,4 +329,5 @@ public class Parser {
             throw new FridgetException(ABORT_MESSAGE);
         }
     }
+    //@@author
 }
