@@ -23,19 +23,15 @@ public class ItemList {
     public int addItem(Item item) throws FridgetException {
         assert item != null : "Item must not be null!";
         for (Item itemInList : itemList) {
-            String itemInListName = itemInList.getItemName();
-            String itemName = item.getItemName();
-            LocalDate itemInListExpiry = itemInList.getExpiryDate();
-            LocalDate itemExpiry = item.getExpiryDate();
 
-            boolean isItemInListAndItemSame = itemInListName.equalsIgnoreCase(itemName)
-                    && itemInListExpiry.equals(itemExpiry);
+            boolean isItemInListAndItemSame = itemInList.hasSameNameAs(item)
+                    && itemInList.hasSameExpiryAs(item);
 
             if (isItemInListAndItemSame) {
                 long finalQty = itemInList.getQuantity() + item.getQuantity();
 
                 if (finalQty >= Integer.MAX_VALUE) {
-                    throw new FridgetException("You have reached the maximum possible amount of " + itemName
+                    throw new FridgetException("You have reached the maximum possible amount of " + item.getItemName()
                             + "\nMax: 2147483647");
                 }
 

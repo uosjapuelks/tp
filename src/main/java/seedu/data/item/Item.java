@@ -219,4 +219,8 @@ public class Item {
     public boolean hasSameNameAs(Item item) {
         return itemName.equalsIgnoreCase(item.getItemName());
     }
+
+    public boolean hasSameExpiryAs(Item item) {
+        return expiryDate.isEqual(item.getExpiryDate());
+    }
 }
