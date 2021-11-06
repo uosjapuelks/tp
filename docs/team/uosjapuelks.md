@@ -16,7 +16,7 @@ periodically when any item in the fridge is about to expire.
 
 #### New Feature: Added the ability to exit from Fridget.
 
-- What it does: Allows user to close the application with the command line: `help`
+- What it does: Allows user to close and exit the application with the command line: `exit`
 - Justification: This feature is to allow users to safely close the program and ensures that the program works properly.
 
 #### New Feature: Added the ability for items to contain expiry dates.
@@ -37,6 +37,7 @@ periodically when any item in the fridge is about to expire.
 - Justification: This is needed as for some items, checking how much is left of an item may be easier compared to measuring how much is used.
 - Highlights: This feature even implements the removal of items if updated quantity is `0`. For a complex feature like this, coding standards like SLAP were closely followed to ensure the code is up to standards.
 
+####
 
 ### Team-based Contributions
 
