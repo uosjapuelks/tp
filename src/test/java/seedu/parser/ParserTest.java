@@ -20,7 +20,11 @@ import seedu.data.item.Item;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 class ParserTest {
     Parser parser = new Parser();
@@ -236,7 +240,7 @@ class ParserTest {
     void parseQuantity_negativeQuantityInput_exceptionThrown() {
         int quantityInput = -1;
         assertThrows(FridgetException.class, () -> {
-                parser.parseQuantity(quantityInput);
+            parser.parseQuantity(quantityInput);
         });
     }
 

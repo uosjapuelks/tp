@@ -6,7 +6,10 @@ import seedu.data.item.Item;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 //@@author BryanElmer
 public class ShoppingListTest {
@@ -95,7 +98,7 @@ public class ShoppingListTest {
 
     //@@author zonglun99
     @Test
-    void getShoppingList_randomSortType_exceptionThrown(){
+    void getShoppingList_randomSortType_exceptionThrown() {
         String sortType = "random";
         assertThrows(FridgetException.class, () -> {
             shoppingList.getShoppingList(sortType);
@@ -103,7 +106,7 @@ public class ShoppingListTest {
     }
 
     @Test
-    void getShoppingList_rSortType_expectTestItemToTestItem2ToTestItem1(){
+    void getShoppingList_rSortType_expectTestItemToTestItem2ToTestItem1() {
         String sortType = "r";
         fillShoppingList(testItem, testItem2, testItem1);
         ArrayList<Item> expectedList = new ArrayList<>();
