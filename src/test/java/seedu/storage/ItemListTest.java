@@ -8,8 +8,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class ItemListTest {
@@ -102,5 +103,22 @@ class ItemListTest {
         } catch (FridgetException e) {
             fail();
         }
+    }
+
+    //@@author zonglun99
+    @Test
+    void findAllMatchingItems_aaaItemNameInput_exceptionThrown() {
+        String searchTerm = "aaa";
+        assertThrows(FridgetException.class, () -> {
+            itemList.findAllMatchingItems(searchTerm);
+        });
+    }
+
+    @Test
+    void findAllMatchingItems_aaaItemNameInput_expectSizeOfMatchingListEqualsOne() throws FridgetException {
+        String searchTerm = "aaa";
+        itemList.addItem(itemAExpireTomorrow);
+        ArrayList<Item> matchingItems = itemList.findAllMatchingItems(searchTerm);
+        assertEquals(1, matchingItems.size());
     }
 }

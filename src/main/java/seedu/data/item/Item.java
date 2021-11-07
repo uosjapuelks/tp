@@ -195,6 +195,11 @@ public class Item {
         return (daysRemaining < 7);
     }
 
+    /**
+     * Check if Item is expired.
+     *
+     * @return true if item is expired
+     */
     public boolean isExpired() {
         LocalDate today = LocalDate.now();
         assert expiryDate != null;
@@ -213,19 +218,41 @@ public class Item {
         return today.isAfter(expiryDate);
     }
 
+    /**
+     * Return format for saving into storage file.
+     *
+     * @return String with format for saving.
+     */
     public String saveFormat() {
         return itemName + " | Qty: " + quantity + " | " + expiryDate;
     }
     //@@author
 
+    /**
+     * Return format for adding item.
+     *
+     * @return String with format for adding.
+     */
     public String toAddFormat() {
         return itemName + " | " + expiryDate;
     }
 
+    /**
+     * Check if the items compared have the same name.
+     *
+     * @param item item in itemList.
+     * @return true if the item names are the same.
+     */
     public boolean hasSameNameAs(Item item) {
         return itemName.equalsIgnoreCase(item.getItemName());
     }
 
+    /**
+     * Check if the items have the same expiry.
+     *
+     * @param item item in itemList.
+     * @return true if the item expiry is the same.
+     */
     public boolean hasSameExpiryAs(Item item) {
         return expiryDate.isEqual(item.getExpiryDate());
     }

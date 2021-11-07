@@ -67,7 +67,7 @@ class ItemTest {
     }
 
     @Test
-    void ingNameComparator_itemAB_expectAscendingTrue() {
+    void itemNameComparator_itemAB_expectAscendingTrue() {
         Item a = new Item("A", TOMORROW);
         Item b = new Item("B", YESTERDAY);
         int expected = "A".compareTo("B");
@@ -76,7 +76,7 @@ class ItemTest {
     }
 
     @Test
-    void ingExpiryComparator_compareFromAToB_expectDescendingTrue() {
+    void itemExpiryComparator_compareFromAToB_expectDescendingTrue() {
         Item a = new Item("A", TOMORROW);
         Item b = new Item("B", YESTERDAY);
         int expected = TOMORROW.compareTo(YESTERDAY);

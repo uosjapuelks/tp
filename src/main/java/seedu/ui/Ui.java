@@ -11,6 +11,10 @@ public class Ui {
     private static final String SEPARATOR_LINE = "__________________________________________";
     private static final String FOUR_SPACE_INDENTATION = "    ";
     private static final String USER_INPUT = "USER INPUT: ";
+    private static final String RESET_CONFIRMATION_MESSAGE =
+            "Are you sure you want to reset everything in the fridge? (Y/N)";
+    private static final String SHOP_RESET_CONFIRMATION_MESSAGE =
+            "Are you sure you want to reset everything in the shopping list? (Y/N)";
 
     private String currentUserInput;
 
@@ -589,9 +593,9 @@ public class Ui {
     public String getResetQuestion(CommandType commandType) {
         switch (commandType) {
         case RESET:
-            return "Are you sure you want to reset everything in the fridge? (Y/N)";
+            return RESET_CONFIRMATION_MESSAGE;
         case SHOPRESET:
-            return "Are you sure you want to reset everything in the shopping list? (Y/N)";
+            return SHOP_RESET_CONFIRMATION_MESSAGE;
         default:
             return "";
         }
