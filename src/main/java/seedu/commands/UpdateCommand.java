@@ -43,9 +43,11 @@ public class UpdateCommand extends Command {
             parser.parseSuggestion(reply);
 
             //removes item if reply is 'y' thus true.
-            itemList.removeItem(itemToUpdate, itemToUpdate.getQuantity());
+            boolean isRemoved = itemList.removeItem(itemToUpdate, itemToUpdate.getQuantity());
             ui.printReactionToRemovingItem(itemToUpdate, itemToUpdate.getQuantity());
-            updateShopList(ui, shoppingList, itemToUpdate, qtyDiff);
+            if (isRemoved) {
+                updateShopList(ui, shoppingList, itemToUpdate, qtyDiff);
+            }
         } else {
             //Update does not require removal of item thus quantity in shoplist and itemlist will be updated.
             itemList.updateQuantity(itemToUpdate, newQty);
@@ -64,7 +66,7 @@ public class UpdateCommand extends Command {
      * @param qty          The difference in quantity of the update.
      */
     private void updateShopList(Ui ui, ShoppingList shoppingList, Item updatedItem, int qty) throws FridgetException {
-        if (qty > 0) {
+        if (qty > 0) { //qty of item has been increased
             shoppingList.removeItem(updatedItem, qty);
         } else if (qty == -updatedItem.getQuantity()) {
             int qtyInShop = shoppingList.searchItemNameExist(updatedItem);
