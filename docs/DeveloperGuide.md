@@ -51,8 +51,6 @@ The Ui manages the entirety of the front end. Classes like Fridget and XYZComman
 - collect user input and store it.
 - print any necessary output to the terminal.
 
-
-
 ### <ins>**Core**</ins>
 
 The core aims to understand and execute the user's commands.
