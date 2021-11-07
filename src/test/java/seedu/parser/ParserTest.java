@@ -20,10 +20,7 @@ import seedu.data.item.Item;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ParserTest {
     Parser parser = new Parser();
@@ -222,5 +219,44 @@ class ParserTest {
         String inputString = "list";
         String parsedResult = parser.parseSortTypeForList(inputString);
         assertEquals(parsedResult, "default");
+    }
+
+    @Test
+    void parseMultipleItemsForAdding_threeItemInput_expectArrayListSizeThree() {
+        String inputString = "add a /2022-11-11; b /2023-11-11; c /2024-11-11";
+        try {
+            ArrayList<Item> actualList = parser.parseMultipleItemsForAdding(inputString);
+            assertEquals(actualList.size(), 3);
+        } catch (FridgetException e) {
+            fail();
+        }
+    }
+
+    @Test
+    void parseQuantity_negativeQuantityInput_exceptionThrown() {
+        int quantityInput = -1;
+        assertThrows(FridgetException.class, () -> {
+                parser.parseQuantity(quantityInput);
+        });
+    }
+
+    @Test
+    void parseQuantity_zeroQuantityInput_expectReturnTrue() {
+        int quantityInput = 0;
+        try {
+            assertTrue(parser.parseQuantity(quantityInput));
+        } catch (FridgetException e) {
+            fail();
+        }
+    }
+
+    @Test
+    void parseQuantity_oneQuantityInput_expectReturnTrue() {
+        int quantityInput = 1;
+        try {
+            assertFalse(parser.parseQuantity(quantityInput));
+        } catch (FridgetException e) {
+            fail();
+        }
     }
 }
