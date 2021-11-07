@@ -12,7 +12,7 @@ import seedu.ui.Ui;
 import java.time.format.DateTimeParseException;
 
 public class Fridget {
-    private static final String FILE_PATH_LIST = "fridgetData/savedList.txt";
+    private static final String FILE_PATH_ITEM = "fridgetData/savedItem.txt";
     private static final String FILE_PATH_LOGS = "fridgetData/savedLogs.txt";
     private static final String FILE_PATH_SHOP = "fridgetData/savedShop.txt";
 
@@ -30,13 +30,13 @@ public class Fridget {
      * @param logFilePath The relative path of the txt file to store logs.
      * @param shopFilePath The relative path of the txt file to store shoppingList.
      */
-    public Fridget(String listFilePath, String logFilePath, String shopFilePath) {
+    public Fridget(String itemFilePath, String logFilePath, String shopFilePath) {
         ui = new Ui();
         parser = new Parser();
         itemList = new ItemList();
         shoppingList = new ShoppingList();
         notification = new Notification();
-        storage = new Storage(itemList, shoppingList, notification, listFilePath, logFilePath, shopFilePath);
+        storage = new Storage(itemList, shoppingList, notification, itemFilePath, logFilePath, shopFilePath);
     }
 
     public void run() {
@@ -68,6 +68,6 @@ public class Fridget {
      * @param args Stores any arguments inputted by the user when running Fridget.
      */
     public static void main(String[] args) {
-        new Fridget(FILE_PATH_LIST, FILE_PATH_LOGS, FILE_PATH_SHOP).run();
+        new Fridget(FILE_PATH_ITEM, FILE_PATH_LOGS, FILE_PATH_SHOP).run();
     }
 }

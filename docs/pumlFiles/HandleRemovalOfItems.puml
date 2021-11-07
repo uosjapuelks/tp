@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+activate ":RemoveCommand"
+
+":RemoveCommand" -> ":RemoveCommand": handleRemovalOfItem(nameOfItemToBeRemoved, matchingItems)
+activate ":RemoveCommand"
+
+":RemoveCommand" -> ":Ui": matchItem(matchingitems, nameOfItemToRemove)
+activate ":Ui"
+":RemoveCommand" <-- ":Ui": Item itemToBeRemoved
+deactivate ":Ui"
+
+
+":RemoveCommand" -> ":RemoveCommand": handleRemovalOfMultipleQuantity(itemToBeRemoved)
+activate ":RemoveCommand"
+":RemoveCommand" --> ":RemoveCommand"
+deactivate ":RemoveCommand"
+
+":RemoveCommand" --> ":RemoveCommand"
+deactivate ":RemoveCommand"
+
+@enduml

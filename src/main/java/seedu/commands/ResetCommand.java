@@ -1,10 +1,13 @@
 package seedu.commands;
 
 import seedu.data.exception.FridgetException;
+import seedu.data.item.Item;
 import seedu.parser.Parser;
 import seedu.storage.ItemList;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
+
+import java.util.ArrayList;
 
 //@@author BryanElmer
 public class ResetCommand extends Command {
@@ -26,7 +29,8 @@ public class ResetCommand extends Command {
     @Override
     public void execute(Ui ui, Parser parser, ItemList itemList, ShoppingList shoppingList)
             throws FridgetException {
-        if (itemList.getItemList("r").isEmpty()) {
+        ArrayList<Item> listOfItems = itemList.getItemList("r");
+        if (listOfItems.isEmpty()) {
             throw new FridgetException("You currently have nothing in your fridge.");
         }
         if (ui.getResetReconfirm(Ui.CommandType.RESET)) {

@@ -6,24 +6,17 @@ autonumber
 -> ":ShopListCommand": execute()
 activate ":ShopListCommand"
 
-":ShopListCommand" -> ":ShoppingList": getShoppingList()
+":ShopListCommand" -> ":ShoppingList": getShoppingList("default")
 activate ":ShoppingList"
-":ShopListCommand" <-- ":ShoppingList": shoppingList
+":ShopListCommand" <-- ":ShoppingList": ArrayList<Item> listOfItems
 deactivate ":ShoppingList"
 
-alt Shopping List Empty
+":ShopListCommand" -> ":Ui": printListMessage(listOfItems, "", true)
+activate ":Ui"
+":ShopListCommand" <-- ":Ui":
+deactivate ":Ui"
 
-    <- ":ShopListCommand": FridgetException()
-
-else Shopping List Not Empty
-
-    ":ShopListCommand" -> ":Ui": printListMessage()
-    activate ":Ui"
-    ":ShopListCommand" <-- ":Ui"
-    deactivate ":Ui"
-
-    <-- ":ShopListCommand"
-    deactivate ":ShopListCommand"
-end
+<-- ":ShopListCommand"
+deactivate ":ShopListCommand"
 
 @enduml
