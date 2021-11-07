@@ -607,7 +607,7 @@ __________________________________________
 
 ### See notifications: `notifs`
 
-Use this command to turn notifications on or off. There are a total of 2 reminders, health and expiry.
+Use this command to toggle notifications on or off. There are a total of 2 reminders, health and expiry.
 
 * Health: To remind you to eat healthier.
 * Expiry: To remind you that items are expiring and/or expired.
