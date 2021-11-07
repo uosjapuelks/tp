@@ -58,6 +58,7 @@ Feature | Command Format |
 -----------|-----------------
 [Add an item](#add-an-item-into-fridget-add) | `add ITEM_NAME /EXPIRY_DATE`
 [Remove an item](#remove-an-item-from-fridget-remove) | `remove ITEM_NAME`
+[Update the quantity of an item]() | `update ITEM_NAME`
 [Get help](#get-help-help) | `help`
 [Reset all items](#reset-all-items-reset) | `reset`
 [Reset shopping list](#reset-all-items-in-shopping-list-shopreset) | `shopreset`
@@ -185,9 +186,22 @@ The <b>ITEM_NAME</b> can also be a <ins>part of the name</ins> of the item.
 
 **Example of usage:**
 
-<ins>If there is only one item with a name containing `ITEM_NAME`</ins>:
+<ins>If there is only one item with a name exactly the same as `ITEM_NAME`</ins>:
 ```markdown
 USER INPUT: remove burger
+__________________________________________
+You have successfully removed:
+    burger | Qty: 1 | 11 Nov 2021
+__________________________________________
+```
+
+<ins>If there is only one item with a name containing or with different upper or lower case to `ITEM_NAME`</ins>:
+```markdown
+USER INPUT: remove Burger
+__________________________________________
+Did you mean: burger? [Y/N]
+__________________________________________
+USER INPUT: Y
 __________________________________________
 You have successfully removed:
     burger | Qty: 1 | 11 Nov 2021
@@ -216,6 +230,7 @@ __________________________________________
 Which item would you like to be removed? Type the index of the item below.
     1. burger | Qty: 3 | 11 Nov 2021
     2. burger | Qty: 1 | 23 Sep 2021
+If you've changed your mind, simply type 'quit'.
 __________________________________________
 USER INPUT: 1
 __________________________________________
@@ -245,6 +260,124 @@ USER INPUT: 1
 __________________________________________
 You have successfully added:
     burger | Qty: 1
+__________________________________________
+```
+<hr/>
+
+### Update the quantity of an item in Fridget: `update`
+Use this command to update the quantity of items in Fridget.
+
+Format: `update ITEM_NAME`
+
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+:exclamation:
+The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
+</div>
+
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation:
+The <b>ITEM_NAME</b> should be the <ins>same</ins> as the name of the item you are trying to remove. 
+</div>
+
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation:
+The <b>ITEM_NAME</b> can also be a <ins>part of the name</ins> of the item. 
+</div>
+
+**Example of usage:**
+
+<ins>If there is only one item with a name exactly the same as `ITEM_NAME`</ins>:
+```markdown
+USER INPUT: update burger
+__________________________________________
+How many of burger do you have left?
+__________________________________________
+USER INPUT: 5
+__________________________________________
+Quantity of burger is now 5.
+__________________________________________
+```
+
+<ins>If there is only one item with a name containing or with different upper or lower case to `ITEM_NAME`</ins>:
+```markdown
+USER INPUT: update Burger
+__________________________________________
+Did you mean: burger? [Y/N]
+__________________________________________
+USER INPUT: Y
+__________________________________________
+How many of burger do you have left?
+__________________________________________
+USER INPUT: 8
+__________________________________________
+Quantity of burger is now 8.
+__________________________________________
+```
+
+<ins>If there are multiple items with a name containing `ITEM_NAME`</ins>:
+```markdown
+USER INPUT: update burger
+__________________________________________
+Which item would you like to overwrite quantity? Type the index of the item below.
+1. cheese burger | Qty: 8 | 11 Nov 2022
+2. fish burger | Qty: 80 | 12 Dec 2022
+If you've changed your mind, simply type 'quit'.
+__________________________________________
+USER INPUT: 2
+__________________________________________
+How many of fish burger do you have left?
+__________________________________________
+USER INPUT: 32
+__________________________________________
+Quantity of burger is now 32.
+__________________________________________
+```
+
+<ins>If there are multiple quantities of the same item</ins>:
+```markdown
+USER INPUT: update burger
+__________________________________________
+Which item would you like to overwrite quantity? Type the index of the item below.
+1. burger | Qty: 8 | 11 Nov 2022
+2. burger | Qty: 80 | 12 Dec 2022
+If you've changed your mind, simply type 'quit'.
+__________________________________________
+USER INPUT: 2
+__________________________________________
+How many of burger do you have left?
+__________________________________________
+USER INPUT: 32
+__________________________________________
+Quantity of burger is now 32.
+__________________________________________
+```
+
+<ins>If the intended value to be update is Zero</ins>:
+```
+USER INPUT: update burger
+__________________________________________
+How many of burger do you have left?
+__________________________________________
+USER INPUT: 0
+__________________________________________
+You have input "0". This will remove all 32 burger from your list. 
+Do you still wish to proceed? [Y/N]
+__________________________________________
+USER INPUT: Y
+__________________________________________
+You have successfully removed:
+    burger | Qty: 32 | 12 Dec 2022
+__________________________________________
+You have ran out of burger. Would you like to add it to your shopping list? (Y/N)
+__________________________________________
+USER INPUT: Y
+__________________________________________
+How many items would you like to buy?
+__________________________________________
+USER INPUT: 2
+__________________________________________
+You have successfully added:
+    burger | Qty: 2
 __________________________________________
 ```
 <hr/>
