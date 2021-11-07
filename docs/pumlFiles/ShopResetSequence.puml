@@ -6,9 +6,9 @@ autonumber
 -> ":ShopResetCommand": execute()
 activate ":ShopResetCommand"
 
-":ShopResetCommand" -> ":ShoppingList": getShoppingList()
+":ShopResetCommand" -> ":ShoppingList": getShoppingList("r")
 activate ":ShoppingList"
-":ShopResetCommand" <-- ":ShoppingList": shoppingList
+":ShopResetCommand" <-- ":ShoppingList": ArrayList<Item> shoppingList
 deactivate ":ShoppingList"
 
 opt Shopping List Empty
