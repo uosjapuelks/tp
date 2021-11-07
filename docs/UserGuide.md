@@ -41,10 +41,8 @@ A command like `add ITEM_NAME /EXPIRY DATE` would actually be typed by the user 
         - reset: prompts the user to confirm clearing all data.
         - exit: close the app.
 7. Congratulations! You should be good to go!
-<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
-:bulb: <b>Tip:</b>
-You can key in "<b>java -version</b>" into your terminal to check your version of java.
-</div>
+
+:bulb: <b>Tip:</b> You can key in "<b>java -version</b>" into your terminal to check your version of java.
 
 
 This guide has been arranged according to the features offered by Fridget.
