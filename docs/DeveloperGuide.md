@@ -57,6 +57,12 @@ The core aims to understand and execute the user's commands.
 
 #### `Parser`
 
+![image info](./umlDiagrams/FridgetToParser.png)
+Above is the image representing the association between Fridget and Parser.
+
+![image info](./umlDiagrams/ParserToCommand.png)
+Above is the image representing the association between Parser and other XYZCommand classes.
+
 The Parser collects information from the user's input in a way that is usable by other classes within Fridget.
 
 #### `ItemList`
@@ -91,7 +97,8 @@ on.
 ![StorageClass](./umlDiagrams/StorageClass.png)
 
 The Storage class takes charge of storing items after every command, and
-retrieving them upon startup.
+retrieving them upon startup. The Storage class is also responsible for 
+printing timely health and expiry notification.
 
 ### <ins>**Fridget**</ins>
 
