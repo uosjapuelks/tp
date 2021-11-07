@@ -473,15 +473,11 @@ Step 2 & 3:
 
 The getShoppingList() method is called in ShoppingList, and returns the current shoppingList.
 
-Step 4:
-
-If the shoppingList returned in step 3 is empty, a FridgetException is thrown and the command will stop. Else, it will continue to step 5.
-
-Step 5 & 6:
+Step 4 & 5:
 
 The printListMessage() method is called in Ui, and prints out the list of items in the shoppingList.
 
-Step 7:
+Step 6:
 
 The execution of the execute() method ends.
 
