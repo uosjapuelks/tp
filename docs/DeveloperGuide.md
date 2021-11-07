@@ -35,19 +35,25 @@ Each rectangle above represents a class that exists to make Fridget work.
 The larger folders represent the main purpose of the classes inside it.
 Their functions are as follows:
 
-#### <ins>**Front End**</ins>
+### <ins>**Front End**</ins>
 
 The front end aims to handle:
 - Reading <ins>inputs</ins> from the user
 - Sending <ins>outputs</ins> to the user
 
-##### `Ui`
+#### `Ui`
 
-The Ui manages the entirety of the front end. 
-- It collects user input and stores it.
-- It also prints any necessary output to the terminal.
+![image info](./umlDiagrams/UiToFridgetClass.png)
 
-#### <ins>**Core**</ins>
+![image info](./umlDiagrams/UiToCommandClass.png)
+
+The Ui manages the entirety of the front end. Classes like Fridget and XYZCommand shown above use it to:
+- collect user input and store it.
+- print any necessary output to the terminal.
+
+
+
+### <ins>**Core**</ins>
 
 The core aims to understand and execute the user's commands.
 
@@ -75,7 +81,7 @@ The Command class is inherited by its respective subclasses (XYZCommand classes)
 The Command class contain an `execute()` method which is overridden by all other classes to execute the
 functionality specific to that class. Examples of specific commands include AddCommand, RemoveCommand and more.
 
-#### <ins>**Database**</ins>
+### <ins>**Database**</ins>
 
 The Database stores all info that is needed on a permanent basis. This may
 include info such as the contents of ItemList. Most info in the Database
@@ -87,7 +93,7 @@ on.
 The Storage class takes charge of storing items after every command, and
 retrieving them upon startup.
 
-#### <ins>**Fridget**</ins>
+### <ins>**Fridget**</ins>
 
 #### `Fridget`
 
