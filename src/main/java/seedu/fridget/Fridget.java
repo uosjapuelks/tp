@@ -26,7 +26,7 @@ public class Fridget {
     /**
      * Constructor for Fridget.
      *
-     * @param listFilePath The relative path of the txt file to store data.
+     * @param itemFilePath The relative path of the txt file to store data.
      * @param logFilePath The relative path of the txt file to store logs.
      * @param shopFilePath The relative path of the txt file to store shoppingList.
      */
