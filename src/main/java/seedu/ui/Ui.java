@@ -94,8 +94,8 @@ public class Ui {
     /**
      * Prints a reaction to user after successfully adding an item that has existed in the list.
      *
-     * @param item The item the user had added.
-     * @param finalQty The final quantity of the item.
+     * @param item        The item the user had added.
+     * @param finalQty    The final quantity of the item.
      * @param originalQty The original quantity of the item, before addition.
      */
     public void printReactionToAddingExistingItem(Item item, int finalQty, int originalQty) {
@@ -120,6 +120,7 @@ public class Ui {
     }
     //@@author
 
+    //@@author BryanElmer
     /**
      * Prints a reaction to user successfully removing an item.
      *
@@ -132,6 +133,7 @@ public class Ui {
                 + " | " + item.expiryToString();
         printLine(removeReaction);
     }
+    //@@author
 
     //@@author uosjapuelks
     /**
@@ -285,6 +287,7 @@ public class Ui {
         }
     }
 
+    //@@author BryanElmer
     /**
      * Prints a shop list of items, indented by four spaces and preceded by an index.
      *
@@ -299,6 +302,7 @@ public class Ui {
             index++;
         }
     }
+    //@@author
 
     //@@author uosjapuelks
     /**
@@ -495,6 +499,7 @@ public class Ui {
 
     }
 
+    //@@author BryanElmer
     /**
      * Gets the quantity of items to be removed from the user.
      *
