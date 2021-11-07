@@ -175,7 +175,6 @@ public class Storage {
         fileWriter.close();
     }
 
-
     /**
      * Read saved logs from savedLogs.txt file to update notification status.
      *
