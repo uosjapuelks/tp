@@ -64,6 +64,7 @@ public class Storage {
      * Loads all the data from the item list text file.
      *
      * @throws IOException The error thrown from file IO operations.
+     * @throws FridgetException The error thrown when any item quantity exceeds INT_MAX.
      */
     protected void loadFile() throws IOException, FridgetException {
         File dataDirectory = new File(fileDirectory);
@@ -122,7 +123,7 @@ public class Storage {
      *
      * @param itemFile savedItem.txt used to store all the items from user input.
      * @throws FileNotFoundException thrown when file is not found.
-     * @throws FridgetException thrown when item quantity exceed INT_MAX.
+     * @throws FridgetException if any item quantity exceeds INT_MAX.
      */
     private void readFromItemFile(File itemFile) throws FileNotFoundException, FridgetException {
         Scanner itemScanner = new Scanner(itemFile);
@@ -140,6 +141,7 @@ public class Storage {
      * Adds saved item into the item list.
      *
      * @param itemDataComponents The details of the item.
+     * @throws FridgetException if the quantity of the item exceeds INT_MAX.
      */
     protected void addSavedItem(String[] itemDataComponents) throws FridgetException {
         int quantity = parseInt(itemDataComponents[1].substring(4).trim());

@@ -299,6 +299,7 @@ public class Parser {
      * @param userInput   The input from the user in this manner - "find burger".
      * @param commandType The commandType calling the function.
      * @return The search term.
+     * @throws FridgetException If there are missing inputs or '|' or '/' is in description.
      */
     public String parseSearchTerm(String userInput, CommandType commandType) throws FridgetException {
         String[] processedInput = processInput(userInput);
