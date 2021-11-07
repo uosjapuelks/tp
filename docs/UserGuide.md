@@ -87,6 +87,7 @@ Command Option | Description |
 `EXPIRY_DATE` | The `EXPIRY_DATE` must be of the format `YYYY-MM-DD`.
 `OPTIONAL_SORT_TYPE` | We recommend that you insert a `-` before `OPTIONAL_SORT_TYPE`. However, we do accommodate inputs without a `-` in front. Additionally, we also accept uppercase inputs.
 `KEYWORD` | This `KEYWORD` can be the exact same as the name of the item you are trying to remove. You can also input a `KEYWORD` that is contained within the item you are trying to remove.
+`Y|N` | Some commands may prompt you to type a `Y` to signify that you would like to proceed with the command. Do take note that these commands will also take `y` as consent.
 
 <hr/>
 
@@ -232,7 +233,7 @@ You have successfully removed:
 __________________________________________
 ```
 
-<ins>Upon removing, if there are no items left with the same name in the fridge</ins>:
+<ins>Upon removing an item, if there are no items left with the same name in the fridge</ins>:
 ```
 USER INPUT: remove burger
 __________________________________________
@@ -613,7 +614,7 @@ Use this command to turn notifications on or off. There are a total of 2 reminde
 
 <span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :bulb:
-Notifications are scheduled by default to be turned on every 4 hours.
+Notifications are scheduled by default to be displayed every 4 hours, if turned on.
 </span>
 
 Format: notifs
@@ -696,7 +697,8 @@ __________________________________________
 </span>
 
 - Adding items into the shopping list is only available when the item you remove has run out completely (there are no more items with the same name in the item list).
-  - Details about adding items in the shopping list can be found in the last section of [`remove`](#remove-an-item-from-fridget-remove).  
+  - Details about adding items in the shopping list can be found in the last section of [`remove`](#remove-an-item-from-fridget-remove).
+- Do take note that Fridget will only prompt you to add the item to the shopping list if there are no other items with a similar name(different capitalisation) stored in Fridget.
       
 
 - Removing items from the shopping list is done automatically by Fridget when:
@@ -705,6 +707,7 @@ __________________________________________
     
 
 - You are not allowed to manually add or remove items from the shopping list.
+- You may copy the `savedShop.txt` file stored in the `fridgetData` directory when you need to go shopping.
 
 <hr/>
 
