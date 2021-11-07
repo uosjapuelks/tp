@@ -57,11 +57,11 @@ The Parser collects information from the user's input in a way that is usable by
 
 #### `ItemList`
 
-This class keeps track of all items currently stored within Fridget, and can be easily manipulated.
+This ItemList keeps track of all items currently stored within Fridget, and can be easily manipulated.
 
 #### `ShoppingList`
 
-This class keeps track of all items the user may want to shop for, and can be easily manipulated.
+This ShoppingList keeps track of all items the user may want to shop for, and can be easily manipulated.
 
 #### `Command`
 
@@ -169,15 +169,19 @@ If the user input contains `;`, it means that the user wants to add multiple ite
 
 Steps 6 & 7:
 
-The addMultipleItemsToItem method is called to add all items in newItems. More information can be found [below](#addmultipleitemstoitemlist).
+The addMultipleItemsToItem() method is called to add all items in newItems. More information can be found [below](#addmultipleitemstoitemlist).
 
 Steps 8 & 9:
 
-If there is no `;` in the currentUserInput, the user only wants to add one item. A new Item is parsed using the parser method: parseItemForAdding.
+If there is no `;` in the currentUserInput, the user only wants to add one item. A new Item is parsed using the parser method: parseItemForAdding().
 
 Step 10 & 11:
 
-The addItemToItemList method is called to add the newItem to the ItemList.
+The addItemToItemList() method is called to add the newItem to the ItemList.
+
+Step 12:
+
+The execution of the execute() method ends.
 
 #### addMultipleItemsToItemList
 
@@ -185,15 +189,19 @@ The addItemToItemList method is called to add the newItem to the ItemList.
 
 Step 1:
 
-The addMultipleItemsToItemList is called by AddCommand, with the ArrayList of Items to add(newItem) as a parameter.
+The addMultipleItemsToItemList() method is called by AddCommand, with the ArrayList of Items to add(newItem) as a parameter.
 
 Step 2 & 3:
 
-The addItemToItemList method is called on each item in the list. More information can be found [below](#additemtoitemlist).
+The addItemToItemList() method is called on each item in the list. More information can be found [below](#additemtoitemlist).
 
 Step 4 & 5:
 
-The printSeparatorLine method in Ui is called to separate the output created by the addition of one item from the next. It is only not called for the last Item in newItems.
+The printSeparatorLine() method in Ui is called to separate the output created by the addition of one item from the next. It is only not called for the last Item in newItems.
+
+Step 6:
+
+The execution of the addMultipleItemsToItemList() method ends.
 
 #### addItemToItemList
 
@@ -201,11 +209,11 @@ The printSeparatorLine method in Ui is called to separate the output created by 
 
 Step 1:
 
-The addItemToItemList method is called from within AddCommand.
+The addItemToItemList() method is called from within AddCommand.
 
 Step 2 & 3:
 
-AddCommand calls getQuantityToBeAdded in Ui to read the input from the user to determine the quantity of the item to be added (qtyToBeAdded).
+AddCommand calls getQuantityToBeAdded() in Ui to read the input from the user to determine the quantity of the item to be added (qtyToBeAdded).
 
 Step 4 & 5:
 
@@ -213,14 +221,19 @@ AddCommand calls addItem(newItem) in ItemList to add the newItem into the ItemLi
 
 Step 6 & 7:
 
-If the original quantity of the item was greater than 0, printReactionToAddingExistingIngredient is called in Ui to acknowledge to the user that the item had already existed in the fridge.
+If the original quantity of the item was greater than 0, printReactionToAddingExistingIngredient() is called in Ui to acknowledge to the user that the item had already existed in the fridge.
 
 Step 8 & 9:
 
-If the original quantity of the item was 0, printReactionToAddingItem is called in Ui to acknowledge to the user that the item had not existed in the fridge previously.
+If the original quantity of the item was 0, printReactionToAddingItem() is called in Ui to acknowledge to the user that the item had not existed in the fridge previously.
 
+Step 10 & 11:
 
+AddCommand calls removeItem() in ShoppingList to remove added item from the shopping list only if it exists.
 
+Step 12:
+
+The execution of the addItemToItemList() method ends.
 
 ### Removing Items From Fridget
 
