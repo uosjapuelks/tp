@@ -8,7 +8,7 @@ activate ":ResetCommand"
 
 ":ResetCommand" -> ":ItemList": getItemList("r")
 activate ":ItemList"
-":ResetCommand" <-- ":ItemList": ArrayList<Item> itemList
+":ResetCommand" <-- ":ItemList": ArrayList<Item> listOfItems
 deactivate ":ItemList"
 
 opt Item List Empty

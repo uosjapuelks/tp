@@ -8,7 +8,7 @@ activate ":ShopResetCommand"
 
 ":ShopResetCommand" -> ":ShoppingList": getShoppingList("r")
 activate ":ShoppingList"
-":ShopResetCommand" <-- ":ShoppingList": ArrayList<Item> shoppingList
+":ShopResetCommand" <-- ":ShoppingList": ArrayList<Item> listOfItems
 deactivate ":ShoppingList"
 
 opt Shopping List Empty
