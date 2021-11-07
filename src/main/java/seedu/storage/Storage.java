@@ -140,13 +140,13 @@ public class Storage {
     /**
      * Adds saved item into the item list.
      *
-     * @param listDataComponents The details of the item.
+     * @param itemDataComponents The details of the item.
      * @throws FridgetException if the quantity of the item exceeds INT_MAX.
      */
-    protected void addSavedItem(String[] listDataComponents) throws FridgetException {
-        int quantity = parseInt(listDataComponents[1].substring(4).trim());
-        LocalDate expiry = LocalDate.parse(listDataComponents[2].trim());
-        Item savedItem = new Item(listDataComponents[0], expiry, quantity);
+    protected void addSavedItem(String[] itemDataComponents) throws FridgetException {
+        int quantity = parseInt(itemDataComponents[1].substring(4).trim());
+        LocalDate expiry = LocalDate.parse(itemDataComponents[2].trim());
+        Item savedItem = new Item(itemDataComponents[0], expiry, quantity);
         itemList.addItem(savedItem);
     }
     //@@author
@@ -170,7 +170,7 @@ public class Storage {
      * @param notification Notification object.
      * @throws IOException The error thrown from file IO operations.
      */
-    public void updateLogFile(Notification notification) throws IOException {
+    private void updateLogFile(Notification notification) throws IOException {
         FileWriter fileWriter = new FileWriter(logFilePath);
         assert notification != null : "Notification must not be null!";
         fileWriter.write(notification.toString());
@@ -212,7 +212,7 @@ public class Storage {
      * @param items The current list of items.
      * @throws IOException The error thrown from file IO operations.
      */
-    public void updateItemFile(ArrayList<Item> items) throws IOException {
+    private void updateItemFile(ArrayList<Item> items) throws IOException {
         FileWriter fileWriter = new FileWriter(itemFilePath);
         for (Item item : items) {
             assert item != null : "Item must not be null!";
@@ -228,7 +228,7 @@ public class Storage {
      * @param items The current list of items in the shopping list.
      * @throws IOException The error thrown from file IO operations.
      */
-    public void updateShopFile(ArrayList<Item> items) throws IOException {
+    private void updateShopFile(ArrayList<Item> items) throws IOException {
         FileWriter fileWriter = new FileWriter(shopFilePath);
         for (Item item : items) {
             fileWriter.write(item.toShopFormat());
