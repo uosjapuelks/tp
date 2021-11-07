@@ -83,4 +83,19 @@ class ItemTest {
         int actual = Item.ItemExpiryComparator.compare(a, b);
         assertEquals(expected, actual);
     }
+
+    //@@author zonglun99
+    @Test
+    void isExpired_expiredItem_expectTrue() {
+        LocalDate expiredDate = LocalDate.parse("2020-12-12");
+        Item expiredItem = new Item(DUMMY_NAME, expiredDate);
+        assertTrue(expiredItem.isExpired());
+    }
+
+    @Test
+    void isExpired_notExpiredItem_expectFalse() {
+        LocalDate expiryDate = LocalDate.parse("2110-12-12");
+        Item testItem = new Item(DUMMY_NAME, expiryDate);
+        assertFalse(testItem.isExpired());
+    }
 }

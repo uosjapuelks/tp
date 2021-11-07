@@ -476,7 +476,13 @@ public class Ui {
     }
     //@@author
 
-
+    /**
+     * Returns quantity to be added for specified item.
+     *
+     * @param newItem Item from user input for quantity to be added.
+     * @return int value of quantity to be added.
+     * @throws FridgetException Thrown when quantity to be added is zero.
+     */
     public int getQuantityToBeAdded(Item newItem) throws FridgetException {
         printLine("What quantity of [" + newItem.toAddFormat() + "] would you like to add?");
         printSeparatorLine();
