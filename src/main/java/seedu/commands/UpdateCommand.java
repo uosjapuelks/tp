@@ -51,8 +51,8 @@ public class UpdateCommand extends Command {
      * @param requireRemoval True if item should be removed from the item list.
      * @throws FridgetException The error object thrown.
      */
-    private void handleUpdate(Ui ui, Parser parser, ItemList itemList, ShoppingList shoppingList, Item itemToUpdate
-            , int newQty, boolean requireRemoval) throws FridgetException {
+    private void handleUpdate(Ui ui, Parser parser, ItemList itemList, ShoppingList shoppingList, Item itemToUpdate,
+                              int newQty, boolean requireRemoval) throws FridgetException {
         int qtyDiff = newQty - itemToUpdate.getQuantity();
         if (requireRemoval) {
             boolean reply = ui.suggestRemove(itemToUpdate);
