@@ -6,9 +6,7 @@ import seedu.data.item.Item;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 
 //@@author BryanElmer
 public class ShoppingListTest {
@@ -93,5 +91,29 @@ public class ShoppingListTest {
         shoppingList.removeItem(testItem1, 1);
         int qtyInList = shoppingList.searchItemNameExist(testItem1);
         assertEquals(qtyInList, 1);
+    }
+
+    //@@author zonglun99
+    @Test
+    void getShoppingList_randomSortType_exceptionThrown(){
+        String sortType = "random";
+        assertThrows(FridgetException.class, () -> {
+            shoppingList.getShoppingList(sortType);
+        });
+    }
+
+    @Test
+    void getShoppingList_rSortType_expectTestItemToTestItem2ToTestItem1(){
+        String sortType = "r";
+        fillShoppingList(testItem, testItem2, testItem1);
+        ArrayList<Item> expectedList = new ArrayList<>();
+        expectedList.add(testItem);
+        expectedList.add(testItem2);
+        expectedList.add(testItem1);
+        try {
+            assertEquals(shoppingList.getShoppingList(sortType), expectedList);
+        } catch (FridgetException e) {
+            fail();
+        }
     }
 }
