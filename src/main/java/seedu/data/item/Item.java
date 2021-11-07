@@ -42,6 +42,7 @@ public class Item {
     };
     //@@author
 
+    //@@author BryanElmer
     /**
      * Constructor for Item.
      *
@@ -78,6 +79,7 @@ public class Item {
         this.expiryDate = null;
         this.quantity = quantity;
     }
+    //@@author
 
     /**
      * Adds a specified integer value to quantity of item.
@@ -129,6 +131,7 @@ public class Item {
     }
     //@@author
 
+    //@@author BryanElmer
     /**
      * String is represented as name + quantity.
      *
@@ -158,6 +161,7 @@ public class Item {
         assert finalQty > 1 : "Unable to perform this operation as quantity is less than or equal to 1";
         return itemName + " | Qty: " + (originalQty) + "->" + finalQty + " | " + expiryToString();
     }
+    //@@author
 
     /**
      * Gets the Item's name.
@@ -201,6 +205,7 @@ public class Item {
         return (daysRemaining < 7);
     }
 
+    //@@author zonglun99
     /**
      * Check if Item is expired.
      *
@@ -213,6 +218,7 @@ public class Item {
         return (daysRemaining < 0);
     }
 
+    //@@author uosjapuelks
     /**
      * Check if Item has already expired.
      *
