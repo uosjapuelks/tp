@@ -24,7 +24,12 @@ This guide is meant for you to quickly get started with Fridget so you can stop 
 It could also refer to file names like `Fridget.jar`.
 
 `ITEM_NAME` or `EXPIRY_DATE` - Texts which have been capitalized refer to parameters which the user should type in. For example:
-A command like `add ITEM_NAME /EXPIRY DATE` would actually be typed by the user as `add burger /2021-11-11`.
+
+A command like `add ITEM_NAME /EXPIRY_DATE` would actually be typed by the user as `add burger /2021-11-11`.
+
+:bulb: - This icon refers to tips that may help you make the best out of Fridget.
+
+:exclamation: - This icon refers to warnings to help you avoid mistakes when using Fridget.
 
 <hr/>
 
@@ -33,7 +38,7 @@ A command like `add ITEM_NAME /EXPIRY DATE` would actually be typed by the user 
 1. Ensure that you have Java 11 or above installed on your computer.
 2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v1.0/fridget.jar).
 3. Copy the file into the folder you want to store Fridget's data.
-4. Launch the terminal on your computer. You can refer to [this website](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) on how to launch the terminal on your specific OS (Windows/Mac/Linux).
+4. Launch the terminal in that same folder on your computer. You can refer to [this website](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) on how to launch the terminal on your specific OS (Windows/Mac/Linux).
 5. Type in `java -jar Fridget.jar` into the terminal to launch the app.
 6. Type your command in the command box and press Enter to execute it.
     * Some example commands you can try:
@@ -80,7 +85,7 @@ Command Option | Description |
 `ITEM_NAME` | The `ITEM_NAME` can be any series of characters or digits of less than length `INT_MAX`. Additionally, `ITEM_NAME` should not include the following terms: `;`,`/`, or <code>&#124;</code>. <br/><br/> More explanation can be found [here](#add-an-item-into-fridget-add).
 `EXPIRY_DATE` | The `EXPIRY_DATE` must be of the format `YYYY-MM-DD`.
 `OPTIONAL_SORT_TYPE` | We recommend that you insert a `-` before `OPTIONAL_SORT_TYPE`. However, we do accommodate inputs without a `-` in front. Additionally, we also accept uppercase inputs.
-`KEYWORD` | This `KEYWORD` can be the exact same as the name of the item you are trying to remove. You can also input a `KEYWORD` that is contained within the item you are trying to delete.
+`KEYWORD` | This `KEYWORD` can be the exact same as the name of the item you are trying to remove. You can also input a `KEYWORD` that is contained within the item you are trying to remove.
 
 <hr/>
 
