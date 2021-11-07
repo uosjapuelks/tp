@@ -325,7 +325,7 @@ public class Ui {
      * @return sortTypeMessage.
      */
     public String sortTypeMessage(String sortType) {
-        switch (sortType) {
+        switch (sortType.toLowerCase()) {
         case "e":
             return ("List sorted by expiry date:");
         case "r":
