@@ -80,7 +80,7 @@ Command Option | Description |
 -----------|-----------------
 `ITEM_NAME` | The `ITEM_NAME` can be any series of characters or digits of less than length `INT_MAX`. Additionally, `ITEM_NAME` should not include the following terms: `;`,`/`, or <code>&#124;</code>. <br/><br/> More explanation can be found [here](#add-an-item-into-fridget-add).
 `EXPIRY_DATE` | The `EXPIRY_DATE` must be of the format `YYYY-MM-DD`.
-`OPTIONAL_SORT_TYPE` | The `OPTIONAL_SORT_TYPE` must be in lowercase format to be recognised properly. Hence, you should use `r` or `e`, <b>NOT </b> `R` or `E`.
+`OPTIONAL_SORT_TYPE` | We recommend that you insert a `-` before `OPTIONAL_SORT_TYPE`. However, we do accommodate inputs without a `-` in front. Additionally, we also accept uppercase inputs.
 `KEYWORD` | This `KEYWORD` can be the exact same as the name of the item you are trying to remove. You can also input a `KEYWORD` that is contained within the item you are trying to delete.
 
 <hr/>
