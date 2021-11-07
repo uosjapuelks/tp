@@ -36,7 +36,7 @@ A command like `add ITEM_NAME /EXPIRY_DATE` would actually be typed by the user 
 ## Quick Start
 
 1. Ensure that you have Java 11 or above installed on your computer.
-2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v1.0/fridget.jar).
+2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v2.1/Fridget.jar).
 3. Copy the file into the folder you want to store Fridget's data.
 4. Launch the terminal in that same folder on your computer. You can refer to [this website](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) on how to launch the terminal on your specific OS (Windows/Mac/Linux).
 5. Type in `java -jar Fridget.jar` into the terminal to launch the app.
@@ -123,7 +123,7 @@ __________________________________________
 USER INPUT: 1
 __________________________________________
 You have successfully added:
-burger | Qty: 1 | 11 Nov 2021
+    burger | Qty: 1 | 11 Nov 2021
 __________________________________________
 ```
 
@@ -137,7 +137,7 @@ __________________________________________
 USER INPUT: 9
 __________________________________________
 You have successfully increased the quantity of:
-burger | Qty: 1->10 | 11 Nov 2021
+    burger | Qty: 1->10 | 11 Nov 2021
 __________________________________________
 ```
 
@@ -194,9 +194,14 @@ The <code>ITEM_NAME</code> can also be a <ins>part of the name</ins> of the item
 ```markdown
 USER INPUT: remove burger
 __________________________________________
+There are 11 items, how many would like to remove?
+__________________________________________
+USER INPUT: 1
+__________________________________________
 You have successfully removed:
     burger | Qty: 1 | 11 Nov 2021
 __________________________________________
+
 ```
 
 <ins>If there is only one item with a similar spelling (different capitalization / has more letters) to `ITEM_NAME`</ins>:
@@ -205,10 +210,14 @@ USER INPUT: remove Burger
 __________________________________________
 Did you mean: burger? [Y/N]
 __________________________________________
-USER INPUT: Y
+USER INPUT: y
+__________________________________________
+There are 10 items, how many would like to remove?
+__________________________________________
+USER INPUT: 1
 __________________________________________
 You have successfully removed:
-    burger | Qty: 1 | 11 Nov 2021
+burger | Qty: 1 | 11 Nov 2021
 __________________________________________
 ```
 
@@ -752,6 +761,22 @@ __________________________________________
 </span>
 
 This is done to reduce the memory that needs to be stored per item.
+
+<hr/>
+
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:exclamation: When adding multiple items, any error will invalidate the entire input. No items will be added.
+</span>
+
+This is done so as to ensure no incorrect items are added into Fridget accidentally. In the case of error, you can copy the previous input, fix the errors, and run the command again.
+
+<hr/>
+
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:exclamation: Do not tamper with the files created in the <code>fridgetData</code> directory.
+</span>
+
+Please feel free to read and copy the content from the files. However, do not edit the files, as this may cause the program to load erroneously. If any item is detected to be corrupted, all items following it in savedItem.txt will be removed for the user's safety.
 
 <hr/>
 
