@@ -44,14 +44,16 @@ class RemoveCommand {
  nameOfItemToBeRemoved: String, matchingItems: ArrayList<Item>): void
 -handleRemovalOfMultipleQuantity(ui: Ui, itemList: ItemList,
  shoppingList: ShoppingList, itemToBeRemoved: Item): void
--updateShopList(ui: Ui, shoppingList: ShoppingList, itemRemoved: Item)
+-updateShopList(ui: Ui, shoppingList: ShoppingList,
+ itemRemoved: Item, qtyInShop: int): void
 }
 
 class UpdateCommand {
 +UpdateCommand()
--
+-handleUpdate(ui: Ui, parser: Parser, itemList: ItemList, shoppingList: ShoppingList,
+ itemToUpdate: Item, newQty: int, requireRemoval: boolean) :void
 -updateShopList(shoppingList: ShoppingList, updatedItem: Item,
- qty: int): void
+ qty: int, isRemove: boolean): void
 }
 
 note as N1
