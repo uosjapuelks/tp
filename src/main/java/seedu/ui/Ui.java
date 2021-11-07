@@ -329,7 +329,7 @@ public class Ui {
      * @return sortTypeMessage.
      */
     public String sortTypeMessage(String sortType) {
-        switch (sortType) {
+        switch (sortType.toLowerCase()) {
         case "e":
             return ("List sorted by expiry date:");
         case "r":
@@ -481,11 +481,11 @@ public class Ui {
     //@@author
 
     /**
-     * Gets the quantity of items to be added from the user.
+     * Returns quantity to be added for specified item.
      *
-     * @param newItem Item to be added.
-     * @return Quantity of the item to be added.
-     * @throws FridgetException If the user types in a wrong value (non-integer or 0)
+     * @param newItem Item from user input for quantity to be added.
+     * @return int value of quantity to be added.
+     * @throws FridgetException Thrown when quantity to be added is zero.
      */
     public int getQuantityToBeAdded(Item newItem) throws FridgetException {
         printLine("What quantity of [" + newItem.toAddFormat() + "] would you like to add?");

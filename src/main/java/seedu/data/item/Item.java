@@ -205,6 +205,7 @@ public class Item {
         return (daysRemaining < 7);
     }
 
+    //@@author zonglun99
     /**
      * Check if Item is expired.
      *
@@ -217,6 +218,7 @@ public class Item {
         return (daysRemaining < 0);
     }
 
+    //@@author uosjapuelks
     /**
      * Check if Item has already expired.
      *
