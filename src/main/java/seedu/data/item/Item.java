@@ -42,6 +42,7 @@ public class Item {
     };
     //@@author
 
+    //@@author BryanElmer
     /**
      * Constructor for Item.
      *
@@ -78,6 +79,7 @@ public class Item {
         this.expiryDate = null;
         this.quantity = quantity;
     }
+    //@@author
 
     /**
      * Adds a specified integer value to quantity of item.
@@ -129,6 +131,7 @@ public class Item {
     }
     //@@author
 
+    //@@author BryanElmer
     /**
      * String is represented as name + quantity.
      *
@@ -152,12 +155,14 @@ public class Item {
      * String used when adding items already existing in the list.
      *
      * @param finalQty Total quantity of item in the list.
+     * @param originalQty Original quantity of item in the list.
      * @return Item Name, change in quantity and Expiry that is colored.
      */
     public String addExistingToString(int finalQty, int originalQty) {
         assert finalQty > 1 : "Unable to perform this operation as quantity is less than or equal to 1";
         return itemName + " | Qty: " + (originalQty) + "->" + finalQty + " | " + expiryToString();
     }
+    //@@author
 
     /**
      * Gets the Item's name.

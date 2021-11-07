@@ -35,19 +35,23 @@ Each rectangle above represents a class that exists to make Fridget work.
 The larger folders represent the main purpose of the classes inside it.
 Their functions are as follows:
 
-#### <ins>**Front End**</ins>
+### <ins>**Front End**</ins>
 
 The front end aims to handle:
 - Reading <ins>inputs</ins> from the user
 - Sending <ins>outputs</ins> to the user
 
-##### `Ui`
+#### `Ui`
 
-The Ui manages the entirety of the front end. 
-- It collects user input and stores it.
-- It also prints any necessary output to the terminal.
+![image info](./umlDiagrams/UiToFridgetClass.png)
 
-#### <ins>**Core**</ins>
+![image info](./umlDiagrams/UiToCommandClass.png)
+
+The Ui manages the entirety of the front end. Classes like Fridget and XYZCommand shown above use it to:
+- collect user input and store it.
+- print any necessary output to the terminal.
+
+### <ins>**Core**</ins>
 
 The core aims to understand and execute the user's commands.
 
@@ -63,11 +67,11 @@ The Parser collects information from the user's input in a way that is usable by
 
 #### `ItemList`
 
-This class keeps track of all items currently stored within Fridget, and can be easily manipulated.
+This ItemList keeps track of all items currently stored within Fridget, and can be easily manipulated.
 
 #### `ShoppingList`
 
-This class keeps track of all items the user may want to shop for, and can be easily manipulated.
+This ShoppingList keeps track of all items the user may want to shop for, and can be easily manipulated.
 
 #### `Command`
 
@@ -81,7 +85,7 @@ The Command class is inherited by its respective subclasses (XYZCommand classes)
 The Command class contain an `execute()` method which is overridden by all other classes to execute the
 functionality specific to that class. Examples of specific commands include AddCommand, RemoveCommand and more.
 
-#### <ins>**Database**</ins>
+### <ins>**Database**</ins>
 
 The Database stores all info that is needed on a permanent basis. This may
 include info such as the contents of ItemList. Most info in the Database
@@ -94,13 +98,17 @@ The Storage class takes charge of storing items after every command, and
 retrieving them upon startup. The Storage class is also responsible for 
 printing timely health and expiry notification.
 
-#### <ins>**Fridget**</ins>
+### <ins>**Fridget**</ins>
 
 #### `Fridget`
 
 Fridget initialises all classes upon startup, and initiates the user feedback loop as shown below.
 
+<div align="center">
+
 ![image info](./umlDiagrams/UserFeedbackLoop.png)
+
+</div>
 
 <hr/>
 
@@ -176,15 +184,19 @@ If the user input contains `;`, it means that the user wants to add multiple ite
 
 Steps 6 & 7:
 
-The addMultipleItemsToItem method is called to add all items in newItems. More information can be found [below](#addmultipleitemstoitemlist).
+The addMultipleItemsToItem() method is called to add all items in newItems. More information can be found [below](#addmultipleitemstoitemlist).
 
 Steps 8 & 9:
 
-If there is no `;` in the currentUserInput, the user only wants to add one item. A new Item is parsed using the parser method: parseItemForAdding.
+If there is no `;` in the currentUserInput, the user only wants to add one item. A new Item is parsed using the parser method: parseItemForAdding().
 
 Step 10 & 11:
 
-The addItemToItemList method is called to add the newItem to the ItemList.
+The addItemToItemList() method is called to add the newItem to the ItemList.
+
+Step 12:
+
+The execution of the execute() method ends.
 
 #### addMultipleItemsToItemList
 
@@ -192,15 +204,19 @@ The addItemToItemList method is called to add the newItem to the ItemList.
 
 Step 1:
 
-The addMultipleItemsToItemList is called by AddCommand, with the ArrayList of Items to add(newItem) as a parameter.
+The addMultipleItemsToItemList() method is called by AddCommand, with the ArrayList of Items to add(newItem) as a parameter.
 
 Step 2 & 3:
 
-The addItemToItemList method is called on each item in the list. More information can be found [below](#additemtoitemlist).
+The addItemToItemList() method is called on each item in the list. More information can be found [below](#additemtoitemlist).
 
 Step 4 & 5:
 
-The printSeparatorLine method in Ui is called to separate the output created by the addition of one item from the next. It is only not called for the last Item in newItems.
+The printSeparatorLine() method in Ui is called to separate the output created by the addition of one item from the next. It is only not called for the last Item in newItems.
+
+Step 6:
+
+The execution of the addMultipleItemsToItemList() method ends.
 
 #### addItemToItemList
 
@@ -208,11 +224,11 @@ The printSeparatorLine method in Ui is called to separate the output created by 
 
 Step 1:
 
-The addItemToItemList method is called from within AddCommand.
+The addItemToItemList() method is called from within AddCommand.
 
 Step 2 & 3:
 
-AddCommand calls getQuantityToBeAdded in Ui to read the input from the user to determine the quantity of the item to be added (qtyToBeAdded).
+AddCommand calls getQuantityToBeAdded() in Ui to read the input from the user to determine the quantity of the item to be added (qtyToBeAdded).
 
 Step 4 & 5:
 
@@ -220,16 +236,130 @@ AddCommand calls addItem(newItem) in ItemList to add the newItem into the ItemLi
 
 Step 6 & 7:
 
-If the original quantity of the item was greater than 0, printReactionToAddingExistingIngredient is called in Ui to acknowledge to the user that the item had already existed in the fridge.
+If the original quantity of the item was greater than 0, printReactionToAddingExistingIngredient() is called in Ui to acknowledge to the user that the item had already existed in the fridge.
 
 Step 8 & 9:
 
-If the original quantity of the item was 0, printReactionToAddingItem is called in Ui to acknowledge to the user that the item had not existed in the fridge previously.
+If the original quantity of the item was 0, printReactionToAddingItem() is called in Ui to acknowledge to the user that the item had not existed in the fridge previously.
 
+Step 10 & 11:
 
+AddCommand calls removeItem() in ShoppingList to remove added item from the shopping list only if it exists.
 
+Step 12:
+
+The execution of the addItemToItemList() method ends.
 
 ### Removing Items From Fridget
+
+#### Main Objectives:
+
+The functionality of remove items is bound by two main objectives:
+- Make removing items more convenient for the user.
+- Prompts the user to add item to shopping list if removed item does not exist (no other items with the same name) in the item list.
+
+#### Overall Sequence: 
+![RemoveSequence](./umlDiagrams/RemoveSequence.png)
+
+Step 1:
+
+This step is almost always initiated by Fridget, but could potentially be done by another class in the future.
+
+Step 2 & 3:
+
+The parseSearchTerm() method is called in the Parser to read the user input and returns the name of the item to be removed.
+
+Step 4:
+
+If the name of the item contains '|' or '/', a FridgetException is thrown to tell the user that the name is invalid. The execution of the execute() method ends.
+
+Step 5 & 6:
+
+The findAllMatchingItems() method is called in the ItemList to find all items with matching names. This method returns an arraylist of the items with matching names.
+
+Step 7 & 8:
+
+The handleRemovalOfItem() method is called to remove the items from the list. More info about this method can be found [below](#handleremovalofitem).
+
+Step 9:
+
+The execution of the execute() method ends.
+
+#### handleRemovalOfItem
+
+![handleRemovalOfItem](./umlDiagrams/HandleRemovalOfItems.png)
+
+Step 1:
+
+This execution of this command is initiated by the RemoveCommand.
+
+Step 2 & 3:
+
+The matchItem() method is called in the Ui to print the list of matching items and prompt the user to pick the correct match. This method returns the item that the user wants to remove.
+
+Step 4 & 5:
+
+The handleRemovalOfMultipleQuantity() method is called to remove the item of choice. More info about this method can be found [below]().
+
+Step 6:
+
+The execution of the handleRemovalOfItem() method ends.
+
+#### handleRemovalOfMultipleQuantity
+
+![handleRemovalOfMultipleQuantity](./umlDiagrams/HandleRemovalOfMultipleQuantity.png)
+
+Step 1 & 2: 
+
+The handleRemovalOfMultipleQuantity() method is initiated by the handleRemovalOfItem() method.
+
+Step 3 & 4:
+
+The getQuantityToBeRemoved() method is called in the Ui to ask the user how many items to remove. This method returns the quantity of item to be removed.
+
+Step 5 & 6:
+
+The removeItem() method is called in the ItemList and removes the item from the item list. This method returns a true if there are no more items with the same name in the item list.
+
+Step 7 & 8:
+
+The printReactionToRemovingItem() method is called in the Ui and prints the remove messaged to the user.
+
+Step 9 & 10:
+
+The searchItemNameExist() method is called in the ShoppingList to check if any item has the same name as the removed item. This method returns the quantity of the item with same name.
+
+Step 11 & 12:
+
+If there are no more items in the item list with the same name as the removed item, the updateShopList() method is called to prompt user to add item into the shopping list. More info about this method can be found [below](#updateshoppinglist).
+
+#### updateShoppingList
+
+![updateShoppingList](./umlDiagrams/UpdateShopList.png)
+
+Step 1 - 3:
+
+The updateShoppingList() method is initiated by handleRemovalOfMultipleQuantity().
+
+Step 4 & 5:
+
+The getShopQuantity method is called in the Ui to ask the user how many items to add into the shopping list. This method returns the quantity to be added into the shopping list.
+
+Step 6 & 7:
+
+If quantity to add is more than 0, a new Item to be added is created.
+
+Step 8 & 9:
+
+The addItem() method is called in the ShoppingList and adds the previously created item into the shopping list.
+
+Step 10 & 11:
+
+The printShopUpdateMessage() method is called in the Ui and prints the acknowledgement message.
+
+Step 12 - 14:
+
+The exection of the updateShopList() method ends.
 
 ### Getting Help Manual
 
@@ -245,7 +375,7 @@ Future uses include:
 * More in-depth coverage of all basic functions.
 * Interactive component to explore capabilities of each command.
 
-#### Sequence of execution:
+#### Overall Sequence:
 
 ![image info](./umlDiagrams/HelpSequence.png)
 
@@ -455,7 +585,7 @@ The execution of the execute() method ends.
 #### Main Objectives:
 The objective of this functionality is to allow users to easily view the contents of the shopping list.
 
-#### Sequence of execution:
+#### Overall Sequence:
 
 ![ShopListSequence](./umlDiagrams/ShopListSequence.png)
 
@@ -467,15 +597,11 @@ Step 2 & 3:
 
 The getShoppingList() method is called in ShoppingList, and returns the current shoppingList.
 
-Step 4:
-
-If the shoppingList returned in step 3 is empty, a FridgetException is thrown and the command will stop. Else, it will continue to step 5.
-
-Step 5 & 6:
+Step 4 & 5:
 
 The printListMessage() method is called in Ui, and prints out the list of items in the shoppingList.
 
-Step 7:
+Step 6:
 
 The execution of the execute() method ends.
 
@@ -490,7 +616,7 @@ Current implementation allow users to toggle the notifications on or off, with r
 
 The purpose of implementing time interval and ability to toggle on or off is to prevent excessive notification printing. 
 
-#### Sequence of execution:
+#### Overall Sequence:
 
 ![image info](./umlDiagrams/NotificationSequence.png)
 

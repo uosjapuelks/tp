@@ -94,8 +94,8 @@ public class Ui {
     /**
      * Prints a reaction to user after successfully adding an item that has existed in the list.
      *
-     * @param item The item the user had added.
-     * @param finalQty The final quantity of the item.
+     * @param item        The item the user had added.
+     * @param finalQty    The final quantity of the item.
      * @param originalQty The original quantity of the item, before addition.
      */
     public void printReactionToAddingExistingItem(Item item, int finalQty, int originalQty) {
@@ -120,10 +120,12 @@ public class Ui {
     }
     //@@author
 
+    //@@author BryanElmer
     /**
      * Prints a reaction to user successfully removing an item.
      *
      * @param item The item the user has added.
+     * @param qty  The quantity of the item to be removed.
      */
     public void printReactionToRemovingItem(Item item, int qty) {
         String acknowledgeRemove = "You have successfully removed:\n";
@@ -132,12 +134,15 @@ public class Ui {
                 + " | " + item.expiryToString();
         printLine(removeReaction);
     }
+    //@@author
 
     //@@author uosjapuelks
     /**
      * Suggests the correct item name if input is incomplete.
      *
      * @param predictedItem Only item available containing search term but is not exactly the same.
+     * @return True if the user said 'y' or False if the User said 'n'.
+     * @throws FridgetException if the user replies in an unexpected manner.
      */
     public boolean giveSuggestion(Item predictedItem) throws FridgetException {
         String message = String.format("Did you mean: %s? [Y/N]", predictedItem.getItemName());
@@ -150,6 +155,7 @@ public class Ui {
      * Gets user to input "y" or "n".
      *
      * @return true if "y", and false if "n".
+     * @throws FridgetException if the user gives an invalid input.
      */
     private boolean getYesNo() throws FridgetException {
         printUserInputMessage();
@@ -169,7 +175,7 @@ public class Ui {
      * Prints Question to ask user which item is the target item.
      *
      * @param matchingItems The list of items which match the user's search term.
-     * @param commandType   Type of command printing the message.
+     * @param commandType   The command class which is calling this method.
      */
     public void printConfirmItemMessage(ArrayList<Item> matchingItems, CommandType commandType) {
         String question = "Which item would you like to %s? Type the index of the item below.";
@@ -195,7 +201,7 @@ public class Ui {
      *
      * @param matchingItems List of items that matches the search term.
      * @param targetItem    Item to be updated or removed.
-     * @param commandType   Whether it is UPDATE or REMOVE.
+     * @param commandType   The command class which is calling this method.
      * @return The item selected by the user.
      * @throws FridgetException No matching items matches input  from the very start or after user rejects suggestion.
      */
@@ -285,6 +291,7 @@ public class Ui {
         }
     }
 
+    //@@author BryanElmer
     /**
      * Prints a shop list of items, indented by four spaces and preceded by an index.
      *
@@ -299,6 +306,7 @@ public class Ui {
             index++;
         }
     }
+    //@@author
 
     //@@author uosjapuelks
     /**
@@ -393,6 +401,7 @@ public class Ui {
     /**
      * Asks user for input and expect only Integer input.
      *
+     * @param commandType The command class which is calling this method.
      * @return The integer of the input.
      * @throws FridgetException if userInput is not integer.
      */
@@ -501,6 +510,7 @@ public class Ui {
 
     }
 
+    //@@author BryanElmer
     /**
      * Gets the quantity of items to be removed from the user.
      *
@@ -588,6 +598,7 @@ public class Ui {
     /**
      * Prints a reconfirmation message and gets the reconfirmation result.
      *
+     * @param commandType The command class which is calling this method.
      * @return Boolean representing reconfirm status (y: confirm, n: abort)
      */
     public boolean getResetReconfirm(CommandType commandType) {
@@ -612,7 +623,7 @@ public class Ui {
     /**
      * Returns the reset question according to command.
      *
-     * @param commandType The command used.
+     * @param commandType The command class which is calling this method.
      * @return String containing the reset question.
      */
     public String getResetQuestion(CommandType commandType) {
