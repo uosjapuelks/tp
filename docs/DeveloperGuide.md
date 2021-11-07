@@ -93,7 +93,11 @@ retrieving them upon startup.
 
 Fridget initialises all classes upon startup, and initiates the user feedback loop as shown below.
 
+<div align="center">
+
 ![image info](./umlDiagrams/UserFeedbackLoop.png)
+
+</div>
 
 <hr/>
 
