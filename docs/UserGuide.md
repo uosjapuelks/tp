@@ -195,7 +195,7 @@ You have successfully removed:
 __________________________________________
 ```
 
-<ins>If there is only one item with a name containing or with different upper or lower case to `ITEM_NAME`</ins>:
+<ins>If there is only one item with a similar spelling (different capitalization / has more letters) to `ITEM_NAME`</ins>:
 ```markdown
 USER INPUT: remove Burger
 __________________________________________
@@ -208,38 +208,19 @@ You have successfully removed:
 __________________________________________
 ```
 
-<ins>If there are multiple items with a name containing `ITEM_NAME`</ins>:
+<ins>If there are multiple items with the same name or has a name containing `ITEM_NAME`</ins>
 ```markdown
 USER INPUT: remove burger
 __________________________________________
 Which item would you like to be removed? Type the index of the item below.
     1. burger | Qty: 1 | 11 Nov 2021
     2. burger | Qty: 1 | 23 Sep 2021
+    3. burger a | Qty: 2 | 23 Sep 2022
 __________________________________________
 USER INPUT: 1
 __________________________________________
 You have successfully removed:
     burger | Qty: 1 | 11 Nov 2021
-__________________________________________
-```
-
-<ins>If there are multiple quantities of the same item</ins>:
-```
-USER INPUT: remove burger
-__________________________________________
-Which item would you like to be removed? Type the index of the item below.
-    1. burger | Qty: 3 | 11 Nov 2021
-    2. burger | Qty: 1 | 23 Sep 2021
-If you've changed your mind, simply type 'quit'.
-__________________________________________
-USER INPUT: 1
-__________________________________________
-There are 3 items, how many would like to remove?
-__________________________________________
-USER INPUT: 2
-__________________________________________
-You have successfully removed:
-    burger | Qty: 2 | 11 Nov 2021
 __________________________________________
 ```
 
@@ -298,7 +279,7 @@ Quantity of burger is now 5.
 __________________________________________
 ```
 
-<ins>If there is only one item with a name containing or with different upper or lower case to `ITEM_NAME`</ins>:
+<ins>If there is only one item with a similar spelling (different capitalization / has more letters) to `ITEM_NAME`</ins>:
 ```markdown
 USER INPUT: update Burger
 __________________________________________
@@ -314,13 +295,14 @@ Quantity of burger is now 8.
 __________________________________________
 ```
 
-<ins>If there are multiple items with a name containing `ITEM_NAME`</ins>:
+<ins>If there are multiple items with the same name or has a name containing `ITEM_NAME`</ins>:
 ```markdown
 USER INPUT: update burger
 __________________________________________
 Which item would you like to overwrite quantity? Type the index of the item below.
 1. cheese burger | Qty: 8 | 11 Nov 2022
 2. fish burger | Qty: 80 | 12 Dec 2022
+3. fish burger | Qty: 30 | 13 Dec 2023
 If you've changed your mind, simply type 'quit'.
 __________________________________________
 USER INPUT: 2
@@ -333,26 +315,7 @@ Quantity of burger is now 32.
 __________________________________________
 ```
 
-<ins>If there are multiple quantities of the same item</ins>:
-```markdown
-USER INPUT: update burger
-__________________________________________
-Which item would you like to overwrite quantity? Type the index of the item below.
-1. burger | Qty: 8 | 11 Nov 2022
-2. burger | Qty: 80 | 12 Dec 2022
-If you've changed your mind, simply type 'quit'.
-__________________________________________
-USER INPUT: 2
-__________________________________________
-How many of burger do you have left?
-__________________________________________
-USER INPUT: 32
-__________________________________________
-Quantity of burger is now 32.
-__________________________________________
-```
-
-<ins>If the intended value to be update is Zero</ins>:
+<ins>If the intended value to be update is zero</ins>:
 ```
 USER INPUT: update burger
 __________________________________________
