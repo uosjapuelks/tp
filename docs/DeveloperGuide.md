@@ -6,9 +6,9 @@
 
 ## Setting Up Fridget
 1. Ensure that you have Java 11 or above installed on your computer.
-2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v1.0/fridget.jar).
+2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v2.1/Fridget.jar).
 3. Copy the file into the folder you want to store Fridget's data.
-4. Launch the terminal on your computer. You can refer to [this website](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) on how to launch the terminal on your specific OS (Windows/Mac/Linux).
+4. Launch the terminal in that same folder on your computer. You can refer to [this website](https://towardsdatascience.com/a-quick-guide-to-using-command-line-terminal-96815b97b955) on how to launch the terminal on your specific OS (Windows/Mac/Linux).
 5. Type in `java -jar Fridget.jar` into the terminal to launch the app.
 6. Type your command in the command box and press Enter to execute it.
    * Some example commands you can try:
@@ -16,10 +16,10 @@
       - reset: prompts the user to confirm clearing all data.
       - exit: close the app.
 7. Congratulations! You should be good to go!
-<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
-:bulb: <b>Tip:</b>
-You can key in "<b>java -version</b>" into your terminal to check your version of java.
-</div>
+
+<span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:bulb: You can type <code>java -version</code> into your terminal to check your version of java.
+</span>
 
 ## Architecture
 
