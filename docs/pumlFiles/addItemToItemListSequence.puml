@@ -35,7 +35,9 @@ deactivate ":Ui"
 end
 
 ":AddCommand" -> ":ShoppingList": removeItem(newItem, newItemQty)
+activate ":ShoppingList"
 ":AddCommand" <-- ":ShoppingList"
+deactivate ":ShoppingList"
 
 ":AddCommand" <-- ":AddCommand"
 

@@ -24,7 +24,7 @@ public class Storage {
     private final ShoppingList shoppingList;
     private final Notification notification;
     private final String fileDirectory;
-    private final String listFilePath;
+    private final String itemFilePath;
     private final String logFilePath;
     private final String shopFilePath;
 
@@ -37,18 +37,18 @@ public class Storage {
      * @param itemList     The ItemList object.
      * @param shoppingList The ShoppingList object.
      * @param notification The notification object.
-     * @param listFilePath Pathway of item list file storage.
+     * @param itemFilePath Pathway of item list file storage.
      * @param logFilePath  Pathway of user log file storage.
      * @param shopFilePath Pathway of shopping list file storage.
      */
     public Storage(ItemList itemList, ShoppingList shoppingList, Notification notification,
-                   String listFilePath, String logFilePath, String shopFilePath) {
-        String[] fileComponents = listFilePath.split("/");
+                   String itemFilePath, String logFilePath, String shopFilePath) {
+        String[] fileComponents = itemFilePath.split("/");
         this.fileDirectory = fileComponents[0];
         this.itemList = itemList;
         this.shoppingList = shoppingList;
         this.notification = notification;
-        this.listFilePath = listFilePath;
+        this.itemFilePath = itemFilePath;
         this.logFilePath = logFilePath;
         this.shopFilePath = shopFilePath;
 
@@ -67,21 +67,21 @@ public class Storage {
      */
     protected void loadFile() throws IOException, FridgetException {
         File dataDirectory = new File(fileDirectory);
-        File listFile = new File(listFilePath);
+        File itemFile = new File(itemFilePath);
         File logFile = new File(logFilePath);
         File shopFile = new File(shopFilePath);
 
         if (!dataDirectory.exists()) {
             dataDirectory.mkdir();
-            listFile.createNewFile();
+            itemFile.createNewFile();
             logFile.createNewFile();
             shopFile.createNewFile();
             return;
         }
 
-        if (!(listFile.exists() && logFile.exists() && shopFile.exists())) {
-            if (!listFile.exists()) {
-                listFile.createNewFile();
+        if (!(itemFile.exists() && logFile.exists() && shopFile.exists())) {
+            if (!itemFile.exists()) {
+                itemFile.createNewFile();
             }
 
             if (!logFile.exists()) {
@@ -94,7 +94,7 @@ public class Storage {
             return;
         }
 
-        readFromListFile(listFile);
+        readFromItemFile(itemFile);
         readFromLogFile(logFile);
         readFromShopFile(shopFile);
     }
@@ -118,19 +118,19 @@ public class Storage {
     }
 
     /**
-     * Read saved items list from savedList.txt to update item list.
+     * Read saved items list from savedItem.txt to update item list.
      *
-     * @param listFile savedList.txt used to store all the items from user input.
+     * @param itemFile savedItem.txt used to store all the items from user input.
      * @throws FileNotFoundException thrown when file is not found.
      * @throws FridgetException thrown when item quantity exceed INT_MAX.
      */
-    private void readFromListFile(File listFile) throws FileNotFoundException, FridgetException {
-        Scanner listScanner = new Scanner(listFile);
-        if (listScanner == null) {
+    private void readFromItemFile(File itemFile) throws FileNotFoundException, FridgetException {
+        Scanner itemScanner = new Scanner(itemFile);
+        if (itemScanner == null) {
             logger.log(Level.WARNING, "Please restart the program! Data storage has been corrupted.");
         }
-        while (listScanner.hasNext()) {
-            String line = listScanner.nextLine();
+        while (itemScanner.hasNext()) {
+            String line = itemScanner.nextLine();
             String[] listDataComponents = line.split(REGEX_DATA_SEPARATOR);
             addSavedItem(listDataComponents);
         }
@@ -210,8 +210,8 @@ public class Storage {
      * @param items The current list of items.
      * @throws IOException The error thrown from file IO operations.
      */
-    public void updateListFile(ArrayList<Item> items) throws IOException {
-        FileWriter fileWriter = new FileWriter(listFilePath);
+    public void updateItemFile(ArrayList<Item> items) throws IOException {
+        FileWriter fileWriter = new FileWriter(itemFilePath);
         for (Item item : items) {
             assert item != null : "Item must not be null!";
             fileWriter.write(item.saveFormat());
@@ -245,7 +245,7 @@ public class Storage {
     public void updateFiles(ArrayList<Item> storedItems, ArrayList<Item> shoppingItems,
                             Notification notification) {
         try {
-            updateListFile(storedItems);
+            updateItemFile(storedItems);
             updateLogFile(notification);
             updateShopFile(shoppingItems);
         } catch (IOException e) {
