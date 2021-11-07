@@ -175,11 +175,6 @@ Format: `remove ITEM_NAME`
 
 <span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
-The <code>ITEM_NAME</code> can be in a <ins>natural language</ins> format. 
-</span>
-
-<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
-:exclamation:
 The <code>ITEM_NAME</code> should be the <ins>same</ins> as the name of the item you are trying to remove. 
 </span>
 
@@ -262,11 +257,6 @@ __________________________________________
 Use this command to update the quantity of items in Fridget.
 
 Format: `update ITEM_NAME`
-
-<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
-:exclamation:
-The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
-</span>
 
 <span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
