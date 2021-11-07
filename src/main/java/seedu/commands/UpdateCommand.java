@@ -36,6 +36,23 @@ public class UpdateCommand extends Command {
         //Checks if quantity is zero, zero should require removal of the item.
         boolean requireRemoval = parser.parseQuantity(newQty);
 
+        handleUpdate(ui, parser, itemList, shoppingList, itemToUpdate, newQty, requireRemoval);
+    }
+
+    /**
+     * Handles changing the quantity of the item.
+     *
+     * @param ui             The ui object to interact with user.
+     * @param parser         The parser object to parse user inputs.
+     * @param itemList       The itemList object.
+     * @param shoppingList   The shoppingList object.
+     * @param itemToUpdate   The item to update.
+     * @param newQty         The quantity to update the item to.
+     * @param requireRemoval True if item should be removed from the item list.
+     * @throws FridgetException The error object thrown.
+     */
+    private void handleUpdate(Ui ui, Parser parser, ItemList itemList, ShoppingList shoppingList, Item itemToUpdate
+            , int newQty, boolean requireRemoval) throws FridgetException {
         int qtyDiff = newQty - itemToUpdate.getQuantity();
         if (requireRemoval) {
             boolean reply = ui.suggestRemove(itemToUpdate);
@@ -46,12 +63,12 @@ public class UpdateCommand extends Command {
             boolean isRemoved = itemList.removeItem(itemToUpdate, itemToUpdate.getQuantity());
             ui.printReactionToRemovingItem(itemToUpdate, itemToUpdate.getQuantity());
             if (isRemoved) {
-                updateShopList(ui, shoppingList, itemToUpdate, qtyDiff);
+                updateShopList(ui, shoppingList, itemToUpdate, qtyDiff, true);
             }
         } else {
             //Update does not require removal of item thus quantity in shoplist and itemlist will be updated.
             itemList.updateQuantity(itemToUpdate, newQty);
-            updateShopList(ui, shoppingList, itemToUpdate, qtyDiff);
+            updateShopList(ui, shoppingList, itemToUpdate, qtyDiff, false);
             ui.acknowledgeUpdate(itemToUpdate);
         }
     }
@@ -64,11 +81,13 @@ public class UpdateCommand extends Command {
      * @param shoppingList The shoppingList object.
      * @param updatedItem  The item updated.
      * @param qty          The difference in quantity of the update.
+     * @param isRemoved    True if the item is completely removed.
      */
-    private void updateShopList(Ui ui, ShoppingList shoppingList, Item updatedItem, int qty) throws FridgetException {
+    private void updateShopList(Ui ui, ShoppingList shoppingList, Item updatedItem, int qty, boolean isRemoved)
+            throws FridgetException {
         if (qty > 0) { //qty of item has been increased
             shoppingList.removeItem(updatedItem, qty);
-        } else if (qty == -updatedItem.getQuantity()) {
+        } else if (isRemoved) {
             int qtyInShop = shoppingList.searchItemNameExist(updatedItem);
             int qtyToShop = ui.getShopQuantity(updatedItem, qtyInShop);
             Item addedItem = new Item(updatedItem.getItemName(), qtyToShop);
