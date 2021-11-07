@@ -1,17 +1,19 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+Participant ":HelpCommand" as HelpCommand
 
 autonumber
 
--> ":HelpCommand": execute()
-activate ":HelpCommand"
+-> HelpCommand: execute()
+activate HelpCommand
 
-    ":HelpCommand" -> ":Ui": printLine()
+    HelpCommand -> ":Ui": printLine()
     activate ":Ui"
-    ":HelpCommand" <-- ":Ui"
+    HelpCommand <-- ":Ui"
     deactivate ":Ui"
 
-    <-- ":HelpCommand"
-deactivate ":HelpCommand"
+    <-- HelpCommand
+deactivate  HelpCommand
+    <-[hidden]- HelpCommand
 
+destroy HelpCommand
 @enduml

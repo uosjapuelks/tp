@@ -1,37 +1,41 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+Participant ":Notification" as Notification
+Participant ":NotificationCommand" as NotificationCommand
 
 autonumber
 
--> ":Notification": Notification()
-activate ":Notification"
+create Notification
+-> Notification: new Notification()
+activate Notification
 
     opt isNotificationOn() && isMoreThan4Hours()
-        ":Notification" -> ":Notification": printHealthNotification()
-        ":Notification" -> ":Notification": printExpiryNotification();
-        <-- ":Notification"
+        Notification -> Notification: printHealthNotification()
+        Notification -> Notification: printExpiryNotification();
+        <-- Notification
     end
 
 
--> ":NotificationCommand": execute()
-activate ":NotificationCommand"
+-> NotificationCommand: execute()
+activate NotificationCommand
 
     alt isNotificationOn()
-        ":NotificationCommand" -> ":Notification": setNotificationStatus(false)
-        ":NotificationCommand" -> ":Ui": printLine()
+        NotificationCommand -> Notification: setNotificationStatus(false)
+        NotificationCommand -> ":Ui": printLine()
         activate ":Ui"
-        ":NotificationCommand" <-- ":Ui"
+        NotificationCommand <-- ":Ui"
         deactivate ":Ui"
 
     else else
-            ":NotificationCommand" -> ":Notification": setNotificationStatus(true)
-            ":NotificationCommand" -> ":Ui": printLine()
+            NotificationCommand -> Notification: setNotificationStatus(true)
+            NotificationCommand -> ":Ui": printLine()
             activate ":Ui"
-            ":NotificationCommand" <-- ":Ui"
+            NotificationCommand <-- ":Ui"
             deactivate ":Ui"
 
     end
-    <-- ":NotificationCommand"
-deactivate ":NotificationCommand"
+    <-- NotificationCommand
+deactivate NotificationCommand
+    <-[hidden]- NotificationCommand
+destroy NotificationCommand
 
 @enduml
