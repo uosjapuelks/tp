@@ -20,6 +20,7 @@ public class ShoppingList {
      * Adds an item into shoppingList.
      *
      * @param item The item to be added.
+     * @param quantity The quantity to be added to the item.
      */
     public void addItem(Item item, int quantity) {
         assert item != null : "Item must not be null!";
@@ -95,7 +96,9 @@ public class ShoppingList {
     /**
      * Returns the current shopping list.
      *
+     * @param sortType The parameter to determine how the list should be sorted.
      * @return List of items in the shopping list.
+     * @throws FridgetException if the parameter after shoplist is unexpected.
      */
     public ArrayList<Item> getShoppingList(String sortType) throws FridgetException {
         assert sortType != null : "Sort type must not be null!";

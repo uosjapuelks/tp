@@ -123,6 +123,7 @@ public class ItemList {
     /**
      * Returns the current list of items.
      *
+     * @param sortType The parameter to decide how the list should be sorted.
      * @return List of items.
      * @throws FridgetException thrown when String after list is unrecognised.
      */
@@ -145,6 +146,7 @@ public class ItemList {
      * Returns an Array List of Items with names containing the search term.
      *
      * @param searchTerm The search term used to find matching Items.
+     * @return ArrayList of Items featuring all Items with a matching name.
      * @throws FridgetException thrown when there are no items in itemList.
      */
     public ArrayList<Item> findAllMatchingItems(String searchTerm) throws FridgetException {
