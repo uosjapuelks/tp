@@ -93,5 +93,4 @@ public class RemoveCommand extends Command {
             ui.printShopUpdateMessage(addedItem, qtyInShop);
         }
     }
-    //@@author BryanElmer
 }

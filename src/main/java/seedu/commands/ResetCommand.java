@@ -35,4 +35,3 @@ public class ResetCommand extends Command {
         }
     }
 }
-//@@author BryanElmer

@@ -147,7 +147,7 @@ public class Storage {
         Item savedItem = new Item(listDataComponents[0], expiry, quantity);
         itemList.addItem(savedItem);
     }
-    //@@author BryanElmer
+    //@@author
 
     //@@author zonglun99
     /**
@@ -191,7 +191,7 @@ public class Storage {
             addSavedNotification(logScanner.nextLine());
         }
     }
-    //@@author zonglun99
+    //@@author
 
     //@@author BryanElmer
     /**
@@ -254,4 +254,3 @@ public class Storage {
         }
     }
 }
-//@@author BryanElmer

@@ -33,4 +33,3 @@ public class ShopListCommand extends Command {
         ui.printListMessage(listOfItems, "", true);
     }
 }
-//@@author BryanElmer

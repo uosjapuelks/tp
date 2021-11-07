@@ -36,4 +36,3 @@ public class ShopResetCommand extends Command {
         }
     }
 }
-//@@author BryanElmer

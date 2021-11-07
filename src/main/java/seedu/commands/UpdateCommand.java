@@ -69,5 +69,4 @@ public class UpdateCommand extends Command {
             ui.printShopUpdateMessage(addedItem, qtyInShop);
         }
     }
-    //@@author BryanElmer
 }

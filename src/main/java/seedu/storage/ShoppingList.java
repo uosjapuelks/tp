@@ -116,4 +116,3 @@ public class ShoppingList {
         shoppingList = new ArrayList<>();
     }
 }
-//@@author BryanElmer
