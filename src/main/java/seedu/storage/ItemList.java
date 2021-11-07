@@ -144,8 +144,8 @@ public class ItemList {
      * Returns an Array List of Items with names containing the search term.
      *
      * @param searchTerm The search term used to find matching Items.
-     * @throws FridgetException thrown when there are no items in itemList.
      * @return ArrayList of Items featuring all Items with a matching name.
+     * @throws FridgetException thrown when there are no items in itemList.
      */
     public ArrayList<Item> findAllMatchingItems(String searchTerm) throws FridgetException {
         assert searchTerm != null : "Search term must not be null!";
