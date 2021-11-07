@@ -25,6 +25,9 @@ public class Fridget {
 
     /**
      * Constructor for Fridget.
+     * @param listFilePath The relative path of the txt file to store data.
+     * @param logFilePath The relative path of the txt file to store logs.
+     * @param shopFilePath The relative path of the txt file to store shoppingList.
      */
     public Fridget(String listFilePath, String logFilePath, String shopFilePath) {
         ui = new Ui();
@@ -60,6 +63,7 @@ public class Fridget {
 
     /**
      * Main entry-point for the java.fridget.Fridget application.
+     * @param args Stores any arguments inputted by the user when running Fridget.
      */
     public static void main(String[] args) {
         new Fridget(FILE_PATH_LIST, FILE_PATH_LOGS, FILE_PATH_SHOP).run();
