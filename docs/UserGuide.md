@@ -47,7 +47,7 @@ A command like `add ITEM_NAME /EXPIRY_DATE` would actually be typed by the user 
         - exit: close the app.
 7. Congratulations! You should be good to go!
 
-<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :bulb: You can type <code>java -version</code> into your terminal to check your version of java.
 </span>
 
