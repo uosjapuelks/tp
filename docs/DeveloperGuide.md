@@ -88,6 +88,8 @@ on.
 
 #### `Storage`
 
+![StorageClass](./umlDiagrams/StorageClass.png)
+
 The Storage class takes charge of storing items after every command, and
 retrieving them upon startup.
 
