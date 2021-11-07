@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 
 import static java.lang.Integer.parseInt;
 
+//@@author BryanElmer
 public class Storage {
     private final ItemList itemList;
     private final ShoppingList shoppingList;
@@ -146,6 +147,7 @@ public class Storage {
         Item savedItem = new Item(listDataComponents[0], expiry, quantity);
         itemList.addItem(savedItem);
     }
+    //@@author
 
     //@@author zonglun99
     /**
@@ -188,8 +190,9 @@ public class Storage {
             addSavedNotification(logScanner.nextLine());
         }
     }
-    //@@author BryanElmer
+    //@@author
 
+    //@@author BryanElmer
     /**
      * Adds the saved items in shopping list file into the shopping list.
      *

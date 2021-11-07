@@ -593,6 +593,21 @@ __________________________________________
 ## Things to note
 
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+:exclamation: Details about how shopping list work:
+</div>
+
+- Adding items into the shopping list is only available when the item you remove has run out completely (there are no more items with the same name in the item list).
+  - Details about adding items in the shopping list can be found in the last section of [`remove`](#remove-an-item-from-fridget-remove).  
+      
+
+- Removing items from the shopping list is done automatically by Fridget when:
+  - An item that is in the shopping list is added into the item list.  
+  - The quantity of an item in the shopping list is increased with the update command.
+    
+
+- You are not allowed to manually add or remove items from the shopping list.
+
+<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
 :exclamation: For commands help, expiring, reset, shopreset, shoplist, list, and notifs, adding a space and random text behind will still trigger the command.
 </div>
 
@@ -624,14 +639,6 @@ You currently have nothing in your fridge.
 Input "help" to get started!
 __________________________________________
 ```
-
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: You are not allowed to add items into the shopping list manually.
-</div>
-
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: When adding items into the fridge with the add command, Fridget will automatically remove added items from the shopping list if they exist.
-</div>
 
 <div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
 :exclamation: All numerical inputs are limited between "0" to "21474836467". Numbers outside this range are invalid inputs.

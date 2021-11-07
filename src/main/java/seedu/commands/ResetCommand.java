@@ -6,6 +6,7 @@ import seedu.storage.ItemList;
 import seedu.storage.ShoppingList;
 import seedu.ui.Ui;
 
+//@@author BryanElmer
 public class ResetCommand extends Command {
     /**
      * Constructor for ResetCommand.
