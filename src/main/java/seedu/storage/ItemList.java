@@ -43,6 +43,7 @@ public class ItemList {
         return item.getQuantity();
     }
 
+    //@@author BryanElmer
     /**
      * Removes an item from the item list.
      *
@@ -60,6 +61,7 @@ public class ItemList {
         item.removeQuantity(qty);
         return !searchItemNameExist(item);
     }
+    //@@author
 
     /**
      * Checks if an item with the same name exists in the item list.
@@ -164,6 +166,7 @@ public class ItemList {
         return matchingItems;
     }
 
+    //@@author BryanElmer
     /**
      * Resets the Array List of items.
      */
