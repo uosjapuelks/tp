@@ -141,7 +141,7 @@ public class Ui {
      * Suggests the correct item name if input is incomplete.
      *
      * @param predictedItem Only item available containing search term but is not exactly the same.
-     * @return True if the user said 'y' or False if the User said 'n'
+     * @return True if the user said 'y' or False if the User said 'n'.
      * @throws FridgetException if the user replies in an unexpected manner.
      */
     public boolean giveSuggestion(Item predictedItem) throws FridgetException {
