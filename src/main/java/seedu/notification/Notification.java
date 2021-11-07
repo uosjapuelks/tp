@@ -47,7 +47,7 @@ public class Notification {
     public Notification() {
     }
 
-    public void printMessage(String content) {
+    private void printMessage(String content) {
         System.out.println(content);
     }
 
@@ -67,7 +67,7 @@ public class Notification {
      * Prints health notification when it is more than 4 hours since last notification
      * and notification is set to on.
      */
-    public void printHealthNotification() {
+    private void printHealthNotification() {
         printMessage(HEALTH_NOTIFICATION + "\n" + SEPARATOR_LINE);
         setDateAndTime(LocalDateTime.now());
     }
@@ -77,7 +77,7 @@ public class Notification {
      *
      * @param listOfItems list of items stored in itemList.
      */
-    public void printExpiringNotification(ArrayList<Item> listOfItems) {
+    private void printExpiringNotification(ArrayList<Item> listOfItems) {
         listOfItems.sort(Item.ItemExpiryComparator);
         ArrayList<Item> expiringList = new ArrayList<Item>();
         for (Item item : listOfItems) {
@@ -138,7 +138,7 @@ public class Notification {
      *
      * @return Return true if time difference is more than 4 hours.
      */
-    public boolean isMoreThan4Hours() {
+    private boolean isMoreThan4Hours() {
         return dateAndTime.compareTo(LocalDateTime.now().minusHours(4)) <= 0;
     }
 
