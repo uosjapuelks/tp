@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class ItemListTest {
+    //@@author uosjapuelks
     private final LocalDate today = LocalDate.now();
     private final Item itemAExpireTomorrow = new Item("aaa", today.plusDays(1));
     private final Item itemBExpireToday = new Item("bbb", today);
@@ -59,6 +60,7 @@ class ItemListTest {
             fail();
         }
     }
+    //@@author
 
     @Test
     void searchItemNameExist_itemInTestList_expectedResultTrue() {
@@ -72,6 +74,7 @@ class ItemListTest {
         }
     }
 
+    //@@author uosjapuelks
     @Test
     void sortItem_sortByDate_expectCToBToA() {
         fillExpectedList(itemCExpireYesterday, itemBExpireToday, itemAExpireTomorrow);

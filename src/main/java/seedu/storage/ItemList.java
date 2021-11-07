@@ -3,7 +3,6 @@ package seedu.storage;
 import seedu.data.exception.FridgetException;
 import seedu.data.item.Item;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ItemList {
@@ -77,6 +76,7 @@ public class ItemList {
         return false;
     }
 
+    //@@author uosjapuelks
     /**
      * Overwrite the quantity of an item to the new amount.
      *
@@ -86,6 +86,7 @@ public class ItemList {
     public void updateQuantity(Item targetItem, int toQuantity) {
         targetItem.setQuantity(toQuantity);
     }
+    //@@author
 
     /**
      * Checks if the itemList contains an item.
@@ -98,6 +99,7 @@ public class ItemList {
         return itemList.contains(item);
     }
 
+    //@@author uosjapuelks
     /**
      * Sorts the items in itemList by date if byDate is true and by description if false.
      *
@@ -135,6 +137,7 @@ public class ItemList {
             throw new FridgetException("Unrecognisable list command. Try: <list -e>");
         }
     }
+    //@@author
 
     /**
      * Returns an Array List of Items with names containing the search term.

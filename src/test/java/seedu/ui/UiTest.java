@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class UiTest {
     Ui ui = new Ui();
 
+    //@@author uosjapuelks
     @Test
     void sortTypeMessage_emptySortTypeInput_expectReturnDefault() {
         String sortTypeString = "";

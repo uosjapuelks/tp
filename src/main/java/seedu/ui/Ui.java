@@ -97,6 +97,7 @@ public class Ui {
         printLine(addReaction);
     }
 
+    //@@author uosjapuelks
     /**
      * Prints custom error message when DateTimeParseException detected.
      */
@@ -109,6 +110,7 @@ public class Ui {
                 + FOUR_SPACE_INDENTATION + exampleInput;
         printLine(dateErrorMessage);
     }
+    //@@author
 
     /**
      * Prints a reaction to user successfully removing an item.
@@ -123,6 +125,7 @@ public class Ui {
         printLine(removeReaction);
     }
 
+    //@@author uosjapuelks
     /**
      * Suggests the correct item name if input is incomplete.
      *
@@ -212,6 +215,7 @@ public class Ui {
 
         return matchingItems.get(index - 1);
     }
+    //@@author
 
     /**
      * Verifies if index is within bounds.
@@ -247,6 +251,7 @@ public class Ui {
         return currentUserInput;
     }
 
+    //@@author uosjapuelks
     /**
      * Prints the exit message.
      */
@@ -255,6 +260,7 @@ public class Ui {
                 + "See you again!~~";
         printLine(reassureUser);
     }
+    //@@author
 
     /**
      * Prints a list of items, indented by four spaces and preceded by an index.
@@ -286,6 +292,7 @@ public class Ui {
         }
     }
 
+    //@@author uosjapuelks
     /**
      * Prints a message informing user on list being printed.
      *
@@ -319,6 +326,7 @@ public class Ui {
             return ("List sorted by item name:");
         }
     }
+    //@@author
 
     /**
      * Prints a list of matching item for the find command.
@@ -336,6 +344,7 @@ public class Ui {
         }
     }
 
+    //@@author uosjapuelks
     /**
      * Prints only list of items/item away from group.
      *
@@ -457,6 +466,7 @@ public class Ui {
         String msg = String.format("Quantity of %s is now %d.", updated.getItemName(), updated.getQuantity());
         printLine(msg);
     }
+    //@@author
 
 
     public int getQuantityToBeAdded(Item newItem) throws FridgetException {

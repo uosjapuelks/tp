@@ -9,6 +9,7 @@ import seedu.ui.Ui;
 
 import java.util.ArrayList;
 
+//@@author uosjapuelks
 public class ExpiringCommand extends Command {
     /**
      * Constructor for ExpiringCommand.
