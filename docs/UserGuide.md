@@ -62,7 +62,7 @@ Feature | Command Format |
 -----------|-----------------
 [Add an item](#add-an-item-into-fridget-add) | `add ITEM_NAME /EXPIRY_DATE`
 [Remove an item](#remove-an-item-from-fridget-remove) | `remove ITEM_NAME`
-[Update the quantity of an item](#update-the-quantity-of-an-item-in-fridget) | `update ITEM_NAME`
+[Update the quantity of an item](#update-the-quantity-of-an-item-in-fridget-update) | `update ITEM_NAME`
 [Get help](#get-help-help) | `help`
 [Reset all items](#reset-all-items-reset) | `reset`
 [Reset shopping list](#reset-all-items-in-shopping-list-shopreset) | `shopreset`
@@ -263,20 +263,20 @@ Use this command to update the quantity of items in Fridget.
 
 Format: `update ITEM_NAME`
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
 The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
-</div>
+</span>
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
 The <b>ITEM_NAME</b> should be the <ins>same</ins> as the name of the item you are trying to remove. 
-</div>
+</span>
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
 The <b>ITEM_NAME</b> can also be a <ins>part of the name</ins> of the item. 
-</div>
+</span>
 
 **Example of usage:**
 
@@ -757,7 +757,7 @@ __________________________________________
 <hr/>
 
 <span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
-:exclamation: All numerical inputs are limited between <code>0</code> to <code>21474836467</code>. Numbers outside this range are invalid inputs.
+:exclamation: All numerical inputs are limited between <code>0</code> to <code>2147483647</code>. Numbers outside this range are invalid inputs.
 </span>
 
 This is done to reduce the memory that needs to be stored per item.
