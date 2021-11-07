@@ -3,89 +3,32 @@
 
 autonumber
 
--> ":RemoveCommand"++: execute()
+-> ":RemoveCommand": execute()
 
-":RemoveCommand" -> ":Parser"++: parseSearchTerm()
+activate ":RemoveCommand"
 
-":Parser" -> ":Ui"++: getCurrentUserInput()
-":Parser" <-- ":Ui"--: currentUserInput
+":RemoveCommand" -> ":Parser" : parseSearchTerm(currentUserInput, Command.Type REMOVE)
+activate ":Parser"
+":RemoveCommand" <-- ":Parser": String nameOfItemToBeRemoved
+deactivate ":Parser"
 
-":RemoveCommand" <-- ":Parser"--: searchTerm
+opt nameOfItemToBeRemoved contains ' | ' or ' / '
 
-alt nameOfItemToBeRemoved contains "|" or "/"
+    <-- ":RemoveCommand" : Tell user name is invalid
 
-<- ":RemoveCommand": FridgetException()
-
-else else
-
-":RemoveCommand" -> ":ItemList"++: findAllMatchingItems(nameOfItemToBeRemoved)
-":RemoveCommand" <-- ":ItemList"--: matchingItems
-
-    group handleRemovalOfItem
-
-        ":RemoveCommand" -> ":Ui"++: printIfNotFoundMessage(matchingItems)
-        ":RemoveCommand" <-- ":Ui"--
-
-        alt Number of Matching Item is 1
-
-            alt Name of itemToBeRemoved != Name of matchingItem
-                ":RemoveCommand" -> ":Ui"++: giveSuggestion(itemToBeRemoved)
-                ":RemoveCommand" <-- ":Ui"--: acceptDefault
-            end
-
-            alt acceptDefault == true
-
-                group handleRemovalOfMultipleQuantity
-
-                    ":RemoveCommand" -> ":Ui"++: getQuantityToBeRemoved(itemToBeRemoved)
-                    ":RemoveCommand" <-- ":Ui"--: quantity
-
-                    ":RemoveCommand" -> ":ItemList"++: removeItem(itemToBeRemoved, quantity)
-                    ":RemoveCommand" <-- ":ItemList"--: isRemoved
-
-                    ":RemoveCommand" -> ":Ui"++: printReactionToRemovingItem(itemToBeRemoved, quantity)
-                    ":RemoveCommand" <-- ":Ui"--
-
-                    alt isRemoved == true && Name of itemToBeRemoved not in shopping list
-
-                        group updateShopList
-
-                            ":RemoveCommand" -> ":Ui"++: getShopQuantity(itemRemoved)
-                            ":RemoveCommand" <-- ":Ui"--: quantity
-
-                            alt quantity > 0
-                                ":RemoveCommand" -> ":Item"++: <<create>>
-                                ":RemoveCommand" <-- ":Item"--: addedItem
-
-                                ":RemoveCommand" -> ":ShoppingList"++: addItem(addedItem, quantity)
-                                ":RemoveCommand" <-- ":ShoppingList"--
-
-                                ":RemoveCommand" -> ":Ui"++: printShopUpdateMessage(addedItem)
-                                ":RemoveCommand" <-- ":Ui"--
-                            end
-
-                        end
-
-                    end
-
-                end
-
-                <-- ":RemoveCommand"
-
-            end
-
-        else Number of Matching Items > 1
-
-            ":RemoveCommand" -> ":Ui"++: matchItem(matchingItems)
-            ":RemoveCommand" <-- ":Ui"--: itemToBeRemoved
-
-            group handleRemovalOfMultipleQuantity
-            end
-
-        end
-
-    end
-    deactivate ":RemoveCommand"
 end
+
+":RemoveCommand" -> ":ItemList" : findAllMatchingItems (nameOfItemToBeRemoved)
+activate ":ItemList"
+":RemoveCommand" <-- ":ItemList" : ArrayList<Item> matchingItems
+deactivate ":ItemList"
+
+":RemoveCommand" -> ":RemoveCommand": handleRemovalOfItem(nameOfItemToBeRemoved, matchingItems)
+activate ":RemoveCommand"
+":RemoveCommand" --> ":RemoveCommand"
+deactivate ":RemoveCommand"
+
+<-- ":RemoveCommand"
+deactivate ":RemoveCommand"
 
 @enduml
