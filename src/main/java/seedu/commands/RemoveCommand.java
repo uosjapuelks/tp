@@ -16,6 +16,8 @@ public class RemoveCommand extends Command {
     public RemoveCommand() {
     }
 
+    //@@author alvynben
+
     /**
      * Executes the command.
      *

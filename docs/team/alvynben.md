@@ -14,29 +14,43 @@ Nowadays, users need to go through every ingredient in their fridge manually to 
 
 #### <ins>New Feature: Added the ability to add items into Fridget</ins>
 
-Question | Answer
-------|-------
-What does it do?| Allows the user to add an item (or multiple) into Fridget. 
-Why is it needed?| It is the backbone of the entire product. The first step for the user will always be to add the items in their fridge into Fridget, so that Fridget can help to keep track of it.
+**What does it do?<br/>**
+Allows the user to add an item (or multiple) into Fridget.<br/>
+**Why is it needed?<br/>**
+It is the backbone of the entire product. The first step for the user will always be to add the items in their fridge into Fridget, so that Fridget can help to keep track of it.<br/><br/>
+**Anything special that I did?**
 
-This enhancement went through a few iterations. Originally, it only allowed the adding of one item at a time. In the next iteration, the enhancement was improved so that the user could add multiple items at the same time. However, the problem was that each individual item could only be added with a quantity of 1. The final iteration involved enabling the user to control the quantity of each item to be added.
 
-The final product is a tour de force of simplified code, which attempts to make the code used to add the product be as lightweight and maintainable as possible, by following good coding standards like SLAP.
-
-It has to deal with all possible errors that could be introduced into the system, so that it does not affect other functions down the road. Hence, this enhancement needed to catch multiple errors from different sources such as incorrect date-time formatting, or wrong syntax inputs by the user. This code was potentially the most vulnerable function compared to the rest, and extra care had to be placed to reduce the capability for users to introduce error while enabling them the freedom to do what they needed to do.
+* I went through multiple iterations, as requirements changed (other functions needed more information to perform) which meant a lot of adding and deleting code.
+* I improved the method from only adding one item at a time to multiple items at a time.
+* I enhanced the method to allow user to specify quantity of items added.
+* I edited the code to follow SLAP as much as possible to ensure maintainability even as requirements changed.
+* I had to consider a multitude of errors that could affect not only this method, but any silent errors that could cause problems for other functions in Fridget.
+* In error handling, I had to consider: 
+  * integer overflow 
+  * date-time formatting
+  * incorrect syntax 
+* I had to balance the need to reduce errors, while enabling users the freedom to add the items they needed.
 
 <hr/>
 
 #### <ins>New Feature: Added the ability to remove items from Fridget</ins>
 
-Question | Answer
-------|-------
-What does it do?| Allows the user to remove an item from Fridget by name.
-Why is it needed?| It allows users to remove items they do not need or have used. It is a requirement as Fridget acts as a ledger for the user's fridge.
+**What does it do?<br/>**
+Allows the user to remove an item from Fridget by name.<br/>
+**Why is it needed?<br/>**
+It allows users to remove items they do not need or have used. It is a requirement as Fridget acts as a ledger for the user's fridge.<br/><br/>
+**Anything special that I did?**
+* I had to implement multiple stages so that the user could remove an item by search term, rather than index.
 
-This enhancement originally involved the ability to remove an item from Fridget, one item at a time. This was originally implemented by me. However, working together with Bryan Elmer, this enhancement was eventually upgraded to remove any quantity from an item as required by the user.
+<hr/>
 
-This function involved multiple stages of inputs from the users, so each stage had to be carefully considered so that all incorrect inputs were caught and dealt with.
+#### <ins>New Feature: Added the ability to find items in Fridget</ins>
+
+**What does it do?<br/>**
+Allows the user to find an item from Fridget by name.<br/>
+**Why is it needed?<br/>**
+It allows users to check if an item they need is in the Fridge. It reduces the need to manually check whether an item is in the fridge.<br/><br/>
 
 <hr/>
 
@@ -48,8 +62,24 @@ This function involved multiple stages of inputs from the users, so each stage h
 ### Review/Mentoring Contributions
 * Helped to review a considerable amount of PRs and catch a few errors
 * Assisted to fix bugs or potential vulnerabilities in other's code
+* Helped to fix git issues the team faced
 
 ### Contributions to the User Guide
+* Wrote the following sections:
+  * Introduction
+  * Legend
+  * Quick Start
+  * Features Summary
+  * Command Syntax
+  * Add an item into Fridget
+  * Remove an item from Fridget
+  * Find items stored in Fridget
+* Developed html elements to display important messages
+![img.png](img.png)
 
 ### Contributions to the Developer Guide
+* Wrote the following sections:
+  * Architecture Components
+  * Architecture Logic
+  * Adding Items Into Fridget
 

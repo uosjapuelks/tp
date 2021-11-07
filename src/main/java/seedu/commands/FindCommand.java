@@ -10,6 +10,8 @@ import seedu.ui.Ui;
 import java.util.ArrayList;
 
 public class FindCommand extends Command {
+
+    //@@author alvynben
     /**
      * Constructor for Find Command.
      */
