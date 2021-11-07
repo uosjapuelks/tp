@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -56,6 +57,9 @@ public class Storage {
             loadFile();
         } catch (IOException | FridgetException e) {
             logger.log(Level.WARNING, "in storage, unable to load existing file");
+        } catch (DateTimeParseException e) {
+            logger.log(Level.WARNING, "Seems like the files have been tampered with. "
+                    + "We've deleted all items that may have been corrupted in savedItem.txt ");
         }
     }
 

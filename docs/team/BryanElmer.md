@@ -33,7 +33,6 @@ I was involved in a greenfield project called Fridget. Fridget is a Java-written
 
 - What it does: Allow users to clear and start with a new and fresh item list by typing in `reset`.
 - Justification: This feature is needed so that users can start with a fresh item list after trying Fridget out for the first time with dummy test data.
-- Highlights: 
 
 <hr/>
 
@@ -41,7 +40,6 @@ I was involved in a greenfield project called Fridget. Fridget is a Java-written
 
 - What it does: Allow users to clear and start with a new and fresh shopping list by typing in `shopreset`.
 - Justification: This feature is needed so that users can start with a fresh shopping list after trying Fridget out for the first time with dummy test data.
-- Highlights:
 
 <hr/>
 
@@ -79,7 +77,8 @@ I was involved in a greenfield project called Fridget. Fridget is a Java-written
     - Added documentation for features `reset`, `shopreset`, `shoplist`.
     - Added documentation for shopping list in `remove` and things to note.
 - Developer Guide:
-    - Added documentation for features `reset`, `shopreset`, `shoplist`.
-    - Added sequence diagrams for `reset`, `shopreset`, `shoplist`.
+    - Added documentation for features `remove`, `reset`, `shopreset`, `shoplist`.
+    - Added sequence diagrams for `remove`, `reset`, `shopreset`, `shoplist`.
+    - Added class diagram for storage.
 
 ### Community:
