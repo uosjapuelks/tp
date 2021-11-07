@@ -7,7 +7,7 @@ autonumber
 
 activate ":RemoveCommand"
 
-":RemoveCommand" -> ":Parser" : parseSearchTerm(currentUserInput, Command.Type REMOVE)
+":RemoveCommand" -> ":Parser" : parseSearchTerm(currentUserInput, CommandType.REMOVE)
 activate ":Parser"
 ":RemoveCommand" <-- ":Parser": String nameOfItemToBeRemoved
 deactivate ":Parser"

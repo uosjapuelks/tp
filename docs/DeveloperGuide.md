@@ -237,6 +237,115 @@ The execution of the addItemToItemList() method ends.
 
 ### Removing Items From Fridget
 
+#### Main Objectives:
+
+The functionality of remove items is bound by two main objectives:
+- Make removing items more convenient for the user.
+- Prompts the user to add item to shopping list if removed item does not exist (no other items with the same name) in the item list.
+
+#### Overall Sequence: 
+![RemoveSequence](./umlDiagrams/RemoveSequence.png)
+
+Step 1:
+
+This step is almost always initiated by Fridget, but could potentially be done by another class in the future.
+
+Step 2 & 3:
+
+The parseSearchTerm() method is called in the Parser to read the user input and returns the name of the item to be removed.
+
+Step 4:
+
+If the name of the item contains '|' or '/', a FridgetException is thrown to tell the user that the name is invalid. The execution of the execute() method ends.
+
+Step 5 & 6:
+
+The findAllMatchingItems() method is called in the ItemList to find all items with matching names. This method returns an arraylist of the items with matching names.
+
+Step 7 & 8:
+
+The handleRemovalOfItem() method is called to remove the items from the list. More info about this method can be found [below](#handleremovalofitem).
+
+Step 9:
+
+The execution of the execute() method ends.
+
+#### handleRemovalOfItem
+
+![handleRemovalOfItem](./umlDiagrams/HandleRemovalOfItems.png)
+
+Step 1:
+
+This execution of this command is initiated by the RemoveCommand.
+
+Step 2 & 3:
+
+The matchItem() method is called in the Ui to print the list of matching items and prompt the user to pick the correct match. This method returns the item that the user wants to remove.
+
+Step 4 & 5:
+
+The handleRemovalOfMultipleQuantity() method is called to remove the item of choice. More info about this method can be found [below]().
+
+Step 6:
+
+The execution of the handleRemovalOfItem() method ends.
+
+#### handleRemovalOfMultipleQuantity
+
+![handleRemovalOfMultipleQuantity](./umlDiagrams/HandleRemovalOfMultipleQuantity.png)
+
+Step 1 & 2: 
+
+The handleRemovalOfMultipleQuantity() method is initiated by the handleRemovalOfItem() method.
+
+Step 3 & 4:
+
+The getQuantityToBeRemoved() method is called in the Ui to ask the user how many items to remove. This method returns the quantity of item to be removed.
+
+Step 5 & 6:
+
+The removeItem() method is called in the ItemList and removes the item from the item list. This method returns a true if there are no more items with the same name in the item list.
+
+Step 7 & 8:
+
+The printReactionToRemovingItem() method is called in the Ui and prints the remove messaged to the user.
+
+Step 9 & 10:
+
+The searchItemNameExist() method is called in the ShoppingList to check if any item has the same name as the removed item. This method returns the quantity of the item with same name.
+
+Step 11 & 12:
+
+If there are no more items in the item list with the same name as the removed item, the updateShopList() method is called to prompt user to add item into the shopping list. More info about this method can be found [below](#updateshoppinglist).
+
+#### updateShoppingList
+
+![updateShoppingList](./umlDiagrams/UpdateShopList.png)
+
+Step 1 - 3:
+
+The updateShoppingList() method is initiated by handleRemovalOfMultipleQuantity().
+
+Step 4 & 5:
+
+The getShopQuantity method is called in the Ui to ask the user how many items to add into the shopping list. This method returns the quantity to be added into the shopping list.
+
+Step 6 & 7:
+
+If quantity to add is more than 0, a new Item to be added is created.
+
+Step 8 & 9:
+
+The addItem() method is called in the ShoppingList and adds the previously created item into the shopping list.
+
+Step 10 & 11:
+
+The printShopUpdateMessage() method is called in the Ui and prints the acknowledgement message.
+
+Step 12 - 14:
+
+The exection of the updateShopList() method ends.
+
 ### Getting Help Manual
 
 #### Main Objectives:
@@ -251,7 +360,7 @@ Future uses include:
 * More in-depth coverage of all basic functions.
 * Interactive component to explore capabilities of each command.
 
-#### Sequence of execution:
+#### Overall Sequence:
 
 ![image info](./umlDiagrams/HelpSequence.png)
 
@@ -461,7 +570,7 @@ The execution of the execute() method ends.
 #### Main Objectives:
 The objective of this functionality is to allow users to easily view the contents of the shopping list.
 
-#### Sequence of execution:
+#### Overall Sequence:
 
 ![ShopListSequence](./umlDiagrams/ShopListSequence.png)
 
@@ -492,7 +601,7 @@ Current implementation allow users to toggle the notifications on or off, with r
 
 The purpose of implementing time interval and ability to toggle on or off is to prevent excessive notification printing. 
 
-#### Sequence of execution:
+#### Overall Sequence:
 
 ![image info](./umlDiagrams/NotificationSequence.png)
 
