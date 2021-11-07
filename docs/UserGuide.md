@@ -42,8 +42,9 @@ A command like `add ITEM_NAME /EXPIRY DATE` would actually be typed by the user 
         - exit: close the app.
 7. Congratulations! You should be good to go!
 
-:bulb: <b>Tip:</b> You can key in "<b>java -version</b>" into your terminal to check your version of java.
-
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:bulb: You can type <code>java -version</code> into your terminal to check your version of java.
+</span>
 
 This guide has been arranged according to the features offered by Fridget.
 You can see the list of features in the Features section below.
@@ -94,15 +95,15 @@ Constraints:
   - `|` is used for Fridget's own secret purposes.
   - `;` is used for adding multiple items at once. More instructions can be found below.
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation: 
-The <b>EXPIRY_DATE</b> must be in the <ins>YYYY-MM-DD</ins> format.  
-</div>
+The <code>EXPIRY_DATE</code> must be in the <ins>YYYY-MM-DD</ins> format.  
+</span>
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation: 
-The <b>EXPIRY_DATE</b> should not be earlier than the current day.  
-</div>
+The <code>EXPIRY_DATE</code> should not be earlier than the current day.  
+</span>
 
 **Example of usage:**
 
@@ -166,20 +167,20 @@ Use this command to remove items from Fridget.
 
 Format: `remove ITEM_NAME`
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
-The <b>ITEM_NAME</b> can be in a <ins>natural language</ins> format. 
-</div>
+The <code>ITEM_NAME</code> can be in a <ins>natural language</ins> format. 
+</span>
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
-The <b>ITEM_NAME</b> should be the <ins>same</ins> as the name of the item you are trying to remove. 
-</div>
+The <code>ITEM_NAME</code> should be the <ins>same</ins> as the name of the item you are trying to remove. 
+</span>
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
-The <b>ITEM_NAME</b> can also be a <ins>part of the name</ins> of the item. 
-</div>
+The <code>ITEM_NAME</code> can also be a <ins>part of the name</ins> of the item. 
+</span>
 
 **Example of usage:**
 
@@ -453,15 +454,15 @@ Use this command to easily find an item in Fridget by name.
 
 Format: `find KEYWORD`
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
-The <b>KEYWORD</b> should be the <ins>same</ins> as the name of the item you are trying to remove. 
-</div>
+The <code>KEYWORD</code> should be the <ins>same</ins> as the name of the item you are trying to remove. 
+</span>
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
-The <b>KEYWORD</b> can also be a <ins>part of the name</ins> of the item. 
-</div>
+The <code>KEYWORD</code> can also be a <ins>part of the name</ins> of the item. 
+</span>
 
 **Example of usage:**
 
@@ -483,10 +484,10 @@ __________________________________________
 
 Use this command to get a list of all expiring items.
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #d8eff3, #d1ecf1);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
-:bulb: <b>Tip:</b>
+<span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:bulb:
 Only items expiring within 7 days will be shown. Expired items will be shown too.
-</div>
+</span>
 
 Format: `expiring`
 
@@ -510,10 +511,10 @@ Use this command to turn notifications on or off. There are a total of 2 reminde
 * Health: To remind you to eat healthier.
 * Expiry: To remind you that items are expiring and/or expired.
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #d8eff3, #d1ecf1);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
-:bulb: <b>Tip:</b>
+<span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:bulb:
 Notifications are scheduled by default to be turned on every 4 hours.
-</div>
+</span>
 
 Format: notifs
 
@@ -590,9 +591,9 @@ __________________________________________
 
 ## Things to note
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: Details about how shopping list work:
-</div>
+<span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:bulb: Details about how the shopping list works
+</span>
 
 - Adding items into the shopping list is only available when the item you remove has run out completely (there are no more items with the same name in the item list).
   - Details about adding items in the shopping list can be found in the last section of [`remove`](#remove-an-item-from-fridget-remove).  
@@ -605,9 +606,11 @@ __________________________________________
 
 - You are not allowed to manually add or remove items from the shopping list.
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: For commands help, expiring, reset, shopreset, shoplist, list, and notifs, adding a space and random text behind will still trigger the command.
-</div>
+<hr/>
+
+<span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:exclamation: For commands <code>help</code>, <code>expiring</code>, <code>reset</code>, <code>shopreset</code>, <code>shoplist</code>, <code>list</code>, and <code>notifs</code>, adding a space and random text behind will still trigger the command.
+</span>
 
 Example:
 ```
@@ -620,9 +623,12 @@ __________________________________________
 Are you sure you want to reset everything in the item list? (Y/N)
 __________________________________________
 ```
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: If no item is recorded, Fridget will prompt you to get help.
-</div>
+
+<hr/>
+
+<span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:exclamation: If no item is recorded, Fridget will prompt you to use the <code>help</code> command.
+</span>
 
 Example:
 ```
@@ -638,6 +644,20 @@ Input "help" to get started!
 __________________________________________
 ```
 
-<div style="display: inline-block;background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em; word-wrap: break-word">
-:exclamation: All numerical inputs are limited between "0" to "21474836467". Numbers outside this range are invalid inputs.
-</div>
+<hr/>
+
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:exclamation: All numerical inputs are limited between <code>0</code> to <code>21474836467</code>. Numbers outside this range are invalid inputs.
+</span>
+
+This is done to reduce the memory that needs to be stored per item.
+
+<hr/>
+
+# Thank You
+
+We hope you found this user guide useful in pushing Fridget to its limits! 
+
+If you find any issues, do let us know [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/issues/new/choose).
+
+All the best, and have fun!
