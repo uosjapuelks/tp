@@ -480,7 +480,13 @@ public class Ui {
     }
     //@@author
 
-
+    /**
+     * Gets the quantity of items to be added from the user.
+     *
+     * @param newItem Item to be added.
+     * @return Quantity of the item to be added.
+     * @throws FridgetException If the user types in a wrong value (non-integer or 0)
+     */
     public int getQuantityToBeAdded(Item newItem) throws FridgetException {
         printLine("What quantity of [" + newItem.toAddFormat() + "] would you like to add?");
         printSeparatorLine();
