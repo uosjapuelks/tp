@@ -58,7 +58,7 @@ Feature | Command Format |
 -----------|-----------------
 [Add an item](#add-an-item-into-fridget-add) | `add ITEM_NAME /EXPIRY_DATE`
 [Remove an item](#remove-an-item-from-fridget-remove) | `remove ITEM_NAME`
-[Update the quantity of an item]() | `update ITEM_NAME`
+[Update the quantity of an item](#update-the-quantity-of-an-item-in-fridget) | `update ITEM_NAME`
 [Get help](#get-help-help) | `help`
 [Reset all items](#reset-all-items-reset) | `reset`
 [Reset shopping list](#reset-all-items-in-shopping-list-shopreset) | `shopreset`
