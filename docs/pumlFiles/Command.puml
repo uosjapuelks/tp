@@ -3,30 +3,14 @@ hide circle
 skinparam classAttributeIconSize 0
 
 class Command
-class AddCommand
-class ExitCommand
-class FindCommand
 class HelpCommand
-class ListCommand
-class ResetCommand
 class RemoveCommand
-class ExpiringCommand
-class NotificationCommand
-class ShopListCommand
-class ShopResetCommand
 class UpdateCommand
 
-Command <|-up- AddCommand
-Command <|-up- ExitCommand
-Command <|-up- FindCommand
+
 Command <|-up- HelpCommand
-Command <|-left- ListCommand
-Command <|-left- ResetCommand
 Command <|-right- RemoveCommand
-Command <|-right- ExpiringCommand
-Command <|-down- NotificationCommand
-Command <|-down- ShopListCommand
-Command <|-down- ShopResetCommand
+Command <|-left- XYZCommand
 Command <|-down- UpdateCommand
 
 class Command {
@@ -37,47 +21,25 @@ class Command {
 shoppingList: ShoppingList): void
 }
 
-class AddCommand {
-+AddCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
-}
+note top of XYZCommand
+ * XYZCommand represents command classes,
+   AddCommand, ExitCommand, etc.
+   (Excluding those with additional variables/methods)
 
-class ExitCommand {
-+ExitCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
-}
-
-class FindCommand {
-+FindCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
+ * All XYZCommand has their respective
+   XYZCommand() constructor.
+end note
+class XYZCommand {
++XYZCommand()
 }
 
 class HelpCommand {
-- {static} COMMAND_LIST: String
+-{static} COMMAND_LIST: String
 +HelpCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
-}
-
-class ListCommand {
-+ListCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
-shoppingList: ShoppingList): void
-}
-
-class ResetCommand {
-+ResetCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
 }
 
 class RemoveCommand {
 +RemoveCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
 -handleRemovalOfItem(ui: Ui, itemList: ItemList, shoppingList: ShoppingList,
  nameOfItemToBeRemoved: String, matchingItems: ArrayList<Item>): void
 -handleRemovalOfMultipleQuantity(ui: Ui, itemList: ItemList,
@@ -85,36 +47,20 @@ class RemoveCommand {
 -updateShopList(ui: Ui, shoppingList: ShoppingList, itemRemoved: Item)
 }
 
-class ExpiringCommand {
-+ExpiringCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
-}
-
-class NotificationCommand {
-+NotificationCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
-}
-
-class ShopListCommand {
-+ShopListCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
-}
-
-class ShopResetCommand {
-+ShopResetCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
-}
-
 class UpdateCommand {
 +UpdateCommand()
-+execute(ui: Ui, parser: Parser, itemList: ItemList,
- shoppingList: ShoppingList): void
+-
 -updateShopList(shoppingList: ShoppingList, updatedItem: Item,
  qty: int): void
 }
+
+note as N1
+* All command classes inherits
+  and overrides the execute() method.
+* Overridden method execute() is
+  not shown in class diagram of
+  classes that inherits
+  Command class.
+end note
 
 @enduml
