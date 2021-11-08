@@ -4,7 +4,7 @@
 
 * Inspired by [AddressBook-Level3 (AB3) DG](https://se-education.org/addressbook-level3/DeveloperGuide.html#architecture).
 
-## Setting Up Fridget
+## Quick Start
 1. Ensure that you have Java 11 or above installed on your computer.
 2. Download the latest `Fridget.jar` from [here](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v2.1/Fridget.jar).
 3. Copy the file into the folder you want to store Fridget's data.
@@ -20,6 +20,10 @@
 <span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :bulb: You can type <code>java -version</code> into your terminal to check your version of java.
 </span>
+
+## Setting Up In Intellij
+
+For more information regarding how to install this project into your local repo, do take a look at the README.md [here](https://github.com/AY2122S1-CS2113T-W12-4/tp).
 
 ## Index
 
@@ -138,14 +142,12 @@ printing timely health and expiry notification.
 #### `Fridget`
 
 Fridget initialises all classes upon startup as shown below. 
+
 ![image info](./umlDiagrams/FridgetInitialise.png)
 
-<<<<<<< HEAD
-Fridget also initiates the user feedback loop as shown below.
-<div align="center">
-=======
 
->>>>>>> master
+Fridget also initiates the user feedback loop as shown below.
+
 
 ![image info](./umlDiagrams/UserFeedbackLoop.png)
 
@@ -745,12 +747,17 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 
 ## Glossary
 
-* **Common OS**: Windows, Linux, OS X
-* **CAPITALISE_WORDS**: Represents the description of the required user input.
-* **XYZCommand**: Represents a specific command class.
-* **GUI**: Graphical User Interface
-* :bulb: - This icon refers to tips that may help you.
-* :exclamation: - This icon refers to warnings to help you avoid mistakes.
+**Common OS**: Windows, Linux, OS X
+
+**CAPITALISE_WORDS**: Represents the description of the required user input.
+
+**XYZCommand**: Represents a specific command class.
+
+**GUI**: Graphical User Interface
+
+:bulb:: This icon refers to tips that may help you.
+
+:exclamation:: This icon refers to warnings to help you avoid mistakes.
 
 ## Instructions For Manual Testing
 
