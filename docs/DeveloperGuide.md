@@ -716,6 +716,27 @@ The execution of the execute() method ends, while notification continues to run 
 ### Exiting From Fridget
 
 
+#### Main Objectives:
+
+The objective of the exit command to close the program is to introduce a proper way to shut down the program.
+
+The purpose of implementing the command is to also reduce the likelihood of bugs and corruption of files to occur.
+
+#### Overall Sequence:
+
+![image info](./umlDiagrams/ExitSequence.png)
+
+Step 1:
+
+This step is almost always initiated by Fridget, but could potentially be done by another class in the future.
+
+Step 2 & 3:
+
+The printExitMessage() method is called which prints the Exit Message to users informing them that the program is shutting down.
+
+Step 4:
+
+The execution of the execute() method ends and the program would end the loop of getting user inputs and shut down.
 
 ## Product scope
 ### Target user profile
