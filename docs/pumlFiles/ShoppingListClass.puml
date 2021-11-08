@@ -5,19 +5,17 @@ skinparam backgroundColor #f2f2f2
 skinparam defaultFontSize 16
 hide circle
 
-ItemList "1" <-up- Fridget : itemList
+ItemList "1" <-up- Fridget : shoppingList
 ItemList "1" <-left- Command
-Item "*" <-left- ItemList : itemList
+Item "*" <-left- ItemList : shoppingList
 
 class ItemList {
-    + addItem(item: Item): int
-    + removeItem(item: Item, qty: int): boolean
-    + searchItemNameExist(item: Item): boolean
-    + updateQuantity(targetItem: Item, toQuantity: int): void
+    + addItem(item: Item): void
+    + removeItem(item: Item, qty: int): void
+    + searchItemNameExist(item: Item): int
     + containsItem(item: Item): boolean
-    + sortItem(byDate: boolean): ArrayList<Item>
-    + getItemList(sortType: String): ArrayList<Item>
-    + findAllMatchingItems(searchTerm: String): ArrayList<Item>
+    + sortItem(): ArrayList<Item>
+    + getShoppingList(sortType: String): ArrayList<Item>
     + resetList(): void
 }
 
