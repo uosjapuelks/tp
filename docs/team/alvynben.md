@@ -79,7 +79,14 @@ It allows users to check if an item they need is in the Fridge. It reduces the n
 
 ### Contributions to the Developer Guide
 * Wrote the following sections:
+  * Quick Start
+  * Setting Up In Intellij
+  * Index
   * Architecture Components
+    * Front End (Ui) Class Diagram
   * Architecture Logic
   * Adding Items Into Fridget
+    * All Sequence Diagrams
+  * Target User Profile
+  * Value Proposition
 
