@@ -5,8 +5,8 @@ skinparam backgroundColor #f2f2f2
 skinparam defaultFontSize 16
 hide circle
 
-ItemList "1" <-up- Fridget : itemList
-ItemList "1" <-left- Command
+ItemList "1" <-left- Fridget : itemList
+ItemList "1" <-up- Command
 Item "*" <-left- ItemList : itemList
 
 class ItemList {
