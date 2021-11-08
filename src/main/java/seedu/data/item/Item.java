@@ -55,6 +55,7 @@ public class Item {
         this.quantity = 1;
     }
 
+    //@@author alvynben
     /**
      * Overloads constructor to start quantity from more than 1.
      *
@@ -79,8 +80,8 @@ public class Item {
         this.expiryDate = null;
         this.quantity = quantity;
     }
-    //@@author
 
+    //@@author alvynben
     /**
      * Adds a specified integer value to quantity of item.
      *
@@ -96,6 +97,7 @@ public class Item {
         quantity = (int) finalQty;
     }
 
+    //@@author BryanElmer
     /**
      * Subtracts a specified integer value to quantity of item.
      *
@@ -119,6 +121,7 @@ public class Item {
         this.quantity = toQuantity;
     }
 
+    //@@author alvynben
     /**
      * String is represented as name + quantity + Expiry date that is colored depending on expiry status.
      *
@@ -162,8 +165,8 @@ public class Item {
         assert finalQty > 1 : "Unable to perform this operation as quantity is less than or equal to 1";
         return itemName + " | Qty: " + (originalQty) + "->" + finalQty + " | " + expiryToString();
     }
-    //@@author
 
+    //@@author alvynben
     /**
      * Gets the Item's name.
      *
@@ -194,6 +197,7 @@ public class Item {
         return expiry;
     }
 
+    //@@author
     /**
      * Check if Item nearing expiry by 7 DAYS.
      *
@@ -239,8 +243,8 @@ public class Item {
     public String saveFormat() {
         return itemName + " | Qty: " + quantity + " | " + expiryDate;
     }
-    //@@author
 
+    //@@author alvynben
     /**
      * Return format for adding item.
      *
@@ -250,6 +254,7 @@ public class Item {
         return itemName + " | " + expiryDate;
     }
 
+    //@@author alvynben
     /**
      * Check if the items compared have the same name.
      *
@@ -260,6 +265,7 @@ public class Item {
         return itemName.equalsIgnoreCase(item.getItemName());
     }
 
+    //@@author alvynben
     /**
      * Check if the items have the same expiry.
      *
