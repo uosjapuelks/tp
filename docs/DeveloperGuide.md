@@ -106,9 +106,19 @@ The Parser collects information from the user's input in a way that is usable by
 
 This ItemList keeps track of all items currently stored within Fridget, and can be easily manipulated.
 
+![image info](./umlDiagrams/ItemListClassDiagrams.png)
+
+Above is the image representing the association between Fridget, Command, ItemList and Item.
+The ItemList stores a list of Items and contains methods to help add, remove or process Items in the list.
+
 #### `ShoppingList`
 
 This ShoppingList keeps track of all items the user may want to shop for, and can be easily manipulated.
+
+![image info](./umlDiagrams/ShoppingListClass.png)
+
+Above is the image representing the association between Fridget, Command, and Item.
+The ShoppingList stores the list of Items in the shopping list and contains methods to help process add, remove or process Items in the shoppping list.
 
 #### `Command`
 
