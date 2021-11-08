@@ -1,5 +1,7 @@
 @startuml
 hide circle
+skinparam backgroundColor #f2f2f2
+skinparam defaultFontSize 16
 skinparam classAttributeIconSize 0
 
 Parser <-> "*" XYZCommand

@@ -137,9 +137,15 @@ printing timely health and expiry notification.
 
 #### `Fridget`
 
-Fridget initialises all classes upon startup, and initiates the user feedback loop as shown below.
+Fridget initialises all classes upon startup as shown below. 
+![image info](./umlDiagrams/FridgetInitialise.png)
 
+<<<<<<< HEAD
+Fridget also initiates the user feedback loop as shown below.
+<div align="center">
+=======
 
+>>>>>>> master
 
 ![image info](./umlDiagrams/UserFeedbackLoop.png)
 
@@ -743,13 +749,15 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 * **CAPITALISE_WORDS**: Represents the description of the required user input.
 * **XYZCommand**: Represents a specific command class.
 * **GUI**: Graphical User Interface
+* :bulb: - This icon refers to tips that may help you.
+* :exclamation: - This icon refers to warnings to help you avoid mistakes.
 
 ## Instructions For Manual Testing
 
 ### Launch And Shutdown
 1. Initial launch
    1. Download the jar file, [Fridget.jar](https://github.com/AY2122S1-CS2113T-W12-4/tp/releases/download/v2.1/Fridget.jar) and copy into empty folder.
-   2. Double-click the file to launch the app or enter command `java -jar Fridget.jar` into command window to start the program.
+   2. Double-click the file to launch the app or enter command `java -jar Fridget.jar` into command window to start the program.<br/><br/>
 
 2. Shutting down
    1. A typical file shutdown would be using `exit` command. Items added will be retained and saved in the text file and loaded on next launch.
@@ -759,72 +767,72 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 1. Adding item to Fridget.
    1. You can add items using the following format: `add ITEM_NAME /EXPIRY_DATE`.
    2. `ITEM_NAME` is the parameter for the name and `EXPIRY_DATE` will be in the format of <ins>YYYY-MM-DD</ins>
-   3. A prompt would appear to ask for quantity you want to add simply input the quantity.
+   3. A prompt would appear to ask for quantity you want to add simply input the quantity.<br/><br/>
 
 2. Test cases:
-   1. `add bacon /2022-12-12` followed by `1`<br/><br/>
-      Expected: Message will be printed to inform you item is added. Type command `list` to view the item added to Fridget.<br/><br/>
-   2. `add bacon /2022-12-12` followed by `5`<br/><br/>
-      Expected: Message will be printed to inform you the increase in number of items added from 1 to 6 quantity.
-   3. `add burger /2022-12-12 ; chicken /2022-12-12` followed by `1` and `1`<br/><br/>
-      Expected: Message will be printed to inform you that both items are added.<br/><br/>
-   4. `add bacon`<br/><br/>
-      Expected: Error message printed to prompt that there is lack of expiry date. No item added.<br/><br/>
-   5. `add /2022-11-11`<br/><br/>
-      Expected: Error message printed to indicate the lack of item name. No item will be added.<br/><br/>
-   6. `add bacon /2021-13-13`<br/><br/>
-      Expected: Error message to inform that date is in the wrong format. No item will be added.<br/><br/>
-   7. `add | /2022-12-12`<br/><br/>
-      Expected: Error message to inform user to not input '|' in item name. No item will be added.<br/><br/>
-   8. `add ; /2022-12-12`<br/><br/>
-      Expected: Error message to inform user that item name is missing. No item will be added.<br/><br/>
-   9. `add / /2022-12-12`<br/><br/>
-      Expected: Error message to inform user that item name is missing. No item will be added.<br/><br/>
-   10. `add bacon /2020-12-12`<br/><br/>
-      Expected: Error message to inform user that item has expired [number of days from today] days ago. No item will be added.<br/><br/>
+   1. `add bacon /2022-12-12` followed by `1`<br/>
+      **Expected**: Message will be printed to inform you item is added. Type command `list` to view the item added to Fridget.<br/><br/>
+   2. `add bacon /2022-12-12` followed by `5`<br/>
+      **Expected**: Message will be printed to inform you the increase in number of items added from 1 to 6 quantity.<br/><br/>
+   3. `add burger /2022-12-12 ; chicken /2022-12-12` followed by `1` and `1`<br/>
+      **Expected**: Message will be printed to inform you that both items are added.<br/><br/>
+   4. `add bacon`<br/>
+      **Expected**: Error message printed to prompt that there is lack of expiry date. No item added.<br/><br/>
+   5. `add /2022-11-11`<br/>
+      **Expected**: Error message printed to indicate the lack of item name. No item will be added.<br/><br/>
+   6. `add bacon /2021-13-13`<br/>
+      **Expected**: Error message to inform that date is in the wrong format. No item will be added.<br/><br/>
+   7. `add | /2022-12-12`<br/>
+      **Expected**: Error message to inform user to not input '|' in item name. No item will be added.<br/><br/>
+   8. `add ; /2022-12-12`<br/>
+      **Expected**: Error message to inform user that item name is missing. No item will be added.<br/><br/>
+   9. `add / /2022-12-12`<br/>
+      **Expected**: Error message to inform user that item name is missing. No item will be added.<br/><br/>
+   10. `add bacon /2020-12-12`<br/>
+       **Expected**: Error message to inform user that item has expired [number of days from today] days ago. No item will be added.<br/><br/>
 
 ### Deleting Items
 1. Removing item from Fridget.
    1. You can remove items using the following format: `remove ITEM_NAME`.
    2. `ITEM_NAME` is the parameter for the name.
    3. If there are multiple items with same name, Fridget will prompt you to choose the index of item to remove.
-   4. If there are multiple quantities of an item, Fridget will prompt you to input the quantity to remove.
+   4. If there are multiple quantities of an item, Fridget will prompt you to input the quantity to remove.<br/><br/>
 
 2. Prerequisites: There should be a prepared list of items in Fridget.
    1. Add 3 `bacon` of different dates. (e.g. 2021-11-11, 2021-12-12)
-   2. Add 3 `egg` of same date.
+   2. Add 3 `egg` of same date.<br/><br/>
 
 3. Test Cases:
-   1. `remove bacon`<br/><br/>
-      Expected: Prompt from Fridget to ask which of the item from a list to remove. Type 1, and first bacon from
+   1. `remove bacon`<br/>
+      **Expected**: Prompt from Fridget to ask which of the item from a list to remove. Type 1, and first bacon from
       the list will be removed. Type `list` to confirm the right bacon (correct date) is removed.<br/><br/>
-   2. `remove egg`<br/><br/>
-      Expected: Prompt to type in the quantity to remove, type in 2 and a message will be printed to
+   2. `remove egg`<br/>
+      **Expected**: Prompt to type in the quantity to remove, type in 2 and a message will be printed to
       notify that 2 eggs have been removed. Type `list` to check quantity of egg.<br/><br/>
-   3. `remove`<br/><br/>
-      Expected: Error message printed to indicate the lack of item name. No item will be removed.<br/><br/>
-   4. `remove chicken`<br/><br/>
-      Expected: Error message printed to inform you no such item exists.<br/><br/>
+   3. `remove`<br/>
+      **Expected**: Error message printed to indicate the lack of item name. No item will be removed.<br/><br/>
+   4. `remove chicken`<br/>
+      **Expected**: Error message printed to inform you no such item exists.<br/><br/>
 
 ### Listing Items
 1. Listing all items from Fridget.
    1. Format for list will be `list` or `list -r` or `list -e`
    2. `list`: list by alphabetical order.
    3. `list -e`: list by ascending order of expiry date.
-   4. `list -r`: list by how recent item is added.
+   4. `list -r`: list by how recent item is added.<br/><br/>
 
 2. Prerequisites: There should be a prepared list of items.
    1. Add `bacon` of date 2022-12-12
    2. Add `apple` of date 2023-12-12
-   3. add `cucumber` of date 2021-12-12
+   3. add `cucumber` of date 2021-12-12<br/><br/>
 
 3. Test cases:
-   1. `list`<br/><br/>
-      Expected: Items will be listed out in alphabetical order.<br/><br/>
-   2. `list -e`<br/><br/>
-      Expected: Items will be listed out in ascending order of expiry date.<br/><br/>
-   3. `list -r`<br/><br/>
-      Expected: Items will be listed out by how recent they are added.<br/><br/>
+   1. `list`<br/>
+      **Expected**: Items will be listed out in alphabetical order.<br/><br/>
+   2. `list -e`<br/>
+      **Expected**: Items will be listed out in ascending order of expiry date.<br/><br/>
+   3. `list -r`<br/>
+      **Expected**: Items will be listed out by how recent they are added.<br/><br/>
 
 ### Finding Items
 1. Finding items from Fridget.
@@ -837,66 +845,70 @@ This CLI based application hopes to automate a lot of the tasks users have relat
    3. add `cucumber` of date `2021-12-12`
    
 3. Test cases:
-   1. `find bacon`<br/><br/>
-      Expected: A list of the item associated with the name will be printed.<br/><br/>
-   2. `find chicken`<br/><br/>
-      Expected: Error message will be printed to inform that no matching item is found.<br/><br/>
-   3. `find`<br/><br/>
-      Expected: Error message will prompt for user to input ITEM_NAME. No items will be printed.<br/><br/>
+   1. `find bacon`<br/>
+      **Expected**: A list of the item associated with the name will be printed.<br/><br/>
+   2. `find chicken`<br/>
+      **Expected**: Error message will be printed to inform that no matching item is found.<br/><br/>
+   3. `find`<br/>
+      **Expected**: Error message will prompt for user to input ITEM_NAME. No items will be printed.<br/><br/>
 
 ### List Expiring Items
 1. Listing all expired and expiring items.
-   1. Format for listing expiring items will be `expiring`
+   1. Format for listing expiring items will be `expiring`.<br/><br/>
    
 2. Prerequisites: There should be a prepared list of items.
    1. Add `egg` with a date within 7 days from today's date.
-   2. Add `duck` with a date at least 8 days from today's date
+   2. Add `duck` with a date at least 8 days from today's date.<br/><br/>
    
 3. Test cases:
-   1. `expiring`<br/><br/>
-      Expected: A list containing all items expiring within 7 days or expired will be listed.<br/><br/>
+   1. `expiring`<br/>
+      **Expected**: A list containing all items expiring within 7 days or expired will be listed.<br/><br/>
 
 ### Printing Notification
 1. Turning notification on and off.
-   1. Format for toggling notification will be `notifs`.
+   1. Format for toggling notification will be `notifs`.<br/><br/>
 
 2. Prerequisites: There should a prepared list of items.
    1. Add `egg` with a date within 7 days from today's date.
-   2. Add `duck` with a date at least 8 days from today's date.
+   2. Add `duck` with a date at least 8 days from today's date.<br/><br/>
 
 3. Test cases:
    1. Go to `fridgetData` directory and open `savedLogs.txt` file. 
    2. Change time to be at least 4 hours before current time.
-   3. Exit and re-run `Fridget.jar`.<br/><br/>
-      Expected: To see 2 different notification printed, one health and another expiry notification.<br/><br/>
+   3. Exit and re-run `Fridget.jar`.<br/>
+      **Expected**: To see 2 different notification printed, one health and another expiry notification.<br/><br/>
+   
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:exclamation: Only change what you need to change in the text file. If formatting is wrong, please delete and retry.
+</span>
 
 ### Updating Items Quantity
 1. Update quantity of existing items in Fridget.
    1. Format for updating will be `update ITEM_NAME`.
    2. `ITEM_NAME` is the parameter for the name.
-   3. A prompt would appear to ask for quantity you want to update to simply input the quantity.
+   3. A prompt would appear to ask for quantity you want to update to simply input the quantity.<br/><br/>
 
 2. Prerequisite: There should be a prepared list of items.
    1. Add an `egg` of date not before today's date.
-   2. Add a `bacon` of date not before today's date.
+   2. Add a `bacon` of date not before today's date.<br/><br/>
 
 3. Test cases:
-   1. `update egg` followed by `3`<br/><br/>
-      Expected: Message will be printed to inform you item quantity will be updated from 1 to 3. <br/><br/>
-   2. `update`<br/><br/>
-      Expected: Error message will be printed to inform you ITEM_NAME is missing. Command aborted.<br/><br/>
-   3. `update egg` followed by `0` followed by `n`<br/><br/>
-      Expected: Message will be printed to inform you update command is aborted. No change in quantity.<br/><br/>
-   4. `update egg` followed by `0` followed by `y`<br/><br/>
-      Expected: Message will be printed to inform you item is removed since quantity is 0.<br/><br/>
-   5. `update bacon` followed `-1`<br/><br/>
-      Expected: Error message will be printed to inform you item quantity cannot be less than 0. Command aborted. No quantity changes.<br/><br/>
+   1. `update egg` followed by `3`<br/>
+      **Expected**: Message will be printed to inform you item quantity will be updated from 1 to 3. <br/><br/>
+   2. `update`<br/>
+      **Expected**: Error message will be printed to inform you ITEM_NAME is missing. Command aborted.<br/><br/>
+   3. `update egg` followed by `0` followed by `n`<br/>
+      **Expected**: Message will be printed to inform you update command is aborted. No change in quantity.<br/><br/>
+   4. `update egg` followed by `0` followed by `y`<br/>
+      **Expected**: Message will be printed to inform you item is removed since quantity is 0.<br/><br/>
+   5. `update bacon` followed `-1`<br/>
+      **Expected**: Error message will be printed to inform you item quantity cannot be less than 0. Command aborted. No quantity changes.<br/><br/>
    
 
 ### Saving And Loading Data
 1. Saving and loading data is automated as long as file is not corrupted.
    1. To track your data in terms of a text file, open up `fridgetData` folder to access `savedList.txt.`
-   2. Do not modify any items in the text file which could cause corruption to file.
+   2. Do not modify any items in the text file which could cause corruption to file. <br/><br/>
 
 2. Dealing with missing file.
    1. In general, a missing file will not result in any error as files will be generated automatically.

@@ -62,6 +62,8 @@ accessing the data stored from user input.
 #### Developer Guide:
   - Added documentation for features `help` and `notifs`.
   - Added class diagram for all Command classes.
+  - Added class diagram for Parser class.
+  - Added Fridget initialisation sequence diagram.
   - Update user stories for all versions.
   - Added manual testing guide for most commands.
   - Added non-functional requirements and glossary.
