@@ -18,6 +18,14 @@ This guide is meant for you to quickly get started with Fridget so you can stop 
 
 <hr/>
 
+## Index
+
+1. [Legend](#legend)
+2. [Quick Start](#quick-start)
+3. [Features](#features)
+4. [Command Syntax](#command-syntax)
+5. [Things to Note](#things-to-note)
+
 ## Legend
 
 `add ITEM_NAME /EXPIRY_DATE` - Texts inside `this` box refers to either input text by the user or output from Fridget in the terminal.
@@ -690,7 +698,7 @@ __________________________________________
 
 <hr/>
 
-## Things to note
+## Things to Note
 
 <span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :bulb: Details about how the shopping list works
