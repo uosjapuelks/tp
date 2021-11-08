@@ -77,7 +77,7 @@ Feature | Command Format |
 [List all items](#list-all-items-in-fridget-list) | `list -OPTIONAL_SORT_TYPE`
 [List items in shopping list](#list-items-in-shopping-list-shoplist) | `shoplist`
 [Find an item](#find-items-stored-in-fridget-find) | `find KEYWORD`
-[List expiring items](#lists-all-items-expiring-soon-expiring) | `expiring`  
+[List expiring items](#list-all-items-expiring-soon-expiring) | `expiring`  
 [See notifications](#see-notifications-notifs) | `notifs`
 [Exit Fridget](#stop-fridget-exit) | `exit`
 
@@ -589,7 +589,7 @@ __________________________________________
 
 <hr/>
 
-### Lists all items expiring soon: `expiring`
+### List all items expiring soon: `expiring`
 
 Use this command to get a list of all expiring items.
 
