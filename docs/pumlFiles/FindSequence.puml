@@ -6,28 +6,28 @@ skinparam defaultFontSize 16
 
 autonumber
 
--> "FindCommand:Command": execute()
-activate "FindCommand:Command"
+-> ":FindCommand": execute()
+activate ":FindCommand"
 
-"FindCommand:Command" -> ":Ui": getCurrentUserInput()
+":FindCommand" -> ":Ui": getCurrentUserInput()
 activate ":Ui"
-"FindCommand:Command" <-- ":Ui": storedInput :String
+":FindCommand" <-- ":Ui": storedInput :String
 deactivate ":Ui"
 
-"FindCommand:Command" -> ":Parser": parseSearchTerm(storedInput, Parser.CommandType.FIND)
+":FindCommand" -> ":Parser": parseSearchTerm(storedInput, Parser.CommandType.FIND)
 activate ":Parser"
-"FindCommand:Command" <-- ":Parser": searchTerm :String
+":FindCommand" <-- ":Parser": searchTerm :String
 deactivate ":Parser"
-"FindCommand:Command" -> ":ItemList": findAllMatchingItems(searchTerm)
+":FindCommand" -> ":ItemList": findAllMatchingItems(searchTerm)
 activate ":ItemList"
-"FindCommand:Command" <--":ItemList": matchingItems :ArrayList<Item>
+":FindCommand" <--":ItemList": matchingItems :ArrayList<Item>
 deactivate ":ItemList"
-"FindCommand:Command" -> ":Ui": printListMessage(matchingItems)
+":FindCommand" -> ":Ui": printListMessage(matchingItems)
 activate ":Ui"
-"FindCommand:Command" <-- ":Ui"
+":FindCommand" <-- ":Ui"
 deactivate ":Ui"
 
-<-- "FindCommand:Command"
-deactivate "FindCommand:Command"
+<-- ":FindCommand"
+deactivate ":FindCommand"
 
 @enduml

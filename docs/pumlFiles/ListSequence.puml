@@ -6,23 +6,23 @@ skinparam defaultFontSize 16
 
 autonumber
 
--> "ListCommand:Command": execute()
-activate "ListCommand:Command"
+-> ":ListCommand": execute()
+activate ":ListCommand"
 
-"ListCommand:Command" -> ":Parser": parseSortTypeForList(currentUserInput)
+":ListCommand" -> ":Parser": parseSortTypeForList(currentUserInput)
 activate ":Parser"
-"ListCommand:Command" <-- ":Parser": sortType :String
+":ListCommand" <-- ":Parser": sortType :String
 deactivate ":Parser"
-"ListCommand:Command" -> ":ItemList": getItemList(sortType)
+":ListCommand" -> ":ItemList": getItemList(sortType)
 activate ":ItemList"
-"ListCommand:Command" <--":ItemList": listOfItems :ArrayList<Item>
+":ListCommand" <--":ItemList": listOfItems :ArrayList<Item>
 deactivate ":ItemList"
-"ListCommand:Command" -> ":Ui": printListMessage(listOfItems, sortType)
+":ListCommand" -> ":Ui": printListMessage(listOfItems, sortType)
 activate ":Ui"
-"ListCommand:Command" <-- ":Ui"
+":ListCommand" <-- ":Ui"
 deactivate ":Ui"
 
-<-- "ListCommand:Command"
-deactivate "ListCommand:Command"
+<-- ":ListCommand"
+deactivate ":ListCommand"
 
 @enduml

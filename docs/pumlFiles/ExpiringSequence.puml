@@ -6,20 +6,20 @@ skinparam defaultFontSize 16
 
 autonumber
 
--> "ExpiringCommand:Command": execute()
-activate "ExpiringCommand:Command"
+-> ":ExpiringCommand": execute()
+activate ":ExpiringCommand"
 
-"ExpiringCommand:Command" -> "ExpiringCommand:Command" : sortByExpiry :String
-"ExpiringCommand:Command" -> ":ItemList": getItemList(sortByExpiry)
+":ExpiringCommand" -> ":ExpiringCommand" : sortByExpiry :String
+":ExpiringCommand" -> ":ItemList": getItemList(sortByExpiry)
 activate ":ItemList"
-"ExpiringCommand:Command" <--":ItemList": listOfItems :ArrayList<Item>
+":ExpiringCommand" <--":ItemList": listOfItems :ArrayList<Item>
 deactivate ":ItemList"
-"ExpiringCommand:Command" -> ":Ui": printExpiringMessage(listOfItems)
+":ExpiringCommand" -> ":Ui": printExpiringMessage(listOfItems)
 activate ":Ui"
-"ExpiringCommand:Command" <-- ":Ui"
+":ExpiringCommand" <-- ":Ui"
 deactivate ":Ui"
 
-<-- "ExpiringCommand:Command"
-deactivate "ExpiringCommand:Command"
+<-- ":ExpiringCommand"
+deactivate ":ExpiringCommand"
 
 @enduml
