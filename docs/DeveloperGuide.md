@@ -26,11 +26,33 @@
 1. [Architecture](#architecture)
    1. [Architecture Components](#architecture-components)
    2. [Architecture Logic](#architecture-logic)
-
-Implementations:
-1. [Adding Items Into Fridget](#adding-items-into-fridget)
-2. [Removing Items From Fridget](#removing-items-from-fridget)
-   1. [Updating Shopping List](#updateshoppinglist)
+2. [Implementations](#implementations)
+   1. [Adding Items Into Fridget](#adding-items-into-fridget)
+   2. [Removing Items From Fridget](#removing-items-from-fridget)
+   3. [Getting Help In Fridget](#getting-help-in-fridget)
+   4. [Resetting Item List in Fridget](#resetting-item-list-in-fridget)
+   5. [Resetting Shopping List in Fridget](#resetting-shopping-list-in-fridget)
+   6. [Listing Items In Fridget](#listing-items-in-fridget)
+   7. [Listing Expiring Items In Fridget](#listing-expiring-items-in-fridget)
+   8. [Finding Items In Fridget](#finding-items-in-fridget)
+   9. [Listing Items In Shopping List](#listing-items-in-shopping-list)
+   10. [Configuring Notifications](#configuring-notifications)
+3. [Product Scope](#product-scope)
+   1. [Target User Profile](#target-user-profile)
+   2. [Value Proposition](#value-proposition)
+4. [User Stories](#user-stories)
+5. [Non-Functional Requirements](#non-functional-requirements)
+6. [Glossary](#glossary)
+7. [Instructions For Manual Testing](#instructions-for-manual-testing)
+   1. [Launch And Shutdown](#launch-and-shutdown)
+   2. [Adding Items](#adding-items)
+   3. [Deleting Items](#deleting-items)
+   4. [Listing Items](#listing-items)
+   5. [Finding Items](#finding-items)
+   6. [List Expiring Items](#list-expiring-items)
+   7. [Printing Notification](#printing-notification)
+   8. [Updating Items Quantity](#updating-items-quantity)
+   9. [Saving And Loading Data](#saving-and-loading-data)
 
 ## Architecture
 
@@ -156,6 +178,8 @@ The overall flow within Fridget occurs in three stages:
 3. `Fridget` recognises that `ExitCommand.exitNotRequired()` is not false, and shuts down Fridget safely.
 
 <hr/>
+
+## Implementations
 
 ### Adding Items Into Fridget
 
@@ -374,7 +398,7 @@ Step 12 - 14:
 
 The execution of the updateShopList() method ends.
 
-### Getting Help Manual
+### Getting Help In Fridget
 
 #### Main Objectives:
 
