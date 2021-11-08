@@ -86,6 +86,7 @@ public class Notification {
             }
         }
         if (expiringList.size() > 0) {
+            printMessage(EXPIRING_NOTIFICATION);
             int i = 0;
             i = printExpiredItemsAndGetLastIndex(expiringList, i);
             printExpiringItems(expiringList, i);
@@ -121,7 +122,7 @@ public class Notification {
      */
     private int printExpiredItemsAndGetLastIndex(ArrayList<Item> expiringList, int i) {
         if (expiringList.get(i).isExpired()) {
-            printMessage(EXPIRING_NOTIFICATION + EXPIRED_MESSAGE);
+            printMessage(EXPIRED_MESSAGE);
             int index = 1;
             while ((expiringList.size() - i > 0) && expiringList.get(i).isExpired()) {
                 String beforeItem = FIVE_SPACE_INDENTATION + index + ". ";
