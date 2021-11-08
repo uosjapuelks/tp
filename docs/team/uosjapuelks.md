@@ -58,7 +58,11 @@ periodically when any item in the fridge is about to expire.
 
 #### Developer Guide
 
-- ItemList and ShoppingList Class Diagrams and explanation.
-- Maintained the following features implementation explanation: Listing Items, Listing Expiring Items, 
+- ItemList and ShoppingList Class Diagrams and explanations.
+- Maintained the following features implementation explanation: Listing Items, Listing Expiring Items, Find Items, Exit Fridget
+- Checked for error and potential misleading words in the Developer guide and fixed them. 
+- Assisted in the Shutdown section of architecture.
 
 ### Beyond the team
+
+- You may view the comments by me (uosjapuelks) to another team [here](https://github.com/nus-cs2113-AY2122S1/tp/pull/26) 
