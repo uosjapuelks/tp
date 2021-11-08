@@ -41,6 +41,7 @@ For more information regarding how to install this project into your local repo,
    8. [Finding Items In Fridget](#finding-items-in-fridget)
    9. [Listing Items In Shopping List](#listing-items-in-shopping-list)
    10. [Configuring Notifications](#configuring-notifications)
+   11. [Exiting From Fridget](#exiting-from-fridget)
 3. [Product Scope](#product-scope)
    1. [Target User Profile](#target-user-profile)
    2. [Value Proposition](#value-proposition)
