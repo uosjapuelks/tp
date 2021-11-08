@@ -38,7 +38,6 @@ activate NotificationCommand
     end
     <-- NotificationCommand
 deactivate NotificationCommand
-    <-[hidden]- NotificationCommand
-destroy NotificationCommand
+
 
 @enduml
