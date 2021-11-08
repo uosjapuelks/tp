@@ -875,11 +875,12 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 3. Test cases:
    1. Go to `fridgetData` directory and open `savedLogs.txt` file. 
    2. Change time to be at least 4 hours before current time.
-   3. Exit and re-run `Fridget.jar`.<br/><br/>
+   3. Exit and re-run `Fridget.jar`.<br/>
       **Expected**: To see 2 different notification printed, one health and another expiry notification.<br/><br/>
-   <span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
-   :exclamation: Only change what you need to change in the text file. If formatting is wrong, please delete and retry.
-   </span>
+   
+<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd);  padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+:exclamation: Only change what you need to change in the text file. If formatting is wrong, please delete and retry.
+</span>
 
 ### Updating Items Quantity
 1. Update quantity of existing items in Fridget.
