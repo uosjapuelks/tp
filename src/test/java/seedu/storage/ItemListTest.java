@@ -121,4 +121,14 @@ class ItemListTest {
         ArrayList<Item> matchingItems = itemList.findAllMatchingItems(searchTerm);
         assertEquals(1, matchingItems.size());
     }
+
+    //@@uosjapuelks
+    @Test
+    void updateQuantity_aaaItemNameTo800_expectQuantityOfItemToBecome() throws FridgetException {
+        int toQuantity = 800;
+        Item toUpdateItem = itemAExpireTomorrow;
+        itemList.addItem(toUpdateItem);
+        itemList.updateQuantity(toUpdateItem, toQuantity);
+        assertEquals(800, toUpdateItem.getQuantity());
+    }
 }
