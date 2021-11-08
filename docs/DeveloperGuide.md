@@ -191,9 +191,9 @@ The overall flow within Fridget occurs in three stages:
 
 #### Shutdown
 
-1. When the `Ui` receives an input containing `exit`, `Parser` extracts an `ExitCommand`.
+1. When the `Ui` receives an input starting with a standalone word `exit`, `Parser` extracts an `ExitCommand`.
 2. This `ExitCommand` prints a message to let the user know Fridget is shutting down.
-3. `Fridget` recognises that `ExitCommand.exitNotRequired()` is not false, and shuts down Fridget safely.
+3. `Fridget` recognises that `ExitCommand.exitNotRequired()` is not true, and exit is required, thus ending the loop and shuts down Fridget safely.
 
 <hr/>
 
@@ -712,6 +712,8 @@ Step 12:
 The execution of the execute() method ends, while notification continues to run until program termination.
 
 ### Exiting From Fridget
+
+
 
 ## Product scope
 ### Target user profile
