@@ -10,8 +10,12 @@ autonumber
 activate ":ExpiringCommand"
 
 ":ExpiringCommand" -> ":ExpiringCommand" : sortByExpiry :String
+activate ":ExpiringCommand"
+
 ":ExpiringCommand" -> ":ItemList": getItemList(sortByExpiry)
+deactivate ":ExpiringCommand"
 activate ":ItemList"
+
 ":ExpiringCommand" <--":ItemList": listOfItems :ArrayList<Item>
 deactivate ":ItemList"
 ":ExpiringCommand" -> ":Ui": printExpiringMessage(listOfItems)
