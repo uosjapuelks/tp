@@ -8,7 +8,7 @@ Nowadays, users need to go through every ingredient in their fridge manually to 
 
 ### Code Contributed
 
-[<button> Click me to see Alvin's RepoSense page! </button>](https://nus-cs2113-ay2122s1.github.io/tp-dashboard/#breakdown=true&search=alvynben)
+[<button> Click me to see Alvin's RepoSense page! </button>](https://nus-cs2113-ay2122s1.github.io/tp-dashboard/?search=w12&sort=groupTitle&sortWithin=title&since=2021-09-25&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=false&tabOpen=true&tabType=authorship&tabAuthor=alvynben&tabRepo=AY2122S1-CS2113T-W12-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other&authorshipIsBinaryFileTypeChecked=false)
 
 ### Enhancements Implemented
 
@@ -79,7 +79,14 @@ It allows users to check if an item they need is in the Fridge. It reduces the n
 
 ### Contributions to the Developer Guide
 * Wrote the following sections:
+  * Quick Start
+  * Setting Up In Intellij
+  * Index
   * Architecture Components
+    * Front End (Ui) Class Diagram
   * Architecture Logic
   * Adding Items Into Fridget
+    * All Sequence Diagrams
+  * Target User Profile
+  * Value Proposition
 

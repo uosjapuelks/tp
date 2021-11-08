@@ -21,7 +21,6 @@ class ItemList {
 
 class Item {
     - itemName: String
-    - expiryDate: LocalDate
     - quantity: int
 }
 
