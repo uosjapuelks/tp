@@ -6,7 +6,7 @@ I was involved in a greenfield project called Fridget. Fridget is a Java-written
 
 ## Summary of Contributions
 
-### Code Contributed: [Reposense](https://nus-cs2113-ay2122s1.github.io/tp-dashboard/?search=&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=AY2122S1-CS2113T-T12-1%2Ftp%5Bmaster%5D&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2021-09-25&tabOpen=true&zFR=false&tabAuthor=BryanElmer&tabRepo=AY2122S1-CS2113T-W12-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code&authorshipIsBinaryFileTypeChecked=false&tabType=authorship)
+### Code Contributed: [Reposense](https://nus-cs2113-ay2122s1.github.io/tp-dashboard/?search=BryanElmer&sort=groupTitle&sortWithin=title&timeframe=commit&mergegroup=&groupSelect=groupByRepos&breakdown=true&checkedFileTypes=docs~functional-code~test-code~other&since=2021-09-25&tabOpen=true&zFR=false&tabAuthor=BryanElmer&tabRepo=AY2122S1-CS2113T-W12-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code&authorshipIsBinaryFileTypeChecked=false&tabType=authorship&until=2021-11-08)
 
 ### Enhancements Implemented
 
@@ -51,7 +51,7 @@ I was involved in a greenfield project called Fridget. Fridget is a Java-written
 
 <hr/>
 
-#### Enhance Feature: Updated add command to update quantity of item if already existing in item list.
+#### Enhance Feature: Updated add command to update quantity of item if added item already exists in item list.
 
 - What it does: Increase the quantity of an existing item if they have the same name and expiry date as added item.
 - Justification: This feature avoids the same items to be added in multiple entry lines.
@@ -80,5 +80,4 @@ I was involved in a greenfield project called Fridget. Fridget is a Java-written
     - Added documentation for features `remove`, `reset`, `shopreset`, `shoplist`.
     - Added sequence diagrams for `remove`, `reset`, `shopreset`, `shoplist`.
     - Added class diagram for storage.
-
-### Community:
+  
