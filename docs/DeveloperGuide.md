@@ -16,10 +16,9 @@
       - reset: prompts the user to confirm clearing all data.
       - exit: close the app.
 7. Congratulations! You should be good to go!
-<div style="background-image: linear-gradient(180deg, #d8eff3, #d1ecf1);  padding: 1rem; margin: 1rem; margin-left: 0; border-radius: 1em">
-:bulb: <b>Tip:</b>
-You can key in "<b>java -version</b>" into your terminal to check your version of java.
-</div>
+   <span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+   :bulb: You can type <code>java -version</code> into your terminal to check your version of java.
+   </span>
 
 ## Architecture
 
@@ -104,8 +103,10 @@ printing timely health and expiry notification.
 
 #### `Fridget`
 
-Fridget initialises all classes upon startup, and initiates the user feedback loop as shown below.
+Fridget initialises all classes upon startup as shown below. 
+![image info](./umlDiagrams/FridgetInitialise.png)
 
+Fridget also initiates the user feedback loop as shown below.
 <div align="center">
 
 ![image info](./umlDiagrams/UserFeedbackLoop.png)
