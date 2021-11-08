@@ -138,14 +138,12 @@ printing timely health and expiry notification.
 #### `Fridget`
 
 Fridget initialises all classes upon startup as shown below. 
+
 ![image info](./umlDiagrams/FridgetInitialise.png)
 
-<<<<<<< HEAD
-Fridget also initiates the user feedback loop as shown below.
-<div align="center">
-=======
 
->>>>>>> master
+Fridget also initiates the user feedback loop as shown below.
+
 
 ![image info](./umlDiagrams/UserFeedbackLoop.png)
 
@@ -745,12 +743,17 @@ This CLI based application hopes to automate a lot of the tasks users have relat
 
 ## Glossary
 
-* **Common OS**: Windows, Linux, OS X
-* **CAPITALISE_WORDS**: Represents the description of the required user input.
-* **XYZCommand**: Represents a specific command class.
-* **GUI**: Graphical User Interface
-* :bulb: - This icon refers to tips that may help you.
-* :exclamation: - This icon refers to warnings to help you avoid mistakes.
+**Common OS**: Windows, Linux, OS X
+
+**CAPITALISE_WORDS**: Represents the description of the required user input.
+
+**XYZCommand**: Represents a specific command class.
+
+**GUI**: Graphical User Interface
+
+:bulb:: This icon refers to tips that may help you.
+
+:exclamation:: This icon refers to warnings to help you avoid mistakes.
 
 ## Instructions For Manual Testing
 
