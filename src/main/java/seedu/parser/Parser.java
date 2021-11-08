@@ -142,6 +142,7 @@ public class Parser {
         return trimContents(splitInput);
     }
 
+    //@@author alvynben
     /**
      * Extracts expiry as String to parse into LocalDate.
      *
@@ -161,7 +162,6 @@ public class Parser {
         }
         return expiry;
     }
-    //@@author
 
     /**
      * Extracts name or item description from processed input.
@@ -199,6 +199,7 @@ public class Parser {
                     + processedInput[1] + "]\nMissing expiry date." + correctFormat);
         }
 
+        //@@author alvynben
         String description = "";
         if (commandType == CommandType.ADD) {
             description = processedInput[1].substring(0, processedInput[1].indexOf("/")).trim();
@@ -215,9 +216,9 @@ public class Parser {
             }
             return description;
         }
-        //@@author
     }
 
+    //@@author alvynben
     /**
      * Returns an Item based on user input.
      *
@@ -255,6 +256,7 @@ public class Parser {
         return new Item(itemName, expiryDate);
     }
 
+    //@@author alvynben
     /**
      * Extract multiple items to be added using an ArrayList.
      *
@@ -291,8 +293,8 @@ public class Parser {
         assert !sortType.isEmpty();
         return sortType;
     }
-    //@@author
 
+    //@@author alvynben
     /**
      * Returns a search term provided by the "find" command.
      *

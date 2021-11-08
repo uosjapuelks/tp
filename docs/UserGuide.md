@@ -66,6 +66,8 @@ You can see the list of features in the Features section below.
 
 <hr/>
 
+<div style="page-break-after: always;"></div>
+
 ## Features
 
 Feature | Command Format |

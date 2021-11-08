@@ -12,6 +12,7 @@ public class ItemList {
         this.itemList = new ArrayList<>();
     }
 
+    //@@author alvynben
     /**
      * Adds an item into itemList, and returns the final quantity of the item in itemList.
      *
@@ -140,8 +141,8 @@ public class ItemList {
             throw new FridgetException("Unrecognisable list command. Try: <list -e>");
         }
     }
-    //@@author
 
+    //@@author alvynben
     /**
      * Returns an Array List of Items with names containing the search term.
      *
