@@ -13,8 +13,8 @@ I was involved in a greenfield project called Fridget. Fridget is a Java-written
 #### New Feature: Added the ability to save all items in Fridget.
 
 - What it does: Allows Fridget to remember all the items in the item list and shopping list before exiting the program.
-- Justification: This feature is necessary so that users will not lose their item and shopping lists upon re-entering the program.
-- Highlights: All data is stored in separate texts files that can be edited manually for more advanced users. This allow users to transfer data from one instance of the program to another by replacing the data files.
+- Justification: This feature is necessary to ensure users do not lose their item list and shopping lists upon re-entering the program.
+- Highlights: The data is stored in separate texts files which allow manual editing for more advanced users. This allows users to transfer data from one program instance to another by replacing the data files.
 
 <hr/>
 
@@ -23,7 +23,7 @@ I was involved in a greenfield project called Fridget. Fridget is a Java-written
 - What it does: Allow users to keep track of items that they want to replenish once they run out.
 - Justification: This feature ensures that users will meet their essential needs when necessary without user involvement.
 - Highlights:
-    - Fridget automatically removes items from the shopping list when they are added into the item list.
+    - Fridget automatically removes items from the shopping list when they are added to the item list.
     - Fridget will prompt the users to add items into the shopping list only if they run out.
     - Users cannot add and remove items in the shopping list freely as it is done automatically by Fridget.
 
@@ -68,8 +68,8 @@ I was involved in a greenfield project called Fridget. Fridget is a Java-written
 ### Team-based/Mentoring Contributions:
 
 - Implementing several key features in Fridget.
-- Assisting in code review by commenting and approving pull requests to ensure high quality implementation and coding standard, such as SLAP, are utilized.
-- Contributing in project management by updating issues in the issue tracker.
+- Assisting in code review by commenting and approving pull requests to ensure high-quality implementation and coding standards, such as SLAP, are utilized.
+- Contributing to project management by updating issues in the issue tracker.
 - Searching and fixing potential bugs.
 
 ### Documentation Contributions:
