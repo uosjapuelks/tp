@@ -4,6 +4,8 @@
 
 ## Introduction
 
+![image info](./umlDiagrams/smallerlogo.png)
+
 Fridget is a <strong> desktop app built to be used via Command Line Interface </strong> (CLI). Fridget is an easier way for you to keep track of the items in your fridge. It is convenient to add, remove, and find items stored in your fridge. Fridget also reminds you when items are nearing expiry.
 
 If you want to start taking charge of your fridge and stop wasting your food, Fridget is for you.
@@ -17,6 +19,14 @@ Use Fridget today.
 This guide is meant for you to quickly get started with Fridget so you can stop worrying about expired food and start enjoying life.
 
 <hr/>
+
+## Index
+
+1. [Legend](#legend)
+2. [Quick Start](#quick-start)
+3. [Features](#features)
+4. [Command Syntax](#command-syntax)
+5. [Things to Note](#things-to-note)
 
 ## Legend
 
@@ -47,7 +57,7 @@ A command like `add ITEM_NAME /EXPIRY_DATE` would actually be typed by the user 
         - exit: close the app.
 7. Congratulations! You should be good to go!
 
-<span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
+<span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :bulb: You can type <code>java -version</code> into your terminal to check your version of java.
 </span>
 
@@ -69,7 +79,7 @@ Feature | Command Format |
 [List all items](#list-all-items-in-fridget-list) | `list -OPTIONAL_SORT_TYPE`
 [List items in shopping list](#list-items-in-shopping-list-shoplist) | `shoplist`
 [Find an item](#find-items-stored-in-fridget-find) | `find KEYWORD`
-[List expiring items](#lists-all-items-expiring-soon-expiring) | `expiring`  
+[List expiring items](#list-all-items-expiring-soon-expiring) | `expiring`  
 [See notifications](#see-notifications-notifs) | `notifs`
 [Exit Fridget](#stop-fridget-exit) | `exit`
 
@@ -581,7 +591,7 @@ __________________________________________
 
 <hr/>
 
-### Lists all items expiring soon: `expiring`
+### List all items expiring soon: `expiring`
 
 Use this command to get a list of all expiring items.
 
@@ -690,7 +700,7 @@ __________________________________________
 
 <hr/>
 
-## Things to note
+## Things to Note
 
 <span style="display: inline-block; background-image: linear-gradient(180deg, #d8eff3, #d1ecf1); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :bulb: Details about how the shopping list works
