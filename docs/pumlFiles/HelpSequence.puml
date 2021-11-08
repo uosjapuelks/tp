@@ -17,7 +17,5 @@ activate HelpCommand
 
     <-- HelpCommand
 deactivate  HelpCommand
-    <-[hidden]- HelpCommand
 
-destroy HelpCommand
 @enduml
