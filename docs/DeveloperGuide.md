@@ -187,13 +187,15 @@ The overall flow within Fridget occurs in three stages:
 1. The user types in an input into the `Ui`. `Parser` is used to extract a `Command` from the user's input.
 2. `Command.execute()` is called to execute the command.
 3. The `Command` takes control of the `Ui`, `ItemList`, and `ShoppingList` to achieve the intended outcome the user requires.
-4. Once `Command.execute()` has ceased, the `Ui` awaits further input from the user.
+4. The `Storage` would then update itself to reflect the latest changes once `Command.execute()` has ceased.
+5. The `Ui` would then await further input from the user until Fridget recognises that `Command.exitNotRequired` is not true.
 
 #### Shutdown
 
 1. When the `Ui` receives an input starting with a standalone word `exit`, `Parser` extracts an `ExitCommand`.
 2. This `ExitCommand` prints a message to let the user know Fridget is shutting down.
-3. `Fridget` recognises that `ExitCommand.exitNotRequired()` is not true, and exit is required, thus ending the loop and shuts down Fridget safely.
+3. The `ExitCommand.exitNotRequired()` boolean value is false.
+4. `Fridget` recognises that `ExitCommand.exitNotRequired()` is not true, and exit is required, thus ending the loop and shuts down Fridget safely.
 
 <hr/>
 
