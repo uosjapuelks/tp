@@ -732,11 +732,11 @@ This step is almost always initiated by Fridget, but could potentially be done b
 
 Step 2 & 3:
 
-The printExitMessage() method is called which prints the Exit Message to users informing them that the program is shutting down.
+The `printExitMessage()` method is called which prints the Exit Message to users informing them that the program is shutting down.
 
 Step 4:
 
-The execution of the execute() method ends and the program would end the loop of getting user inputs and shut down.
+The execution of the `execute()` method ends and the program would end the loop of getting user inputs and shut down.
 
 ## Product scope
 ### Target user profile
