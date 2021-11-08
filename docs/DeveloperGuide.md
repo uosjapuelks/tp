@@ -330,7 +330,7 @@ The execution of the execute() method ends.
 
 #### handleRemovalOfItem
 
-![handleRemovalOfItem](./umlDiagrams/HandleRemovalOfItems.png)
+![handleRemovalOfItem](umlDiagrams/HandleRemovalOfItemsSequence.png)
 
 Step 1:
 
@@ -350,7 +350,7 @@ The execution of the handleRemovalOfItem() method ends.
 
 #### handleRemovalOfMultipleQuantity
 
-![handleRemovalOfMultipleQuantity](./umlDiagrams/HandleRemovalOfMultipleQuantity.png)
+![handleRemovalOfMultipleQuantity](umlDiagrams/HandleRemovalOfMultipleQuantitySequence.png)
 
 Step 1 & 2: 
 
@@ -378,7 +378,7 @@ If there are no more items in the item list with the same name as the removed it
 
 #### updateShoppingList
 
-![updateShoppingList](./umlDiagrams/UpdateShopList.png)
+![updateShoppingList](umlDiagrams/UpdateShopListSequence.png)
 
 Step 1 - 3:
 
