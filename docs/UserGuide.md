@@ -66,6 +66,8 @@ You can see the list of features in the Features section below.
 
 <hr/>
 
+<div style="page-break-after: always;"></div>
+
 ## Features
 
 Feature | Command Format |
@@ -271,12 +273,12 @@ Format: `update ITEM_NAME`
 
 <span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
-The <b>ITEM_NAME</b> should be the <ins>same</ins> as the name of the item you are trying to remove. 
+The <code>ITEM_NAME</code> should be the <ins>same</ins> as the name of the item you are trying to remove. 
 </span>
 
 <span style="display: inline-block; background-image: linear-gradient(180deg, #fff5d5, #fff3cd); padding-top: 1em; padding-bottom: 1em; padding-left: 1em; padding-right: 1em; font-style: normal; border-radius: 1em; border: 2px solid #999">
 :exclamation:
-The <b>ITEM_NAME</b> can also be a <ins>part of the name</ins> of the item. 
+The <code>ITEM_NAME</code> can also be a <ins>part of the name</ins> of the item. 
 </span>
 
 **Example of usage:**

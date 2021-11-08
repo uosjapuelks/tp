@@ -246,6 +246,7 @@ public class Ui {
         return intInput;
     }
 
+    //@@author alvynben
     /**
      * Get input from user.
      *
@@ -274,7 +275,7 @@ public class Ui {
                 + "See you again!~~";
         printLine(reassureUser);
     }
-    //@@author
+    //@@author alvynben
 
     /**
      * Prints a list of items, indented by four spaces and preceded by an index.
@@ -342,7 +343,7 @@ public class Ui {
             return ("List sorted by item name:");
         }
     }
-    //@@author
+    //@@author alvynben
 
     /**
      * Prints a list of matching item for the find command.
@@ -483,7 +484,7 @@ public class Ui {
         String msg = String.format("Quantity of %s is now %d.", updated.getItemName(), updated.getQuantity());
         printLine(msg);
     }
-    //@@author
+    //@@author alvynben
 
     /**
      * Returns quantity to be added for specified item.

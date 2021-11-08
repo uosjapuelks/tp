@@ -51,6 +51,14 @@ periodically when any item in the fridge is about to expire.
 
 #### User Guide
 
+- Helped put in the initial structure such as Quick start, and the basic outline in a Google Doc before transfer into markdown file.
+- Maintained the following features: `update`, `list`, `expiring`.
+- Assisted in ensuring User Guide has no language mistakes.
+- Assisted in ensuring there the Example of usage for each command is consistent with our product.
+
 #### Developer Guide
+
+- ItemList and ShoppingList Class Diagrams and explanation.
+- Maintained the following features implementation explanation: Listing Items, Listing Expiring Items, 
 
 ### Beyond the team
